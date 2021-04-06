@@ -1,42 +1,34 @@
 Rails.application.routes.draw do
   
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :admin do
-    get 'genre/index'
-  end
-  namespace :admin do
-    get 'classifications/index'
-  end
-  namespace :admin do
-    get 'books/index'
-    get 'books/new'
-    get 'books/show'
-    get 'books/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'books/index'
-    get 'books/show'
-    get 'books/edit'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/status'
-  end
-  devise_for :admins
-  devise_for :users
+  devise_for :admins, controllers: {
+    sessions: 'admin/sessions',
+    registrations: 'admin/registrations'
+  }
+  
+  devise_for :users, controllers: {
+    sessions: 'public/sessions',
+    registrations: 'public/registrations'
+  }
+  
   root to: 'public/homes#top'
   
   scope module: 'public' do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
+    get '/mypage' => 'users#show'
+    get '/mypage/edit' => 'users#edit'
+    patch '/mypage/edit' => 'users#update'
+    get '/users/status' => 'users#status'
+    patch '/users/change' => 'users#change'
+    resources :books, only: [:index, :new, :create, :show, :edit, :update ]
+  end
+  
+   namespace :admin do
+    get 'homes/top'
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :books, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :classifications, only: [:index, :create, :update]
+    resources :genres, only: [:index, :create, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
