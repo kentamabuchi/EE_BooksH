@@ -16,3 +16,79 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+@import '_color.scss';
+@import '_flex.scss';
+
+.URPage {
+    background-color: $color-dark-blue;
+    &__container {
+        @extend %center;
+    }
+    &__content{
+        height: 600px;
+        width: 60%;
+        background-color: $color-white;
+        padding-top: 100px;
+    }
+    &__heading {
+        color: $color-white;
+        background-color: $color-dark-blue;
+        margin: 0 50px;
+        padding-left: 50px;
+    }
+    &__form {
+        margin-top: 50px;
+        @extend %center;
+    }
+    &__form__name {
+        height: 25px;
+        width: 120px;
+        color: $color-white;
+        background-color: $color-light-blue;
+        text-align: center;
+        border-radius: 15px;
+    }
+    &__form__TextBox {
+        padding-bottom: 10px;
+    
+        &--input {
+            padding-bottom: 5px;
+        }
+    }
+}
+
+.USPage {
+    background-color: $color-dark-blue;
+    &__container {
+        @extend %center;
+    }
+    &__content{
+        height: 600px;
+        width: 60%;
+        background-color: $color-white;
+        padding-top: 100px;
+    }
+    &__heading {
+        color: $color-white;
+        background-color: $color-dark-blue;
+        margin: 0 50px;
+        padding-left: 50px;
+    }
+    &__form {
+        margin-top: 50px;
+        @extend %center;
+    }
+    &__form__name {
+        height: 25px;
+        width: 120px;
+        color: $color-white;
+        background-color: $color-light-blue;
+        text-align: center;
+        border-radius: 15px;
+    }
+    &__form__TextBox {
+        padding-bottom: 10px;
+    
+    }
+}
