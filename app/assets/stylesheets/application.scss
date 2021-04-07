@@ -45,7 +45,7 @@
         height: 25px;
         width: 120px;
         color: $color-white;
-        background-color: $color-light-blue;
+        background-color: $color-pastel-blue;
         text-align: center;
         border-radius: 15px;
     }
@@ -83,7 +83,42 @@
         height: 25px;
         width: 120px;
         color: $color-white;
-        background-color: $color-light-blue;
+        background-color: $color-pastel-blue;
+        text-align: center;
+        border-radius: 15px;
+    }
+    &__form__TextBox {
+        padding-bottom: 10px;
+    
+    }
+}
+
+.ASPage {
+    background-color: $color-dark-green;
+    &__container {
+        @extend %center;
+    }
+    &__content{
+        height: 600px;
+        width: 60%;
+        background-color: $color-white;
+        padding-top: 100px;
+    }
+    &__heading {
+        color: $color-white;
+        background-color: $color-dark-green;
+        margin: 0 50px;
+        padding-left: 50px;
+    }
+    &__form {
+        margin-top: 50px;
+        @extend %center;
+    }
+    &__form__name {
+        height: 25px;
+        width: 120px;
+        color: $color-white;
+        background-color: $color-light-green;
         text-align: center;
         border-radius: 15px;
     }
