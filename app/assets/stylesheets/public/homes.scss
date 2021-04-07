@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import '_color.scss';
+
 .TPage {
     background-color: #001C40;
     &__container {
@@ -34,7 +36,7 @@
         position: absolute;
         top: 100px;
         left: 10%;
-        color: white;
+        color: $color-white;
         background-image: image-url('read_book.jpeg');
         background-size: cover;
     }
@@ -60,7 +62,6 @@
     margin: 0 auto;
     padding-top: 50px;
     text-align: center;
-    justify-content: center;
     background-color: #173180;
     &__link {
         width: 40%;
