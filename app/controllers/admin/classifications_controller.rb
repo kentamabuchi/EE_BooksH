@@ -23,6 +23,8 @@ class Admin::ClassificationsController < ApplicationController
     redirect_to admin_classifications_path
   end
   
+  private
+  
   def classification_params
     params.require(:classification).permit(:name, :created_at, :updated_at)
   end
