@@ -1,5 +1,5 @@
 class Genre < ApplicationRecord
     
-    has_may :Books, dependent: :destroy
+    has_many :Books, dependent: :destroy
     
 end
