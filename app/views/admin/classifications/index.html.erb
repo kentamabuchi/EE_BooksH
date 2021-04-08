@@ -1,2 +1,55 @@
-<h1>Admin::Classifications#index</h1>
-<p>Find me in app/views/admin/classifications/index.html.erb</p>
+<div class="IPage">
+  <div class="IPage__container">
+    <div class="IPage__content">
+      
+      <section class="IPage__scection">
+          <div class="IPage__section__heading">
+            <h2>分類追加</h2>
+          </div>
+          <div class="IPage__form">
+              <%= form_with model: @classification, url: admin_classifications_path, method: :post, local: true do |f| %>
+              <table class="IPage__form__item">
+                  <tr>
+                      <th class="IPage__text">分類名：</th>
+                      <td><%= f.text_field :name %></td>
+                      <td>
+                          <%= f.submit "追加", class: "IPage__btn" %>　
+                      </td>
+                  </tr>
+              </table>
+              <% end %>
+          </div>
+      </section>
+      
+      <section class="IPage__section">
+        <div class="IPage__section__heading">
+            <h2>分類一覧</h2>
+        </div>
+        <div class="IPage__index">
+            <table class="IPage__index__item">
+                <% @classifications.each do |classification| %>
+                <tr>
+                    <td class="IPage__cell">
+                        <span class="IPage__text"><%= classification.name %></span>
+                    </td>
+                    <%= form_with model: classification, url: admin_classification_path(classification), method: :patch, local: true do |f| %>
+                    <td>
+                        <%= f.text_field :name %>
+                    </td>
+                    <td>
+                        <%= f.submit "変更", class: "IPage__btn--change" %>
+                    </td>
+                    <% end %>
+                    <td>
+                        <%= link_to "削除", admin_classification_path(classification), method: :delete, class: "IPage__btn--delete" %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
+      </section>
+      
+    </div>
+  </div>
+</div>
+

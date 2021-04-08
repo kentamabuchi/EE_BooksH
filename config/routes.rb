@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get 'homes/top'
     resources :users, only: [:index, :show, :edit, :update]
     resources :books, only: [:index, :new, :create, :show, :edit, :update, :destroy]
-    resources :classifications, only: [:index, :create, :update]
+    resources :classifications, only: [:index, :create, :update, :destroy]
     resources :genres, only: [:index, :create, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
