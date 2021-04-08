@@ -1,0 +1,22 @@
+@import '_color.scss';
+
+%page {
+    background-color: $color-dark-green;
+}
+
+%content {
+    height: 600px;
+    width: 60%;
+    background-color: $color-white;
+    padding-top: 100px;
+}
+
+%heading {
+    color: $color-white;
+    background-color: $color-dark-green;
+    margin: 0 50px;
+    padding-left: 50px;
+    margin-bottom: 30px;
+}
+
+
