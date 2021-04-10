@@ -26,10 +26,12 @@ Rails.application.routes.draw do
     resources :books, only: [:index, :new, :create, :show, :edit, :update ]
   end
   
-   namespace :admin do
+  namespace :admin do
     get 'homes/top'
     resources :users, only: [:index, :show, :edit, :update]
+    
     resources :books, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    
     resources :classifications, only: [:index, :create, :update, :destroy]
     resources :genres, only: [:index, :create, :update, :destroy]
   end

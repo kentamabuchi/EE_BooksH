@@ -1,2 +1,86 @@
-<h1>Admin::Books#edit</h1>
-<p>Find me in app/views/admin/books/edit.html.erb</p>
+<div class="BookPage">
+  <div class="BookPage__container">
+    
+    <section class="BEdit">
+        <div class="BEdit__action__return">
+            <%= link_to "戻る", admin_book_path(@book), class: "BEdit__btn__return" %>
+        </div>
+        <div class="BEdit__heading">
+            <h2>書籍編集</h2>
+        </div>
+        
+        <div class="BEdit__contents">
+            
+            <div class="BEdit__BookImage">
+                <div class="BEdit__ImageTag">
+                    <p>現在の画像</p>
+                </div>
+                <div class="BEdit__image">
+                    <%= attachment_image_tag @book, :image, :fill, 300, 300 %>
+                </div>
+            </div>
+            
+            <div class="BEdit__form">
+            <%= form_with model: @book, url: admin_book_path(@book), method: :patch, local: true do |f| %>
+                <table class="BEdit__item">
+                    <tr>
+                        <th class="BEdit__thread"><span class="BEdit__tag">書籍画像：</span></th>
+                        <td class="BEdit__thread"><%= f.attachment_field :image %></td>
+                    </tr>
+                    <tr>
+                        <th class="BEdit__thread"><span class="BEdit__tag">書籍名：</span></th>
+                        <td class="BEdit__thread"><%= f.text_field :name %></td>
+                    </tr>
+                    <tr>
+                        <th class="BEdit__thread"><span class="BEdit__tag">作者：</span></th>
+                        <td class="BEdit__thread"><%= f.text_field :writer %></td>
+                    </tr>
+                    <tr>
+                        <th class="BEdit__thread"><span class="BEdit__tag">分類：</span></th>
+                        <td class="BEdit__thread">
+                            <%= f.collection_select(:book_classifications, @classifications, :id, :name) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="BEdit__thread"><span class="BEdit__tag">ジャンル：</span></th>
+                        <td class="BEdit__thread">
+                            <%= f.collection_select(:book_genres, @genres, :id, :name) %>
+                        </td>
+                    </tr>
+                     <tr>
+                        <th class="BEdit__thread"><span class="BEdit__tag">編集ステータス：</span></th>
+                        <td class="BEdit__thread">
+                            <% if @book.edit_status == "未編集" %>
+                                <%= f.radio_button :edit_option, 0, checked: "checked" %><%= f.label :edit_status, "未編集" %>
+                                <%= f.radio_button :edit_option, 1 %><%= f.label :edit_status, "編集済み" %>
+                            <% else %>
+                                <%= f.radio_button :edit_option, 0 %><%= f.label :edit_status, "未編集" %>
+                                <%= f.radio_button :edit_option, 1, checked: "checked" %><%= f.label :edit_status, "編集済み" %>
+                            <% end %>
+                        </td>
+                    </tr>
+                     <tr>
+                        <th class="BEdit__thread"><span class="BEdit__tag">書籍ステータス：</span></th>
+                        <td class="BEdit__thread">
+                            <% if @book.is_active == "正常" %>
+                            <%= f.radio_button :book_option, 0, checked: "checked" %><%= f.label :is_active, "正常" %>
+                            <%= f.radio_button :book_option, 1 %><%= f.label :is_active, "違反" %>
+                            <% else %>
+                            <%= f.radio_button :book_option, 0 %><%= f.label :is_active, "正常" %>
+                            <%= f.radio_button :book_option, 1, checked: "checked" %><%= f.label :is_active, "違反" %>
+                            <% end %>
+                        </td>
+                    </tr>
+                </table>
+                <div class="BEdit__action">
+                    <%= f.submit "変更", class: "BEdit__btn" %>
+                </div>
+            <% end %>
+            </div>
+        </div>
+        
+    </section>
+
+  </div>
+</div>
+
