@@ -1,3 +1,209 @@
 // Place all the styles related to the admin/books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import '_color.scss';
+@import '_flex.scss';
+@import '_admin_template.scss';
+
+input[type="text"] {
+        width: 300px;
+        height: 30px;
+}
+
+.BookPage {
+    @extend %page;
+    &__container {
+        @extend %container;
+    }
+}
+.BIndex {
+    &__heading {
+        @extend %heading;
+    }
+    &__action__new {
+        text-align: right;
+        text-decoration: none;
+        margin: 0 100px 20px 0
+    }
+    &__contents {
+    }
+    &__table {
+        margin: 0 auto;
+    }
+    &__thread {
+        @extend %thread;
+        width: 200px;
+        &--category {
+            @extend %thread;
+            width: 100px;
+        }
+        &--status {
+            @extend %thread;
+            width: 150px;
+        }
+    }
+    &__date {
+        text-align: center;
+    }
+    &__btn {
+        &--show {
+            @extend %btn;
+            background-color: $color-pastel-green;
+            text-decoration: none;
+            
+        }
+        &--delete {
+            @extend %btn;
+            background-color: $color-pastel-red;
+            text-decoration: none;
+        }
+    }
+}
+
+
+
+.BNew {
+    &__heading {
+        @extend %heading;
+    }
+    &__form__item {
+        margin: 0 auto;
+    }
+    &__thread {
+        height: 40px;
+    }
+    &__tag {
+        height: 30px;
+        width: 200px;
+        color: $color-white;
+        background-color: $color-green;
+        display: inline-block;
+        margin-right: 20px;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 15px;
+    }
+    ＆__form__TextBox {
+        display: block;
+        height: 30px;
+        width: 200px;
+        maragin-bottom: 10px;
+    }
+   &__form__btn {
+       height: 30px;
+       width: 100px;
+       color: $color-white;
+       background-color: $color-pastel-blue;
+       margin-top: 30px;
+       border: none;
+       border-radius: 15px;
+    }
+}
+
+.BShow {
+    &__action__return {
+        text-align: left;
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    &__btn__return {
+        @extend %btn;
+        width: 100px;
+        background-color: $color-pastel-green;
+        text-decoration: none;
+    }
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+    }
+    &__form__item {
+        margin-left: 20px;
+    }
+    &__thread {
+        height: 40px;
+        width: 250px;
+    }
+    &__tag {
+        @extend %tag;
+        display: inline-block;
+    }
+    ＆__form__TextBox {
+        display: block;
+        height: 30px;
+        width: 200px;
+        maragin-bottom: 10px;
+    }
+   &__action {
+        height: 40px;
+        margin-top: 30px;
+        text-align: center;
+   }
+   &__btn {
+        &--edit {
+            @extend %btn;
+            background-color: $color-pastel-orange;
+        }
+        &--delete {
+            @extend %btn;
+            background-color: $color-pastel-red;
+        }
+   }
+}
+
+.BEdit {
+    &__action__return {
+        text-align: left;
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    &__btn__return {
+        @extend %btn;
+        width: 100px;
+        background-color: $color-pastel-green;
+        text-decoration: none;
+    }
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+    }
+    &__BookImage {
+        @extend %column;
+    }
+    &__ImageTag {
+        @extend %tag;
+        margin: 0 auto;
+    }
+    &__image {
+        margin-top: 20px;
+    }
+    &__form {
+        margin-top: 50px;
+        margin-left: 20px;
+    }
+    &__item {
+        
+    }
+    &__thread {
+        height: 40px;
+        width: 200px;
+    }
+    &__tag {
+        @extend %tag;
+        display: inline-block;
+    }
+    &__action {
+        text-align: center;
+    }
+    &__btn {
+       @extend %form-btn;
+       background-color: $color-pastel-orange;
+   }
+}
+

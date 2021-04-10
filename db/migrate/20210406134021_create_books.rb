@@ -7,8 +7,8 @@ class CreateBooks < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :writer
       t.string :image_id
-      t.boolean :edit_status, null: false, default: true
-      t.boolean :is_active, null: false, default: true
+      t.boolean :edit_status, default: true
+      t.boolean :is_active, default: true
 
       t.timestamps
     end
