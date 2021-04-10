@@ -28,17 +28,23 @@ class Admin::BooksController < ApplicationController
   
   def update
     @book = Book.find(params[:id])
+    
+    update_params = book_params
+
     if params[:book][:edit_option] == "0"
-      @book.edit_status = true
+      update_params[:edit_status] = "未編集"
     elsif params[:book][:edit_option] == "1"
-      @book.edit_status = false
+      update_params[:edit_status] = "編集済み"
     end
+
     if params[:book][:book_option] == "0"
-      @book.is_active = true
+      update_params[:is_active] = "正常"
     elsif params[:book][:book_option] == "1"
-      @book.is_active = false
+      update_params[:is_active] = "違反"
     end
-    @book.update(book_params)
+
+    @book.update(update_params)
+    
     redirect_to admin_book_path(@book)
   end
     

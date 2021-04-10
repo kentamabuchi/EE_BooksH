@@ -20,6 +20,49 @@
 @import '_color.scss';
 @import '_flex.scss';
 
+
+
+
+.header {
+    color: $color-white;
+    background-color: #42FCE7;
+    &--admin {
+        color: $color-white;
+        background-color: $color-dark-green;
+    }
+    &__container {
+        height: 150px;
+        background-color: blue;
+        border-radius: 0 0 50% 50%;
+        position: relative;
+    }
+    &__contents {
+        @extend %row;
+    }
+    &__logo {
+        margin: 20px 0 0 100px;
+    }
+}
+
+.nav {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    &__bar {
+        @extend %row;
+        list-style: none;
+        text-align: right;
+    }
+    &__item {
+        color: $color-white;
+        display: inline;
+        margin-left: 10px;
+    }
+    &__link {
+        color: $color-white;
+    }
+}
+
 .URPage {
     background-color: $color-dark-blue;
     &__container {

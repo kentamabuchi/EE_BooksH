@@ -8,6 +8,127 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <header>
+    
+    
+    <% if user_signed_in? %>
+    <div>
+      kouto
+    <% elsif admin_signed_in? %>  
+      <div>
+        kaka
+    <%  end %>  
+    </div>
+    
+    
+    <% if admin_signed_in? %>
+    <div class="header--admin">
+      <div class="header__container--admin">
+        <div class="header__contents--admin">
+          
+           <div class="header__logo--admin">
+             <h1>EE.Books</h1>
+           </div>
+    <%else %>
+    <div class="header">
+      <div class="header__container">
+        <div class="header__contents">
+          
+           <div class="header__logo">
+             <h1>EE.Books</h1>
+           </div>
+    <% end %>
+           
+           <div class="header__nav">
+             <div class="nav">
+                
+                  <% if user_signed_in? %>
+                  <ul class="nav__bar">
+                    <li class="nav__item">
+                      <%= link_to about_path, class: "nav__link" do %>
+                        <i class="fab fa-readme"></i>　About
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to admin_books_path, class: "nav__link" do %>
+                        <i class="fas fa-cheese"></i> 書籍一覧
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to admin_classifications_path, class: "nav__link" do %>
+                        <i class="fas fa-file-signature"></i> 分類一覧
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to admin_genres_path, class: "nav__link" do %>
+                        <i class="fas fa-sign-in-alt"></i> ジャンル一覧
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to destroy_user_session_path, method: :delete, class: "nav__link" do %>
+                        <i class="fas fa-sign-out-alt"></i> ログアウト
+                      <% end %>
+                    </li>
+                  </ul>
+                  <% elsif admin_signed_in? %>
+                  <ul class="nav__bar">
+                    <li class="nav__item">
+                      <%= link_to about_path, class: "nav__link" do %>
+                        <i class="fab fa-readme"></i>　About
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to admin_books_path, class: "nav__link" do %>
+                        <i class="fas fa-cheese"></i> 書籍一覧
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to admin_classifications_path, class: "nav__link" do %>
+                        <i class="fas fa-file-signature"></i> 分類一覧
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to admin_genres_path, class: "nav__link" do %>
+                        <i class="fas fa-sign-in-alt"></i> ジャンル一覧
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to destroy_admin_session_path, method: :delete, class: "nav__link" do %>
+                        <i class="fas fa-sign-out-alt"></i> ログアウト
+                      <% end %>
+                    </li>
+                  </ul>
+                  <% else %>
+                  <ul class="nav__bar">
+                    <li class="nav__item">
+                      <%= link_to about_path, class: "nav__link" do %>
+                        <i class="fab fa-readme"></i>　About
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to admin_books_path, class: "nav__link" do %>
+                        <i class="fas fa-cheese"></i> 書籍一覧
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to new_user_registration_path, class: "nav__link" do %>
+                        <i class="fas fa-file-signature"></i> 新規登録
+                      <% end %>
+                    </li>
+                    <li class="nav__item">
+                      <%= link_to new_user_session_path, class: "nav__link" do %>
+                        <i class="fas fa-sign-in-alt"></i> ログイン
+                      <% end %>
+                    </li>
+                  </ul>
+                  <% end %>
+              </div>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </header>
 
   <body>
     <%= yield %>

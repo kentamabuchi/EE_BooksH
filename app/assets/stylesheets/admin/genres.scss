@@ -6,13 +6,15 @@
 @import '_flex.scss';
 @import '_admin_template.scss';
 
+
+
 .IPage {
     @extend %page;
     &__container {
         @extend %center;
     }
     &__content{
-        @extend %content;
+        @extend %container;
     }
     &__section {
     }
