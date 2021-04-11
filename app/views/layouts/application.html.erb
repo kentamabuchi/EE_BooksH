@@ -8,25 +8,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  
   <header>
-    
-    
-    <% if user_signed_in? %>
-    <div>
-      kouto
-    <% elsif admin_signed_in? %>  
-      <div>
-        kaka
-    <%  end %>  
-    </div>
-    
-    
     <% if admin_signed_in? %>
-    <div class="header--admin">
-      <div class="header__container--admin">
-        <div class="header__contents--admin">
+    <div class="AHeader">
+      <div class="AHeader__container">
+        <div class="AHeader__contents">
           
-           <div class="header__logo--admin">
+           <div class="AHeader__logo">
              <h1>EE.Books</h1>
            </div>
     <%else %>
