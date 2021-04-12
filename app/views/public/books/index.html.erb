@@ -1,2 +1,26 @@
-<h1>Public::Books#index</h1>
-<p>Find me in app/views/public/books/index.html.erb</p>
+<diV clas="BookPage">
+    <div clas="BookPage__container">
+        <section class="BIndex">
+            <div class="BIndex__sidebar">
+                <table>
+                    <% @genre.each do |genre| %>
+                    <tr>
+                        <th><span class="BIndex__tag"><%= genre.name %></span></th>
+                    </tr>
+                    <% end %>
+                </table>
+            </div>
+            <div class="BIndex__contents">
+                <div class="BIndex__new">
+                    <div class="BIndex__new__first"></div>
+                    <div class="BIndex__new__content">
+                        <div class="BIndex__new__second"></div>
+                        <div></div>
+                        
+                    </div>
+                </div>
+                <div class="BIndex__recomend"></div>
+            </div>
+        </section>
+    </div>
+</diV> 
