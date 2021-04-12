@@ -1,2 +1,55 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="UserPage">
+    <div class="UserPage__container">
+        <section class="mypage">
+            
+            <div class="mypage__action__return">
+                <%= link_to "<<戻る", root_path, class: "mypage__btn__return" %>
+            </div>
+            
+            <div class="mypage__heading">
+                <h2>会員詳細</h2>
+            </div>
+            
+            <div class="mypage__contents">
+                <div class="mypage__UserImage">
+                    <%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg",size: '300x300' %>
+                </div>
+                <div class="mypage__table">
+                    <table>
+                        <tr>
+                            <th class="mypage__thread"><span class="mypage__tag">登録日：</span></th>
+                            <td class="UShow__date"><%= @user.created_at.strftime('%y年%m月%d日') %></td>
+                        </tr>
+                        <tr>
+                            <th class="mypage__thread"><span class="mypage__tag">ニックネーム：</span></th>
+                            <td class="mypage__date"><%= @user.nick_name %></td>
+                        </tr>
+                        <tr>
+                            <th class="mypage__thread"><span class="mypage__tag">メールアドレス：</span></th>
+                            <td class="mypage__date"><%= @user.email %></td>
+                        </tr>
+                        <tr>
+                            <th class="mypage__thread"><span class="mypage__tag">会員ステータス：</span></th>
+                            <td class="mypage__date">
+                                <% if @user.is_active == true %>
+                                    有効
+                                <% else @user.is_active == false %>
+                                    退会
+                                <% end %>
+                                </td>
+                        </tr>
+                        <tr>
+                            <th class="mypage__thread"><span class="mypage__tag"></span></th>
+                            <td class="mypage__date"></td>
+                        </tr>
+                    </table>
+                    <div class="mypage__action">
+                        <%= link_to "編集", mypage_edit_path, class: "mypage__btn--edit" %>
+                        <%= link_to "退会", user_status_path, class: "mypage__btn--status" %>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

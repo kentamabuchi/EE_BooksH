@@ -1,2 +1,53 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="UserPage">
+    <div class="UserPage__container">
+        <section class="UShow">
+            
+            <div class="BEdit__action__return">
+                <%= link_to "戻る", admin_users_path, class: "BEdit__btn__return" %>
+            </div>
+            
+            <div class="UShow__heading">
+                <h2>会員詳細</h2>
+            </div>
+            
+            <div class="UShow__contents">
+                <div class="UShow__UserImage">
+                    <%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg",size: '300x300' %>
+                </div>
+                <div class="UShow__table">
+                    <table>
+                        <tr>
+                            <th class="UShow__thread"><span class="UShow__tag">登録日：</span></th>
+                            <td class="UShow__date"><%= @user.created_at.strftime('%y年%m月%d日') %></td>
+                        </tr>
+                        <tr>
+                            <th class="UShow__thread"><span class="UShow__tag">ニックネーム：</span></th>
+                            <td class="UShow__date"><%= @user.nick_name %></td>
+                        </tr>
+                        <tr>
+                            <th class="UShow__thread"><span class="UShow__tag">メールアドレス：</span></th>
+                            <td class="UShow__date"><%= @user.email %></td>
+                        </tr>
+                        <tr>
+                            <th class="UShow__thread"><span class="UShow__tag">会員ステータス：</span></th>
+                            <td class="UShow__date">
+                                <% if @user.is_active == true %>
+                                    有効
+                                <% else @user.is_active == false %>
+                                    退会
+                                <% end %>
+                                </td>
+                        </tr>
+                        <tr>
+                            <th class="UShow__thread"><span class="UShow__tag"></span></th>
+                            <td class="UShow__date"></td>
+                        </tr>
+                    </table>
+                    <div class="UShow__action">
+                        <%= link_to "編集", edit_admin_user_path(@user), class: "UShow__btn" %>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

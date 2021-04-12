@@ -1,3 +1,79 @@
 // Place all the styles related to the admin/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import '_color.scss';
+@import '_flex.scss';
+@import '_admin_template.scss';
+
+.UserPage {
+    @extend %page;
+    padding-top: 50px;
+    &__container{
+        @extend %container;
+        
+    }
+}
+
+.UIndex {
+    &__heading {
+        @extend %heading;
+    }
+    &__table {
+        margin: 0 auto;
+    }
+    &__thread {
+        @extend %thread;
+        width: 200px;
+    }
+    &__date {
+        text-align: center;
+    }
+    &__btn {
+        &--show {
+            @extend %btn;
+            background-color: $color-pastel-blue;
+            margin-left: 20px;
+        }
+        &--delete {
+            @extend %btn;
+            background-color: $color-pastel-red;
+        }
+    }
+    &__paginate {
+        @extend %center;
+        margin-top: 50px;
+    }
+}
+
+.UShow {
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+    }
+    &__table {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    &__tag {
+        @extend %tag;
+        width: 150px;
+    }
+    &__date {
+        width: 200px;
+        text-align: center;
+    }
+    &__action {
+        text-align: center;
+    }
+    &__btn {
+        @extend %btn;
+        background-color: $color-pastel-orange;
+        margin-top: 20px;
+        margin-left: 170px;
+    }
+}
