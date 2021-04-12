@@ -42,14 +42,11 @@
 .AHeader {
     color: $color-white;
     background-color: $color-dark-green;
-    %__container {
+    &__container {
         height: 150px;
         background-color: green;
         border-radius: 0 0 50% 50%;
         position: relative;
-    }
-    &__container {
-        @extend %__container;
     }
     &__contents{
         @extend %row;
@@ -63,7 +60,10 @@
     color: $color-white;
     background-color: #42FCE7;
     &__container {
-        @extend %__container;
+        height: 150px;
+        background-color: blue;
+        border-radius: 0 0 50% 50%;
+        position: relative;
     }
     &__contents {
         @extend %row;

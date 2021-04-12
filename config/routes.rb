@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     get '/mypage' => 'users#show'
     get '/mypage/edit' => 'users#edit'
     patch '/mypage/edit' => 'users#update'
-    get '/users/status' => 'users#status'
-    patch '/users/change' => 'users#change'
+    get '/user/status' => 'users#status'
+    patch '/user/change' => 'users#change'
     resources :books, only: [:index, :new, :create, :show, :edit, :update ]
   end
   

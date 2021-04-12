@@ -1,3 +1,136 @@
 // Place all the styles related to the public/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import '_color.scss';
+@import '_flex.scss';
+@import '_template.scss';
+
+.UserPage {
+    @extend %page;
+    padding-top: 50px;
+    &__container{
+        @extend %container;
+    }
+}
+
+.mypage {
+    &__action__return {
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    &__btn__return {
+        @extend %btn;
+        background-color: $color-pastel-blue;
+        text-align: center;
+    }
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+    }
+    &__table {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    &__tag {
+        @extend %tag;
+        width: 150px;
+    }
+    &__date {
+        width: 200px;
+        text-align: center;
+    }
+    &__action {
+        width: 300px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 120px;
+    }
+    &__btn {
+        &--edit{
+            @extend %btn;
+            background-color: $color-pastel-orange;
+        }
+        &--status {
+            @extend %btn;
+            background-color: $color-pastel-red;
+        }
+    }
+}
+
+.UEdit {
+    &__action__return {
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    &__btn__return {
+        @extend %btn;
+        background-color: $color-pastel-blue;
+        text-align: center;
+    }
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+    }
+    &__table {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    &__tag {
+        @extend %tag;
+        width: 150px;
+    }
+    &__date {
+        width: 200px;
+        text-align: center;
+    }
+    &__action {
+        width: 300px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 120px;
+    }
+    &__btn {
+            @extend %form-btn;
+            background-color: $color-pastel-orange;
+    }
+}
+
+.UStatus {
+    &__heading {
+        @extend %heading;
+    }
+    &__table {
+        margin: 0 auto;
+    }
+    &__thread {
+        text-align: center;
+    }
+    &__date {
+        text-align: center;
+    }
+    &__action {
+        text-align: center;
+        margin-top: 20px;
+        @extend %center;
+    }
+    &__btn {
+        &--no {
+            @extend %btn;
+            background-color: $color-pastel-blue;
+        }
+        &--yes {
+            @extend %btn;
+            background-color: $color-pastel-red;
+        }
+    }
+}
+
+
