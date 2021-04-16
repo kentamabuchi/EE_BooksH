@@ -1,0 +1,11 @@
+ <% if GoodBook.find_by(user_id: current_user.id, book_id: book.id) %>
+    <%= link_to book_good_books_path(book, book.good_books), method: :delete, remote: true do %>
+        <i class="fas fa-heart BShow__BookGood"></i>
+    <% end %>
+    <%= book.good_books.count %>
+<% else %>
+    <%= link_to book_good_books_path(book, book.good_books), method: :post, remote: true do %>
+        <i class="fas fa-heart BShow__BookGood--none"></i>
+    <% end %>
+    <%= book.good_books.count %>
+<% end %>

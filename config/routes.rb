@@ -23,7 +23,11 @@ Rails.application.routes.draw do
     patch '/mypage/edit' => 'users#update'
     get '/user/status' => 'users#status'
     patch '/user/change' => 'users#change'
-    resources :books, only: [:index, :new, :create, :show, :edit, :update ]
+    resources :books, only: [:index, :new, :create, :show] do
+      resources :reviews, only: [:create, :destroy]
+      resource :good_books, only: [:create, :destroy]
+      resource :favorite_books, only: [:create, :destroy]
+    end
   end
   
   namespace :admin do

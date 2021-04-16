@@ -6,7 +6,9 @@ class User < ApplicationRecord
   
   attachment :image
   
-  belongs_to :favorite_user, optional: true
-  belongs_to :favorite_book, optional: true
+  has_many :reviews, dependent: :destroy
+  has_many :good_books, dependent: :destroy
+  has_many :favorite_users, dependent: :destroy
+  has_many :favorite_books, dependent: :destroy
   
 end
