@@ -1,5 +1,5 @@
 class FavoriteUser < ApplicationRecord
     
-    has_may :users, dependent: :destroy
+    belongs_to :user
     
 end

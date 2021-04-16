@@ -1,6 +1,7 @@
-<diV clas="BookPage">
-    <div clas="BookPage__container">
+<diV clas="MainPage">
+    <div clas="MainPage__container">
         <section class="BIndex">
+            
             <div class="BIndex__sidebar">
                 <table>
                     <% @genre.each do |genre| %>
@@ -10,17 +11,102 @@
                     <% end %>
                 </table>
             </div>
+            
             <div class="BIndex__contents">
-                <div class="BIndex__new">
-                    <div class="BIndex__new__first"></div>
-                    <div class="BIndex__new__content">
-                        <div class="BIndex__new__second"></div>
-                        <div></div>
-                        
+                <div class="BIndex__ranking__items">
+                    <div class="BIndex__ranking__first">
+                        <table>
+                            <tr>
+                                <th><%= attachment_image_tag @book_first, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: '400x400' %></th>
+                            </tr>
+                            <tr>
+                                <th><%= @book_first.name %></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <%= render 'public/books/rate_average', {book: @book_first, rate: @first_rate} %>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="BIndex__ranking__other">
+                        <div class="BIndex__ranking--second">
+                            <table>
+                            <tr>
+                                <th><%= attachment_image_tag @book_second, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '150x150' %></th>
+                            </tr>
+                            <tr>
+                                <th><%= @book_second.name %></th>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <%= render 'public/books/rate_average', {book: @book_second, rate: @second_rate} %>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                        <div class="BIndex__ranking--third">
+                            <table>
+                                <tr>
+                                    <th><%= attachment_image_tag @book_third, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '150x150' %></th>
+                                </tr>
+                                <tr>
+                                    <th><%= @book_third.name %></th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <%= render 'public/books/rate_average', {book: @book_third, rate: @third_rate} %>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="BIndex__ranking--fourth">
+                            <table>
+                            <tr>
+                                <th><%= attachment_image_tag @book_fourth, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '150x150' %></th>
+                            </tr>
+                            <tr>
+                                <th><%= @book_fourth.name %></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <%= render 'public/books/rate_average', {book: @book_fourth, rate: @fourth_rate} %>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                        <div class="BIndex__ranking--fifth">
+                            <table>
+                            <tr>
+                                <th><%= attachment_image_tag @book_fifth, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '150x150' %></th>
+                            </tr>
+                            <tr>
+                                <th><%= @book_fifth.name %></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <%= render 'public/books/rate_average', {book: @book_fifth, rate: @fifth_rate} %>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
                     </div>
                 </div>
-                <div class="BIndex__recomend"></div>
+                <div class="BIndex__new-lineup">
+                    <% @new_book.each do |new_book| %>
+                    <div class="BIndex__NewBook">
+                    
+                        <%= attachment_image_tag new_book, :image, :fill, 150, 150, fallback: "no_image_book.jpeg", size: '150x150' %>
+                        <%= new_book.name %>
+                    
+                    </div>
+                    <% end %>
+                </div>
+                <div class="BIndex__recomend">
+                    
+                </div>
             </div>
         </section>
     </div>
-</diV> 
+</div> 
+
