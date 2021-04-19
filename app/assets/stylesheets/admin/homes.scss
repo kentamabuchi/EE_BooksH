@@ -1,3 +1,93 @@
 // Place all the styles related to the admin/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import '_color.scss';
+@import '_flex.scss';
+@import '_admin_template.scss';
+
+.AHomesPage {
+    @extend %page;
+    padding-top: 50px;
+    &__container {
+        @extend %container;
+    }
+}
+.AHTop {
+    &__heading {
+        @extend %heading;
+    }
+    &__PageTabs {
+        margin-top: 100px;
+        margin-left: 100px;
+    }
+    &__tab {
+        text-decoration:none !important;
+        color: $color-white;
+        background-color: $color-smog-green;
+        padding: 20px;
+        display: inline-block;
+        border-radius: 15px 15px 0 0;
+        &--other {
+            text-decoration:none !important;
+            color: $color-white;
+            background-color: $color-dark-green;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 15px 15px 0 0;
+        }
+    }
+    &__none {
+        
+        
+        
+    }
+    &__contents {
+        width: 90%;
+        color: $color-white;
+        background-color: $color-smog-green;
+        padding: 100px 0;
+        margin: 0 auto;
+        text-align: center;
+        
+        &--other {
+        width: 90%;
+        color: $color-white;
+        background-color: $color-dark-green;
+        padding: 100px 0;
+        margin: 0 auto;
+        text-align: center;
+        }
+    }
+    &__table {
+        margin: 0 auto;
+    }
+    &__thread {
+        @extend %thread;
+        width: 200px;
+        &--category {
+            @extend %thread;
+            width: 100px;
+        }
+        &--status {
+            @extend %thread;
+            width: 150px;
+        }
+    }
+    &__date {
+        text-align: center;
+    }
+    &__btn {
+        &--show {
+            @extend %btn;
+            background-color: $color-pastel-green;
+            text-decoration: none;
+            
+        }
+        &--delete {
+            @extend %btn;
+            background-color: $color-pastel-red;
+            text-decoration: none;
+        }
+    }
+}

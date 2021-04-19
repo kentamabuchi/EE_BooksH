@@ -7,7 +7,7 @@
 @import '_flex.scss';
 @import '_admin_template.scss';
 
-.UserPage {
+.AUserPage {
     @extend %page;
     padding-top: 50px;
     &__container{
@@ -16,7 +16,7 @@
     }
 }
 
-.UIndex {
+.AUIndex {
     &__heading {
         @extend %heading;
     }
@@ -47,7 +47,13 @@
     }
 }
 
-.UShow {
+.AUShow {
+    &__action__return {
+        @extend %btn;
+        width: 100px;
+        background-color: $color-pastel-green;
+        text-decoration: none;
+    }
     &__heading {
         @extend %heading;
     }

@@ -1,17 +1,4 @@
-<div class="AHomesPage">
-    <div class="AHomesPage__container">
-        <section class="AHTop">
-            
-            <div class="AHTop__heading">
-                    <h2>通報一覧</h2>
-                </div>
-            
-            <div class="AHTop__PageTabs">
-                <%= link_to "books", admin_violation_books_path, remote: true, class: "AHTop__tab" %>
-                <%= link_to "reviews", admin_violation_reviews_path, remote: true, class: "AHTop__tab--other" %>
-            </div>
-            
-            <div class="AHTop__index">
+<div class="AHTop__index">
                 
                 <% if @books.blank? %>
                 <div>
@@ -48,8 +35,4 @@
                 </div>
                 <% end %>
             </div>
-        </section>
-
-    </div>
-</div>
-
+            
