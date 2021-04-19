@@ -33,7 +33,6 @@
     margin: 0 10px;
 }
 
-/*ホバー時のデザイン*/
 .pagination>li>a:hover {        
   border-radius: 15px;
 }
@@ -58,7 +57,7 @@
 
 .header {
     color: $color-white;
-    background-color: #42FCE7;
+    background-color: $color-pastel-blue;
     &__container {
         height: 150px;
         background-color: blue;
