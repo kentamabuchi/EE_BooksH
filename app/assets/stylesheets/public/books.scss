@@ -1,3 +1,255 @@
 // Place all the styles related to the public/books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import '_color.scss';
+@import '_flex.scss';
+@import '_template.scss';
+
+input[type="text"] {
+        width: 300px;
+        height: 30px;
+}
+
+
+
+.MainPage {
+    @extend %page;
+    &__container {
+        width: 80%;
+        background-color: $color-white;
+        padding-top: 50px;
+    }
+}
+
+.BIndex {
+    @extend %row;
+    &__sidebar{
+        width: 20%;
+        background-color: black;
+    }
+    &__tag {
+        @extend %tag;
+    }
+    &__contents {
+        width: 80%;
+    }
+    &__ranking__items {
+        height: 500px;
+        @extend %row;
+        justify-content: center;
+        margin-top: 100px;
+        
+    }
+    &__ranking__first {
+        height: 500px;
+        width: 40%;
+        background-color: red;
+    }
+    &__ranking__other {
+        width: 40%;
+        height: 500px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__ranking {
+        &--second {
+            height: 250px;
+            width: 50%;
+            background-color: blue;
+        }
+        &--third {
+            height: 250px;
+            width: 50%;
+            background-color: yellow;
+        }
+        &--fourth {
+            height: 250px;
+            width: 50%;
+            background-color: green;
+        }
+        &--fifth {
+            height: 250px;
+            width: 50%;
+            background-color: orange;
+        }
+    }
+    &__new-lineup {
+        @extend %row;
+        justify-content: center;
+        height: 250px;
+        width: 80%;
+        background-color: blue;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+        &__NewBook {
+        @extend %column;
+        margin: 50px auto;
+    }
+    &__recomend {
+        height: 300px;
+        width: 80%;
+        background-color: blue;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.BookPage {
+    @extend %page;
+    &__container {
+        @extend %container;
+    }
+}
+
+.BNew {
+    &__heading {
+        @extend %heading;
+    }
+    &__form__item {
+        margin: 0 auto;
+    }
+    &__thread {
+        height: 40px;
+    }
+    &__tag {
+        height: 30px;
+        width: 200px;
+        color: $color-white;
+        background-color: $color-green;
+        display: inline-block;
+        margin-right: 20px;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 15px;
+    }
+    ＆__form__TextBox {
+        display: block;
+        height: 30px;
+        width: 200px;
+        maragin-bottom: 10px;
+    }
+   &__form__btn {
+       height: 30px;
+       width: 100px;
+       color: $color-white;
+       background-color: $color-pastel-blue;
+       margin-top: 30px;
+       border: none;
+       border-radius: 15px;
+    }
+}
+
+.BShow {
+    &__action__return {
+        text-align: left;
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    &__btn__return {
+        @extend %btn;
+        width: 100px;
+        background-color: $color-pastel-green;
+        text-decoration: none;
+    }
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %column;
+        justify-content: center;
+    }
+    &__book {
+        @extend %row;
+        justify-content: center;
+    }
+    &__BookLikes {
+        @extend %row;
+        justify-content: center;
+    } 
+    &__form__item {
+        margin-left: 20px;
+    }
+    &__thread {
+        height: 40px;
+        width: 250px;
+    }
+    &__tag {
+        @extend %tag;
+        display: inline-block;
+    }
+    ＆__form__TextBox {
+        display: block;
+        height: 30px;
+        width: 200px;
+        maragin-bottom: 10px;
+    }
+   &__action {
+        height: 40px;
+        margin-top: 30px;
+        text-align: center;
+   }
+   &__btn {
+        &--edit {
+            @extend %btn;
+            background-color: $color-pastel-orange;
+        }
+        &--delete {
+            @extend %btn;
+            background-color: $color-pastel-red;
+        }
+   }
+   &__reviews {
+       @extend %column;
+       margin-top: 50px;
+   }
+   &__reviews__form {
+       @extend %center;
+   }
+   &__form__text {
+       height: 200px;
+       width: 500px;
+   }
+   &__reviews__comments {
+        @extend %center;
+        margin-top: 50px;
+   }
+   &__comments {
+       width: 500px;
+       height: 200px;
+       border: 1px solid black;
+       padding: 10px;
+   }
+   &__paginate {
+       @extend %center;
+       margin-top: 50px;
+   }
+   &__BookGood {
+       color: red;
+   }
+   &__favorite {
+       color: $color-white;
+       background-color: blue;
+       margin-top: 10px;
+       margin-left: 10px;
+       padding: 5px;
+       border-radius: 15px;
+       text-decoration: none;
+       &--none {
+           margin-top: 30px;
+           margin-left: 10px;
+           text-decoration: none;
+        &--none:hover {
+            text-decoration: none;
+        }
+       }
+    &__favorite:hover {
+        text-decoration: none;
+     }
+   }
+}
+

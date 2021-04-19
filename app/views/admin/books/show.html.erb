@@ -1,2 +1,64 @@
-<h1>Admin::Books#show</h1>
-<p>Find me in app/views/admin/books/show.html.erb</p>
+<div class="ABookPage">
+  <div class="ABookPage__container">
+    
+    <section class="ABShow">
+        
+         <div class="ABShow__action__return">
+            <%= link_to "戻る", admin_books_path, class: "BEdit__btn__return" %>
+        </div>
+        
+        <div class="ABShow__heading">
+            <h2>書籍詳細</h2>
+        </div>
+        
+        <div class="ABShow__contents">
+            <div class="ABShow__BookImage">
+                <%= attachment_image_tag @book, :image, :fill, 300, 300 %>
+            </div>
+            <div class="ABShow__BookDate">
+                <table class="ABShow__form__item">
+                    <tr>
+                        <th class="ABShow__thread"><span class="ABShow__tag">書籍名：</span></th>
+                        <td class="ABShow__thread"><%= @book.name %></td>
+                    </tr>
+                    <tr>
+                        <th class="ABShow__thread"><span class="ABShow__tag">作者：</span></th>
+                        <td class="ABShow__thread"><%= @book.writer %></td>
+                    </tr>
+                    <tr>
+                        <th class="ABShow__thread"><span class="ABShow__tag">分類：</span></th>
+                        <td class="ABShow__thread">
+                            <%= @book.classification.name %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="ABShow__thread"><span class="ABShow__tag">ジャンル：</span></th>
+                        <td class="ABShow__thread">
+                            <%= @book.genre.name %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="ABShow__thread"><span class="ABShow__tag">編集ステータス：</span></th>
+                        <td class="ABShow__thread">
+                            <%= @book.edit_status %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="ABShow__thread"><span class="ABShow__tag">書籍ステータス：</span></th>
+                        <td class="ABShow__thread">
+                            <%= @book.is_active %>
+                        </td>
+                    </tr>
+                </table>
+                <div class="ABShow__action">
+                    <%= link_to "編集", edit_admin_book_path(@book), class: "ABShow__btn--edit" %>
+                    <%= link_to "削除", admin_book_path(@book), method: :delete, class: "ABShow__btn--delete" %>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+  </div>
+</div>
+

@@ -1,2 +1,148 @@
-<h1>Public::Books#show</h1>
-<p>Find me in app/views/public/books/show.html.erb</p>
+<div class="MainPage">
+  <div class="MainPage__container">
+    <section class="BShow">
+        
+         <div class="BShow__action__return">
+            <%= link_to "戻る", admin_books_path, class: "BEdit__btn__return" %>
+        </div>
+        
+        
+        <div class="BShow__heading">
+            <h2>書籍詳細</h2>
+        </div> 
+        
+        
+        <div class="BShow__contents">
+            <div class="BShow__book">
+                <div class="BShow__BookImage">
+                    <%= attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg",size: "180x180" %>
+                    <div class="BShow__BookLikes">
+                        <div class="BShow__goods-<%= @book.id %>">
+                           <%= render 'public/good_books/good', {book: @book} %>    
+                        </div>
+                        <div class="BShow__favorite-<%= @book.id %>">
+                            <%= render 'public/favorite_books/favorite', {book: @book} %>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="BShow__BookDate">
+                    <table class="BShow__form__item">
+                        <tr>
+                            <th class="BShow__thread"><span class="BShow__tag">書籍名：</span></th>
+                            <td class="BShow__thread"><%= @book.name %></td>
+                        </tr>
+                        <tr>
+                            <th class="BShow__thread"><span class="BShow__tag">作者：</span></th>
+                            <td class="BShow__thread"><%= @book.writer %></td>
+                        </tr>
+                        <tr>
+                            <th class="BShow__thread"><span class="BShow__tag">分類：</span></th>
+                            <td class="BShow__thread">
+                                <%= @book.classification.name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="BShow__thread"><span class="BShow__tag">ジャンル：</span></th>
+                            <td class="BShow__thread">
+                                <%= @book.genre.name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="BShow__thread"><span class="BShow__tag">評価：</span></th>
+                            <td class="BShow__average__rate">
+                                <%= @average_rate %>点
+                                <script>
+                                $('.BShow__average__rate').raty({
+                                    starOff:  '<%= asset_path('star-off.png') %>',
+                                    starOn : '<%= asset_path('star-on.png') %>',
+                                    starHalf: '<%= asset_path('star-half.png') %>',
+                                    half: true,
+                                    readOnly: true,
+                                    score: <%= @average_rate %>
+                                });  
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+            </div>
+            
+            <div class="BShow__reviews">
+                
+                <div class="BShow__reviews__form">
+                    <%= form_with(model:[@book, @review], local: true) do |f| %>
+                    <table>
+                        <tr>
+                            <th class="BShow__tread"><span class="BShow__tag">レビュー</span></th>
+                        </tr>
+                        <tr class="BShow__review__rate"></tr>
+                        <script>
+                        $('.BShow__review__rate').raty({
+                            starOn: "<%= asset_path('star-on.png') %>",
+                            starOff: "<%= asset_path('star-off.png') %>",
+                            starHalf: "<%= asset_path('star-half.png') %>",
+                            scoreName: 'review[rate]',
+                            half: true,
+                        });
+                        </script>
+                        <tr>
+                           <td><%= f.text_area :comment, placeholder: "本の評価", class: "BShow__form__text" %></td> 
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <%= f.submit "コメントする" %>
+                            </td>
+                        </tr>
+                    </table>
+                    <% end %>
+                </div>
+                
+                <div class="BShow__reviews__comments">
+                    <table>
+                        <% @reviews.each do |review| %>
+                        <tr>
+                            <td>
+                                <%= review.rate %>点
+                                <span class="BShow__rate__show-<%= review.id %>"></span>
+                                <script>
+                                $('.BShow__rate__show-<%= review.id %>').empty(); 
+                                $('.BShow__rate__show-<%= review.id %>').raty({
+                                    starOff:  '<%= asset_path('star-off.png') %>',
+                                    starOn : '<%= asset_path('star-on.png') %>',
+                                    starHalf: '<%= asset_path('star-half.png') %>',
+                                    half: true,
+                                    readOnly: true,
+                                    score: <%= review.rate %>
+                                });  
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><div class="BShow__comments"><%= review.comment %></div></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <% if review.user_id == current_user.id %>
+                                    <%= link_to "削除", book_review_path(review.book, review), method: :delete %>
+                                <% end %>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </table>
+                </div>
+                
+                <div class="BShow__paginate" >
+                    <%= paginate @reviews %>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+    </section>
+  </div>
+</div>
+

@@ -1,3 +1,215 @@
 // Place all the styles related to the public/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import '_color.scss';
+@import '_flex.scss';
+@import '_template.scss';
+
+.UserPage {
+    @extend %page;
+    padding-top: 50px;
+    &__container{
+        @extend %container;
+    }
+}
+
+.UShowPage {
+    @extend %page;
+    padding-top: 50px;
+    &__container {
+        width: 80%;
+        background-color: $color-white;
+        padding-top: 50px;
+    }
+}
+
+.UShow {
+    &__action__return {
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    &__btn__return {
+        @extend %btn;
+        background-color: $color-pastel-blue;
+        text-align: center;
+        text-decoration:none !important;
+    }
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+    }
+    &__favorite {
+        background-color: red;
+    }
+    &__table {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    &__tag {
+        @extend %tag;
+        width: 150px;
+        &--book {
+            width: 100px;
+            text-align: center;
+        }
+    }
+    &__date {
+        width: 200px;
+        text-align: center;
+    }
+    &__action {
+        width: 300px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 120px;
+    }
+    &__btn {
+        &--edit{
+            @extend %btn;
+            background-color: $color-pastel-orange;
+            text-decoration:none !important;
+        }
+        &--status {
+            @extend %btn;
+            background-color: $color-pastel-red;
+            text-decoration:none !important;
+        }
+    }
+    &__index {
+        @extend %column;
+    }
+    &__PageTabs {
+        margin-top: 100px;
+        margin-left: 100px;
+    }
+    &__tab {
+        text-decoration:none !important;
+        background-color: $color-navy-blue;
+        padding: 20px;
+        display: inline-block;
+        border-radius: 15px 15px 0 0;
+        &--other {
+            text-decoration:none !important;
+            background-color: $color-dark-blue;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 15px 15px 0 0;
+        }
+    }
+    &__BookFavorites {
+        background-color: $color-navy-blue;
+        width: 90%;
+        margin: 0 auto 50px auto;
+    }
+    &__relationships {
+        background-color: $color-dark-blue;
+        width: 90%;
+        margin: 0 auto 50px auto;
+    }
+    &__page__heading {
+        color: $color-white;
+        background-color: $color-blue;
+        padding-left: 50px;
+        margin: 50px 100px;
+    }
+    &__page__contents {
+        @extend %column;
+        &--other {
+            @extend %center;
+            color: $color-white;
+            margin: 100px 0;
+        }
+    }
+    &__favorite-book {
+        @extend %row;
+        margin: 0 auto;
+        width: 80%;
+        background-color: $color-pastel-blue;
+        margin-bottom: 50px;
+    }
+    &__book-image {
+        margin: 20px;
+    }
+    &__book-data {
+        width: 400px;
+        margin-top: 20px;
+    }
+}
+
+.UEdit {
+    &__action__return {
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    &__btn__return {
+        @extend %btn;
+        background-color: $color-pastel-blue;
+        text-align: center;
+    }
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+    }
+    &__table {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    &__tag {
+        @extend %tag;
+        width: 150px;
+    }
+    &__date {
+        width: 200px;
+        text-align: center;
+    }
+    &__action {
+        width: 300px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 120px;
+    }
+    &__btn {
+            @extend %form-btn;
+            background-color: $color-pastel-orange;
+    }
+}
+
+.UStatus {
+    &__heading {
+        @extend %heading;
+    }
+    &__table {
+        margin: 0 auto;
+    }
+    &__thread {
+        text-align: center;
+    }
+    &__date {
+        text-align: center;
+    }
+    &__action {
+        text-align: center;
+        margin-top: 20px;
+        @extend %center;
+    }
+    &__btn {
+        &--no {
+            @extend %btn;
+            background-color: $color-pastel-blue;
+        }
+        &--yes {
+            @extend %btn;
+            background-color: $color-pastel-red;
+        }
+    }
+}
+
+

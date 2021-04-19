@@ -1,2 +1,33 @@
-<h1>Public::Users#status</h1>
-<p>Find me in app/views/public/users/status.html.erb</p>
+<div class="UserPage">
+    <div class="UserPage__container">
+        <section class="UStatus">
+            
+            <div class="UStatus__heading">
+                <h2>退会</h2>
+            </div>
+            
+            <div class="UStatus__contents">
+                <table class="UStatus__table">
+                    <tr>
+                        <th class="UStatus__thread">本当に退会しますか？</th>
+                    </tr>
+                    <tr>
+                        <td class="UStatus__date">
+                            退会すると会員情報の閲覧や、</br>
+                            サイトの使用などができなくなります。</br>
+                            退会する場合は、『退会する』をクリックして下さい。
+                        </td>
+                    </tr>
+                </table>
+                
+                
+            </div>
+            <div class="UStatus__action">
+                <%= link_to "退会しない", mypage_path, class: "UStatus__btn--no" %>
+                <%= link_to "退会する", user_change_path, method: :patch, class: "UStatus__btn--yes" %>
+            </div>
+            
+        </section>
+    </div>
+</div>
+
