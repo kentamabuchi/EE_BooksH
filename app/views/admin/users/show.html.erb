@@ -1,36 +1,36 @@
-<div class="UserPage">
-    <div class="UserPage__container">
-        <section class="UShow">
+<div class="AUserPage">
+    <div class="AUserPage__container">
+        <section class="AUShow">
             
-            <div class="BEdit__action__return">
-                <%= link_to "戻る", admin_users_path, class: "BEdit__btn__return" %>
+            <div class="AUShow__action__return">
+                <%= link_to "戻る", admin_users_path, class:"AUShow__btn__return" %>
             </div>
             
-            <div class="UShow__heading">
+            <div class="AUShow__heading">
                 <h2>会員詳細</h2>
             </div>
             
-            <div class="UShow__contents">
-                <div class="UShow__UserImage">
+            <div class="AUShow__contents">
+                <div class="AUShow__UserImage">
                     <%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg",size: '300x300' %>
                 </div>
-                <div class="UShow__table">
+                <div class="AUShow__table">
                     <table>
                         <tr>
-                            <th class="UShow__thread"><span class="UShow__tag">登録日：</span></th>
-                            <td class="UShow__date"><%= @user.created_at.strftime('%y年%m月%d日') %></td>
+                            <th class="AUShow__thread"><span class="AUShow__tag">登録日：</span></th>
+                            <td class="AUShow__date"><%= @user.created_at.strftime('%y年%m月%d日') %></td>
                         </tr>
                         <tr>
-                            <th class="UShow__thread"><span class="UShow__tag">ニックネーム：</span></th>
-                            <td class="UShow__date"><%= @user.nick_name %></td>
+                            <th class="AUShow__thread"><span class="AUShow__tag">ニックネーム：</span></th>
+                            <td class="AUShow__date"><%= @user.nick_name %></td>
                         </tr>
                         <tr>
-                            <th class="UShow__thread"><span class="UShow__tag">メールアドレス：</span></th>
-                            <td class="UShow__date"><%= @user.email %></td>
+                            <th class="AUShow__thread"><span class="AUShow__tag">メールアドレス：</span></th>
+                            <td class="AUShow__date"><%= @user.email %></td>
                         </tr>
                         <tr>
-                            <th class="UShow__thread"><span class="UShow__tag">会員ステータス：</span></th>
-                            <td class="UShow__date">
+                            <th class="AUShow__thread"><span class="AUShow__tag">会員ステータス：</span></th>
+                            <td class="AUShow__date">
                                 <% if @user.is_active == true %>
                                     有効
                                 <% else @user.is_active == false %>
@@ -39,12 +39,12 @@
                                 </td>
                         </tr>
                         <tr>
-                            <th class="UShow__thread"><span class="UShow__tag"></span></th>
-                            <td class="UShow__date"></td>
+                            <th class="AUShow__thread"><span class="AUShow__tag"></span></th>
+                            <td class="AUShow__date"></td>
                         </tr>
                     </table>
-                    <div class="UShow__action">
-                        <%= link_to "編集", edit_admin_user_path(@user), class: "UShow__btn" %>
+                    <div class="AUShow__action">
+                        <%= link_to "編集", edit_admin_user_path(@user), class: "AUShow__btn" %>
                     </div>
                 </div>
             </div>
