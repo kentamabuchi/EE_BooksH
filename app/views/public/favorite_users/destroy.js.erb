@@ -1,0 +1,1 @@
+$(".UShow__userfavorite-<%= @user.id %>").html("<%= j(render partial: 'public/favorite_users/favorite', locals: { user: @user }) %>");

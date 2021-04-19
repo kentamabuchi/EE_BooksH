@@ -1,9 +1,18 @@
 class Public::UsersController < ApplicationController
   
-  def show
+  def mypage
     @user = User.find(current_user.id)
+    @favorite_books = @user.favorite_books.all
   end
-
+  
+  def show
+    @user = User.find(params[:id])
+    @favorite_books = @user.favorite_books.all
+    if @user == current_user
+      redirect_to mypage_path
+    end
+  end
+  
   def edit
     @user = User.find(current_user.id)
   end
@@ -23,7 +32,17 @@ class Public::UsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
-    
+  
+  def favorites
+    @user = User.find(params[:id])
+    @favorite_books = @user.favorite_books.all
+  end
+  
+  def relationships
+    @user = User.find(params[:id])
+    @relationships = @user.followings.all
+  end
+  
   
   private
   

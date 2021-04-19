@@ -18,11 +18,16 @@ Rails.application.routes.draw do
   scope module: 'public' do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
-    get '/mypage' => 'users#show'
+    get '/mypage' => 'users#mypage'
     get '/mypage/edit' => 'users#edit'
     patch '/mypage/edit' => 'users#update'
     get '/user/status' => 'users#status'
     patch '/user/change' => 'users#change'
+    get '/user/:id/favorite_books/' => 'users#favorites', as: 'user_favorite_books'
+    get '/user/:id/relationships' => 'users#relationships', as: 'user_relationships'
+    resources :users, only: [:show] do
+      resource :relationships, only: [:create, :destroy]
+    end
     resources :books, only: [:index, :new, :create, :show] do
       resources :reviews, only: [:create, :destroy]
       resource :good_books, only: [:create, :destroy]
