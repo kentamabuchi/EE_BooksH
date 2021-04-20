@@ -1,6 +1,6 @@
 <div class="UShow__BookFavorites">
     <div class="UShow__page__heading">
-        <h2>お気に入りBook</h2>
+        <h2>お気に入り</h2>
     </div>
     <% if @favorite_books.blank? %>
         <div class="UShow__page__contents--other">
@@ -55,6 +55,11 @@
                         <tr>
                             <th class="UShow__thread--book"><span class="UShow__tag--book">ジャンル</span></th>
                             <td class="UShow__date--book"><%= favorite_book.book.genre.name %></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td><span><%= favorite_book.book.reviews %></span></td>
                         </tr>
                     </table>
                 </div>

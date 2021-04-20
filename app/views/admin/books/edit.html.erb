@@ -52,7 +52,7 @@
                      <tr>
                         <th class="ABEdit__thread"><span class="ABEdit__tag">編集ステータス：</span></th>
                         <td class="ABEdit__thread">
-                            <% if @book.edit_status == "未編集" %>
+                            <% if @book.edit_status == true %>
                                 <%= f.radio_button :edit_option, 0, checked: "checked" %><%= f.label :edit_status, "未編集" %>
                                 <%= f.radio_button :edit_option, 1 %><%= f.label :edit_status, "編集済み" %>
                             <% else %>
@@ -64,7 +64,7 @@
                      <tr>
                         <th class="ABEdit__thread"><span class="ABEdit__tag">書籍ステータス：</span></th>
                         <td class="ABEdit__thread">
-                            <% if @book.is_active == "正常" %>
+                            <% if @book.is_active == true %>
                             <%= f.radio_button :book_option, 0, checked: "checked" %><%= f.label :is_active, "正常" %>
                             <%= f.radio_button :book_option, 1 %><%= f.label :is_active, "違反" %>
                             <% else %>

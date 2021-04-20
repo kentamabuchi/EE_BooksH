@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
     
     before_action :configure_permitted_parameters, if: :devise_controller?
+    before_action :search_data
+    
+   
     
     protected
     
@@ -22,6 +25,11 @@ class ApplicationController < ActionController::Base
                                                                       :created_at,
                                                                       :updated_at])
         end
+    end
+    
+    def search_data
+        @q = Book.ransack(params[:q])
+        @books = @q.result(distinct: true)
     end
     
 end

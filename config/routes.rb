@@ -24,15 +24,18 @@ Rails.application.routes.draw do
     get '/user/status' => 'users#status'
     patch '/user/change' => 'users#change'
     get '/user/:id/favorite_books/' => 'users#favorites', as: 'user_favorite_books'
-    get '/user/:id/relationships/' => 'users#relationships', as: 'user_relationships'
+    get '/users/:id/relationships/' => 'users#relationships', as: 'user_relationships'
     resources :users, only: [:show] do
       resource :relationships, only: [:create, :destroy]
     end
-    resources :books, only: [:index, :new, :create, :show] do
+    get '/books/search/' => 'books#search'
+    resources :books, only: [:index, :new, :create, :show, :update] do
       resources :reviews, only: [:create, :destroy]
       resource :good_books, only: [:create, :destroy]
       resource :favorite_books, only: [:create, :destroy]
     end
+    get '/book/genres/:id' => 'books#book_genres', as: 'book_genres'
+   
   end
   
   get 'admin/violation/books/' => 'admin/homes#violation_books', as: 'admin_violation_books'

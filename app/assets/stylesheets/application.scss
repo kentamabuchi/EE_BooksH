@@ -90,6 +90,12 @@
         color: $color-white;
     }
 }
+.search {
+    display:inline-block;
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
+}
 
 .URPage {
     background-color: $color-dark-blue;
@@ -199,3 +205,14 @@
     }
 }
 
+.footer{
+    &__contents {
+        height: 100px;
+        color: $color-white;
+        background-color: $color-blue;
+        text-align: center;
+    }
+    &__text {
+        line-height: 100px;
+    }
+}
