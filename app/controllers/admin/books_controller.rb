@@ -32,15 +32,15 @@ class Admin::BooksController < ApplicationController
     update_params = book_params
 
     if params[:book][:edit_option] == "0"
-      update_params[:edit_status] = "未編集"
+      update_params[:edit_status] = "true"
     elsif params[:book][:edit_option] == "1"
-      update_params[:edit_status] = "編集済み"
+      update_params[:edit_status] = "false"
     end
 
     if params[:book][:book_option] == "0"
-      update_params[:is_active] = "正常"
+      update_params[:is_active] = "true"
     elsif params[:book][:book_option] == "1"
-      update_params[:is_active] = "違反"
+      update_params[:is_active] = "false"
     end
 
     @book.update(update_params)

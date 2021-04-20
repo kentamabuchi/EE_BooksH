@@ -34,7 +34,6 @@
         @extend %btn;
         background-color: $color-pastel-blue;
         text-align: center;
-        text-decoration:none !important;
     }
     &__heading {
         @extend %heading;
@@ -89,12 +88,14 @@
     }
     &__tab {
         text-decoration:none !important;
+        color: $color-white;
         background-color: $color-navy-blue;
         padding: 20px;
         display: inline-block;
         border-radius: 15px 15px 0 0;
         &--other {
             text-decoration:none !important;
+            color: $color-white;
             background-color: $color-dark-blue;
             padding: 20px;
             display: inline-block;
@@ -157,6 +158,9 @@
     &__contents {
         @extend %row;
         justify-content: center;
+    }
+    &__form {
+        margin-top: 50px;
     }
     &__table {
         margin-top: 20px;

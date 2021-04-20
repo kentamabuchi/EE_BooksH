@@ -17,8 +17,9 @@ input[type="text"] {
 .MainPage {
     @extend %page;
     &__container {
-        width: 80%;
+        width: 90%;
         background-color: $color-white;
+        margin: 50px 0;
         padding-top: 50px;
     }
 }
@@ -26,14 +27,27 @@ input[type="text"] {
 .BIndex {
     @extend %row;
     &__sidebar{
-        width: 20%;
+        width: 200px;
         background-color: black;
+        margin: 50px;
+        padding: 25px;
+    }
+    &__thread {
+        height: 40px;
     }
     &__tag {
         @extend %tag;
     }
     &__contents {
         width: 80%;
+        margin: 50px 0;
+    }
+    &__action__new {
+        margin-right: 100px;
+    }
+    &__action__announce {
+        @extend %tag;
+        width: 500px;
     }
     &__ranking__items {
         height: 500px;
@@ -90,7 +104,7 @@ input[type="text"] {
         margin: 50px auto;
     }
     &__recomend {
-        height: 300px;
+        height: 250px;
         width: 80%;
         background-color: blue;
         margin-top: 50px;
@@ -99,10 +113,50 @@ input[type="text"] {
     }
 }
 
+.BSearch {
+    &__heading {
+        @extend %heading;
+    }
+    &__action__new {
+        text-align: right;
+        text-decoration: none;
+        margin: 0 100px 20px 0
+    }
+    &__contents {
+    }
+    &__table {
+        margin: 0 auto;
+    }
+    &__thread {
+        @extend %thread;
+        width: 200px;
+        &--category {
+            @extend %thread;
+            width: 100px;
+        }
+        &--status {
+            @extend %thread;
+            width: 150px;
+        }
+    }
+    &__date {
+        text-align: center;
+    }
+    &__btn {
+        &--show {
+            @extend %btn;
+            background-color: $color-pastel-blue;
+            text-decoration: none;
+            
+        }
+    }
+}
+
 .BookPage {
     @extend %page;
     &__container {
         @extend %container;
+        margin: 50px 0;
     }
 }
 
@@ -152,9 +206,8 @@ input[type="text"] {
     }
     &__btn__return {
         @extend %btn;
-        width: 100px;
-        background-color: $color-pastel-green;
-        text-decoration: none;
+        background-color: $color-pastel-blue;
+        text-align: center;
     }
     &__heading {
         @extend %heading;
@@ -167,10 +220,39 @@ input[type="text"] {
         @extend %row;
         justify-content: center;
     }
-    &__BookLikes {
+    &__status {
         @extend %row;
         justify-content: center;
     } 
+    &__favorite {
+        color: $color-white;
+        background-color: blue;
+        margin-top: 10px;
+        margin-left: 10px;
+        padding: 5px;
+        border-radius: 15px;
+        text-decoration: none;
+        &--none {
+           margin-top: 30px;
+           margin-left: 10px;
+           text-decoration: none;
+        }
+        &--none:hover {
+            text-decoration: none;
+        }
+    }
+    &__favorite:hover {
+        text-decoration: none;
+    }
+    &__violation__book {
+        color: $color-white;
+        background-color: blue;
+        margin-top: 10px;
+        margin-left: 10px;
+        padding: 5px;
+        border-radius: 15px;
+        text-decoration: none;
+    }
     &__form__item {
         margin-left: 20px;
     }
@@ -193,16 +275,6 @@ input[type="text"] {
         margin-top: 30px;
         text-align: center;
    }
-   &__btn {
-        &--edit {
-            @extend %btn;
-            background-color: $color-pastel-orange;
-        }
-        &--delete {
-            @extend %btn;
-            background-color: $color-pastel-red;
-        }
-   }
    &__reviews {
        @extend %column;
        margin-top: 50px;
@@ -224,32 +296,17 @@ input[type="text"] {
        border: 1px solid black;
        padding: 10px;
    }
+   &__btn__delete {
+        @extend %btn;
+        background-color: $color-pastel-red;
+        text-align: center;
+   }
    &__paginate {
        @extend %center;
        margin-top: 50px;
    }
    &__BookGood {
        color: red;
-   }
-   &__favorite {
-       color: $color-white;
-       background-color: blue;
-       margin-top: 10px;
-       margin-left: 10px;
-       padding: 5px;
-       border-radius: 15px;
-       text-decoration: none;
-       &--none {
-           margin-top: 30px;
-           margin-left: 10px;
-           text-decoration: none;
-        &--none:hover {
-            text-decoration: none;
-        }
-       }
-    &__favorite:hover {
-        text-decoration: none;
-     }
    }
 }
 

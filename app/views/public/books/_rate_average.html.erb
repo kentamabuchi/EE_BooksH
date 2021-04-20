@@ -1,6 +1,7 @@
-<div class="BIndex__average__rate-<%= book.id %>">
+<div class="BIndex__average__rate">
     <script>
-    $('.BIndex__average__rate-<%= book.id %>').raty({
+    $('.BIndex__average__rate').empty();
+    $('.BIndex__average__rate').raty({
         starOff:  '<%= asset_path('star-off.png') %>',
         starOn : '<%= asset_path('star-on.png') %>',
         starHalf: '<%= asset_path('star-half.png') %>',

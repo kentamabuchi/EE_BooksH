@@ -1,8 +1,8 @@
 <div class="UShow__relationships">
     <div class="UShow__page__heading">
-        <h2>お気に入りBook</h2>
+        <h2>フォロー</h2>
     </div>
-    <% if @favorite_books.blank? %>
+    <% if @relationships.blank? %>
         <div class="UShow__page__contents--other">
             <h2> フォローしていません</h2>
         </div>
@@ -24,7 +24,7 @@
             <div class="UShow__book-data">
                  <table class="UShow__book-info">
                     <tr>
-                        <th class="UShow__thread--book"><span class="UShow__tag--book">タイトル</span></th>
+                        <th class="UShow__thread--book"><span class="UShow__tag--book">ニックネーム</span></th>
                         <td class="UShow__date--book"><%= relationship.nick_name %></td>
                     </tr>
                 </table>

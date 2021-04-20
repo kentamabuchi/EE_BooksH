@@ -13,7 +13,7 @@
             
             <div class="UEdit__BookImage">
                 <div class="UEdit__ImageTag">
-                    <p>現在の画像</p>
+                    <p class="UEdit__tag">現在の画像</p>
                 </div>
                 <div class="UEdit__image">
                     <%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg",size: '300x300' %>
@@ -34,18 +34,6 @@
                     <tr>
                         <th class="UEdit__thread"><span class="UEdit__tag">メールアドレス：</span></th>
                         <td class="UEdit__thread"><%= f.text_field :email %></td>
-                    </tr>
-                     <tr>
-                        <th class="UEdit__thread"><span class="UEdit__tag">会員ステータス：</span></th>
-                        <td class="UEdit__thread">
-                            <% if @user.is_active == true %>
-                            <%= f.radio_button :is_active, true, checked: "checked" %><%= f.label :is_active, "有効" %>
-                            <%= f.radio_button :is_active, false %><%= f.label :is_active, "退会" %>
-                            <% else %>
-                            <%= f.radio_button :is_active, true %><%= f.label :is_active, "有効" %>
-                            <%= f.radio_button :is_active, false, checked: "checked" %><%= f.label :is_active, "退会" %>
-                            <% end %>
-                        </td>
                     </tr>
                 </table>
                 <div class="UEdit__action">
