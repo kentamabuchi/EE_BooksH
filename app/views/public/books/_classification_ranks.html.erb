@@ -1,0 +1,146 @@
+<div class="BIndex__heading">
+    <h2 class="BIndex__heading--h2">読まれている本ランキング</h2><p class="BIndex__heading--p">※同率を含む</p>
+</div>
+
+<div class="BIndex__ranking__items">
+    <div class="BIndex__ranking__first">
+        <% if classification_first != nil %>
+        <table>
+            <tr>
+                <th class="BIndex__data">
+                    <%= link_to book_path(classification_first) do %>
+                        <%= attachment_image_tag classification_first, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: '300x300' %>
+                    <% end %>
+                </th>
+            </tr>
+            <tr>
+                <td class="BIndex__data">１位 <%= classification_first.name %></td>
+            </tr>
+            <tr>
+                <td>
+                    <%= render 'public/books/rate_average', {book: classification_first, rate: first_classification} %>
+                </td>
+                <tr>
+                    <td class="BIndex__data"><i class="fas fa-heart BIndex__data--GoodBook"></i><%= classification_first.good_books.count %></td>
+                </tr>
+            </tr>
+        </table>
+        <% end %>
+    </div>
+    <div class="BIndex__ranking__other">
+        <div class="BIndex__ranking--second">
+            <% if classification_second != nil %>
+            <table>
+            <tr>
+                <th class="BIndex__data">
+                    <%= link_to book_path(classification_second) do %>
+                        <%= attachment_image_tag classification_second, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '100x100' %>
+                    <% end %>
+                </th>
+            </tr>
+            <tr>
+                <td class="BIndex__data">２位 <%= classification_second.name %></td>
+            </tr>
+             <tr>
+                <td>
+                    <%= render 'public/books/rate_average', {book: classification_second, rate: second_classification} %>
+                </td>
+            </tr>
+            <tr>
+                <td class="BIndex__data"><i class="fas fa-heart BIndex__data--GoodBook"></i><%= classification_second.good_books.count %></td>
+            </tr>
+        </table>
+        <% end %>
+        </div>
+        <div class="BIndex__ranking--third">
+            <% if classification_third != nil %>
+            <table>
+                <tr>
+                    <th class="BIndex__data">
+                        <%= link_to book_path(classification_third) do %>
+                            <%= attachment_image_tag classification_third, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '100x100' %>
+                        <% end %>
+                    </th>
+                </tr>
+                <tr>
+                    <td class="BIndex__data">３位 <%= classification_third.name %></td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= render 'public/books/rate_average', {book: classification_third, rate: third_classification} %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="BIndex__data"><i class="fas fa-heart BIndex__data--GoodBook"></i><%= classification_third.good_books.count %></td>
+                </tr>
+            </table>
+            <% end %>
+        </div>
+        <div class="BIndex__ranking--fourth">
+            <% if classification_fourth != nil %>
+            <table>
+            <tr>
+                <th class="BIndex__data">
+                    <%= link_to book_path(classification_fourth) do %>
+                        <%= attachment_image_tag classification_fourth, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '100x100' %>
+                    <% end %>
+                </th>
+            </tr>
+            <tr>
+                <td class="BIndex__data">４位 <%= classification_fourth.name %></td>
+            </tr>
+            <tr>
+                <td>
+                    <%= render 'public/books/rate_average', {book: classification_fourth, rate: fourth_classification} %>
+                </td>
+            </tr>
+            <tr>
+                <td class="BIndex__data"><i class="fas fa-heart BIndex__data--GoodBook"></i><%= classification_fourth.good_books.count %></td>
+            </tr>
+        </table>
+        <% end %>
+        </div>
+        <div class="BIndex__ranking--fifth">
+            <% if classification_fifth != nil %>
+            <table>
+            <tr>
+                <th class="BIndex__data">
+                    <%= link_to book_path(classification_fifth) do %>
+                        <%= attachment_image_tag classification_fifth, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '100x100' %>
+                    <% end %>
+                </th>
+            </tr>
+            <tr>
+                <td class="BIndex__data">５位 <%= classification_fifth.name %></td>
+            </tr>
+            <tr>
+                <td>
+                    <%= render 'public/books/rate_average', {book: classification_fifth, rate: fifth_classification} %>
+                </td>
+            </tr>
+            <tr>
+                <td class="BIndex__data"><i class="fas fa-heart BIndex__data--GoodBook"></i><%= classification_fifth.good_books.count %></td>
+            </tr>
+        </table>
+        <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="BIndex__heading">
+    <h2 class="BIndex__heading--h2">新着</h2>
+</div>
+
+<div class="BIndex__new-lineup">
+    <% new_books.each do |new_book| %>
+    <div class="BIndex__BookItem">
+        
+        <%= link_to book_path(new_book) do %>
+            <%= attachment_image_tag new_book, :image, :fill, 150, 150, fallback: "no_image_book.jpeg", size: '150x150' %>
+        <% end %>
+        
+        <%= new_book.name %>
+    
+    </div>
+    <% end %>
+</div>

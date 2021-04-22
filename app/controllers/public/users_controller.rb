@@ -2,8 +2,8 @@ class Public::UsersController < ApplicationController
   
   def mypage
     @user = User.find(current_user.id)
-    @favorite_books = @user.favorite_books.all
-    @relationships = @user.followings.all
+    @favorite_books = current_user.favorite_books.all
+    @relationships = current_user.followings.all
   end
   
   def show
@@ -52,6 +52,7 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:nick_name, 
                                  :email,
                                  :image,
+                                 :introduce,
                                  :is_active,
                                  :created_at,
                                  :updated_at)

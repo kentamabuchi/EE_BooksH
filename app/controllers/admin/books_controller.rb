@@ -1,7 +1,7 @@
 class Admin::BooksController < ApplicationController
   
   def index
-    @books = Book.all
+    @books = Book.page(params[:page]).per(10).reverse_order
   end
 
   def new
@@ -52,7 +52,7 @@ class Admin::BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to admin_top_path
+    redirect_to admin_books_path
   end
   
   

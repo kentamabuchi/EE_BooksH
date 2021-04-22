@@ -27,9 +27,31 @@ class ApplicationController < ActionController::Base
         end
     end
     
+    def after_sign_up_path_for(resource)
+        mypage_path(resource)
+    end
+    
+    def after_sign_in_path_for(resource)
+        case resource
+            when Admin
+              admin_top_path          
+            when User
+              books_path              
+        end
+    end
+    
+    def after_sign_out_path_for(resource_or_scope)
+        if resource_or_scope == :admin
+            new_admin_session_path
+        else
+            new_user_session_path
+        end
+    end
+    
+    
     def search_data
         @q = Book.ransack(params[:q])
-        @books = @q.result(distinct: true)
+        @search_books = @q.result(distinct: true)
     end
     
 end

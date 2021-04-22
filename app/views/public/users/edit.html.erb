@@ -3,7 +3,7 @@
     
     <section class="UEdit">
         <div class="UEdit__action__return">
-            <%= link_to "戻る", mypage_path, class: "UEdit__btn__return" %>
+            <%= link_to "<<戻る", mypage_path, class: "UEdit__btn__return" %>
         </div>
         <div class="UEdit__heading">
             <h2>会員編集</h2>
@@ -24,18 +24,24 @@
             <%= form_with model: @user, url: mypage_edit_path, method: :patch, local: true do |f| %>
                 <table class="UEdit__item">
                     <tr>
-                        <th class="UEdit__thread"><span class="UEdit__tag">プロフィール画像：</span></th>
+                        <th class="UEdit__thread"><span class="UEdit__tag">プロフィール画像</span></th>
                         <td class="UEdit__thread"><%= f.attachment_field :image %></td>
                     </tr>
                     <tr>
-                        <th class="UEdit__thread"><span class="UEdit__tag">ニックネーム：</span></th>
+                        <th class="UEdit__thread"><span class="UEdit__tag">ニックネーム</span></th>
                         <td class="UEdit__thread"><%= f.text_field :nick_name %></td>
                     </tr>
                     <tr>
-                        <th class="UEdit__thread"><span class="UEdit__tag">メールアドレス：</span></th>
+                        <th class="UEdit__thread"><span class="UEdit__tag">メールアドレス</span></th>
                         <td class="UEdit__thread"><%= f.text_field :email %></td>
                     </tr>
+                    <tr>
+                        <th class="UEdit__thread"><span class="UEdit__tag">自己紹介</span></th>
+                    </tr>
                 </table>
+                <div class="UEdit__introduce">
+                    <%= f.text_area :introduce %>
+                </div>
                 <div class="UEdit__action">
                     <%= f.submit "変更", class: "UEdit__btn" %>
                 </div>

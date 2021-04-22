@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import '_template.scss';
 @import '_color.scss';
 @import '_flex.scss';
 
@@ -62,21 +63,27 @@
 }
 
 .guidance {
-    height: 600px;
+    @extend %column;
+    height: 400px;
     width: 90%;
     margin: 0 auto;
     padding-top: 50px;
     text-align: center;
-    background-color: #42FCE7;
+    background-color: #265EFF;
     &__link {
+        display: inline-block;
+        height: 30px;
         width: 40%;
-        margin: 0 auto;
-        margin-top: 20px;
+        color: $color-white;
+        display: inline-block;
+        margin: 20px auto 0 auto;
+        text-align: center;
+        line-height: 30px;
         
-        background-color: #20AAE6;
     }
     &__btn {
-        background-color: #23E8DE;
+        @extend %tag;
+        text-decoration: none !important;
     }
 }
 

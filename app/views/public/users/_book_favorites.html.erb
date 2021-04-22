@@ -1,10 +1,10 @@
 <div class="UShow__BookFavorites">
     <div class="UShow__page__heading">
-        <h2>お気に入り</h2>
+        <h2>読んだ本</h2>
     </div>
-    <% if @favorite_books.blank? %>
+    <% if favorite_books.blank? %>
         <div class="UShow__page__contents--other">
-            <h2> お気に入りされていません</h2>
+            <h2> 読んだ本は登録されていません</h2>
         </div>
     <% else %>
         <div class="UShow__page__contents">
@@ -57,14 +57,17 @@
                             <td class="UShow__date--book"><%= favorite_book.book.genre.name %></td>
                         </tr>
                     </table>
+                    <% if favorite_book.book.reviews.present? %>
                     <table>
                         <tr>
-                            <td><span><%= favorite_book.book.reviews %></span></td>
+                            <td><span><%= favorite_book.book.reviews.first.comment %></span></td>
                         </tr>
                     </table>
+                    <% end %>
                 </div>
             </div> 
             <% end %>
+            
         </div>
     <% end %>    
 </div>

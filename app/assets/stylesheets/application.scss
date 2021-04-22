@@ -53,6 +53,10 @@
     &__logo {
         margin: 20px 0 0 100px;
     }
+     &__logo__text {
+        color: $color-white;
+        text-decoration: none !important;
+    }
 }
 
 .header {
@@ -70,6 +74,11 @@
     &__logo {
         margin: 20px 0 0 100px;
     }
+    &__logo__text {
+        color: $color-white;
+        text-decoration: none !important;
+    }
+    
 }
 
 .nav {
@@ -98,7 +107,7 @@
 }
 
 .URPage {
-    background-color: $color-dark-blue;
+    background-color: $color-pastel-blue;
     &__container {
         @extend %center;
     }
@@ -106,11 +115,12 @@
         height: 600px;
         width: 60%;
         background-color: $color-white;
+        margin: 50px 0;
         padding-top: 100px;
     }
     &__heading {
         color: $color-white;
-        background-color: $color-dark-blue;
+        background-color: $color-blue;
         margin: 0 50px;
         padding-left: 50px;
     }
@@ -136,7 +146,7 @@
 }
 
 .USPage {
-    background-color: $color-dark-blue;
+    background-color: $color-pastel-blue;
     &__container {
         @extend %center;
     }
@@ -144,11 +154,12 @@
         height: 600px;
         width: 60%;
         background-color: $color-white;
+        margin: 50px 0;
         padding-top: 100px;
     }
     &__heading {
         color: $color-white;
-        background-color: $color-dark-blue;
+        background-color: $color-blue;
         margin: 0 50px;
         padding-left: 50px;
     }
@@ -210,14 +221,16 @@
 }
 
 .ASPage {
-    background-color: $color-dark-green;
+    background-color: $color-pastel-blue;
     &__container {
         @extend %center;
+        
     }
     &__content{
         height: 600px;
         width: 60%;
         background-color: $color-white;
+        margin: 50px 0;
         padding-top: 100px;
     }
     &__heading {
