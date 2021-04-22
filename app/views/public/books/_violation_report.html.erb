@@ -1,5 +1,5 @@
 <% if book.is_active == true %>
     <%= link_to "違反を報告する", book_path(book), method: :patch, remote: true, class: "BShow__violation__book" %>
 <% else %>
-    <p>報告確認中</p>
+    <p class="BShow__violation__book--none">報告確認中</p>
 <% end %>

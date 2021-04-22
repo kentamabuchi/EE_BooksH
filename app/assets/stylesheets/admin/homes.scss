@@ -10,7 +10,10 @@
     @extend %page;
     padding-top: 50px;
     &__container {
-        @extend %container;
+        width: 80%;
+        background-color: $color-white;
+        margin: 50px 0;
+        padding: 50px;
     }
 }
 .AHTop {
@@ -37,11 +40,7 @@
             border-radius: 15px 15px 0 0;
         }
     }
-    &__none {
-        
-        
-        
-    }
+    &__none {}
     &__contents {
         width: 90%;
         color: $color-white;

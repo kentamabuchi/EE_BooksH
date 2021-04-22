@@ -3,7 +3,7 @@
     <section class="BShow">
         
          <div class="BShow__action__return">
-            <%= link_to "戻る", admin_books_path, class: "BShow__btn__return" %>
+            <%= link_to "<<ランキングに戻る", books_path, class: "BShow__btn__return" %>
         </div>
         
         
@@ -15,7 +15,7 @@
         <div class="BShow__contents">
             <div class="BShow__book">
                 <div class="BShow__BookImage">
-                    <%= attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg",size: "180x180" %>
+                    <%= attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg",size: "300x300" %>
                     <div class="BShow__status">
                         <div class="BShow__goods-<%= @book.id %>">
                            <%= render 'public/good_books/good', {book: @book} %>    
@@ -29,8 +29,8 @@
                     </div>
                 </div>
                 
-                <div class="BShow__BookDate">
-                    <table class="BShow__form__item">
+                <div class="BShow__BookData">
+                    <table class="BShow__item">
                         <tr>
                             <th class="BShow__thread"><span class="BShow__tag">書籍名：</span></th>
                             <td class="BShow__thread"><%= @book.name %></td>
@@ -67,7 +67,13 @@
                                 </script>
                             </td>
                         </tr>
+                        <tr>
+                            <th class="BShow__thread"><span class="BShow__tag">作品紹介</span></th>
+                        </tr>
                     </table>
+                    <div class="BShow__introduce">
+                        <%= @book.introduction %>
+                    </div>
                 </div>
                 
             </div>

@@ -16,7 +16,10 @@
         <div class="AHeader__contents">
           
            <div class="AHeader__logo">
-             <h1>EE.Books</h1>
+            <%= link_to root_path do %>
+              <h1>EE.Books</h1>
+            <% end %>
+            
            </div>
     <%else %>
     <div class="header">
@@ -24,7 +27,15 @@
         <div class="header__contents">
           
            <div class="header__logo">
-             <h1>EE.Books</h1>
+            <% if user_signed_in? %>
+              <%= link_to books_path, class: "header__logo__text" do %>
+                <h1>EE.Books</h1>
+              <% end %>
+            <% else %>
+              <%= link_to root_path, class: "header__logo__text" do %>
+                <h1>EE.Books</h1>
+              <% end %>
+            <% end %>
            </div>
     <% end %>
            
@@ -40,18 +51,13 @@
                         <% end %>
                       </li>
                       <li class="nav__item">
+                        <%= link_to books_path, class: "nav__link" do %>
+                          <i class="fas fa-file-signature"></i> Booksランキング
+                        <% end %>
+                      </li>
+                      <li class="nav__item">
                         <%= link_to user_path(current_user.id), class: "nav__link" do %>
                           <i class="fas fa-cheese"></i> マイページ
-                        <% end %>
-                      </li>
-                      <li class="nav__item">
-                        <%= link_to books_path, class: "nav__link" do %>
-                          <i class="fas fa-file-signature"></i> Books
-                        <% end %>
-                      </li>
-                      <li class="nav__item">
-                        <%= link_to admin_genres_path, class: "nav__link" do %>
-                          <i class="fas fa-sign-in-alt"></i> ジャンル一覧
                         <% end %>
                       </li>
                       <li class="nav__item">
@@ -112,11 +118,6 @@
                       <li class="nav__item">
                         <%= link_to about_path, class: "nav__link" do %>
                           <i class="fab fa-readme"></i>　About
-                        <% end %>
-                      </li>
-                      <li class="nav__item">
-                        <%= link_to admin_books_path, class: "nav__link" do %>
-                          <i class="fas fa-cheese"></i> 書籍一覧
                         <% end %>
                       </li>
                       <li class="nav__item">

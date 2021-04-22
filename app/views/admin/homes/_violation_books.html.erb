@@ -15,7 +15,6 @@
                             <th class="AHTop__thread">作者</th>
                             <th class="AHTop__thread--category">分類</th>
                             <th class="AHTop__thread--category">ジャンル</th>
-                            <th class="AHTop__thread--status">編集ステータス</th>
                             <th class="AHTop__thread--status">書籍ステータス</th>
                         </tr>
                         
@@ -25,7 +24,6 @@
                              <td class="AHTop__date"><%= book.writer %></td>
                              <td class="AHTop__date"><%= book.classification.name %></td>
                              <td class="AHTop__date"><%= book.genre.name %></td>
-                             <td class="AHTop__date"><%= book.edit_status %></td>
                              <td class="AHTop__date"><%= book.is_active %></td>
                              <td class="AHTop__date"><%= link_to "詳細", admin_book_path(book), class: "AHTop__btn--show" %></td>
                              <td class="AHTop__date"><%= link_to "削除", admin_book_path(book), method: :delete, class: "AHTop__btn--delete" %></td>

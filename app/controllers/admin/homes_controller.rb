@@ -1,15 +1,15 @@
 class Admin::HomesController < ApplicationController
   
   def top
-    @books =Book.where(is_active: true).page(params[:page]).per(5).reverse_order
+    @books =Book.where(is_active: false).all
   end
   
   def violation_books
-    @books = Book.where(is_active: true).all
+    @books = Book.where(is_active: false).all
   end
   
   def violation_reviews
-    @reviews = Review.all
+    @reviews = Review.where(is_active: false).all
   end
   
 end

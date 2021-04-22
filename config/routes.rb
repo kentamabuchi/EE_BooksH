@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       resource :good_books, only: [:create, :destroy]
       resource :favorite_books, only: [:create, :destroy]
     end
-    get '/book/genres/:id' => 'books#book_genres', as: 'book_genres'
+    get '/book/classifications/:id' => 'books#book_classifications', as: 'book_classifications'
    
   end
   

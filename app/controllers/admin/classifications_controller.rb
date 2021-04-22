@@ -2,7 +2,7 @@ class Admin::ClassificationsController < ApplicationController
   
   def index
     @classification = Classification.new
-    @classifications = Classification.all
+    @classifications = Classification.page(params[:page]).per(10)
   end
   
   def create

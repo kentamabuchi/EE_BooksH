@@ -3,7 +3,7 @@
         <section class="UShow">
             
             <div class="UShow__action__return">
-                <%= link_to "<<戻る", books_path, class: "UShow__btn__return" %>
+                <%= link_to "<<ランキングへ戻る", books_path, class: "UShow__btn__return" %>
             </div>
             
             <div class="UShow__heading">
@@ -35,11 +35,14 @@
                             <th class="UShow__thread"><span class="UShow__tag">メールアドレス：</span></th>
                             <td class="UShow__date"><%= @user.email %></td>
                         </tr>
-                        <tr>
-                            <th class="UShow__thread"><span class="UShow__tag"></span></th>
-                            <td class="UShow__date"></td>
+                         <tr>
+                            <th class="UEdit__thread"><span class="UEdit__tag">自己紹介</span></th>
                         </tr>
                     </table>
+                    <div class="UShow__introduce">
+                        <%= @user.introduce %>
+                    </div>
+                
                     <div class="UShow__action">
                         <%= link_to "編集", mypage_edit_path(@user.id), class: "UShow__btn--edit" %>
                         <%= link_to "退会", user_status_path, class: "UShow__btn--status" %>
@@ -53,14 +56,6 @@
             <%= link_to "Follows", user_relationships_path(@user), remote: true, class: "UShow__tab--other" %>
             </div>
             
-            <!--<% if @favorite_books.present? %>-->
-            <!--    <%= render 'public/users/book_favorites', favorite_books: @favorite_books %>-->
-
-            <!--<% elsif @relationships.present? %>-->
-            <!--    <%= render 'public/users/relationships', relationships: @relationships %>-->
-
-            <!--<% end %>-->
-
             <div class="UShow__index">
                 <%= render 'public/users/book_favorites', favorite_books: @favorite_books %>
             </div>

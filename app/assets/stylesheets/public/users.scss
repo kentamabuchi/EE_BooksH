@@ -9,9 +9,9 @@
 
 .UserPage {
     @extend %page;
-    padding-top: 50px;
     &__container{
         @extend %container;
+        margin: 50px 0;
     }
 }
 
@@ -21,6 +21,7 @@
     &__container {
         width: 80%;
         background-color: $color-white;
+        margin: 50px 0;
         padding-top: 50px;
     }
 }
@@ -32,6 +33,7 @@
     }
     &__btn__return {
         @extend %btn;
+        width: 200px;
         background-color: $color-pastel-blue;
         text-align: center;
     }
@@ -42,8 +44,21 @@
         @extend %row;
         justify-content: center;
     }
+    &__UserImage {
+        margin-top: 20px;
+    }
+    &__relationship {
+        @extend %center;
+    }
     &__favorite {
-        background-color: red;
+        @extend %tag;
+        background-color: $color-pastel-pink;
+        margin-top: 10px;
+        &--none {
+            @extend %tag;
+            background-color: $color-pastel-gray;
+            margin-top: 10px;
+        }
     }
     &__table {
         margin-top: 20px;
@@ -62,10 +77,9 @@
         text-align: center;
     }
     &__action {
-        width: 300px;
+        @extend %center;
         text-align: center;
         margin-top: 20px;
-        margin-left: 120px;
     }
     &__btn {
         &--edit{
@@ -76,11 +90,19 @@
         &--status {
             @extend %btn;
             background-color: $color-pastel-red;
+            margin-left: 10px;
             text-decoration:none !important;
         }
     }
     &__index {
         @extend %column;
+    }
+    &__introduce {
+        height: 300px;
+        width: 500px;
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid black;
     }
     &__PageTabs {
         margin-top: 100px;
@@ -140,9 +162,14 @@
         width: 400px;
         margin-top: 20px;
     }
+    &__paginate {
+        @extend %center;
+        margin-top: 50px;
+    }
 }
 
 .UEdit {
+    margin-bottom: 50px;
     &__action__return {
         margin-left: 50px;
         margin-bottom: 20px;
@@ -159,8 +186,12 @@
         @extend %row;
         justify-content: center;
     }
+    &__ImageTag {
+        @extend %center;
+    }
     &__form {
         margin-top: 50px;
+        margin-left: 20px;
     }
     &__table {
         margin-top: 20px;
@@ -174,10 +205,13 @@
         width: 200px;
         text-align: center;
     }
+    &__introduce {
+        margin-top: 10px;
+    }
     &__action {
         width: 300px;
         text-align: center;
-        margin-top: 20px;
+        margin-top: 10px;
         margin-left: 120px;
     }
     &__btn {
@@ -212,6 +246,7 @@
         &--yes {
             @extend %btn;
             background-color: $color-pastel-red;
+            margin-left: 10px;
         }
     }
 }

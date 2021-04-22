@@ -12,11 +12,16 @@ input[type="text"] {
         height: 30px;
 }
 
+textarea {
+        width: 500px;
+        height: 300px;
+}
 
 
 .MainPage {
     @extend %page;
     &__container {
+        min-height: 200px;
         width: 90%;
         background-color: $color-white;
         margin: 50px 0;
@@ -27,8 +32,9 @@ input[type="text"] {
 .BIndex {
     @extend %row;
     &__sidebar{
+        height: 600px;
         width: 200px;
-        background-color: black;
+        background-color: $color-white-blue;
         margin: 50px;
         padding: 25px;
     }
@@ -49,17 +55,37 @@ input[type="text"] {
         @extend %tag;
         width: 500px;
     }
+    &__heading {
+        @extend %row;
+        height: 50px;
+        color: $color-white;
+        background-color: $color-navy-blue;
+        margin: 0 50px;
+        padding-left: 50px;
+        margin-top: 100px;
+        &--h2 {
+            color: $color-white;
+            line-height: 50px;
+        }
+        &--p {
+            color: $color-white;
+            line-height: 50px;
+        }
+    }
     &__ranking__items {
         height: 500px;
         @extend %row;
         justify-content: center;
-        margin-top: 100px;
+        margin-top: 20px;
         
     }
     &__ranking__first {
+        @extend %center;
         height: 500px;
         width: 40%;
-        background-color: red;
+        background-color: $color-navy-blue;
+        padding: 50px 0;
+        text-align: center;
     }
     &__ranking__other {
         width: 40%;
@@ -69,24 +95,32 @@ input[type="text"] {
     }
     &__ranking {
         &--second {
+            @extend %center;
             height: 250px;
             width: 50%;
-            background-color: blue;
+            background-color: $color-blue;
+            padding: 20px 0;
         }
         &--third {
+            @extend %center;
             height: 250px;
             width: 50%;
-            background-color: yellow;
+            background-color: $color-navy-blue;
+            padding: 20px 0;
         }
         &--fourth {
+            @extend %center;
             height: 250px;
             width: 50%;
-            background-color: green;
+            background-color: $color-white-blue;
+            padding: 20px 0;
         }
         &--fifth {
+            @extend %center;
             height: 250px;
             width: 50%;
-            background-color: orange;
+            background-color:  $color-blue;
+            padding: 20px 0;
         }
     }
     &__new-lineup {
@@ -95,21 +129,37 @@ input[type="text"] {
         height: 250px;
         width: 80%;
         background-color: blue;
-        margin-top: 50px;
+        margin-top: 20px;
         margin-left: auto;
         margin-right: auto;
     }
-        &__NewBook {
+    &__BookItem {
         @extend %column;
         margin: 50px auto;
     }
+    &__NewBook__iamge {}
+    &__NewBook__text {
+        color: $color-white;
+        text-align: center;
+    }
     &__recomend {
+        @extend %row;
         height: 250px;
         width: 80%;
         background-color: blue;
-        margin-top: 50px;
+        margin-top: 20px;
         margin-left: auto;
         margin-right: auto;
+    }
+    &__data {
+        color: $color-white;
+        text-align: center;
+        &--GoodBook {
+        color: $color-pastel-red;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        }
     }
 }
 
@@ -129,10 +179,10 @@ input[type="text"] {
     }
     &__thread {
         @extend %thread;
-        width: 200px;
+        width: 300px;
         &--category {
             @extend %thread;
-            width: 100px;
+            width: 150px;
         }
         &--status {
             @extend %thread;
@@ -146,9 +196,14 @@ input[type="text"] {
         &--show {
             @extend %btn;
             background-color: $color-pastel-blue;
-            text-decoration: none;
+            margin-left: 20px;
+            text-decoration: none !important;
             
         }
+    }
+    &__paginate {
+        @extend %center;
+        margin-top: 50px;
     }
 }
 
@@ -206,6 +261,7 @@ input[type="text"] {
     }
     &__btn__return {
         @extend %btn;
+        width: 200px;
         background-color: $color-pastel-blue;
         text-align: center;
     }
@@ -223,37 +279,59 @@ input[type="text"] {
     &__status {
         @extend %row;
         justify-content: center;
-    } 
-    &__favorite {
-        color: $color-white;
-        background-color: blue;
         margin-top: 10px;
-        margin-left: 10px;
+    }
+    &__BookGood {
+        height: 35px;
+        color: $color-pastel-red;
+        padding: 5px;
+        text-decoration: none !important;
+   }
+    &__favorite {
+        @extend %row;
+        display: inline-block;
+        height: 30px;
+        color: $color-white;
+        background-color: $color-pastel-pink;
+        margin-left: 20px;
+        padding: 5px 10px;
+        border-radius: 15px;
+        text-decoration: none !important;
+            &--none {
+                @extend %row;
+                display: inline-block;
+                height: 30px;
+                color: $color-white;
+                background-color: $color-pastel-gray;
+                padding: 5px 10px;
+                margin-left: 20px;
+                border-radius: 15px;
+                text-decoration: none !important;
+            }
+        }
+    &__violation__book {
+        display: inline-block;
+        height: 30px;
+        color: $color-white;
+        background-color: $color-pastel-yellow;
+        margin-top: 2px;
+        margin-left: 20px;
         padding: 5px;
         border-radius: 15px;
         text-decoration: none;
         &--none {
-           margin-top: 30px;
-           margin-left: 10px;
-           text-decoration: none;
+            color: $color-white;
+            background-color: $color-pastel-gray;
+            
+            margin-left: 20px;
+            padding: 5px;
+            border-radius: 15px;
         }
-        &--none:hover {
-            text-decoration: none;
-        }
     }
-    &__favorite:hover {
-        text-decoration: none;
+    &__BookData {
+        margin-left: 20px;
     }
-    &__violation__book {
-        color: $color-white;
-        background-color: blue;
-        margin-top: 10px;
-        margin-left: 10px;
-        padding: 5px;
-        border-radius: 15px;
-        text-decoration: none;
-    }
-    &__form__item {
+    &__item {
         margin-left: 20px;
     }
     &__thread {
@@ -263,6 +341,12 @@ input[type="text"] {
     &__tag {
         @extend %tag;
         display: inline-block;
+    }
+    &__introduce {
+        height: 400px;
+        width: 600px;
+        margin-top: 10px;
+        border: 1px solid black;
     }
     ＆__form__TextBox {
         display: block;
@@ -305,8 +389,6 @@ input[type="text"] {
        @extend %center;
        margin-top: 50px;
    }
-   &__BookGood {
-       color: red;
-   }
+   
 }
 

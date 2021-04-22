@@ -1,19 +1,19 @@
-<div class="IPage">
-  <div class="IPage__container">
-    <div class="IPage__content">
+<div class="ACIndex">
+  <div class="ACIndex__container">
+    <div class="ACIndex__content">
       
-      <section class="IPage__scection">
-          <div class="IPage__section__heading">
+      <section class="ACIndex__scection">
+          <div class="ACIndex__section__heading">
             <h2>分類追加</h2>
           </div>
-          <div class="IPage__form">
+          <div class="ACIndex__form">
               <%= form_with model: @classification, url: admin_classifications_path, method: :post, local: true do |f| %>
-              <table class="IPage__form__item">
+              <table class="ACIndex__form__item">
                   <tr>
-                      <th class="IPage__text">分類名：</th>
+                      <th class="ACIndex__text">分類名：</th>
                       <td><%= f.text_field :name %></td>
                       <td>
-                          <%= f.submit "追加", class: "IPage__btn" %>　
+                          <%= f.submit "追加", class: "ACIndex__btn" %>　
                       </td>
                   </tr>
               </table>
@@ -21,32 +21,37 @@
           </div>
       </section>
       
-      <section class="IPage__section">
-        <div class="IPage__section__heading">
+      <section class="ACIndex__section">
+        <div class="ACIndex__section__heading">
             <h2>分類一覧</h2>
         </div>
-        <div class="IPage__index">
-            <table class="IPage__index__item">
+        <div class="ACIndex__index">
+            <table class="ACIndex__index__item">
                 <% @classifications.each do |classification| %>
                 <tr>
-                    <td class="IPage__cell">
-                        <span class="IPage__text"><%= classification.name %></span>
+                    <td class="ACIndex__cell">
+                        <span class="ACIndex__text"><%= classification.name %></span>
                     </td>
                     <%= form_with model: classification, url: admin_classification_path(classification), method: :patch, local: true do |f| %>
                     <td>
                         <%= f.text_field :name %>
                     </td>
                     <td>
-                        <%= f.submit "変更", class: "IPage__btn--change" %>
+                        <%= f.submit "変更", class: "ACIndex__btn--change" %>
                     </td>
                     <% end %>
                     <td>
-                        <%= link_to "削除", admin_classification_path(classification), method: :delete, class: "IPage__btn--delete" %>
+                        <%= link_to "削除", admin_classification_path(classification), method: :delete, class: "ACIndex__btn--delete" %>
                     </td>
                 </tr>
                 <% end %>
             </table>
         </div>
+        
+        <div class="AGIndex__paginate" >
+            <%= paginate @classifications %>
+        </div>
+        
       </section>
       
     </div>

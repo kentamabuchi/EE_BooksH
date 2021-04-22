@@ -1,19 +1,19 @@
-<div class="IPage">
-  <div class="IPage__container">
-    <div class="IPage__content">
+<div class="AGIndex">
+  <div class="AGIndex__container">
+    <div class="AGIndex__content">
       
-      <section class="IPage__scection">
-          <div class="IPage__section__heading">
+      <section class="AGIndex__scection">
+          <div class="AGIndex__section__heading">
             <h2>ジャンル追加</h2>
           </div>
-          <div class="IPage__form">
+          <div class="AGIndex__form">
               <%= form_with model: @genre, url: admin_genres_path, method: :post, local: true do |f| %>
-              <table class="IPage__form__item">
+              <table class="AGIndex__form__item">
                   <tr>
-                      <th class="IPage__text">ジャンル名：</th>
+                      <th class="AGIndex__text">ジャンル名：</th>
                       <td><%= f.text_field :name %></td>
                       <td>
-                          <%= f.submit "追加", class: "IPage__btn" %>　
+                          <%= f.submit "追加", class: "AGIndex__btn" %>　
                       </td>
                   </tr>
               </table>
@@ -21,32 +21,37 @@
           </div>
       </section>
       
-      <section class="IPage__section">
-        <div class="IPage__section__heading">
+      <section class="AGIndex__section">
+        <div class="AGIndex__section__heading">
             <h2>ジャンル一覧</h2>
         </div>
-        <div class="IPage__index">
-            <table class="IPage__index__item">
+        <div class="AGIndex__index">
+            <table class="AGIndex__index__item">
                 <% @genres.each do |genre| %>
                 <tr>
-                    <td class="IPage__cell">
-                        <span class="IPage__text"><%= genre.name %></span>
+                    <td class="AGIndex__cell">
+                        <span class="AGIndex__text"><%= genre.name %></span>
                     </td>
                     <%= form_with model: genre, url: admin_genre_path(genre), method: :patch, local: true do |f| %>
                     <td>
                         <%= f.text_field :name %>
                     </td>
                     <td>
-                        <%= f.submit "変更", class: "IPage__btn--change" %>
+                        <%= f.submit "変更", class: "AGIndex__btn--change" %>
                     </td>
                     <% end %>
                     <td>
-                        <%= link_to "削除", admin_genre_path(genre), method: :delete, class: "IPage__btn--delete" %>
+                        <%= link_to "削除", admin_genre_path(genre), method: :delete, class: "AGIndex__btn--delete" %>
                     </td>
                 </tr>
                 <% end %>
             </table>
         </div>
+        
+        <div class="AGIndex__paginate" >
+            <%= paginate @genres %>
+        </div>
+        
       </section>
       
     </div>
