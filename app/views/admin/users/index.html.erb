@@ -1,36 +1,36 @@
-<div class="UserPage">
-    <div class="UserPage__container">
-        <section class="UIndex">
-            <div class="UIndex__heading">
+<div class="AUserPage">
+    <div class="AUserPage__container">
+        <section class="AUIndex">
+            <div class="AUIndex__heading">
                 <h2>会員一覧</h2>
             </div>
-            <div class="UIndex__contents">
-                <table class="UIndex__table">
+            <div class="AUIndex__contents">
+                <table class="AUIndex__table">
                     <tr>
-                        <th class="UIndex__thread"><span class="UIndex__tag">登録日</span></th>
-                        <th class="UIndex__thread"><span class="UIndex__tag">名前</span></th>
-                        <th class="UIndex__thread"><span class="UIndex__tag">メールアドレス</span></th>
-                        <th class="UIndex__thread"><span class="UIndex__tag">会員ステータス</span></th>
+                        <th class="AUIndex__thread"><span class="AUIndex__tag">登録日</span></th>
+                        <th class="AUIndex__thread"><span class="AUIndex__tag">名前</span></th>
+                        <th class="AUIndex__thread"><span class="AUIndex__tag">メールアドレス</span></th>
+                        <th class="AUIndex__thread"><span class="AUIndex__tag">会員ステータス</span></th>
                     </tr>
                     <% @users.each do |user| %>
                     <tr>
-                        <th class="UIndex__date"><%= user.created_at.strftime('%y年%m月%d日') %></th>
-                        <th class="UIndex__date"><%= user.nick_name %></th>
-                        <th class="UIndex__date"><%= user.email %></th>
-                        <th class="UIndex__date">
+                        <th class="AUIndex__date"><p class="AUIndex__text text-truncate"><%= user.created_at.strftime('%y年%m月%d日') %></p></th>
+                        <th class="AUIndex__date"><p class="AUIndex__text--wide text-truncate"><%= user.nick_name %></p></th>
+                        <th class="AUIndex__date"><p class="AUIndex__text--wide text-truncate"><%= user.email %></p></th>
+                        <th class="AUIndex__date">
                             <% if user.is_active == true %>
                                 有効
                             <% else user.is_active == false %>
                                 退会
                             <% end %>
                         </th>
-                        <td class="UIndex__date"><%= link_to "詳細", admin_user_path(user), class: "UIndex__btn--show" %></td>
-                        <td class="UIndex__date"><%= link_to "削除", admin_user_path(user), method: :delete, class: "UIndex__btn--delete" %></td>
+                        <td class="AUIndex__date"><%= link_to "詳細", admin_user_path(user), class: "AUIndex__btn--show" %></td>
+                        <td class="AUIndex__date"><%= link_to "削除", admin_user_path(user), method: :delete, class: "AUIndex__btn--delete" %></td>
                     </tr>
                     <% end %>
                 </table>
             </div>
-            <div class="UIndex__paginate">
+            <div class="AUIndex__paginate">
                 <%= paginate @users %>
             </div>
         </section>

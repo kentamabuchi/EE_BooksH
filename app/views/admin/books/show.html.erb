@@ -1,10 +1,10 @@
 <div class="ABookPage">
-  <div class="ABookPage__container">
+  <div class="ABookPage__container--free">
     
     <section class="ABShow">
         
          <div class="ABShow__action__return">
-            <%= link_to "戻る", admin_books_path, class: "BEdit__btn__return" %>
+            <%= link_to "<<一覧へ戻る", admin_books_path, class: "ABShow__btn__return" %>
         </div>
         
         <div class="ABShow__heading">
@@ -13,43 +13,57 @@
         
         <div class="ABShow__contents">
             <div class="ABShow__BookImage">
-                <%= attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg",size: "180x180" %>
+                <%= attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg",size: "300x300" %>
             </div>
             <div class="ABShow__BookDate">
                 <table class="ABShow__form__item">
                     <tr>
                         <th class="ABShow__thread"><span class="ABShow__tag">書籍名：</span></th>
-                        <td class="ABShow__thread"><%= @book.name %></td>
+                        <td class="ABShow__thread text-break"><%= @book.name %></td>
                     </tr>
                     <tr>
                         <th class="ABShow__thread"><span class="ABShow__tag">作者：</span></th>
-                        <td class="ABShow__thread"><%= @book.writer %></td>
+                        <td class="ABShow__thread text-break"><%= @book.writer %></td>
                     </tr>
                     <tr>
-                        <th class="ABShow__thread"><span class="ABShow__tag">分類：</span></th>
-                        <td class="ABShow__thread">
+                        <th class="ABShow__thread text-break"><span class="ABShow__tag">分類：</span></th>
+                        <td class="ABShow__thread text-break">
                             <%= @book.classification.name %>
                         </td>
                     </tr>
                     <tr>
                         <th class="ABShow__thread"><span class="ABShow__tag">ジャンル：</span></th>
-                        <td class="ABShow__thread">
+                        <td class="ABShow__thread text-break">
                             <%= @book.genre.name %>
                         </td>
                     </tr>
                     <tr>
                         <th class="ABShow__thread"><span class="ABShow__tag">編集ステータス：</span></th>
                         <td class="ABShow__thread">
-                            <%= @book.edit_status %>
+                            <% if @book.edit_status == true %>
+                                未編集
+                            <% else %>
+                                編集済み
+                            <% end %>
                         </td>
                     </tr>
                     <tr>
                         <th class="ABShow__thread"><span class="ABShow__tag">書籍ステータス：</span></th>
                         <td class="ABShow__thread">
-                            <%= @book.is_active %>
+                            <% if @book.edit_status == true %>
+                                正常
+                            <% else %>
+                                報告あり
+                            <% end %>
                         </td>
                     </tr>
+                    <tr>
+                        <th class="ABShow__thread"><span class="ABShow__tag">作品紹介</span></th>
+                    </tr>
                 </table>
+                <div class="ABShow__introduce text-break">
+                    <%= @book.introduction %>
+                </div>
                 <div class="ABShow__action">
                     <%= link_to "編集", edit_admin_book_path(@book), class: "ABShow__btn--edit" %>
                     <%= link_to "削除", admin_book_path(@book), method: :delete, class: "ABShow__btn--delete" %>

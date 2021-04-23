@@ -16,9 +16,11 @@
         <div class="AHeader__contents">
           
            <div class="AHeader__logo">
-            <%= link_to root_path do %>
-              <h1>EE.Books</h1>
-            <% end %>
+            <h1>
+              <%= link_to root_path, class: "AHeader__logo__text" do %>
+               ＼EE／.Books
+              <% end %>
+            </h1>
             
            </div>
     <%else %>
@@ -27,15 +29,12 @@
         <div class="header__contents">
           
            <div class="header__logo">
-            <% if user_signed_in? %>
-              <%= link_to books_path, class: "header__logo__text" do %>
-                <h1>EE.Books</h1>
-              <% end %>
-            <% else %>
-              <%= link_to root_path, class: "header__logo__text" do %>
-                <h1>EE.Books</h1>
-              <% end %>
-            <% end %>
+             <h1>
+                <%= link_to books_path, class: "header__logo__text" do %>
+                  ＼EE／.Books
+                <% end %>
+             </h1>
+              
            </div>
     <% end %>
            
@@ -81,30 +80,35 @@
                   
                   <% elsif admin_signed_in? %>
                   
-                  <div class="nav">
-                    <ul class="nav__bar">
-                      <li class="nav__item">
-                        <%= link_to about_path, class: "nav__link" do %>
-                          <i class="fab fa-readme"></i>　About
+                  <div class="nav--admin">
+                    <ul class="nav__bar--admin">
+                      <li class="nav__item--admin">
+                        <%= link_to admin_top_path, class: "nav__link--admin" do %>
+                          <i class="fas fa-bullhorn"></i>　通報一覧
                         <% end %>
                       </li>
-                      <li class="nav__item">
-                        <%= link_to admin_books_path, class: "nav__link" do %>
-                          <i class="fas fa-cheese"></i> 書籍一覧
+                      <li class="nav__item--admin">
+                        <%= link_to admin_users_path, class: "nav__link--admin" do %>
+                          <i class="fas fa-user"></i>　会員一覧
                         <% end %>
                       </li>
-                      <li class="nav__item">
-                        <%= link_to admin_classifications_path, class: "nav__link" do %>
+                      <li class="nav__item--admin">
+                        <%= link_to admin_books_path, class: "nav__link--admin" do %>
+                          <i class="fas fa-book-open"></i> 書籍一覧
+                        <% end %>
+                      </li>
+                      <li class="nav__item--admin">
+                        <%= link_to admin_classifications_path, class: "nav__link--admin" do %>
                           <i class="fas fa-file-signature"></i> 分類一覧
                         <% end %>
                       </li>
-                      <li class="nav__item">
-                        <%= link_to admin_genres_path, class: "nav__link" do %>
-                          <i class="fas fa-sign-in-alt"></i> ジャンル一覧
+                      <li class="nav__item--admin">
+                        <%= link_to admin_genres_path, class: "nav__link--admin" do %>
+                          <i class="fas fa-file-signature"></i> ジャンル一覧
                         <% end %>
                       </li>
-                      <li class="nav__item">
-                        <%= link_to destroy_admin_session_path, method: :delete, class: "nav__link" do %>
+                      <li class="nav__item--admin">
+                        <%= link_to destroy_admin_session_path, method: :delete, class: "nav__link--admin" do %>
                           <i class="fas fa-sign-out-alt"></i> ログアウト
                         <% end %>
                       </li>
@@ -146,8 +150,14 @@
     <%= yield %>
   </body>
   <footer>
+    <% if admin_signed_in? %>
+    <div class="footer__contents--admin">
+      <h3 class="footer__text--admin">©︎copy-right</h3>
+    </div>
+    <% else %>
     <div class="footer__contents">
       <h3 class="footer__text">©︎copy-right</h3>
     </div>
+    <% end %>
   </footer>
 </html>

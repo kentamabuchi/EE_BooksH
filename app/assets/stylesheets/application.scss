@@ -43,7 +43,7 @@
     background-color: $color-dark-green;
     &__container {
         height: 150px;
-        background-color: green;
+        background-color: $color-black-green;
         border-radius: 0 0 50% 50%;
         position: relative;
     }
@@ -51,11 +51,17 @@
         @extend %row;
     }
     &__logo {
-        margin: 20px 0 0 100px;
+        margin: 40px 0 0 100px;
     }
      &__logo__text {
         color: $color-white;
+        background-color: green;
+        padding: 30px;
+        border-radius: 50%;
         text-decoration: none !important;
+    }
+    &__text {
+        
     }
 }
 
@@ -85,18 +91,40 @@
     position: absolute;
     top: 20px;
     right: 100px;
+    &--admin {
+        position: absolute;
+        top: 20px;
+        right: 100px;
+    }
     &__bar {
         @extend %row;
         list-style: none;
         text-align: right;
+        &--admin {
+            @extend %row;
+            list-style: none;
+            text-align: right;
+        }
     }
     &__item {
         color: $color-white;
         display: inline;
         margin-left: 10px;
+        &--admin {
+            color: $color-white;
+            display: inline;
+            margin-left: 10px;
+        }
     }
     &__link {
         color: $color-white;
+        &--admin {
+            color: $color-white;
+            background-color: green;
+            padding: 10px;
+            border-radius: 30px;
+            text-decoration: none !important;
+        }
     }
 }
 .search {
@@ -183,7 +211,7 @@
 
 
 .ARPage {
-    background-color: $color-dark-green;
+    background-color: $color-pastel-blue;
     &__container {
         @extend %center;
     }
@@ -191,6 +219,7 @@
         height: 600px;
         width: 60%;
         background-color: $color-white;
+        margin: 50px 0;
         padding-top: 100px;
     }
     &__heading {
@@ -224,7 +253,6 @@
     background-color: $color-pastel-blue;
     &__container {
         @extend %center;
-        
     }
     &__content{
         height: 600px;
@@ -263,8 +291,17 @@
         color: $color-white;
         background-color: $color-blue;
         text-align: center;
+        &--admin {
+            height: 100px;
+            color: $color-white;
+            background-color: $color-black-green;
+            text-align: center;
+        }
     }
     &__text {
         line-height: 100px;
+        &--admin {
+            line-height: 100px;
+        }
     }
 }

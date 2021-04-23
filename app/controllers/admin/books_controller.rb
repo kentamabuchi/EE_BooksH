@@ -64,6 +64,7 @@ class Admin::BooksController < ApplicationController
                                  :writer,
                                  :image,
                                  :edit_status,
+                                 :introduction,
                                  :is_active,
                                  :create_user,
                                  :classification_id,
