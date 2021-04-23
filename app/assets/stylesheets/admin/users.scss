@@ -9,10 +9,9 @@
 
 .AUserPage {
     @extend %page;
-    padding-top: 50px;
     &__container{
         @extend %container;
-        
+        margin: 50px 0;
     }
 }
 
@@ -29,6 +28,11 @@
     }
     &__date {
         text-align: center;
+    }
+    &__text {
+        &--wide {
+            width: 200px;
+        }
     }
     &__btn {
         &--show {
@@ -49,10 +53,16 @@
 
 .AUShow {
     &__action__return {
+        text-align: left;
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    &__btn__return {
         @extend %btn;
-        width: 100px;
+        width: 150px;
         background-color: $color-pastel-green;
-        text-decoration: none;
+        text-decoration: none !important;
+        text-align: center;
     }
     &__heading {
         @extend %heading;
@@ -78,6 +88,51 @@
     }
     &__btn {
         @extend %btn;
+        background-color: $color-pastel-orange;
+        margin-top: 20px;
+        margin-left: 170px;
+    }
+}
+
+
+
+.AUEdit {
+    &__action__return {
+        text-align: left;
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    &__btn__return {
+        @extend %btn;
+        width: 150px;
+        background-color: $color-pastel-green;
+        text-decoration: none !important;
+        text-align: center;
+    }
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+    }
+    &__table {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    &__tag {
+        @extend %tag;
+        width: 150px;
+    }
+    &__date {
+        width: 200px;
+        text-align: center;
+    }
+    &__action {
+        text-align: center;
+    }
+    &__btn {
+        @extend %form-btn;
         background-color: $color-pastel-orange;
         margin-top: 20px;
         margin-left: 170px;

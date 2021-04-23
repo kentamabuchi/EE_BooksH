@@ -33,11 +33,11 @@
                         
                          <% @books.each do |book|%>
                          <tr>
-                             <td class="AHTop__date"><%= book.name %></td>
-                             <td class="AHTop__date"><%= book.writer %></td>
-                             <td class="AHTop__date"><%= book.classification.name %></td>
-                             <td class="AHTop__date"><%= book.genre.name %></td>
-                             <td class="AHTop__date"><%= book.is_active %></td>
+                             <td class="AHTop__date"><p class="AHTop__text--name text-truncate"><%= book.name %></p></td>
+                             <td class="AHTop__date"><p class="AHTop__text--name text-truncate"><%= book.writer %></p></td>
+                             <td class="AHTop__date"><p class="AHTop__text text-truncate"><%= book.classification.name %></p></td>
+                             <td class="AHTop__date"><p class="AHTop__text text-truncate"><%= book.genre.name %></p></td>
+                             <td class="AHTop__date"><p class="AHTop__text text-truncate"><%= book.is_active %></p></td>
                              <td class="AHTop__date"><%= link_to "詳細", admin_book_path(book), class: "AHTop__btn--show" %></td>
                              <td class="AHTop__date"><%= link_to "削除", admin_book_path(book), method: :delete, class: "AHTop__btn--delete" %></td>
                          </tr>

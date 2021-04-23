@@ -8,7 +8,6 @@
 
 .AHomesPage {
     @extend %page;
-    padding-top: 50px;
     &__container {
         width: 80%;
         background-color: $color-white;
@@ -75,6 +74,11 @@
     }
     &__date {
         text-align: center;
+    }
+    &__text {
+        &--name {
+            width: 200px;
+        }
     }
     &__btn {
         &--show {

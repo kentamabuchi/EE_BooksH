@@ -18,7 +18,7 @@
         
          <% @reviews.each do |review|%>
          <tr>
-             <td class="AHTop__date"><%= review.comment %></td>
+             <td class="AHTop__date"><p class="AHTop__text--name text-truncate"><%= review.comment %></p></td>
              <td class="AHTop__date"><%= link_to "詳細", admin_review_path(review), class: "AHTop__btn--show" %></td>
              <td class="AHTop__date"><%= link_to "削除", admin_review_path(review), method: :delete, class: "AHTop__btn--delete" %></td>
          </tr>

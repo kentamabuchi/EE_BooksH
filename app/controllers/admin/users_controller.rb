@@ -23,6 +23,7 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:nick_name, 
                                  :email,
                                  :image,
+                                 :introduce,
                                  :is_active,
                                  :created_at,
                                  :updated_at)

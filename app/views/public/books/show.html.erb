@@ -15,7 +15,7 @@
         <div class="BShow__contents">
             <div class="BShow__book">
                 <div class="BShow__BookImage">
-                    <%= attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg",size: "300x300" %>
+                    <%= attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: "300x300" %>
                     <div class="BShow__status">
                         <div class="BShow__goods-<%= @book.id %>">
                            <%= render 'public/good_books/good', {book: @book} %>    
