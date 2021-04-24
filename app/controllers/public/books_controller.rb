@@ -105,7 +105,7 @@ class Public::BooksController < ApplicationController
   def set_book_ranking
     @new_books = Book.all.order(created_at: :desc).limit(5)
     @ranking = []
-    @all_ranks = Book.includes(:good_books).sort {|a,b| b.good_books.size <=> a.good_books.size}
+    @all_ranks = Book.includes(:favorite_books).sort {|a,b| b.favorite_books.size <=> a.favorite_books.size}
     @all_ranks.last(5).map do |book|
       @ranking.push(book.id)
     end
