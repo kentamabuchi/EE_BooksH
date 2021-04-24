@@ -21,7 +21,7 @@
                     <%= render 'public/books/rate_average', {book: classification_first, rate: first_classification} %>
                 </td>
                 <tr>
-                    <td class="BIndex__data"><i class="fas fa-heart BIndex__data--GoodBook"></i><%= classification_first.good_books.count %></td>
+                    <td class="BIndex__data"><i class="fas fa-glasses"></i><%= classification_first.favorite_books.count %></td>
                 </tr>
             </tr>
         </table>
@@ -47,7 +47,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="BIndex__data--another"><i class="fas fa-heart BIndex__data--GoodBook"></i><%= classification_second.good_books.count %></td>
+                <td class="BIndex__data--another"><i class="fas fa-glasses"></i><%= classification_second.favorite_books.count %></td>
             </tr>
         </table>
         <% end %>
@@ -71,7 +71,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="BIndex__data--another"><i class="fas fa-heart BIndex__data--GoodBook"></i><%= classification_third.good_books.count %></td>
+                    <td class="BIndex__data--another"><i class="fas fa-glasses"></i><%= classification_third.favorite_books.count %></td>
                 </tr>
             </table>
             <% end %>
@@ -95,7 +95,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="BIndex__data--another"><i class="fas fa-heart BIndex__data--GoodBook"></i><%= classification_fourth.good_books.count %></td>
+                <td class="BIndex__data--another"><i class="fas fa-glasses"></i><%= classification_fourth.favorite_books.count %></td>
             </tr>
         </table>
         <% end %>
@@ -119,7 +119,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="BIndex__data--another"><i class="fas fa-heart BIndex__data--GoodBook"></i><%= classification_fifth.good_books.count %></td>
+                <td class="BIndex__data--another"><i class="fas fa-glasses"></i><%= classification_fifth.favorite_books.count %></td>
             </tr>
         </table>
         <% end %>

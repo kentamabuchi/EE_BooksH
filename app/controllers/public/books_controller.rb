@@ -28,7 +28,6 @@ class Public::BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.save
-    redirect_to books_path
   end
 
   def show
