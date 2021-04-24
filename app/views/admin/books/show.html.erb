@@ -13,7 +13,7 @@
         
         <div class="ABShow__contents">
             <div class="ABShow__BookImage">
-                <%= attachment_image_tag @book, :image, :fill, 300, 300, fallback: asset_path"no_image_book.jpeg",size: "300x300" %>
+                <%= attachment_image_tag @book, :image, :fill, 300, 300, fallback: asset_path("no_image_book.jpeg"),size: "300x300" %>
             </div>
             <div class="ABShow__BookDate">
                 <table class="ABShow__form__item">
