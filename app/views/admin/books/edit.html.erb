@@ -1,0 +1,91 @@
+<div class="ABookPage">
+  <div class="ABookPage__container--another">
+    
+    <section class="ABEdit">
+        
+        <div class="ABEdit__action__return">
+            <%= link_to "<<詳細へ戻る", admin_book_path(@book), class: "ABEdit__btn__return" %>
+        </div>
+        
+        <div class="ABEdit__heading">
+            <h2>書籍編集</h2>
+        </div>
+        
+        <div class="ABEdit__contents">
+            
+            <div class="ABEdit__BookImage">
+                <div class="ABEdit__ImageTag">
+                    <p>現在の画像</p>
+                </div>
+                <div class="ABEdit__image">
+                    <%= attachment_image_tag @book, :image, :fill, 300, 300, fallback: asset_path("no_image_book.jpeg"),size: "300x300" %>
+                </div>
+            </div>
+            
+            <div class="ABEdit__form">
+            <%= form_with model: @book, url: admin_book_path(@book), method: :patch, local: true do |f| %>
+                <table class="ABEdit__item">
+                    <tr>
+                        <th class="ABEdit__thread"><span class="ABEdit__tag">書籍画像</span></th>
+                        <td class="ABEdit__thread"><%= f.attachment_field :image %></td>
+                    </tr>
+                    <tr>
+                        <th class="ABEdit__thread"><span class="ABEdit__tag">書籍名</span></th>
+                        <td class="ABEdit__thread"><%= f.text_field :name %></td>
+                    </tr>
+                    <tr>
+                        <th class="ABEdit__thread"><span class="ABEdit__tag">作者</span></th>
+                        <td class="ABEdit__thread"><%= f.text_field :writer %></td>
+                    </tr>
+                    <tr>
+                        <th class="ABEdit__thread"><span class="ABEdit__tag">分類</span></th>
+                        <td class="ABEdit__thread">
+                            <%= f.collection_select(:book_classifications, @classifications, :id, :name) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="ABEdit__thread"><span class="ABEdit__tag">ジャンル</span></th>
+                        <td class="ABEdit__thread">
+                            <%= f.collection_select(:book_genres, @genres, :id, :name) %>
+                        </td>
+                    </tr>
+                     <tr>
+                        <th class="ABEdit__thread"><span class="ABEdit__tag">編集ステータス</span></th>
+                        <td class="ABEdit__thread">
+                            <% if @book.edit_status == true %>
+                                <%= f.radio_button :edit_option, 0, checked: "checked" %><%= f.label :edit_status, "未編集" %>
+                                <%= f.radio_button :edit_option, 1 %><%= f.label :edit_status, "編集済み" %>
+                            <% else %>
+                                <%= f.radio_button :edit_option, 0 %><%= f.label :edit_status, "未編集" %>
+                                <%= f.radio_button :edit_option, 1, checked: "checked" %><%= f.label :edit_status, "編集済み" %>
+                            <% end %>
+                        </td>
+                    </tr>
+                     <tr>
+                        <th class="ABEdit__thread"><span class="ABEdit__tag">書籍ステータス</span></th>
+                        <td class="ABEdit__thread">
+                            <% if @book.is_active == true %>
+                            <%= f.radio_button :book_option, 0, checked: "checked" %><%= f.label :is_active, "正常" %>
+                            <%= f.radio_button :book_option, 1 %><%= f.label :is_active, "違反" %>
+                            <% else %>
+                            <%= f.radio_button :book_option, 0 %><%= f.label :is_active, "正常" %>
+                            <%= f.radio_button :book_option, 1, checked: "checked" %><%= f.label :is_active, "違反" %>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="ABEdit__thread"><span class="ABEdit__tag">紹介文</span></th>
+                        <td class="ABEdit__thread--textbox"><%= f.text_area :introduction %></td>
+                    </tr>
+                </table>
+                <div class="ABEdit__action">
+                    <%= f.submit "変更", class: "ABEdit__btn" %>
+                </div>
+            <% end %>
+            </div>
+        </div>
+        
+    </section>
+
+  </div>
+</div>

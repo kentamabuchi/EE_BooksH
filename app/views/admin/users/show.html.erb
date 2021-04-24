@@ -1,0 +1,53 @@
+<div class="AUserPage">
+    <div class="AUserPage__container">
+        <section class="AUShow">
+            
+            <div class="AUShow__action__return">
+                <%= link_to "<< 一覧へ戻る", admin_users_path, class:"AUShow__btn__return" %>
+            </div>
+            
+            <div class="AUShow__heading">
+                <h2>会員詳細</h2>
+            </div>
+            
+            <div class="AUShow__contents">
+                <div class="AUShow__UserImage">
+                    <%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg",size: '300x300' %>
+                </div>
+                <div class="AUShow__table">
+                    <table>
+                        <tr>
+                            <th class="AUShow__thread"><span class="AUShow__tag">登録日：</span></th>
+                            <td class="AUShow__date"><%= @user.created_at.strftime('%y年%m月%d日') %></td>
+                        </tr>
+                        <tr>
+                            <th class="AUShow__thread"><span class="AUShow__tag">ニックネーム：</span></th>
+                            <td class="AUShow__date"><%= @user.nick_name %></td>
+                        </tr>
+                        <tr>
+                            <th class="AUShow__thread"><span class="AUShow__tag">メールアドレス：</span></th>
+                            <td class="AUShow__date"><%= @user.email %></td>
+                        </tr>
+                        <tr>
+                            <th class="AUShow__thread"><span class="AUShow__tag">会員ステータス：</span></th>
+                            <td class="AUShow__date">
+                                <% if @user.is_active == true %>
+                                    有効
+                                <% else @user.is_active == false %>
+                                    退会
+                                <% end %>
+                                </td>
+                        </tr>
+                        <tr>
+                            <th class="AUShow__thread"><span class="AUShow__tag"></span></th>
+                            <td class="AUShow__date"></td>
+                        </tr>
+                    </table>
+                    <div class="AUShow__action">
+                        <%= link_to "編集", edit_admin_user_path(@user), class: "AUShow__btn" %>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

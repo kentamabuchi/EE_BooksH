@@ -1,0 +1,11 @@
+$(".BIndex__books").html("<%= j(render partial: 'public/books/classification_ranks', locals: { classification_first: @classification_first,
+                                                                                      first_classification: @first_classification,
+                                                                                      classification_second: @classification_second,
+                                                                                      second_classification: @second_classification,
+                                                                                      classification_third: @classification_third,
+                                                                                      third_classification: @third_classification,
+                                                                                      classification_fourth: @classification_fourth,
+                                                                                      fourth_classification: @fourth_classification,
+                                                                                      classification_fifth: @classification_fifth,
+                                                                                      fifth_classification: @fifth_classification,
+                                                                                      new_books: @new_classification_books}) %>");

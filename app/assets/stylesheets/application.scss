@@ -1,0 +1,307 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+@import '_color.scss';
+@import '_flex.scss';
+
+
+.pagination>li>a {          
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a { 
+    width: 40px;
+    background-color: green;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.pagination>li>a:hover {        
+  border-radius: 15px;
+}
+
+
+.AHeader {
+    color: $color-white;
+    background-color: $color-dark-green;
+    &__container {
+        height: 150px;
+        background-color: $color-black-green;
+        border-radius: 0 0 50% 50%;
+        position: relative;
+    }
+    &__contents{
+        @extend %row;
+    }
+    &__logo {
+        margin: 40px 0 0 100px;
+    }
+     &__logo__text {
+        color: $color-white;
+        background-color: green;
+        padding: 30px;
+        border-radius: 50%;
+        text-decoration: none !important;
+    }
+    &__text {
+        
+    }
+}
+
+.header {
+    color: $color-white;
+    background-color: $color-pastel-blue;
+    &__container {
+        height: 150px;
+        background-color: blue;
+        border-radius: 0 0 50% 50%;
+        position: relative;
+    }
+    &__contents {
+        @extend %row;
+    }
+    &__logo {
+        margin: 20px 0 0 100px;
+    }
+    &__logo__text {
+        color: $color-white;
+        text-decoration: none !important;
+    }
+    
+}
+
+.nav {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    &--admin {
+        position: absolute;
+        top: 20px;
+        right: 100px;
+    }
+    &__bar {
+        @extend %row;
+        list-style: none;
+        text-align: right;
+        &--admin {
+            @extend %row;
+            list-style: none;
+            text-align: right;
+        }
+    }
+    &__item {
+        color: $color-white;
+        display: inline;
+        margin-left: 10px;
+        &--admin {
+            color: $color-white;
+            display: inline;
+            margin-left: 10px;
+        }
+    }
+    &__link {
+        color: $color-white;
+        &--admin {
+            color: $color-white;
+            background-color: green;
+            padding: 10px;
+            border-radius: 30px;
+            text-decoration: none !important;
+        }
+    }
+}
+.search {
+    display:inline-block;
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
+}
+
+.URPage {
+    background-color: $color-pastel-blue;
+    &__container {
+        @extend %center;
+    }
+    &__content{
+        height: 600px;
+        width: 60%;
+        background-color: $color-white;
+        margin: 50px 0;
+        padding-top: 100px;
+    }
+    &__heading {
+        color: $color-white;
+        background-color: $color-blue;
+        margin: 0 50px;
+        padding-left: 50px;
+    }
+    &__form {
+        margin-top: 50px;
+        @extend %center;
+    }
+    &__form__name {
+        height: 25px;
+        width: 120px;
+        color: $color-white;
+        background-color: $color-pastel-blue;
+        text-align: center;
+        border-radius: 15px;
+    }
+    &__form__TextBox {
+        padding-bottom: 10px;
+    
+        &--input {
+            padding-bottom: 5px;
+        }
+    }
+}
+
+.USPage {
+    background-color: $color-pastel-blue;
+    &__container {
+        @extend %center;
+    }
+    &__content{
+        height: 600px;
+        width: 60%;
+        background-color: $color-white;
+        margin: 50px 0;
+        padding-top: 100px;
+    }
+    &__heading {
+        color: $color-white;
+        background-color: $color-blue;
+        margin: 0 50px;
+        padding-left: 50px;
+    }
+    &__form {
+        margin-top: 50px;
+        @extend %center;
+    }
+    &__form__name {
+        height: 25px;
+        width: 120px;
+        color: $color-white;
+        background-color: $color-pastel-blue;
+        text-align: center;
+        border-radius: 15px;
+    }
+    &__form__TextBox {
+        padding-bottom: 10px;
+    
+    }
+}
+
+
+.ARPage {
+    background-color: $color-pastel-blue;
+    &__container {
+        @extend %center;
+    }
+    &__content{
+        height: 600px;
+        width: 60%;
+        background-color: $color-white;
+        margin: 50px 0;
+        padding-top: 100px;
+    }
+    &__heading {
+        color: $color-white;
+        background-color: $color-dark-green;
+        margin: 0 50px;
+        padding-left: 50px;
+    }
+    &__form {
+        margin-top: 50px;
+        @extend %center;
+    }
+    &__form__name {
+        height: 25px;
+        width: 120px;
+        color: $color-white;
+        background-color: $color-light-green;
+        text-align: center;
+        border-radius: 15px;
+    }
+    &__form__TextBox {
+        padding-bottom: 10px;
+    
+        &--input {
+            padding-bottom: 5px;
+        }
+    }
+}
+
+.ASPage {
+    background-color: $color-pastel-blue;
+    &__container {
+        @extend %center;
+    }
+    &__content{
+        height: 600px;
+        width: 60%;
+        background-color: $color-white;
+        margin: 50px 0;
+        padding-top: 100px;
+    }
+    &__heading {
+        color: $color-white;
+        background-color: $color-dark-green;
+        margin: 0 50px;
+        padding-left: 50px;
+    }
+    &__form {
+        margin-top: 50px;
+        @extend %center;
+    }
+    &__form__name {
+        height: 25px;
+        width: 120px;
+        color: $color-white;
+        background-color: $color-light-green;
+        text-align: center;
+        border-radius: 15px;
+    }
+    &__form__TextBox {
+        padding-bottom: 10px;
+    
+    }
+}
+
+.footer{
+    &__contents {
+        height: 100px;
+        color: $color-white;
+        background-color: $color-blue;
+        text-align: center;
+        &--admin {
+            height: 100px;
+            color: $color-white;
+            background-color: $color-black-green;
+            text-align: center;
+        }
+    }
+    &__text {
+        line-height: 100px;
+        &--admin {
+            line-height: 100px;
+        }
+    }
+}

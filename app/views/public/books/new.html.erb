@@ -1,0 +1,55 @@
+<div class="BookPage">
+  <div class="BookPage__container">
+        <section class="BNew">
+            
+            <div class="BNew__heading">
+                <h2>書籍追加</h2>
+            </div>
+            
+            <div class="NPage__contents">
+                <div class="BNew__form">
+                <%= form_with model: @book, url: books_path, method: :post, local: true do |f| %>
+                    <table class="BNew__form__item">
+                        <tr>
+                            <th class="BNew__thread"><span class="BNew__tag">書籍画像：</span></th>
+                            <td class="BNew__thread"><%= f.attachment_field :image %></td>
+                        </tr>
+                        <tr>
+                            <th class="BNew__thread"><span class="BNew__tag">書籍名：</span></th>
+                            <td class="BNew__thread"><%= f.text_field :name %></td>
+                        </tr>
+                        <tr>
+                            <th class="BNew__thread"><span class="BNew__tag">作者：</span></th>
+                            <td class="BNew__thread"><%= f.text_field :writer %></td>
+                        </tr>
+                        <tr>
+                            <th class="BNew__thread"><span class="BNew__tag">分類：</span></th>
+                            <td class="BNew__thread">
+                                <%= f.collection_select(:classification_id, @classifications, :id, :name) %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="BNew__thread"><span class="BNew__tag">ジャンル：</span></th>
+                            <td class="BNew__thread">
+                                <%= f.collection_select(:genre_id, @genres, :id, :name) %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="BNew__thread"><span class="BNew__tag">紹介文：</span></th>
+                            <td class="BNew__thread--textbox"><%= f.text_area :introduction %></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%= f.submit "追加", class: "BNew__form__btn" %>
+                            </td>
+                        </tr>
+                    </table>
+                <% end %>
+                </div>
+            </div>
+        </section>
+
+    
+  </div>
+</div>
+

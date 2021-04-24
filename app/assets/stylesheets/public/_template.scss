@@ -1,0 +1,65 @@
+@import '_color.scss';
+@import '_flex.scss';
+
+%page {
+    background-color: $color-pastel-blue;
+    @extend %center;
+}
+
+%container {
+    min-height: 700px;
+    width: 80%;
+    background-color: $color-white;
+    padding-top: 50px;
+}
+
+%action_return {
+    
+}
+
+%heading {
+    color: $color-white;
+    background-color: $color-blue;
+    margin: 0 50px;
+    padding-left: 50px;
+    margin-bottom: 30px;
+}
+%thread {
+    height: 30px;
+    color: $color-white;
+    background-color: $color-green;
+    text-align: center;
+}
+
+%tag {
+    height: 30px;
+    width: 150px;
+    color: $color-white;
+    background-color: $color-blue;
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+}
+
+%btn {
+    height: 30px;
+    width: 100px;
+    color: $color-white;
+    padding: 0 10px;
+    line-height: 30px;
+    border-radius: 10px;
+    display: inline-block;
+    text-decoration: none !important;
+}
+
+%form-btn {
+    height: 30px;
+    width: 100px;
+    color: $color-white;
+    margin-top: 30px;
+    border: none;
+    border-radius: 10px;
+}
+

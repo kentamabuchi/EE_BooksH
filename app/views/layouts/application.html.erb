@@ -4,12 +4,160 @@
     <title>EEBooks</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/6b92dd2514.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  
+  <header>
+    <% if admin_signed_in? %>
+    <div class="AHeader">
+      <div class="AHeader__container">
+        <div class="AHeader__contents">
+          
+           <div class="AHeader__logo">
+            <h1>
+              <%= link_to root_path, class: "AHeader__logo__text" do %>
+               ＼EE／.Books
+              <% end %>
+            </h1>
+            
+           </div>
+    <%else %>
+    <div class="header">
+      <div class="header__container">
+        <div class="header__contents">
+          
+           <div class="header__logo">
+             <h1>
+                <%= link_to books_path, class: "header__logo__text" do %>
+                  ＼EE／.Books
+                <% end %>
+             </h1>
+              
+           </div>
+    <% end %>
+           
+           <div class="header__nav">
+
+                  <% if user_signed_in? %>
+
+                  <div class="nav">
+                    <ul class="nav__bar">
+                      <li class="nav__item">
+                        <%= link_to about_path, class: "nav__link" do %>
+                          <i class="fab fa-readme"></i>　About
+                        <% end %>
+                      </li>
+                      <li class="nav__item">
+                        <%= link_to books_path, class: "nav__link" do %>
+                          <i class="fas fa-file-signature"></i> Booksランキング
+                        <% end %>
+                      </li>
+                      <li class="nav__item">
+                        <%= link_to user_path(current_user.id), class: "nav__link" do %>
+                          <i class="fas fa-cheese"></i> マイページ
+                        <% end %>
+                      </li>
+                      <li class="nav__item">
+                        <%= link_to destroy_user_session_path, method: :delete, class: "nav__link" do %>
+                          <i class="fas fa-sign-out-alt"></i> ログアウト
+                        <% end %>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div class="search">
+                      <%= search_form_for(@q, url:books_search_path) do |f| %>
+                      <table>
+                          <tr>
+                              <td><%= f.search_field :name_cont %></td>
+                              <td><%= f.submit "検索" %></td>
+                          </tr>
+                      </table>
+                      <% end %>
+                  </div>
+                  
+                  <% elsif admin_signed_in? %>
+                  
+                  <div class="nav--admin">
+                    <ul class="nav__bar--admin">
+                      <li class="nav__item--admin">
+                        <%= link_to admin_top_path, class: "nav__link--admin" do %>
+                          <i class="fas fa-bullhorn"></i>　通報一覧
+                        <% end %>
+                      </li>
+                      <li class="nav__item--admin">
+                        <%= link_to admin_users_path, class: "nav__link--admin" do %>
+                          <i class="fas fa-user"></i>　会員一覧
+                        <% end %>
+                      </li>
+                      <li class="nav__item--admin">
+                        <%= link_to admin_books_path, class: "nav__link--admin" do %>
+                          <i class="fas fa-book-open"></i> 書籍一覧
+                        <% end %>
+                      </li>
+                      <li class="nav__item--admin">
+                        <%= link_to admin_classifications_path, class: "nav__link--admin" do %>
+                          <i class="fas fa-file-signature"></i> 分類一覧
+                        <% end %>
+                      </li>
+                      <li class="nav__item--admin">
+                        <%= link_to admin_genres_path, class: "nav__link--admin" do %>
+                          <i class="fas fa-file-signature"></i> ジャンル一覧
+                        <% end %>
+                      </li>
+                      <li class="nav__item--admin">
+                        <%= link_to destroy_admin_session_path, method: :delete, class: "nav__link--admin" do %>
+                          <i class="fas fa-sign-out-alt"></i> ログアウト
+                        <% end %>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <% else %>
+                  
+                  <div class="nav">
+                    <ul class="nav__bar">
+                      <li class="nav__item">
+                        <%= link_to about_path, class: "nav__link" do %>
+                          <i class="fab fa-readme"></i>　About
+                        <% end %>
+                      </li>
+                      <li class="nav__item">
+                        <%= link_to new_user_registration_path, class: "nav__link" do %>
+                          <i class="fas fa-file-signature"></i> 新規登録
+                        <% end %>
+                      </li>
+                      <li class="nav__item">
+                        <%= link_to new_user_session_path, class: "nav__link" do %>
+                          <i class="fas fa-sign-in-alt"></i> ログイン
+                        <% end %>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <% end %>
+              </div>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </header>
 
   <body>
     <%= yield %>
   </body>
+  <footer>
+    <% if admin_signed_in? %>
+    <div class="footer__contents--admin">
+      <h3 class="footer__text--admin">©︎copy-right</h3>
+    </div>
+    <% else %>
+    <div class="footer__contents">
+      <h3 class="footer__text">©︎copy-right</h3>
+    </div>
+    <% end %>
+  </footer>
 </html>

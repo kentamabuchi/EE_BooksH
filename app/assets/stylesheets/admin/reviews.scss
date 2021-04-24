@@ -1,0 +1,150 @@
+// Place all the styles related to the admin/reviews controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import '_color.scss';
+@import '_flex.scss';
+@import '_admin_template.scss';
+
+input[type="text"] {
+        width: 300px;
+        height: 30px;
+}
+
+.AReviewPage {
+    @extend %page;
+    padding-top: 50px;
+    &__container {
+        @extend %container;
+    }
+}
+
+
+
+.ARShow {
+    &__action__return {
+        @extend %btn;
+        text-align: left;
+        margin-left: 50px;
+        margin-bottom: 20px;
+        background-color: $color-pastel-green;
+    }
+    &__btn__return {
+        text-decoration: none;
+    }
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+    }
+    &__UserInfo {
+        @extend %column;
+    }
+    &__UserName {
+        height: 30px;
+        width: 150px;
+        color: $color-white;
+        background-color: $color-green;
+        margin: 20px auto 0 auto;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 15px;
+    }
+    &__form__item {
+        margin-left: 20px;
+    }
+    &__thread {
+        height: 40px;
+        width: 250px;
+    }
+    &__tag {
+        @extend %tag;
+        display: inline-block;
+    }
+    &__data {
+        height: 200px;
+        width: 400px;
+        border: 1px solid black;
+        vertical-align: top;
+    }
+    &__text {
+        margin: 20px;
+    }
+    ＆__form__TextBox {
+        display: block;
+        height: 30px;
+        width: 200px;
+        maragin-bottom: 10px;
+    }
+   &__action {
+        height: 40px;
+        margin-top: 30px;
+        text-align: center;
+   }
+   &__btn {
+        &--edit {
+            @extend %btn;
+            background-color: $color-pastel-orange;
+        }
+        &--delete {
+            @extend %btn;
+            background-color: $color-pastel-red;
+        }
+   }
+}
+
+.AREdit {
+    &__action__return {
+        text-align: left;
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    &__btn__return {
+        @extend %btn;
+        width: 100px;
+        background-color: $color-pastel-green;
+        text-decoration: none;
+    }
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+    }
+    &__BookImage {
+        @extend %column;
+    }
+    &__ImageTag {
+        @extend %tag;
+        margin: 0 auto;
+    }
+    &__image {
+        margin-top: 20px;
+    }
+    &__form {
+        margin-top: 50px;
+        margin-left: 20px;
+    }
+    &__item {
+        
+    }
+    &__thread {
+        height: 40px;
+        width: 200px;
+    }
+    &__tag {
+        @extend %tag;
+        display: inline-block;
+    }
+    &__action {
+        text-align: center;
+    }
+    &__btn {
+       @extend %form-btn;
+       background-color: $color-pastel-orange;
+   }
+}
+

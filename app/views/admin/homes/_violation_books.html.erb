@@ -1,0 +1,37 @@
+<div class="AHTop__index">
+
+                <div class="AHTop__contents">
+                    
+                    <% if @books.blank? %>
+                    <div>
+                        <div class="AHTop__none">
+                            <h2>違反報告はありません</h2>
+                        </div>
+                    </div>
+                    
+                    <% else %>
+                    <table class="AHTop__table">
+                        <tr>
+                            <th class="AHTop__thread">タイトル</th>
+                            <th class="AHTop__thread">作者</th>
+                            <th class="AHTop__thread--category">分類</th>
+                            <th class="AHTop__thread--category">ジャンル</th>
+                            <th class="AHTop__thread--status">書籍ステータス</th>
+                        </tr>
+                        
+                         <% @books.each do |book|%>
+                         <tr>
+                             <td class="AHTop__date"><p class="AHTop__text--name text-truncate"><%= book.name %></p></td>
+                             <td class="AHTop__date"><p class="AHTop__text--name text-truncate"><%= book.writer %></p></td>
+                             <td class="AHTop__date"><p class="AHTop__text text-truncate"><%= book.classification.name %></p></td>
+                             <td class="AHTop__date"><p class="AHTop__text text-truncate"><%= book.genre.name %></p></td>
+                             <td class="AHTop__date"><p class="AHTop__text text-truncate"><%= book.is_active %></p></td>
+                             <td class="AHTop__date"><%= link_to "詳細", admin_book_path(book), class: "AHTop__btn--show" %></td>
+                             <td class="AHTop__date"><%= link_to "削除", admin_book_path(book), method: :delete, class: "AHTop__btn--delete" %></td>
+                         </tr>
+                         <% end %>
+                    </table>
+                </div>
+                <% end %>
+            </div>
+            
