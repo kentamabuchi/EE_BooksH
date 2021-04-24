@@ -28,7 +28,6 @@ class Public::BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.save
-    redirect_to books_path
   end
 
   def show
@@ -50,8 +49,8 @@ class Public::BooksController < ApplicationController
   end
   
   def change
-    @review = Review.find(params[:id])
-    @review.update(is_active: "false")
+    @review_violation = Review.find(params[:id])
+    @review_violation.update(is_active: "false")
   end
     
 
