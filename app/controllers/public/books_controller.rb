@@ -50,8 +50,8 @@ class Public::BooksController < ApplicationController
   end
   
   def change
-    @review = Review.find(params[:id])
-    @review.update(is_active: "false")
+    @review_violation = Review.find(params[:id])
+    @review_violation.update(is_active: "false")
   end
     
 

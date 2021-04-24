@@ -1,24 +1,46 @@
-# README
+# EE.Books
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+読んだ本に対して評価とレビューを書くことができ、また気に入った書籍はお気に入りに登録することにより、両方共にマイページに表示されます。  
+読んだ本がない場合は、ご自身で書籍を登録ができ、評価とレビューをつけることができます。  
+書籍につけられた評価やレビューは他のユーザからも閲覧でき、本を選ぶときの参考にすることができます。  
+また、好みや思考が似ているユーザをお気に入り登録することで、お気に入りしたユーザが読んだ書籍などがおすすめとして表示されるので、
+自分の好みに近い書籍を見つけることができます。
 
-* Ruby version
 
-* System dependencies
+### サイトテーマ
 
-* Configuration
+一冊一冊の出会いを大切にする、良い本を見つけるサイト
 
-* Database creation
+### テーマを選んだ理由
 
-* Database initialization
+本を買うときに色々迷って購入することが多いので、参考になるコメントや同じ様な嗜好の人が面白かった本がわかれば、
+良い本に出会う場合が多くなるのではないかと考えました。
 
-* How to run the test suite
+### ターゲットユーザ
 
-* Services (job queues, cache servers, search engines, etc.)
+- 本が好きな人
+- 参考書など同じ様な種類がありどれがいいかわからない人
+- 絵本を子供に買うときに悩んでいる人
+- 小説を読んでみたいけどどれがいいか悩んでいる人
+- とりあえず本をすぐ見つけたい人
 
-* Deployment instructions
+### 主な利用シーン
 
-* ...
+本を検索し、ユーザのコメントやいいねの数、または同じ様な趣味嗜好のユーザをお気に入りしておくことで読んでみたい本、役に立つ本を見つけることができる。
+
+## 設計書
+
+### 機能一覧
+
+<https://docs.google.com/spreadsheets/d/1Yacp7kbLW8K9rrhBGWL67em-UeczchPUVxu_PNd2o8U/edit?usp=sharing>
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- 仮想環境：Vagrant,VirtualBox
+
