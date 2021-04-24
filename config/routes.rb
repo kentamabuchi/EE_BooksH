@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
     end
     get '/books/search/' => 'books#search'
+    patch '/reviews/:id/violation/' => 'books#change', as: 'reviews_violation'
     resources :books, only: [:index, :new, :create, :show, :update] do
       resources :reviews, only: [:create, :destroy]
       resource :good_books, only: [:create, :destroy]

@@ -48,6 +48,11 @@ class Public::BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.update(is_active: "false")
   end
+  
+  def change
+    @review = Review.find(params[:id])
+    @review.update(is_active: "false")
+  end
     
 
 

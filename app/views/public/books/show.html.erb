@@ -23,7 +23,7 @@
                         <div class="BShow__favorite-<%= @book.id %>">
                             <%= render 'public/favorite_books/favorite', {book: @book} %>
                         </div>
-                        <div class="BShow__violation">
+                        <div class="BShow__violation__book">
                             <%= render 'public/books/violation_report', {book: @book} %>
                         </div>
                     </div>
@@ -33,21 +33,21 @@
                     <table class="BShow__item">
                         <tr>
                             <th class="BShow__thread"><span class="BShow__tag">書籍名：</span></th>
-                            <td class="BShow__thread"><%= @book.name %></td>
+                            <td class="BShow__thread text-break"><%= @book.name %></td>
                         </tr>
                         <tr>
                             <th class="BShow__thread"><span class="BShow__tag">作者：</span></th>
-                            <td class="BShow__thread"><%= @book.writer %></td>
+                            <td class="BShow__thread text-break"><%= @book.writer %></td>
                         </tr>
                         <tr>
                             <th class="BShow__thread"><span class="BShow__tag">分類：</span></th>
-                            <td class="BShow__thread">
+                            <td class="BShow__thread text-break">
                                 <%= @book.classification.name %>
                             </td>
                         </tr>
                         <tr>
                             <th class="BShow__thread"><span class="BShow__tag">ジャンル：</span></th>
-                            <td class="BShow__thread">
+                            <td class="BShow__thread text-break">
                                 <%= @book.genre.name %>
                             </td>
                         </tr>
@@ -71,7 +71,7 @@
                             <th class="BShow__thread"><span class="BShow__tag">作品紹介</span></th>
                         </tr>
                     </table>
-                    <div class="BShow__introduce">
+                    <div class="BShow__introduce text-break">
                         <%= @book.introduction %>
                     </div>
                 </div>
@@ -134,13 +134,20 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><div class="BShow__comments"><%= review.comment %></div></td>
+                            <td><div class="BShow__comments text-break"><%= review.comment %></div></td>
                         </tr>
                         <tr>
                             <td>
-                                <% if review.user_id == current_user.id %>
-                                    <%= link_to "削除", book_review_path(review.book, review), method: :delete, class: "BShow__btn__delete" %>
-                                <% end %>
+                                <div class="BShow__review__action">
+                                    <div>
+                                    <% if review.user_id == current_user.id %>
+                                        <%= link_to "削除", book_review_path(review.book, review), method: :delete, class: "BShow__btn__delete" %>
+                                    <% end %>
+                                    </div>
+                                    <div class="BShow__violation__review-<%= review.id %>">
+                                        <%= render 'public/books/violation_review', {review: review} %>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         <% end %>

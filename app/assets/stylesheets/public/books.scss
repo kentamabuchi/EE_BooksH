@@ -32,14 +32,22 @@ textarea {
 .BIndex {
     @extend %row;
     &__sidebar{
-        height: 600px;
         width: 200px;
-        background-color: $color-white-blue;
         margin: 50px;
         padding: 25px;
     }
+    &__category {
+        display: inline-block;
+         background-color: $color-white-blue;
+         padding: 25px;
+         text-align: center;
+    }
     &__thread {
         height: 40px;
+        &--sidebar {
+            height: 40px;
+            width: 150px;
+        }
     }
     &__tag {
         @extend %tag;
@@ -152,6 +160,7 @@ textarea {
         margin-right: auto;
     }
     &__data {
+        width: 25%;
         color: $color-white;
         text-align: center;
         &--GoodBook {
@@ -159,6 +168,26 @@ textarea {
         text-align: center;
         overflow: hidden;
         white-space: nowrap;
+        }
+        &--rank {
+            color: $color-white;
+            text-align: center;
+        }
+        &--another {
+            color: $color-white;
+            text-align: center;
+        }
+    }
+    &__text {
+        width: 300px;
+        margin: 0 auto;
+        &--another {
+            width: 100px;
+            margin: 0 auto;
+        }
+        &--lineup {
+            width: 150px;
+            text-align: center;
         }
     }
 }
@@ -179,7 +208,7 @@ textarea {
     }
     &__thread {
         @extend %thread;
-        width: 300px;
+        width: 250px;
         &--category {
             @extend %thread;
             width: 150px;
@@ -190,7 +219,18 @@ textarea {
         }
     }
     &__date {
+        width: 150px;
+        &--name {
+            width: 250px;
+        }
+    }
+    &__text {
+        width: 150px;
         text-align: center;
+        &--name {
+            width: 250px;
+            text-align: center;
+        }
     }
     &__btn {
         &--show {
@@ -198,6 +238,7 @@ textarea {
             background-color: $color-pastel-blue;
             margin-left: 20px;
             text-decoration: none !important;
+            text-align: center;
             
         }
     }
@@ -309,16 +350,16 @@ textarea {
                 text-decoration: none !important;
             }
         }
-    &__violation__book {
+    &__violation {
         display: inline-block;
         height: 30px;
         color: $color-white;
         background-color: $color-pastel-yellow;
         margin-top: 2px;
         margin-left: 20px;
-        padding: 5px;
-        border-radius: 15px;
-        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 10px;
+        text-decoration: none !important;
         &--none {
             color: $color-white;
             background-color: $color-pastel-gray;
@@ -343,9 +384,10 @@ textarea {
         display: inline-block;
     }
     &__introduce {
-        height: 400px;
+        min-height: 300px;
         width: 600px;
         margin-top: 10px;
+        padding: 10px;
         border: 1px solid black;
     }
     ＆__form__TextBox {
@@ -367,7 +409,7 @@ textarea {
        @extend %center;
    }
    &__form__text {
-       height: 200px;
+       min-height: 200px;
        width: 500px;
    }
    &__reviews__comments {
@@ -375,10 +417,14 @@ textarea {
         margin-top: 50px;
    }
    &__comments {
+       min-height: 200px;
        width: 500px;
-       height: 200px;
        border: 1px solid black;
        padding: 10px;
+   }
+   &__review__action {
+       @extend %row;
+       margin-bottom: 20px;
    }
    &__btn__delete {
         @extend %btn;
