@@ -1,14 +1,15 @@
 <div class="AHTop__index">
-                
-                <% if @books.blank? %>
-                <div>
-                    <div class="AHTop__none">
-                        <h2>違反報告はありません</h2>
-                    </div>
-                </div>
-                
-                <% else %>
+
                 <div class="AHTop__contents">
+                    
+                    <% if @books.blank? %>
+                    <div>
+                        <div class="AHTop__none">
+                            <h2>違反報告はありません</h2>
+                        </div>
+                    </div>
+                    
+                    <% else %>
                     <table class="AHTop__table">
                         <tr>
                             <th class="AHTop__thread">タイトル</th>
