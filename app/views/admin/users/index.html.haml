@@ -1,0 +1,33 @@
+.AUserPage
+  .AUserPage__container
+    %section.AUIndex
+      .AUIndex__heading
+        %h2 会員一覧
+      .AUIndex__contents
+        %table.AUIndex__table
+          %tr
+            %th.AUIndex__thread
+              %span.AUIndex__tag 登録日
+            %th.AUIndex__thread
+              %span.AUIndex__tag 名前
+            %th.AUIndex__thread
+              %span.AUIndex__tag メールアドレス
+            %th.AUIndex__thread
+              %span.AUIndex__tag 会員ステータス
+          - @users.each do |user|
+            %tr
+              %th.AUIndex__date
+                %p.AUIndex__text.text-truncate= user.created_at.strftime('%y年%m月%d日')
+              %th.AUIndex__date
+                %p.AUIndex__text--wide.text-truncate= user.nick_name
+              %th.AUIndex__date
+                %p.AUIndex__text--wide.text-truncate= user.email
+              %th.AUIndex__date
+                - if user.is_active == true
+                  有効
+                - else user.is_active == false
+                  退会
+              %td.AUIndex__date= link_to "詳細", admin_user_path(user), class: "AUIndex__btn--show"
+              %td.AUIndex__date= link_to "削除", admin_user_path(user), method: :delete, class: "AUIndex__btn--delete"
+      .AUIndex__paginate
+        = paginate @users

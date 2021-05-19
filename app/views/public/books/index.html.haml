@@ -1,0 +1,35 @@
+.MainPage
+  .MainPage__container
+    %section.BIndex
+      .BIndex__sidebar
+        %table.BIndex__category
+          %tr
+            %th.BIndex__thread--sidebar
+              = link_to books_path do
+                %p.BIndex__tag.text-truncate
+                  ランキングTop
+                  %span &gt;&gt;
+          - @classifications.each do |classification|
+            %tr
+              %th.BIndex__thread--sidebar
+                = link_to book_classifications_path(classification.id), remote: true do
+                  %p.BIndex__tag.text-truncate
+                    = classification.name
+                    %span &gt;&gt;
+      .BIndex__contents
+        .BIndex__action__new
+          = link_to new_book_path, class: "d-flex flex-row-reverse pb-3" do
+            %p.BIndex__action__announce
+              お気に入りの本がない場合はこちらから登録して下さい
+        .BIndex__books
+          = render 'public/books/ranking', {rankings: @rankings, new_books: @new_books}
+        .BIndex__heading
+          %h2.BIndex__heading--h2 あなたにおすすめ
+        .BIndex__recomend
+          - @follow_books.each do |follow_book|
+            .BIndex__BookItem
+              .BIndex__data
+                = link_to book_path(follow_book) do
+                  = attachment_image_tag follow_book, :image, :fill, 150, 150, fallback: "no_image_book.jpeg", size: '150x150'
+              .BIndex__data
+                %p.BIndex__text--lineup.text-truncate= follow_book.name

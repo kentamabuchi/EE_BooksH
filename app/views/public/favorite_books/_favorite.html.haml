@@ -1,0 +1,6 @@
+- if FavoriteBook.find_by(user_id: current_user.id, book_id: book.id)
+  = link_to "読んだ", book_favorite_books_path(book), method: :delete, remote: true, class: "BShow__favorite"
+  = book.favorite_books.count
+- else
+  = link_to "読んだ", book_favorite_books_path(book), method: :post, remote: true, class: "BShow__favorite--none"
+  = book.favorite_books.count

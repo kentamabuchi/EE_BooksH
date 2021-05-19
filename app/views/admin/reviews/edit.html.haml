@@ -1,0 +1,37 @@
+.AreviewPage
+  .AreviewPage__container
+    %section.AREdit
+      .AREdit__action__return
+        = link_to "戻る", admin_review_path(@review), class: "AREdit__btn__return"
+      .AREdit__heading
+        %h2 書籍編集
+      .AREdit__contents
+        .AREdit__reviewImage
+          .AREdit__ImageTag
+            %p 現在の画像
+          .AREdit__image
+            = attachment_image_tag @review.user, :image, :fill, 300, 300
+        .AREdit__form
+          = form_with model: @review, url: admin_review_path(@review), method: :patch, local: true do |f|
+            %table.AREdit__item
+              %tr
+                %th.AREdit__thread
+                  %span.AREdit__tag コメント
+              %tr
+                %td.AREdit__thread= @review.comment
+              %tr
+                %th.AREdit__thread
+                  %span.AREdit__tag コメントステータス：
+                %td.AREdit__thread
+                  - if @review.is_active == true
+                    = f.radio_button :review_option, 0, checked: "checked"
+                    = f.label :is_active, "正常"
+                    = f.radio_button :review_option, 1
+                    = f.label :is_active, "違反"
+                  - else
+                    = f.radio_button :review_option, 0
+                    = f.label :is_active, "正常"
+                    = f.radio_button :review_option, 1, checked: "checked"
+                    = f.label :is_active, "違反"
+            .AREdit__action
+              = f.submit "変更", class: "AREdit__btn"

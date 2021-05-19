@@ -1,0 +1,72 @@
+.ABookPage
+  .ABookPage__container--another
+    %section.ABEdit
+      .ABEdit__action__return
+        = link_to "<<詳細へ戻る", admin_book_path(@book), class: "ABEdit__btn__return"
+      .ABEdit__heading
+        %h2 書籍編集
+      .ABEdit__contents
+        .ABEdit__BookImage
+          .ABEdit__ImageTag
+            %p 現在の画像
+          .ABEdit__image
+            = attachment_image_tag @book, :image, :fill, 300, 300, fallback: asset_path("no_image_book.jpeg"),size: "300x300"
+        .ABEdit__form
+          = form_with model: @book, url: admin_book_path(@book), method: :patch, local: true do |f|
+            %table.ABEdit__item
+              %tr
+                %th.ABEdit__thread
+                  %span.ABEdit__tag 書籍画像
+                %td.ABEdit__thread= f.attachment_field :image
+              %tr
+                %th.ABEdit__thread
+                  %span.ABEdit__tag 書籍名
+                %td.ABEdit__thread= f.text_field :name
+              %tr
+                %th.ABEdit__thread
+                  %span.ABEdit__tag 作者
+                %td.ABEdit__thread= f.text_field :writer
+              %tr
+                %th.ABEdit__thread
+                  %span.ABEdit__tag 分類
+                %td.ABEdit__thread
+                  = f.collection_select(:book_classifications, @classifications, :id, :name)
+              %tr
+                %th.ABEdit__thread
+                  %span.ABEdit__tag ジャンル
+                %td.ABEdit__thread
+                  = f.collection_select(:book_genres, @genres, :id, :name)
+              %tr
+                %th.ABEdit__thread
+                  %span.ABEdit__tag 編集ステータス
+                %td.ABEdit__thread
+                  - if @book.edit_status == true
+                    = f.radio_button :edit_option, 0, checked: "checked"
+                    = f.label :edit_status, "未編集"
+                    = f.radio_button :edit_option, 1
+                    = f.label :edit_status, "編集済み"
+                  - else
+                    = f.radio_button :edit_option, 0
+                    = f.label :edit_status, "未編集"
+                    = f.radio_button :edit_option, 1, checked: "checked"
+                    = f.label :edit_status, "編集済み"
+              %tr
+                %th.ABEdit__thread
+                  %span.ABEdit__tag 書籍ステータス
+                %td.ABEdit__thread
+                  - if @book.is_active == true
+                    = f.radio_button :book_option, 0, checked: "checked"
+                    = f.label :is_active, "正常"
+                    = f.radio_button :book_option, 1
+                    = f.label :is_active, "違反"
+                  - else
+                    = f.radio_button :book_option, 0
+                    = f.label :is_active, "正常"
+                    = f.radio_button :book_option, 1, checked: "checked"
+                    = f.label :is_active, "違反"
+              %tr
+                %th.ABEdit__thread
+                  %span.ABEdit__tag 紹介文
+                %td.ABEdit__thread--textbox= f.text_area :introduction
+            .ABEdit__action
+              = f.submit "変更", class: "ABEdit__btn"

@@ -1,0 +1,35 @@
+.UserPage
+  .UserPage__container
+    %section.UEdit
+      .UEdit__action__return
+        = link_to "<<戻る", mypage_path, class: "UEdit__btn__return"
+      .UEdit__heading
+        %h2 会員編集
+      .UEdit__contents
+        .UEdit__BookImage
+          .UEdit__ImageTag
+            %p.UEdit__tag 現在の画像
+          .UEdit__image
+            = attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg",size: '300x300'
+        .UEdit__form
+          = form_with model: @user, url: mypage_edit_path, method: :patch, local: true do |f|
+            %table.UEdit__item
+              %tr
+                %th.UEdit__thread
+                  %span.UEdit__tag プロフィール画像
+                %td.UEdit__thread= f.attachment_field :image
+              %tr
+                %th.UEdit__thread
+                  %span.UEdit__tag ニックネーム
+                %td.UEdit__thread= f.text_field :nick_name
+              %tr
+                %th.UEdit__thread
+                  %span.UEdit__tag メールアドレス
+                %td.UEdit__thread= f.text_field :email
+              %tr
+                %th.UEdit__thread
+                  %span.UEdit__tag 自己紹介
+            .UEdit__introduce
+              = f.text_area :introduce
+            .UEdit__action
+              = f.submit "変更", class: "UEdit__btn"

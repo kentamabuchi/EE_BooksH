@@ -1,0 +1,17 @@
+.UserPage
+  .UserPage__container
+    %section.UStatus
+      .UStatus__heading
+        %h2 退会
+      .UStatus__contents
+        %table.UStatus__table
+          %tr
+            %th.UStatus__thread 本当に退会しますか？
+          %tr
+            %td.UStatus__date
+              退会すると会員情報の閲覧や、
+              サイトの使用などができなくなります。
+              退会する場合は、『退会する』をクリックして下さい。
+      .UStatus__action
+        = link_to "退会しない", mypage_path, class: "UStatus__btn--no"
+        = link_to "退会する", user_change_path, method: :patch, class: "UStatus__btn--yes"

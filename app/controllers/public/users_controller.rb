@@ -45,6 +45,16 @@ class Public::UsersController < ApplicationController
     @relationships = @user.followings.all
   end
   
+  def favorite_books
+    @user = User.find(params[:id])
+    @favorite_books = @user.favorite_books.page(params[:page]).per(10).reverse_order
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @relationships = @user.followings.page(params[:page]).per(10).reverse_order
+  end
+  
   
   private
   

@@ -80,56 +80,38 @@ textarea {
             line-height: 50px;
         }
     }
-    &__ranking__items {
-        height: 500px;
+    &__ranking {
+        width: 80%;
         @extend %row;
-        justify-content: center;
-        margin-top: 20px;
-        
+        margin: 20px auto 0 auto;
+        background-color: blue;
     }
-    &__ranking__first {
-        @extend %center;
+    &__ranking__contents {
         height: 500px;
-        width: 40%;
-        background-color: $color-navy-blue;
-        padding: 50px 0;
-        text-align: center;
+        width: 50%;
     }
-    &__ranking__other {
-        width: 40%;
+     &__ranking__contents__other {
         height: 500px;
+        width: 50%;
         display: flex;
         flex-wrap: wrap;
+        background-color: blue;
+     }
+    &__ranking__item {
+        height: 500px;
+        padding: 50px 0;
+        @extend %column;
+        text-align: center;
     }
-    &__ranking {
-        &--second {
-            @extend %center;
-            height: 250px;
-            width: 50%;
-            background-color: $color-blue;
-            padding: 20px 0;
-        }
-        &--third {
-            @extend %center;
-            height: 250px;
-            width: 50%;
-            background-color: $color-navy-blue;
-            padding: 20px 0;
-        }
-        &--fourth {
-            @extend %center;
-            height: 250px;
-            width: 50%;
-            background-color: $color-white-blue;
-            padding: 20px 0;
-        }
-        &--fifth {
-            @extend %center;
-            height: 250px;
-            width: 50%;
-            background-color:  $color-blue;
-            padding: 20px 0;
-        }
+    &__ranking__item__other {
+        height: 250px;
+        width: 50%;
+        padding: 20px 0;
+        @extend %column;
+        text-align: center;
+    }
+    &__text {
+        text-align: center;
     }
     &__new-lineup {
         @extend %row;
@@ -160,7 +142,7 @@ textarea {
         margin-right: auto;
     }
     &__data {
-        width: 25%;
+        width: 50%;
         color: $color-white;
         text-align: center;
         &--GoodBook {
@@ -181,13 +163,22 @@ textarea {
     &__text {
         width: 300px;
         margin: 0 auto;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
         &--another {
             width: 100px;
             margin: 0 auto;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
         &--lineup {
             width: 150px;
             text-align: center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
     }
 }
@@ -292,6 +283,18 @@ textarea {
        border: none;
        border-radius: 15px;
     }
+    &__message {
+        width: 100px;
+        font-size: 5px;
+        color: $color-white;
+        background-color: $color-pastel-red;
+        padding: 5px;
+        text-align: center; 
+        
+    }
+}
+div.field_with_errors > input{
+    border: 3px solid red;
 }
 
 .BShow {

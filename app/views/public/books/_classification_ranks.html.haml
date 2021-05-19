@@ -1,0 +1,105 @@
+.BIndex__heading
+  %h2.BIndex__heading--h2 読まれている本ランキング(分類別)
+  %p.BIndex__heading--p ※同率を含む
+.BIndex__ranking__items
+  .BIndex__ranking__first
+    - if classification_first != nil
+      %table
+        %tr
+          %th.BIndex__data
+            = link_to book_path(classification_first) do
+              = attachment_image_tag classification_first, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: '300x300'
+        %tr
+          %td.BIndex__data
+            %p.BIndex__text--another.text-truncate
+              １位 #{classification_first.name}
+        %tr
+          %td
+            = render 'public/books/rate_average', {book: classification_first, rate: first_classification}
+        %tr
+          %td.BIndex__data
+            %i.fas.fa-glasses
+            = classification_first.favorite_books.count
+  .BIndex__ranking__other
+    .BIndex__ranking--second
+      - if classification_second != nil
+        %table
+          %tr
+            %th.BIndex__data--another
+              = link_to book_path(classification_second) do
+                = attachment_image_tag classification_second, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '100x100'
+          %tr
+            %td.BIndex__data--another
+              %p.BIndex__text--another.text-truncate
+                ２位 #{classification_second.name}
+          %tr
+            %td
+              = render 'public/books/rate_average', {book: classification_second, rate: second_classification}
+          %tr
+            %td.BIndex__data--another
+              %i.fas.fa-glasses
+              = classification_second.favorite_books.count
+    .BIndex__ranking--third
+      - if classification_third != nil
+        %table
+          %tr
+            %th.BIndex__data--another
+              = link_to book_path(classification_third) do
+                = attachment_image_tag classification_third, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '100x100'
+          %tr
+            %td.BIndex__data--another
+              %p.BIndex__text--another.text-truncate
+                ３位 #{classification_third.name}
+          %tr
+            %td
+              = render 'public/books/rate_average', {book: classification_third, rate: third_classification}
+          %tr
+            %td.BIndex__data--another
+              %i.fas.fa-glasses
+              = classification_third.favorite_books.count
+    .BIndex__ranking--fourth
+      - if classification_fourth != nil
+        %table
+          %tr
+            %th.BIndex__data--another
+              = link_to book_path(classification_fourth) do
+                = attachment_image_tag classification_fourth, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '100x100'
+          %tr
+            %td.BIndex__data--another
+              %p.BIndex__text--another.text-truncate
+                ４位 #{classification_fourth.name}
+          %tr
+            %td
+              = render 'public/books/rate_average', {book: classification_fourth, rate: fourth_classification}
+          %tr
+            %td.BIndex__data--another
+              %i.fas.fa-glasses
+              = classification_fourth.favorite_books.count
+    .BIndex__ranking--fifth
+      - if classification_fifth != nil
+        %table
+          %tr
+            %th.BIndex__data--another
+              = link_to book_path(classification_fifth) do
+                = attachment_image_tag classification_fifth, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: '100x100'
+          %tr
+            %td.BIndex__data--another
+              %p.BIndex__text--another.text-truncate
+                ５位 #{classification_fifth.name}
+          %tr
+            %td
+              = render 'public/books/rate_average', {book: classification_fifth, rate: fifth_classification}
+          %tr
+            %td.BIndex__data--another
+              %i.fas.fa-glasses
+              = classification_fifth.favorite_books.count
+.BIndex__heading
+  %h2.BIndex__heading--h2 新着
+.BIndex__new-lineup
+  - new_books.each do |new_book|
+    .BIndex__BookItem
+      .BIndex__data
+        = link_to book_path(new_book) do
+          = attachment_image_tag new_book, :image, :fill, 150, 150, fallback: "no_image_book.jpeg", size: '150x150'
+      .BIndex__data
+        %p.BIndex__text--lineup.text-truncate= new_book.name

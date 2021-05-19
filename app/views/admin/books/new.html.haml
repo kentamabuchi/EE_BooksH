@@ -1,0 +1,38 @@
+.ABookPage
+  .ABookPage__container
+    %section.ABNew
+      .ABNew__heading
+        %h2 書籍追加
+      .NPage__contents
+        .ABNew__form
+          = form_with model: @book, url: admin_books_path, method: :post, local: true do |f|
+            %table.ABNew__form__item
+              %tr
+                %th.ABNew__thread
+                  %span.ABNew__tag 書籍画像：
+                %td.ABNew__thread= f.attachment_field :image
+              %tr
+                %th.ABNew__thread
+                  %span.ABNew__tag 書籍名：
+                %td.ABNew__thread= f.text_field :name
+              %tr
+                %th.ABNew__thread
+                  %span.ABNew__tag 作者：
+                %td.ABNew__thread= f.text_field :writer
+              %tr
+                %th.ABNew__thread
+                  %span.ABNew__tag 分類：
+                %td.ABNew__thread
+                  = f.collection_select(:classification_id, @classifications, :id, :name)
+              %tr
+                %th.ABNew__thread
+                  %span.ABNew__tag ジャンル：
+                %td.ABNew__thread
+                  = f.collection_select(:genre_id, @genres, :id, :name)
+              %tr
+                %th.ABNew__thread
+                  %span.ABNew__tag 紹介文
+                %td.ABNew__thread--textbox= f.text_area :introduction
+              %tr
+                %td
+                  = f.submit "追加", class: "ABNew__form__btn"

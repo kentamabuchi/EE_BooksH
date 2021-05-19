@@ -1,0 +1,44 @@
+.AUserPage
+  .AUserPage__container
+    %section.AUEdit
+      .AUEdit__action__return
+        = link_to "<<詳細へ戻る", admin_user_path(@user), class: "AUEdit__btn__return"
+      .AUEdit__heading
+        %h2 会員編集
+      .AUEdit__contents
+        .AUEdit__BookImage
+          .AUEdit__ImageTag
+            %p 現在の画像
+          .AUEdit__image
+            = attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg",size: '300x300'
+        .AUEdit__form
+          = form_with model: @user, url: admin_user_path(@user), method: :patch, local: true do |f|
+            %table.AUEdit__item
+              %tr
+                %th.AUEdit__thread
+                  %span.AUEdit__tag プロフィール画像：
+                %td.AUEdit__thread= f.attachment_field :image
+              %tr
+                %th.AUEdit__thread
+                  %span.AUEdit__tag ニックネーム：
+                %td.AUEdit__thread= f.text_field :nick_name
+              %tr
+                %th.AUEdit__thread
+                  %span.AUEdit__tag メールアドレス：
+                %td.AUEdit__thread= f.text_field :email
+              %tr
+                %th.AUEdit__thread
+                  %span.AUEdit__tag 会員ステータス：
+                %td.AUEdit__thread
+                  - if @user.is_active == true
+                    = f.radio_button :is_active, true, checked: "checked"
+                    = f.label :is_active, "有効"
+                    = f.radio_button :is_active, false
+                    = f.label :is_active, "退会"
+                  - else
+                    = f.radio_button :is_active, true
+                    = f.label :is_active, "有効"
+                    = f.radio_button :is_active, false, checked: "checked"
+                    = f.label :is_active, "退会"
+            .AUEdit__action
+              = f.submit "変更", class: "AUEdit__btn"
