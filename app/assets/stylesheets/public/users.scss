@@ -128,17 +128,38 @@
         background-color: $color-navy-blue;
         width: 90%;
         margin: 0 auto 50px auto;
+        padding: 50px 0;
+        &--index {
+            background-color: $color-navy-blue;
+            width: 90%;
+            margin: 50px auto 50px auto;
+            padding: 50px 0;
+        }
     }
     &__relationships {
         background-color: $color-dark-blue;
         width: 90%;
         margin: 0 auto 50px auto;
+        padding: 50px 0;
+        &--index {
+            background-color: $color-dark-blue;
+            width: 90%;
+            margin: 50px auto 50px auto;
+            padding: 50px 0;
+        }
     }
     &__page__heading {
+        width: 80%;
         color: $color-white;
         background-color: $color-blue;
         padding-left: 50px;
-        margin: 50px 100px;
+        margin: 0 auto 50px auto;
+        &--index {
+            color: $color-white;
+            background-color: $color-blue;
+            padding-left: 50px;
+            margin: 50px 100px;
+        }
     }
     &__page__contents {
         @extend %column;
@@ -165,6 +186,19 @@
     &__paginate {
         @extend %center;
         margin-top: 50px;
+    }
+    &__link {
+        @extend %center;
+        margin-bottom: 50px;
+    }
+    &__link__item {
+        height: 40px;
+        width: 200px;
+        color: black;
+        background-color: $color-white;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 15px;
     }
 }
 

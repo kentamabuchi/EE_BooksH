@@ -1,0 +1,24 @@
+.AReviewPage
+  .AReviewPage__container
+    %section.ARShow
+      .ARShow__action__return
+        = link_to "戻る", admin_books_path, class: "BEdit__btn__return"
+      .ARShow__heading
+        %h2 コメント詳細
+      .ARShow__contents
+        .ARShow__UserInfo
+          = link_to admin_user_path(@review.user), class: "ARShow__link" do
+            = attachment_image_tag @review.user, :image, :fill, 300, 300, fallback: "no_image.jpg",size: '200x200'
+          .ARShow__UserName
+            = @review.user.nick_name
+        .ARShow__reviewDate
+          %table.ARShow__form__item
+            %tr
+              %th.ARShow__thread
+                %span.ARShow__tag コメント
+            %tr
+              %td.ARShow__data
+                %span.ARShow__text= @review.comment
+          .ARShow__action
+            = link_to "編集", edit_admin_review_path(@review), class: "ARShow__btn--edit"
+            = link_to "削除", admin_review_path(@review), method: :delete, class: "ARShow__btn--delete"

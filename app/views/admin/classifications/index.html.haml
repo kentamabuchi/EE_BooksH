@@ -1,0 +1,33 @@
+.ACIndex
+  .ACIndex__container
+    .ACIndex__content
+      %section.ACIndex__scection
+        .ACIndex__section__heading
+          %h2 分類追加
+        .ACIndex__form
+          = form_with model: @classification, url: admin_classifications_path, method: :post, local: true do |f|
+            %table.ACIndex__form__item
+              %tr
+                %th.ACIndex__text 分類名：
+                %td= f.text_field :name
+                %td
+                  = f.submit "追加", class: "ACIndex__btn"
+                  　
+      %section.ACIndex__section
+        .ACIndex__section__heading
+          %h2 分類一覧
+        .ACIndex__index
+          %table.ACIndex__index__item
+            - @classifications.each do |classification|
+              %tr
+                %td.ACIndex__cell
+                  %span.ACIndex__text= classification.name
+                = form_with model: classification, url: admin_classification_path(classification), method: :patch, local: true do |f|
+                  %td
+                    = f.text_field :name
+                  %td
+                    = f.submit "変更", class: "ACIndex__btn--change"
+                %td
+                  = link_to "削除", admin_classification_path(classification), method: :delete, class: "ACIndex__btn--delete"
+        .AGIndex__paginate
+          = paginate @classifications

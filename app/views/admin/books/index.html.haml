@@ -1,0 +1,32 @@
+.ABookPage
+  .ABookPage__container--another
+    %section.ABIndex
+      .ABIndex__heading
+        %h2 書籍一覧
+      .ABIndex__action__new
+        = link_to new_admin_book_path, class: "d-flex flex-row-reverse pb-3" do
+          %i.far.fa-plus-square.fa-2x
+      .ABIndex__contents
+        %table.ABIndex__table
+          %tr
+            %th.ABIndex__thread タイトル
+            %th.ABIndex__thread 作者
+            %th.ABIndex__thread--category 分類
+            %th.ABIndex__thread--category ジャンル
+            %th.ABIndex__thread--status 編集ステータス
+          - @books.each do |book|
+            %tr
+              %td.ABIndex__date--name
+                %p.ABIndex__text--name.text-truncate= book.name
+              %td.ABIndex__date
+                %p.ABIndex__text--name.text-truncate= book.writer
+              %td.ABIndex__date
+                %p.ABIndex__text.text-truncate= book.classification.name
+              %td.ABIndex__date
+                %p.ABIndex__text.text-truncate= book.genre.name
+              %td.ABIndex__date
+                %p.ABIndex__text.text-truncate= book.edit_status
+              %td.ABIndex__date= link_to "詳細", admin_book_path(book), class: "ABIndex__btn--show"
+              %td.ABIndex__date= link_to "削除", admin_book_path(book), method: :delete, class: "ABIndex__btn--delete"
+        .ABIndex__paginate
+          = paginate @books

@@ -1,0 +1,28 @@
+.AHTop__index
+  .AHTop__contents
+    - if @books.blank?
+      %div
+        .AHTop__none
+          %h2 違反報告はありません
+    - else
+      %table.AHTop__table
+        %tr
+          %th.AHTop__thread タイトル
+          %th.AHTop__thread 作者
+          %th.AHTop__thread--category 分類
+          %th.AHTop__thread--category ジャンル
+          %th.AHTop__thread--status 書籍ステータス
+        - @books.each do |book|
+          %tr
+            %td.AHTop__date
+              %p.AHTop__text--name.text-truncate= book.name
+            %td.AHTop__date
+              %p.AHTop__text--name.text-truncate= book.writer
+            %td.AHTop__date
+              %p.AHTop__text.text-truncate= book.classification.name
+            %td.AHTop__date
+              %p.AHTop__text.text-truncate= book.genre.name
+            %td.AHTop__date
+              %p.AHTop__text.text-truncate= book.is_active
+            %td.AHTop__date= link_to "詳細", admin_book_path(book), class: "AHTop__btn--show"
+            %td.AHTop__date= link_to "削除", admin_book_path(book), method: :delete, class: "AHTop__btn--delete"

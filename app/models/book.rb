@@ -7,6 +7,8 @@ class Book < ApplicationRecord
     belongs_to :genre
     
     attachment :image
-
+    
+    validates :name, presence: true
+    validates :writer, presence: true
 
 end

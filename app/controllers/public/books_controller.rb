@@ -1,7 +1,7 @@
 class Public::BooksController < ApplicationController
   
   before_action :set_book_ranking, only: [:index]
-   before_action :set_classification_ranking, only: [:book_classifications]
+  before_action :set_classification_ranking, only: [:book_classifications]
   before_action :set_follow_book_ranking, only: [:index]
 
   def index
@@ -27,15 +27,21 @@ class Public::BooksController < ApplicationController
   
   def create
     @book = Book.new(book_params)
-    @book.save
+    @classifications = Classification.all
+    @genres = Genre.all
+    if @book.save
+      redirect_to books_path
+    else
+      render :new
+    end
   end
 
   def show
     @book = Book.find(params[:id])
-    @good_books = GoodBook.where(book_id: @book.id)
-    @favorite_books = FavoriteBook.where(book_id: @book.id)
+    @good_books = GoodBook.where(book_id: @book.id).limit(5)
+    @favorite_books = FavoriteBook.where(book_id: @book.id).limit(5)
     @review = Review.new
-    @reviews = @book.reviews.page(params[:page]).per(5).reverse_order
+    @reviews = @book.reviews.all.limit(5).reverse_order
     if @book.reviews.blank?
       @average_rate = 0
     else
@@ -103,17 +109,17 @@ class Public::BooksController < ApplicationController
 
   def set_book_ranking
     @new_books = Book.all.order(created_at: :desc).limit(5)
-    @ranking = []
+    @rankings = []
     @all_ranks = Book.includes(:favorite_books).sort {|a,b| b.favorite_books.size <=> a.favorite_books.size}
     @all_ranks.last(5).map do |book|
-      @ranking.push(book.id)
+      @rankings.push(book.id)
     end
       
-    @book_first = Book.find(@ranking[0]) if @ranking[0] != nil
-    @book_second = Book.find(@ranking[1]) if @ranking[1] != nil
-    @book_third = Book.find(@ranking[2]) if @ranking[2] != nil
-    @book_fourth = Book.find(@ranking[3]) if @ranking[3] != nil
-    @book_fifth = Book.find(@ranking[4])if @ranking[4] != nil
+    # @book_first = Book.find(@ranking[0]) if @ranking[0] != nil
+    # @book_second = Book.find(@ranking[1]) if @ranking[1] != nil
+    # @book_third = Book.find(@ranking[2]) if @ranking[2] != nil
+    # @book_fourth = Book.find(@ranking[3]) if @ranking[3] != nil
+    # @book_fifth = Book.find(@ranking[4])if @ranking[4] != nil
 
     @rate =[]
     @all_ranks.last(5).map do |book|
@@ -135,34 +141,34 @@ class Public::BooksController < ApplicationController
   def set_classification_ranking
     @classification = Classification.find(params[:id])
     @new_classification_books = @classification.books.all.order(created_at: :desc).limit(5)
-    @classification_ranking = []
+    @classification_rankings = []
     @all_ranks = Book.includes(:good_books).sort {|a,b| b.good_books.size <=> a.good_books.size}
     @classification_ranks = @all_ranks.select{ |book| book.classification_id == @classification.id }
     @classification_ranks.last(5).map do |book|
-      @classification_ranking.push(book)
+      @classification_rankings.push(book.id)
     end
     
-    @classification_first = Book.find(@classification_ranking[0].id) if @classification_ranking[0] != nil
-    @classification_second = Book.find(@classification_ranking[1].id) if @classification_ranking[1] != nil
-    @classification_third = Book.find(@classification_ranking[2].id) if @classification_ranking[2] != nil
-    @classification_fourth = Book.find(@classification_ranking[3].id) if @classification_ranking[3] != nil
-    @classification_fifth = Book.find(@classification_ranking[4].id)if @classification_ranking[4] != nil
+    # @classification_first = Book.find(@classification_rankings[0].id) if @classification_rankings[0] != nil
+    # @classification_second = Book.find(@classification_rankings[1].id) if @classification_rankings[1] != nil
+    # @classification_third = Book.find(@classification_rankings[2].id) if @classification_rankings[2] != nil
+    # @classification_fourth = Book.find(@classification_rankings[3].id) if @classification_rankings[3] != nil
+    # @classification_fifth = Book.find(@classification_rankings[4].id)if @classification_rankings[4] != nil
 
-    @classification_rate =[]
-    @classification_ranking.map do |book|
-      book_rate = Book.find(book.id)
-      if book_rate.reviews.blank?
-        @classification_rate.push(0)
-      else
-        @classification_rate.push(Book.find(book.id).reviews.average(:rate).round(1))
-      end
-    end
+    # @classification_rate =[]
+    # @classification_rankings.map do |book|
+    #   book_rate = Book.find(book.id)
+    #   if book_rate.reviews.blank?
+    #     @classification_rate.push(0)
+    #   else
+    #     @classification_rate.push(Book.find(book.id).reviews.average(:rate).round(1))
+    #   end
+    # end
     
-    @first_classification = @classification_rate[0] if @classification_rate[0] != nil
-    @second_classification = @classification_rate[1] if @classification_rate[1] != nil
-    @third_classification = @classification_rate[2] if @classification_rate[2] != nil
-    @fourth_classification = @classification_rate[3] if @classification_rate[3] != nil
-    @fifth_classification = @classification_rate[4] if @classification_rate[4] != nil
+    # @first_classification = @classification_rate[0] if @classification_rate[0] != nil
+    # @second_classification = @classification_rate[1] if @classification_rate[1] != nil
+    # @third_classification = @classification_rate[2] if @classification_rate[2] != nil
+    # @fourth_classification = @classification_rate[3] if @classification_rate[3] != nil
+    # @fifth_classification = @classification_rate[4] if @classification_rate[4] != nil
     
   end
   

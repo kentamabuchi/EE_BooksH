@@ -1,0 +1,25 @@
+.UShow__relationships
+  .UShow__page__heading
+    %h2 フォロー
+  - if relationships.blank?
+    .UShow__page__contents--other
+      %h2 フォローしていません
+  - else
+    .UShow__page__contents
+      - relationships.each do |relationship|
+        .UShow__favorite-book
+          .UShow__book-image
+            %div
+              = link_to user_path(relationship), class: "UShow__BookLink" do
+                = attachment_image_tag relationship, :image, :fill, 200, 200, fallback: "no_image.jpg",size: '150x150'
+          .UShow__book-data
+            %table.UShow__book-info
+              %tr
+                %th.UShow__thread--book
+                  %span.UShow__tag--book ニックネーム
+                %td.UShow__date--book= relationship.nick_name
+                
+  -if relationships.length >= 5
+    .UShow__link
+      = link_to user_followers_index_path(user), class:"UShow__link__item" do
+        もっと見る

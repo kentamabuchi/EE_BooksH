@@ -1,0 +1,73 @@
+.BIndex__heading
+  %h2.BIndex__heading__text 読まれている本ランキング
+  %p.BIndex__heading__attention ※同率を含む
+.BIndex__ranking
+  - 1.times do |n|
+    - if rankings[n].present?
+      - book = Book.find(rankings[n])
+      .BIndex__ranking__contents
+        .BIndex__ranking__item
+          %div
+            = link_to book_path(book) do
+              = attachment_image_tag book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: "300x300", class:"BIndex__ranking__image"
+          .BIdex__ranking__data
+            %table
+              %tr
+                %td.BIndex__data
+                  %p.BIndex__text
+                    %i.fas.fa-crown
+                    = n+1
+                    位
+              %tr
+                %td.BIndex__data
+                  %p.BIndex__text= book.name
+              %tr
+                %td
+                  - if book.reviews.blank?
+                    - ranks_rate = 0
+                  - else
+                    - ranks_rate = book.reviews.average(:rate).round(1)
+                  = render 'public/books/rate_average', {book: book, rate: ranks_rate}
+              %tr
+                %td.BIndex__data
+                  %i.fas.fa-glasses
+                  = book.favorite_books.count
+  .BIndex__ranking__contents__other
+    - 4.times do |n|
+      - if rankings[n+1].present?
+        - book = Book.find(rankings[n+1])
+        .BIndex__ranking__item__other
+          %div
+            = link_to book_path(book) do
+              = attachment_image_tag book, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: "100x100", class:"BIndex__ranking__image"
+          .BIdex__ranking__data
+            %table
+              %tr
+                %td.BIndex__data
+                  %p.BIndex__text--another
+                    = n+2
+                    位
+              %tr
+                %td.BIndex__data
+                  %p.BIndex__text--another= book.name
+              %tr
+                %td
+                  - if book.reviews.blank?
+                    - ranks_rate = 0
+                  - else
+                    - ranks_rate = book.reviews.average(:rate).round(1)
+                  = render 'public/books/rate_average', {book: book, rate: ranks_rate}
+              %tr
+                %td.BIndex__data
+                  %i.fas.fa-glasses
+                  = book.favorite_books.count
+.BIndex__heading
+  %h2.BIndex__heading--h2 新着
+.BIndex__new-lineup
+  - new_books.each do |new_book|
+    .BIndex__BookItem
+      .BIndex__data
+        = link_to book_path(new_book) do
+          = attachment_image_tag new_book, :image, :fill, 150, 150, fallback: "no_image_book.jpeg", size: '150x150'
+      .BIndex__data
+        %p.BIndex__text--lineup.text-truncate= new_book.name

@@ -1,0 +1,21 @@
+.USPage
+  .USPage__container
+    .USPage__content
+      .USPage__heading
+        %h2 ログイン
+      .USPage__form
+        = form_with model: @user, url: user_session_path, local: true do |f|
+          .USPage__form__name
+            = f.label :メールアドレス
+          .USPage__form__TextBox
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+          .USPage__form__name
+            = f.label :パスワード
+          .USPage__form__TextBox
+            = f.password_field :password, autocomplete: "current-password"
+          - if devise_mapping.rememberable?
+            .USPage__form__check
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .USPage__actions
+            = f.submit "Log in"

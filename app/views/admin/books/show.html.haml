@@ -1,0 +1,54 @@
+.ABookPage
+  .ABookPage__container--free
+    %section.ABShow
+      .ABShow__action__return
+        = link_to "<<一覧へ戻る", admin_books_path, class: "ABShow__btn__return"
+      .ABShow__heading
+        %h2 書籍詳細
+      .ABShow__contents
+        .ABShow__BookImage
+          = attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg",size: "300x300"
+        .ABShow__BookDate
+          %table.ABShow__form__item
+            %tr
+              %th.ABShow__thread
+                %span.ABShow__tag 書籍名：
+              %td.ABShow__thread.text-break= @book.name
+            %tr
+              %th.ABShow__thread
+                %span.ABShow__tag 作者：
+              %td.ABShow__thread.text-break= @book.writer
+            %tr
+              %th.ABShow__thread.text-break
+                %span.ABShow__tag 分類：
+              %td.ABShow__thread.text-break
+                = @book.classification.name
+            %tr
+              %th.ABShow__thread
+                %span.ABShow__tag ジャンル：
+              %td.ABShow__thread.text-break
+                = @book.genre.name
+            %tr
+              %th.ABShow__thread
+                %span.ABShow__tag 編集ステータス：
+              %td.ABShow__thread
+                - if @book.edit_status == true
+                  未編集
+                - else
+                  編集済み
+            %tr
+              %th.ABShow__thread
+                %span.ABShow__tag 書籍ステータス：
+              %td.ABShow__thread
+                - if @book.edit_status == true
+                  正常
+                - else
+                  報告あり
+            %tr
+              %th.ABShow__thread
+                %span.ABShow__tag 作品紹介
+          .ABShow__introduce.text-break
+            = @book.introduction
+          .ABShow__action
+            = link_to "編集", edit_admin_book_path(@book), class: "ABShow__btn--edit"
+            = link_to "削除", admin_book_path(@book), method: :delete, class: "ABShow__btn--delete"
