@@ -1,0 +1,26 @@
+.signIn__items
+    .signIn__heading
+        %h2 ログイン
+        
+    .signIn__form
+        %form{"accept-charset" => "UTF-8", :action => "/users/sign_in", :method => "post"}
+            %input{:name => "utf8", :type => "hidden", :value => "✓"}
+            %input{:name => "authenticity_token", :type => "hidden", :value => "90eD4XkHnGyxao2JCukpxqeH0gqvxxNkIOyQeu41w1WSSDgw3mgkwM0vQrOYyS0ftEun1RgtMwjuSDJR3wx7Mg"}
+            .signIn__form__name
+                %label{:for => "user_メールアドレス"} メールアドレス
+            .signIn__form__textBox
+                %input#user_email{:autocomplete => "email", :autofocus => "autofocus", :name => "user[email]", :type => "email", :value => ""}
+            .signIn__form__name
+                %label{:for => "user_パスワード"} パスワード
+            .signIn__form__textBox
+                %input#user_password{:autocomplete => "current-password", :name => "user[password]", :type => "password"}
+            .signIn__form__check
+                %input{:name => "user[remember_me]", :type => "hidden", :value => "0"}
+                %input#user_remember_me{:name => "user[remember_me]", :type => "checkbox", :value => "1"}
+                %label{:for => "user_remember_me"} Remember me
+            .signIn__form__actions
+                %input.signIn__form__btn{"data-disable-with" => "ログイン", :name => "commit", :type => "submit", :value => "ログイン"}
+                
+    #signIn__announce.signIn__announce 登録がお済みでない方はこちらから
+    
+    

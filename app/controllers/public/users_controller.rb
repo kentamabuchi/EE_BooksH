@@ -2,8 +2,8 @@ class Public::UsersController < ApplicationController
   
   def mypage
     @user = User.find(current_user.id)
-    @favorite_books = current_user.favorite_books.all
-    @relationships = current_user.followings.all
+    @favorite_books = current_user.favorite_books.limit(5).reverse_order
+    @relationships = current_user.followings.limit(5).reverse_order
   end
   
   def show
@@ -69,3 +69,4 @@ class Public::UsersController < ApplicationController
   end
   
 end
+
