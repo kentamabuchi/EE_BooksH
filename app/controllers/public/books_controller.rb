@@ -38,10 +38,10 @@ class Public::BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @good_books = GoodBook.where(book_id: @book.id).limit(5)
-    @favorite_books = FavoriteBook.where(book_id: @book.id).limit(5)
+    @good_books = GoodBook.where(book_id: @book.id)
+    @favorite_books = FavoriteBook.where(book_id: @book.id)
     @review = Review.new
-    @reviews = @book.reviews.all.limit(5).reverse_order
+    @reviews = @book.reviews.page(params[:page]).per(5).reverse_order
     if @book.reviews.blank?
       @average_rate = 0
     else
