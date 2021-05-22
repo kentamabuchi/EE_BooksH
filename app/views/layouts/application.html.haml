@@ -80,11 +80,9 @@
                       ログアウト
                       
             .search
-              = search_form_for(@q, url:books_search_path) do |f|
-                %table
-                  %tr
-                    %td= f.search_field :name_cont
-                    %td= f.submit "検索"
+              = form_with url: books_search_path, method: :get, local: true do |f|
+                = f.text_field :keyword, value: @keyword
+                = f.submit "検索"
                     
             
     - else
