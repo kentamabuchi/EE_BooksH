@@ -12,8 +12,14 @@ class Public::BooksController < ApplicationController
   end
   
   def search
-    @q = Book.search(search_params)
-    @books = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
+    @keywords = params[:keyword]
+    @search_books = []
+    @keywords.split(/[[:blank:]]+/).each do |keyword|
+      next if keyword == ""
+      @search_books += Book.where('name LIKE(?) OR writer LIKE(?)', "%#{keyword}%", "%#{keyword}%")
+    end
+    @search_books.uniq!
+    @books = Kaminari.paginate_array(@search_books).page(params[:page]).per(10)
   end
   
   def book_classifications
@@ -115,12 +121,6 @@ class Public::BooksController < ApplicationController
       @rankings.push(book.id)
     end
       
-    # @book_first = Book.find(@ranking[0]) if @ranking[0] != nil
-    # @book_second = Book.find(@ranking[1]) if @ranking[1] != nil
-    # @book_third = Book.find(@ranking[2]) if @ranking[2] != nil
-    # @book_fourth = Book.find(@ranking[3]) if @ranking[3] != nil
-    # @book_fifth = Book.find(@ranking[4])if @ranking[4] != nil
-
     @rate =[]
     @all_ranks.last(5).map do |book|
       book_rate = Book.find(book.id)
@@ -147,28 +147,6 @@ class Public::BooksController < ApplicationController
     @classification_ranks.last(5).map do |book|
       @classification_rankings.push(book.id)
     end
-    
-    # @classification_first = Book.find(@classification_rankings[0].id) if @classification_rankings[0] != nil
-    # @classification_second = Book.find(@classification_rankings[1].id) if @classification_rankings[1] != nil
-    # @classification_third = Book.find(@classification_rankings[2].id) if @classification_rankings[2] != nil
-    # @classification_fourth = Book.find(@classification_rankings[3].id) if @classification_rankings[3] != nil
-    # @classification_fifth = Book.find(@classification_rankings[4].id)if @classification_rankings[4] != nil
-
-    # @classification_rate =[]
-    # @classification_rankings.map do |book|
-    #   book_rate = Book.find(book.id)
-    #   if book_rate.reviews.blank?
-    #     @classification_rate.push(0)
-    #   else
-    #     @classification_rate.push(Book.find(book.id).reviews.average(:rate).round(1))
-    #   end
-    # end
-    
-    # @first_classification = @classification_rate[0] if @classification_rate[0] != nil
-    # @second_classification = @classification_rate[1] if @classification_rate[1] != nil
-    # @third_classification = @classification_rate[2] if @classification_rate[2] != nil
-    # @fourth_classification = @classification_rate[3] if @classification_rate[3] != nil
-    # @fifth_classification = @classification_rate[4] if @classification_rate[4] != nil
     
   end
   
