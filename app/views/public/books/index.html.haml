@@ -2,27 +2,28 @@
   .MainPage__container
     %section.BIndex
       .BIndex__sidebar
-        %table.BIndex__category
-          %tr
-            %th.BIndex__thread--sidebar
-              = link_to books_path do
-                %p.BIndex__tag.text-truncate
-                  ランキングTop
-                  %span &gt;&gt;
+        .BIndex__category
+          .BIndex__thread--sidebar
+            = link_to books_path do
+              %p.BIndex__tag.text-truncate
+                ランキングTop
           - @classifications.each do |classification|
-            %tr
-              %th.BIndex__thread--sidebar
-                = link_to book_classifications_path(classification.id), remote: true do
-                  %p.BIndex__tag.text-truncate
-                    = classification.name
-                    %span &gt;&gt;
+            .BIndex__thread--sidebar
+              = link_to book_classifications_path(classification.id), remote: true do
+                %p.BIndex__tag.text-truncate
+                  = classification.name
+                  
       .BIndex__contents
         .BIndex__action__new
           = link_to new_book_path, class: "d-flex flex-row-reverse pb-3" do
             %p.BIndex__action__announce
               お気に入りの本がない場合はこちらから登録して下さい
+              
+        .BIndex__BRecomend
+          = render 'public/books/recomend_books', {rankings: @recomened_books}
+                
         .BIndex__books
-          = render 'public/books/ranking', {rankings: @rankings, new_books: @new_books}
+          = render 'public/books/ranking', {rankings: @all_ranks, new_books: @new_books}
         .BIndex__heading
           %h2.BIndex__heading--h2 あなたにおすすめ
         .BIndex__recomend
@@ -33,3 +34,4 @@
                   = attachment_image_tag follow_book, :image, :fill, 150, 150, fallback: "no_image_book.jpeg", size: '150x150'
               .BIndex__data
                 %p.BIndex__text--lineup.text-truncate= follow_book.name
+

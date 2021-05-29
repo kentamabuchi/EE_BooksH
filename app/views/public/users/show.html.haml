@@ -35,4 +35,4 @@
           = link_to "Books", user_favorite_books_path(@user), remote: true, class: "UShow__tab"
           = link_to "Follows", user_relationships_path(@user), remote: true, class: "UShow__tab--other"
       .UShow__index
-        = render 'public/users/book_favorites', favorite_books: @favorite_books
+        = render 'public/users/book_favorites', favorite_books: @favorite_books, user: @user

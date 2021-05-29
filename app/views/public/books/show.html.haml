@@ -43,6 +43,7 @@
                   = @average_rate
                   点
                   :javascript
+                    $('.BShow__average__rate').empty(); 
                     $('.BShow__average__rate').raty({
                         starOff:  '#{asset_path('star-off.png')}',
                         starOn : '#{asset_path('star-on.png')}',
@@ -65,6 +66,7 @@
                     %span.BShow__tag レビュー
                 %tr.BShow__review__rate
                 :javascript
+                  $('.BShow__review__rate').empty(); 
                   $('.BShow__review__rate').raty({
                       starOn: "#{asset_path('star-on.png')}",
                       starOff: "#{asset_path('star-off.png')}",

@@ -7,8 +7,7 @@ class Public::BooksController < ApplicationController
   def index
     @classifications = Classification.all
     @relationships = Relationship.all
-    @q = Book.ransack(params[:q])
-    @books = @q.result(distinct: true)
+    @recomened_books = @all_ranks.sample(5)
   end
   
   def search
@@ -110,41 +109,23 @@ class Public::BooksController < ApplicationController
         end
       end
     end
-    @follow_books =  @books.sample(8).uniq
+    @books.uniq!
+    @follow_books =  @books.sample(5)
   end
 
   def set_book_ranking
     @new_books = Book.all.order(created_at: :desc).limit(5)
     @rankings = []
     @all_ranks = Book.includes(:favorite_books).sort {|a,b| b.favorite_books.size <=> a.favorite_books.size}
-    @all_ranks.last(5).map do |book|
-      @rankings.push(book.id)
-    end
-      
-    @rate =[]
-    @all_ranks.last(5).map do |book|
-      book_rate = Book.find(book.id)
-      if book_rate.reviews.blank?
-        @rate.push(0)
-      else
-        @rate.push(Book.find(book.id).reviews.average(:rate).round(1))
-      end
-    end
-    
-    @first_rate = @rate[0] if @rate[0] != nil
-    @second_rate = @rate[1] if @rate[1] != nil
-    @third_rate = @rate[2] if @rate[2] != nil
-    @fourth_rate = @rate[3] if @rate[3] != nil
-    @fifth_rate = @rate[4] if @rate[4] != nil
   end
     
   def set_classification_ranking
     @classification = Classification.find(params[:id])
     @new_classification_books = @classification.books.all.order(created_at: :desc).limit(5)
     @classification_rankings = []
-    @all_ranks = Book.includes(:good_books).sort {|a,b| b.good_books.size <=> a.good_books.size}
+    @all_ranks = Book.includes(:favorite_books).sort {|a,b| b.favorite_books.size <=> a.favorite_books.size}
     @classification_ranks = @all_ranks.select{ |book| book.classification_id == @classification.id }
-    @classification_ranks.last(5).map do |book|
+    @classification_ranks.first(5).map do |book|
       @classification_rankings.push(book.id)
     end
     
