@@ -4,7 +4,7 @@
 .BIndex__ranking
   - 1.times do |n|
     - if rankings[n].present?
-      - book = Book.find(rankings[n])
+      - book = Book.find(rankings[n].id)
       .BIndex__ranking__contents
         .BIndex__ranking__item
           %div
@@ -35,7 +35,7 @@
   .BIndex__ranking__contents__other
     - 4.times do |n|
       - if rankings[n+1].present?
-        - book = Book.find(rankings[n+1])
+        - book = Book.find(rankings[n+1].id)
         .BIndex__ranking__item__other
           %div
             = link_to book_path(book) do

@@ -17,7 +17,6 @@ textarea {
         height: 300px;
 }
 
-
 .MainPage {
     @extend %page;
     &__container {
@@ -34,13 +33,10 @@ textarea {
     &__sidebar{
         width: 200px;
         margin: 50px;
-        padding: 25px;
+        border: 3px solid black;
     }
     &__category {
-        display: inline-block;
-         background-color: $color-white-blue;
          padding: 25px;
-         text-align: center;
     }
     &__thread {
         height: 40px;
@@ -78,6 +74,35 @@ textarea {
         &--p {
             color: $color-white;
             line-height: 50px;
+        }
+    }
+    &__recomendItem {
+        display: none;
+    }
+    &__activeLeft {
+        display: block;
+        order: 1;
+        width: 20%;
+    }
+    &__active {
+        display: block;
+        order: 2;
+        width: 60%;
+    }
+    &__activeRight{
+        display: block;
+        order: 3;
+        width: 20%;
+    }
+    &__recomendBookItem {
+        margin-top: 100px;
+        &--row {
+            @extend %row;
+        }
+    }
+    &__recomendData {
+        &--main {
+            margin-left: 20px;
         }
     }
     &__ranking {
@@ -180,6 +205,68 @@ textarea {
             text-overflow: ellipsis;
             overflow: hidden;
         }
+    }
+}
+
+.BRecomend {
+    width: 90%;
+    margin: 0 auto;
+    padding: 50px 0;
+    &__heading {
+        @extend %heading;
+    }
+    &__contents {
+        
+        width: 80%;
+        margin: 20px auto;
+    }
+    &__slides {
+        @extend %row;
+        position: relative;
+    }
+    &__item {
+        display: none;
+        position: relative;
+    }
+    &__book {
+        @extend %row;
+    }
+    &__left {
+        display: block;
+        order: 1;
+        width: 50%;
+        margin-top: 50px;
+        opacity: 0.3;
+    }
+    &__main {
+        display: block;
+        order: 2;
+        width: 60%;
+        background-color: blue;
+        position: absolute;
+        left: 20%;
+        z-index: 100;
+        
+    }
+    &__right {
+        display: block;
+        order: 3;
+        width: 50%;
+        margin-top: 50px;
+        opacity: 0.3;
+    }
+    
+    &__bookData {
+    }
+    &__leftIcon {
+        position: absolute;
+        top: 100px;
+        left: 0;
+    }
+    &__rightIcon {
+        position: absolute;
+        top: 100px;
+        right: 0;
     }
 }
 
