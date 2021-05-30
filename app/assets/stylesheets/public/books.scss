@@ -25,18 +25,30 @@ textarea {
         background-color: $color-white;
         margin: 50px 0;
         padding-top: 50px;
+        position: relative;
     }
 }
 
 .BIndex {
     @extend %row;
+    position: relative;
     &__sidebar{
+        @extend %row;
+        position: absolute;
+        top: 0px;
+        bottom: 0;
+        margin-left: -280px;
+        z-index: 20;
+    }
+    &__sidebarMenu {
         width: 200px;
-        margin: 50px;
-        border: 3px solid black;
+        background-color: $white;
+        border: 5px solid $color-pastel-blue;
     }
     &__category {
-         padding: 25px;
+         padding: 10px;
+         background-color: $white;
+         text-align: center;
     }
     &__thread {
         height: 40px;
@@ -48,9 +60,27 @@ textarea {
     &__tag {
         @extend %tag;
     }
+    &__sidebarOpen, &__sidebarClose {
+        display: none;
+        height: 100px;
+        color:white;
+        background-color: $color-pastel-blue;
+        padding: 0 20px;
+        border-radius: 0 15px 15px 0;
+        line-height: 100px;
+    }
+    &__iconActive {
+        display: block;
+        height: 100px;
+        color:white;
+        background-color: $color-pastel-blue;
+        padding: 0 20px;
+        border-radius: 0 15px 15px 0;
+        line-height: 100px;
+    }
     &__contents {
         width: 80%;
-        margin: 50px 0;
+        margin: 50px auto;
     }
     &__action__new {
         margin-right: 100px;
@@ -209,19 +239,18 @@ textarea {
 }
 
 .BRecomend {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     padding: 50px 0;
     &__heading {
         @extend %heading;
     }
     &__contents {
-        
-        width: 80%;
         margin: 20px auto;
     }
     &__slides {
         @extend %row;
+        height: 300px;
         position: relative;
     }
     &__item {
@@ -233,27 +262,30 @@ textarea {
     }
     &__left {
         display: block;
-        order: 1;
         width: 50%;
+        background-color: black;
         margin-top: 50px;
-        opacity: 0.3;
+        position: absolute;
+        left: -10%;
+        opacity: 0.5;
     }
     &__main {
         display: block;
-        order: 2;
         width: 60%;
         background-color: blue;
         position: absolute;
         left: 20%;
-        z-index: 100;
+        z-index: 10;
         
     }
     &__right {
         display: block;
-        order: 3;
         width: 50%;
+        background-color: black;
         margin-top: 50px;
-        opacity: 0.3;
+        position: absolute;
+        right: -10%;
+        opacity: 0.5;
     }
     
     &__bookData {
@@ -261,12 +293,12 @@ textarea {
     &__leftIcon {
         position: absolute;
         top: 100px;
-        left: 0;
+        left: -10%;
     }
     &__rightIcon {
         position: absolute;
         top: 100px;
-        right: 0;
+        right: -10%;
     }
 }
 

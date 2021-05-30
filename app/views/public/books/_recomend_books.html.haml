@@ -19,10 +19,10 @@
                                         .BRecomend__recomendBookData= book. genre.name
                 - elsif n == 1
                     =link_to book_path(book) do
-                        .BRecomend__item.BRecomend__main
+                        .BRecomend__item.BRecomend__right
                             .BRecomend__book
-                                .BRecomend__bookimage
-                                    = attachment_image_tag book, :image, fallback: "no_image_book.jpeg", size: "300x300"
+                                .BRecomend__bookImage
+                                    = attachment_image_tag book, :image, fallback: "no_image_book.jpeg", size: "300x300", class: "BRecomend__image"
                                 .BRecomend__bookData
                                     .content
                                         .BRecomend__recomendBookData= book.name
@@ -31,7 +31,7 @@
                                         .BRecomend__recomendBookData= book. genre.name
                 - elsif n == 2
                     =link_to book_path(book) do
-                        .BRecomend__item.BRecomend__right
+                        .BRecomend__item.BRecomend__main
                             .BRecomend__book
                                 .BRecomend__bookImage
                                     = attachment_image_tag book, :image, fallback: "no_image_book.jpeg", size: "300x300"
