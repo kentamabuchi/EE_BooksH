@@ -1,18 +1,24 @@
 .MainPage
   .MainPage__container
     %section.BIndex
-      .BIndex__sidebar
-        .BIndex__category
-          .BIndex__thread--sidebar
-            = link_to books_path do
-              %p.BIndex__tag.text-truncate
-                ランキングTop
-          - @classifications.each do |classification|
-            .BIndex__thread--sidebar
-              = link_to book_classifications_path(classification.id), remote: true do
-                %p.BIndex__tag.text-truncate
-                  = classification.name
-                  
+    
+      
+      :javascript
+        $(function() {
+        
+          $('.BIndex__sidebarOpen').click(function() {
+            $('.BIndex__iconActive').removeClass('BIndex__iconActive');
+            $('.BIndex__sidebar').animate({'marginLeft': '0px'});
+            $('.BIndex__sidebarClose').addClass('BIndex__iconActive');
+          });
+          
+          $('.BIndex__sidebarClose').click(function() {
+            $('.BIndex__iconActive').removeClass('BIndex__iconActive');
+            $('.BIndex__sidebar').animate({'marginLeft': '-280px'});
+            $('.BIndex__sidebarOpen').addClass('BIndex__iconActive');
+          });
+        });
+                 
       .BIndex__contents
         .BIndex__action__new
           = link_to new_book_path, class: "d-flex flex-row-reverse pb-3" do
@@ -34,4 +40,22 @@
                   = attachment_image_tag follow_book, :image, :fill, 150, 150, fallback: "no_image_book.jpeg", size: '150x150'
               .BIndex__data
                 %p.BIndex__text--lineup.text-truncate= follow_book.name
+  
+    .BIndex__sidebar
+      .BIndex__sidebarMenu
+        .BIndex__category
+          .BIndex__thread--sidebar
+            = link_to books_path do
+              %p.BIndex__tag.text-truncate
+                ランキングTop
+          - @classifications.each do |classification|
+            .BIndex__thread--sidebar
+              = link_to book_classifications_path(classification.id), remote: true do
+                %p.BIndex__tag.text-truncate
+                  = classification.name
+                  
+      .BIndex__sidebarOpen.BIndex__iconActive
+        %i.fas.fa-2x.fa-caret-right.BIndex__menuIcon
+      .BIndex__sidebarClose
+        %i.fas.fa-2x.fa-caret-left.BIndex__menuIcon
 
