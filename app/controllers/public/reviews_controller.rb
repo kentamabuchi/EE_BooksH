@@ -1,5 +1,9 @@
 class Public::ReviewsController < ApplicationController
     
+    def index
+        
+    end
+    
     def create
         @book = Book.find(params[:book_id])
         @review = current_user.reviews.new(review_params)
