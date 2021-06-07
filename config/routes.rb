@@ -37,7 +37,9 @@ Rails.application.routes.draw do
       resource :good_books, only: [:create, :destroy]
       resource :favorite_books, only: [:create, :destroy]
     end
-    resources :reviews, only: [:index]
+    resources :reviews, only: [:index] do
+      resources :return_comment, only: [:create, :destroy]
+    end
     get '/book/classifications/:id' => 'books#book_classifications', as: 'book_classifications'
    
   end

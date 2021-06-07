@@ -71,6 +71,10 @@
                       %i.fas.fa-file-signature
                       Booksランキング
                   %li.nav__item
+                    = link_to reviews_path, class: "nav__link" do
+                      %i.fas.fa-cheese
+                      タイムライン
+                  %li.nav__item
                     = link_to user_path(current_user.id), class: "nav__link" do
                       %i.fas.fa-cheese
                       マイページ

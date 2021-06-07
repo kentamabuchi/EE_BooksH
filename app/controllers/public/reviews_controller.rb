@@ -1,6 +1,9 @@
 class Public::ReviewsController < ApplicationController
     
     def index
+        @followings = current_user.followings
+        @all_reviews = Review.all_reviews(@followings, current_user).sort.reverse
+        @reviews = Kaminari.paginate_array(@all_reviews).page(params[:page]).per(10)
         
     end
     
