@@ -1,0 +1,30 @@
+.reviewIndex
+    .reviewIndex__contents
+        .reviewindex__timeline
+            - @reviews.each do |review|
+                -if review.user_id == current_user.id
+                    .reviewIndex__timelineItem
+                        .reviewIndex__userComment
+                            .reviewIndex__commentText
+                                %P
+                                    = review.comment
+                            .reviewIndex__commentIcons
+                                .reviewIndex__iconItem いいね
+                                .reviewIndex__iconItem#reviewCommentCreate コメントする
+                                .reviewIndex__iconItem さくじょ
+                - else
+                    .reviewIndex__timelineItem--follower
+                        = link_to user_path(review.user) do 
+                            = attachment_image_tag review.user, :image, :fill, 75, 75, fallback: "no_image.jpg", size: "75x75",class:"reviewIndex__userImage"
+                        = review.user.nick_name
+                        .reviewIndex__userComment--follower
+                            .reviewIndex__commentText
+                                %P
+                                    = review.comment
+                            .reviewIndex__commentIcons
+                                .reviewIndex__iconItem いいね
+                                .reviewIndex__iconItem#reviewCommentCreate コメントする
+
+        = paginate @reviews
+                        
+                        

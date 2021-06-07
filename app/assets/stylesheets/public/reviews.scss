@@ -1,3 +1,56 @@
 // Place all the styles related to the public/reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import '_flex.scss';
+@import '_color.scss';
+
+
+
+.reviewIndex {
+    @extend %center;
+    padding: 50px 0;
+    &__contents{
+        width: 80%;
+        background: linear-gradient(-45deg, $color-navy-blue, blue);
+        padding: 50px 0;
+    }
+    &__tomelineItems{
+        
+    }
+    &__timelineItem {
+        width: 60%;
+        margin: 25px 50px 25px auto;
+        &--follower {
+            width: 60%;
+            margin: 25px auto 25px 50px;
+            background-color: $color-pastel-blue;
+            padding: 10px;
+        }
+    }
+    &__userImage {
+        border-radius: 50%;
+    }
+    &__userComment{
+        background-color: white;
+        padding: 10px;
+        &--follower {
+            color:white;
+            
+            padding: 10px;
+            margin-top: 10px;
+        }
+    }
+    &__commentText {
+        width: 80%;
+        margin: 0 auto;
+        word-break: break-word;
+        min-height: 100px;
+    }
+    &__commentIcons {
+        @extend %row;
+    }
+    &__iconItem:nth-child(odd) {
+        padding: 0 10px;
+    }
+}
