@@ -1,5 +1,19 @@
 class Public::ReviewsController < ApplicationController
     
+    def index
+        @return_comment = current_user.return_comments.new
+        @followings = current_user.followings
+        @all_reviews = Review.all_reviews(@followings, current_user).sort.reverse
+        @reviews = Kaminari.paginate_array(@all_reviews).page(params[:page]).per(10)
+        
+    end
+    
+    def show
+        @review = Review.find(params[:id])
+        @return_comment = current_user.return_comments.new
+        @return_comments = @review.return_comments.page(params[:page]).per(5).reverse_order
+    end
+    
     def create
         @book = Book.find(params[:book_id])
         @review = current_user.reviews.new(review_params)
@@ -14,7 +28,11 @@ class Public::ReviewsController < ApplicationController
     def destroy
         @review = Review.find_by(id: params[:id], book_id: params[:book_id])
         @review.destroy
-        redirect_to book_path(params[:book_id])
+        if params[:link] == "2"
+            redirect_to reviews_path
+        else
+            redirect_to book_path(params[:book_id])
+        end
     end
     
     def update
