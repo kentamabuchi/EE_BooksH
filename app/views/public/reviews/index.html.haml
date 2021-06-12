@@ -9,9 +9,12 @@
                                 %P
                                     = review.comment
                             .reviewIndex__commentIcons
-                                .reviewIndex__iconItem いいね
-                                .reviewIndex__iconItem#reviewCommentCreate コメントする
-                                .reviewIndex__iconItem さくじょ
+                                .reviewIndex__iconItem.reviewCommentForm
+                                    =link_to review_path(review) do
+                                        コメント
+                                        = review.return_comments.size if review.return_comments.size > 0
+                                .reviewIndex__iconItem
+                                    = link_to "削除", book_review_path(review.book_id, review, link: 2), method: :delete
                 - else
                     .reviewIndex__timelineItem--follower
                         = link_to user_path(review.user) do 
@@ -22,9 +25,13 @@
                                 %P
                                     = review.comment
                             .reviewIndex__commentIcons
-                                .reviewIndex__iconItem いいね
-                                .reviewIndex__iconItem#reviewCommentCreate コメントする
+                                .reviewIndex__iconItem.reviewCommentFrom
+                                    =link_to review_path(review) do
+                                        コメント
+                                        = review.return_comments.size if review.return_comments.size > 0 
+        .reviewIndex__paginate
+            = paginate @reviews
 
-        = paginate @reviews
+= javascript_include_tag "review_comment"
                         
                         
