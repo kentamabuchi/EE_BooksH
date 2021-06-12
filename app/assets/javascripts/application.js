@@ -24,17 +24,3 @@
 //= require jquery.min.js
 //= require jquery.raty.js
 
-
-(function() {
-    ('.BIndex__sidebarOpen').click(function() {
-    ('.BIndex__sidebarOpen').removeClass('BIndex__iconActive');
-    ('.BIndex__sidebar').animate({'marginLeft': '0px'});
-    ('.BIndex__sidebarClose').addClass('BIndex__iconActive');
-  });
-  
-  ('.BIndex__sidebarClose').click(function() {
-    ('.BIndex__sidebarClose').removeClass('BIndex__iconActive');
-    ('.BIndex__sidebar').animate({'marginLeft': '-380px'});
-    ('.BIndex__sidebarOpen').addClass('BIndex__iconActive');
-  });
-});

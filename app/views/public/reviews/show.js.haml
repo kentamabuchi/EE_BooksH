@@ -1,0 +1,3 @@
+$("#view_more").remove();
+$("#reviewShow__return").append("#{j(render partial: 'public/reviews/return_comments', locals: { return_comments: @return_comments})}");
+$("#reviewShow__return").append("#{j(link_to_next_page(@return_comments, "もっと見る", remote: true, id: "view_more", class: "reviewShow__more"))}");
