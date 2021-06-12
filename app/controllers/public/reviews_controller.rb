@@ -3,7 +3,7 @@ class Public::ReviewsController < ApplicationController
     def index
         @return_comment = current_user.return_comments.new
         @followings = current_user.followings
-        @all_reviews = Review.all_reviews(@followings, current_user).sort.reverse
+        @all_reviews = Review.all_reviews(@followings, current_user).sort{ |a,b| a.updated_at <=> b.updated_at}.reverse
         @reviews = Kaminari.paginate_array(@all_reviews).page(params[:page]).per(10)
         
     end
