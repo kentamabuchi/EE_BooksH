@@ -5,5 +5,7 @@
             = return_comment.user.nick_name
         .reviewShow__comment--return
             = return_comment.comment
-        .reviewShow__Icon
-            =link_to "削除", review_return_comment_path(review_id: return_comment.review_id, id: return_comment.id), method: :delete
+        - if User == current_user
+            .reviewShow__Icon
+                =link_to review_return_comment_path(review_id: return_comment.review_id, id: return_comment.id), method: :delete,class:"reviewShow__deleteBtn" do
+                    %i.fas.fa-comment-slash
