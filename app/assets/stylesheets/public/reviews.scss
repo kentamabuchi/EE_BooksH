@@ -4,6 +4,7 @@
 
 @import '_flex.scss';
 @import '_color.scss';
+@import '_template.scss';
 
 
 
@@ -15,14 +16,11 @@
         background: linear-gradient(-45deg, $color-navy-blue, blue);
         padding: 50px 0;
     }
-    &__tomelineItems{
-        
-    }
     &__timelineItem {
         width: 60%;
         margin: 25px 50px 25px auto;
         padding: 10px;
-        background-color: $white;
+        background-color: lighten($color-pastel-blue, 80%);
         border-radius: 15px;
         &--follower {
             width: 60%;
@@ -46,7 +44,7 @@
     &__commentText {
         width: 80%;
         padding: 10px;
-        margin: 0 auto;
+        margin: 10px auto;
         background-color: $white;
         word-break: break-word;
         min-height: 100px;
@@ -56,6 +54,22 @@
     }
     &__iconItem:nth-child(odd) {
         padding: 0 10px;
+    }
+    &__btn {
+        @extend %row;
+        @extend %btn;
+        width: 150px;
+        background-color: blue;
+        padding: 0;
+        text-align: center;
+        span {
+            margin-left: 10px;
+            opacity: 0.8;
+        }
+        &--delete {
+            @extend %delete-btn;
+            text-align: center;
+        }
     }
     &__paginate {
         @extend %center;
@@ -70,7 +84,14 @@
         margin: 50px auto;
         @extend %column;
         background: linear-gradient(-45deg, $color-navy-blue, blue);
-        
+    }
+    &__action {
+        margin: 50px;
+    }
+    &__returnBtn {
+        @extend %btn;
+        background-color: $pastel-blue;
+        text-align: center;
     }
     &__items {
         margin: 50px 0;
@@ -97,6 +118,14 @@
             background-color: $white;
         }
     }
+    &__commentFormIcon {
+        @extend %btn;
+        width: 150px;
+        background-color: blue;
+        color: $white;
+        text-align: center;
+        margin: 10px 0 20px;
+    }
     &__commentFormIcon:hover {
         cursor: pointer;
         opacity: 0.5;
@@ -116,6 +145,10 @@
         margin: 25px auto 0;
         padding: 30px;
         border-radius: 15px;
+    }
+    &__deleteBtn {
+        @extend %delete-btn;
+        text-align: center;
     }
     &__returnMore {
         @extend %center;
