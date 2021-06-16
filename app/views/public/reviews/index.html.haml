@@ -10,11 +10,14 @@
                                     = review.comment
                             .reviewIndex__commentIcons
                                 .reviewIndex__iconItem.reviewCommentForm
-                                    =link_to review_path(review) do
-                                        コメント
-                                        = review.return_comments.size if review.return_comments.size > 0
+                                    =link_to review_path(review), class:"reviewIndex__btn" do
+                                        %i.far.fa-comments
+                                        - if review.return_comments.size > 0
+                                            %span
+                                                = review.return_comments.size 
                                 .reviewIndex__iconItem
-                                    = link_to "削除", book_review_path(review.book_id, review, link: "2"), method: :delete
+                                    = link_to book_review_path(review.book_id, review, link: "2"), method: :delete, class:"reviewIndex__btn--delete" do
+                                        %i.fas.fa-comment-slash
                 - else
                     .reviewIndex__timelineItem--follower
                         = link_to user_path(review.user) do 
@@ -26,9 +29,11 @@
                                     = review.comment
                             .reviewIndex__commentIcons
                                 .reviewIndex__iconItem.reviewCommentFrom
-                                    =link_to review_path(review) do
-                                        コメント
-                                        = review.return_comments.size if review.return_comments.size > 0 
+                                    =link_to review_path(review), class:"reviewIndex__btn" do
+                                        %i.far.fa-comments
+                                        - if review.return_comments.size > 0 
+                                            %span
+                                                = review.return_comments.size 
         .reviewIndex__paginate
             = paginate @reviews
 

@@ -63,3 +63,15 @@
     border-radius: 10px;
 }
 
+%delete-btn {
+    height: 30px;
+    width: 100px;
+    color: $white;
+    background-color: $pastel-red;
+    padding: 0 10px;
+    line-height: 30px;
+    border-radius: 10px;
+    display: inline-block;
+    text-decoration: none !important;
+}
+
