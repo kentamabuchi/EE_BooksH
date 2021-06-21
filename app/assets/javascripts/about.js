@@ -1,4 +1,5 @@
-
+'use strict'; 
+{
     const slideRightItems = document.querySelectorAll('.obs__slideRight');
     const slideLeftItems = document.querySelectorAll('.obs__slideLeft');
     const popupItems = document.querySelectorAll('.obs__popup');
@@ -94,6 +95,10 @@
     popupItems.forEach(item => {
        observerPopup.observe(item);
     });
+   
+
+   
+}
 
 
 
