@@ -1,38 +1,54 @@
 .APage
   .APage__container
+  
     %section.APage__heading
       .APage__heading__content
+      
         .APage__heading__image
+        
           %h1.APage__heading__title
             ABOUT　＼EE／.Books
         .APage__heading__text
           %p.APage__heading__sentence
             ＼EE／.Booksはあなたにぴったりな１冊を見つけるお手伝いをさせていただくサイトです。
             好きな本に出会うきっかけになればと思います。
+            
+            
     %section.APage__topic
       .APage__topic__content
+      
         .APage__topic__image--search
-          %p.APage__topic__title 見つける
+          %p.APage__topic__title.obs__popup 見つける
           %ul.APage__topic__list
-            %li.APage__topic__item 検索から
-            %li.APage__topic__item 新着おすすめから
-            %li.APage__topic__item レビュー評価から
+            %li.APage__topic__item.obs__slideRight 検索から
+            %li.APage__topic__item.obs__slideRight 新着おすすめから
+            %li.APage__topic__item.obs__slideRight レビュー評価から
+      
+      
       .APage__topic__content--even
         .APage__topic__image--read
-          %p.APage__topic__title--even 読む
+          %p.APage__topic__title--even.obs__popup 読む
           %ul.APage__topic__list--even
-            %li.APage__topic__item--even 見つけた本を読む
-            %li.APage__topic__item--even おもしろかった感想を書く
-            %li.APage__topic__item--even 評価をつける
+            %li.APage__topic__item--even.obs__slideLeft 見つけた本を読む
+            %li.APage__topic__item--even.obs__slideLeft おもしろかった感想を書く
+            %li.APage__topic__item--even.obs__slideLeft 評価をつける
+            
+            
       .APage__topic__content
         .APage__topic__image--use
-          %p.APage__topic__title 使う
+        
+        
+          %p.APage__topic__title.obs__popup 使う
           %ul.APage__topic__list
-            %li.APage__topic__item 好きな本をお気に入り登録する
-            %li.APage__topic__item 似ているユーザーを登録する
-            %li.APage__topic__item レビューを読む
+            %li.APage__topic__item.obs__slideRight 好きな本をお気に入り登録する
+            %li.APage__topic__item.obs__slideRight 似ているユーザーを登録する
+            %li.APage__topic__item.obs__slideRight レビューを読む
+            
+            
     %section.APage__guidance
       .APage__guidance__content
         %p.APage__guidance__text
           さっそく使ってみる
           \#{link_to ">>", new_user_registration_path, class: "APage__guidance__link"}
+          
+= javascript_include_tag "about"
