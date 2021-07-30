@@ -75,3 +75,49 @@
     text-decoration: none !important;
 }
 
+
+
+
+
+
+
+
+
+%backgroundMain {
+  min-height: 1000px;
+  margin: 50px;
+  background-color: $backgroundColor_main;
+}
+
+%headerMain {
+  width: 80%;
+  background-color: $main_color;
+  color: $white;
+  text-align: center;
+}
+
+%tagMain {
+  display: inline-block;
+  background-color: $tagColor_main;
+  color: $textColor_main;
+  width: 150px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+%submitBtn {
+  text-decoration: none !important;
+  border: none;
+  outline: none;
+  background: transparent;
+  display: inline-block;
+  background-color: $pastel_blue;
+  color: $textColor_main;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 10px;
+}
