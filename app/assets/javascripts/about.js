@@ -1,104 +1,48 @@
-'use strict'; 
-{
-    const slideRightItems = document.querySelectorAll('.obs__slideRight');
-    const slideLeftItems = document.querySelectorAll('.obs__slideLeft');
-    const popupItems = document.querySelectorAll('.obs__popup');
+'use strict'; {
 
-    let r = 1;
-    const slideRight = function (entries, observer) {
-        console.log(entries);
-        for(let i = 0; i < entries.length; i++) {
-            
-            console.log(i);
-            
-            if(!entries[i].isIntersecting) {
-                return;
-            }
-            
-            entries[i].target.classList.add(`appearR${r}`);
-            observer.unobserve(entries[i].target);
-            
-            r++;
-            if(r >3){
-                r = 1;
-            }
-            
-        }
+  const slideItems = document.querySelectorAll('.about__topic__listItem');
 
-    };
-    
-    
-    let l = 3;
-    const slideLeft = function (entries, observer) {
-        console.log(entries);
-        for(let i = 0; i < entries.length; i++) {
-            
-            console.log(i);
-            
-            if(!entries[i].isIntersecting) {
-                return;
-            }
-            
-            entries[i].target.classList.add(`appearL${l}`);
-            observer.unobserve(entries[i].target);
-            
-            l--;
-            if(l < 1){
-                l = 3;
-            }
-            
-        }
+  const slide = function( entries, observer ) {
+    let num = 1;
 
-    };
-    
-    
-    const popup = function (entries, observer) {
-        console.log(entries);
-        for(let i = 0; i < entries.length; i++) {
-            
-            console.log(i);
-            
-            if(!entries[i].isIntersecting) {
-                return;
-            }
-            
-            entries[i].target.classList.add(`popup`);
-            observer.unobserve(entries[i].target);
-            
-            
-        }
+    for (let i = 0; i < entries.length; i++) {
 
-    };
-    
-    const optionsSlide = {
-        threshold: 1
-    };
-    const optionsPopup = {
-        threshold: .3
-    };
-    
-    const observerSlideRight = new IntersectionObserver(slideRight, optionsSlide);
-   
-    slideRightItems.forEach(item => {
-       observerSlideRight.observe(item);
-       
-    });
-    
-    const observerSlideLeft = new IntersectionObserver(slideLeft, optionsSlide);
-   
-    slideLeftItems.forEach(item => {
-       observerSlideLeft.observe(item);
-    });
-    
-    const observerPopup = new IntersectionObserver(popup, optionsPopup);
-   
-    popupItems.forEach(item => {
-       observerPopup.observe(item);
-    });
-   
+      if(!entries[i].isIntersecting) {
+        return;
+      }
 
-   
+      console.log(entries[i]);
+
+      if( entries[i].target.classList.contains('animation__slideLeft')) {
+
+        entries[i].target.classList.add(`animationSlideLeft${num}`);
+        observer.unobserve(entries[i].target);
+      } else {
+        entries[i].target.classList.add(`animationSlideRight${num}`);
+        observer.unobserve(entries[i].target);
+      }
+
+      num++
+      if(num > 3) {
+        num = 1;
+      }
+    }
+
+  };
+
+
+  const optionsSlide = {
+    threshold: 1
+  };
+
+  const optionsPopUp = {
+    threshold: 3
+  };
+
+  const obsSlide = new IntersectionObserver(slide, optionsSlide);
+    slideItems.forEach(item => {
+    obsSlide.observe(item);
+  });
+
 }
-
-
 
