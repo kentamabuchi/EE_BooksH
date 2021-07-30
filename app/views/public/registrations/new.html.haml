@@ -1,29 +1,34 @@
-.URPage
-  .URPage__container
-    .URPage__content
-      .URPage__heading
-        %h2 新規会員登録
-      .URPage__form
-        = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
-          = render "public/shared/error_messages", resource: resource
-          .URPage__form__name
-            = f.label :ニックネーム, class: ""
-          .URPage__form__TextBox
-            = f.text_field :nick_name, autofocus: true, autocomplete: "nick_name"
-          .URPage__form__name
-            = f.label :メールアドレス, class: ""
-          .URPage__form__TextBox
-            = f.email_field :email, autofocus: true, autocomplete: "email"
-          .URPage__form__name
-            = f.label :パスワード
-          .URPage__form__TextBox--input
-            = f.password_field :password, autocomplete: "new-password"
+.sign
+  .sign__container
+
+    .sign__header
+      %h2.sign__headerText
+        EE.Books 会員登録
+
+    .sign__form
+      = form_with model: @user, url: user_registration_path, id:'new_user', class:'new_user', local: true do |f|
+
+        .sign__formItems
+
+          .sign__formItem
+            = f.label :メールアドレス, class:"sign__formTag"
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", class:"sign__formTextBox formText"
+            %p.error
+          .sign__formItem
+            = f.label :パスワード, class:"sign__formTag"
+            %br/
+            = f.password_field :password, autocomplete: "new-password", class:"sign__formTextBox formText", id:"password"
+            %p.error
             - if @minimum_password_length
-              %em
-                (#{@minimum_password_length} 文字以上で入力して下さい)
-          .URPage__form__TextBox
-            = f.password_field :password_confirmation, autocomplete: "new-password"
-            %em (確認のため再度入力して下さい)
-          .URPage__form__actions
-            = f.submit "Sign up", class: "URPage__form__btn"
-            
+              %em.sign__formAnnounce
+                ※#{@minimum_password_length}文字以上で入力してください
+          .sign__formItem
+            = f.label :確認用,class:"sign__formTag"
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password", class:"sign__formTextBox formText", id:"rePassword"
+            %p.error
+          .sign__actions
+            %button.sign__formBtn#signUpBtn
+              登録
+= javascript_include_tag "signUpForm"

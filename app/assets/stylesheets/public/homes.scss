@@ -6,67 +6,52 @@
 @import '_color.scss';
 @import '_flex.scss';
 
-.TPage {
-    background-color: $color-pastel-blue;
+.top {
+  &__container {
+    @extend %backgroundMain;
+    @extend %column;
+  }
+  &__mainVisual {
+    width: 90%;
+    height: 700px;
+    margin: 100px auto 0;
+    background: linear-gradient(to right, $main_color 70%, $pastel_blue 30%);
+  }
+  &__mainVisual__contents {
+    @extend %center;
+  }
+  &__mainVisual__image {
+    width: 80%;
+    height: 500px;
+    margin: 100px 0;
+    background-image: image-url("top_mainVisual.jpeg");
+    background-size: cover;
+  }
+  &__mainVisual__imageItems {
+    background-color: rgba(#000, 0.5);
     width: 100%;
-    &__container {
-    display: flex;
-    flex-direction: column;
-    padding: 50px;
-    }
-}
-
-.MainVisual {
-    width: 100%;
-    height: 800px;
-    margin: 0 auto;
+    height: 500px;
     position: relative;
-    
-    &__left {
-        position: absolute;
-        left: 10%;
-        height: 700px;
-        width: 20%;
-        background-color: #34D4FF;
-    }
-    &__right {
-        position: absolute;
-        right: 10%;
-        height: 700px;
-        width: 60%;
-        background-color: #265EFF;
-    }
-    &__image {
-        height: 500px;
-        width: 70%;
-        position: absolute;
-        top: 100px;
-        left: 15%;
-        color: $color-white;
-        background-image: image-url('read_book.jpeg');
-        background-size: cover;
-    }
-    &__content {
-        height: 500px;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-    &__content__title {
-        font-size: 50px;
-        padding-top: 50px;
-        padding-left: 50px;
-    }
-    &__content__text{
-        padding-top: 50px;
-        padding-left: 75px;
-    }
+  }
+  &__mainVisual__title {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    color: $textColor_main;
+  }
+  &__mainVisual__text {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    color: $textColor_main;
+  }
 }
 
 .guidance {
     @extend %column;
     height: 400px;
     width: 90%;
-    margin: 0 auto;
+    margin: 100px auto;
     padding-top: 50px;
     text-align: center;
     background-color: #265EFF;
@@ -89,267 +74,231 @@
 
 
 
-.APage__heading {
-    &__content{
-        height: 600px;
-        padding-top: 50px;
-        background-color: #6BB8FF;
-    }
-    &__image {
-        height: 300px;
-        background-image: image-url('books.jpeg');
-        background-size: cover;
-        background-position: bottom;
-        position: relative;
-    }
-     &__title {
-        height: 100px;
-        width: 40%;
-        line-height: 100px;
-        text-align: center;
-        border-radius: 100px;
-        background-color: #125F80;
-        color: white;
-        position:absolute;
-        left: 0;
-        bottom: 0;
-    }
-    &__text {
-        height: 200px;
-        background-color: #125F80;
-        position:relative;
-    }
-    &__sentence {
-        font-size: 20px;
-        color: #fff;
-        text-align: center;
-        position:absolute;
-        bottom: 0;
-        right: 30px;
-    }
+.about {
+  &__container {
+    width: 100%;
+  }
+  &__heading {
+    height: 600px;
+    margin: 50px 0;
+    padding: 50px 0;
+    background-color: $pastel_blue;
+  }
+  &__heading__image {
+    height: 500px;
+    background-image: image-url("about_heading.jpeg");
+    background-size: cover;
+    background-position: top -300px left 0;
+    position: relative;
+  }
+  &__heading__title {
+    position: absolute;
+    top: 300px;
+    left: 50px;
+    background-color: $smoke_green;
+    color: $textColor_main;
+    padding: 5px 50px;
+    border-radius: 15px;
+  }
+  &__heading__text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: $smoke_green;
+    color: $textColor_main;
+    padding: 20px 50px;
+  }
+  &__topic__contents {
+    @extend %backgroundMain;
+    width: 90%;
+    padding: 100px 0;
+  }
+  %topicSection {
+    width: 90%;
+    height: 700px;
+    margin: 0 auto;
+    @extend %center;
+  }
+  &__topic__section {
+    @extend %topicSection;
+    background-color: $light_green;
+  }
+  &__topic__section:nth-child(even) {
+    @extend %topicSection;
+    background-color: $light_yellow;
+  }
+  %topicImage {
+    display: inline-block;
+    width: 90%;
+    height: 600px;
+    margin: 50px;
+    position: relative;
+  }
+  &__topic__searchImage {
+    background-image: image-url("about_topicSearch.jpeg");
+    background-size: cover;
+    background-position: left 0 top -100px;
+    @extend %topicImage;
+  }
+  &__topic__readImage {
+    background-image: image-url("about_topicRead.jpeg");
+    background-size: cover;
+    background-position: left 0 top -100px;
+    @extend %topicImage;
+  }
+  &__topic__useImage {
+    background-image: image-url("about_topicUse.jpeg");
+    background-size: cover;
+    background-position: right 0 bottom -100px;
+    @extend %topicImage;
+  }
+  %topicTitle {
+    display: block;
+    height: 600px;
+    width: 100%;
+    color: $textColor_main;
+    background-color: rgba(#000, 0.5);
+    padding: 50px;
+  }
+  &__topic__title {
+    @extend %topicTitle;
+    text-align: left;
+  }
+  &__topic__section:nth-child(even) .about__topic__title {
+    @extend %topicTitle;
+    text-align: right;
+  }
+  %topicList {
+    list-style: none;
+    position: absolute;
+    display: table;
+    @extend %row;
+  }
+  &__topic__list {
+    @extend %topicList;
+    top: 200px;
+    right: 50px;
+  }
+  &__topic__section:nth-child(even) &__topic__list {
+    @extend %topicList;
+    top: 200px;
+    left: 50px;
+  }
+  %listItem {
+    width: 150px;
+    height: 150px;
+    color: $textColor_main;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    padding: 50px 0;
+    vertical-align: top;
+  }
+  &__topic__listItem {
+    @extend %listItem;
+    background-color: $pastel_blue;
+  }
+  &__topic__section:nth-child(even) &__topic__listItem {
+    @extend %listItem;
+    background-color: $light_green;
+  }
+  &__topic__listItem:nth-child(even) {
+    margin: 0 20px;
+  }
+  &__topic__section:nth-child(even) &__topic__listItem:nth-child(even) {
+    margin: 0 20px;
+  }
 }
 
-.APage__topic {
-    %__content {
-        height: 400px;
-        padding-top: 50px;
-    }
-    &__content {
-        @extend %__content;
-        background-color: #4eb7d9;
-        &--even {
-            @extend %__content;
-            background-color: #FEFFA8;
-        }
-    }
-    %__image {
-        height: 300px;
-        background-size: cover;
-        background-position: 0 600px;
-        position: relative
-    }
-    &__image {
-        &--search {
-            @extend %__image;
-            background-image: image-url('search.jpeg');
-        }
-        &--read {
-            @extend %__image;
-            background-image: image-url('read.jpeg');
-        }
-        &--use {
-            @extend %__image;
-            background-image: image-url('use.jpeg');
-        }
-    }
-    %__title {
-        height: 300px;
-        width: 100%;
-        font-size: 50px;
-        color: white;
-        padding-top: 30px;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-    &__title {
-        @extend %__title;
-        padding-left: 30px;
-        &--even {
-            @extend %__title;
-            text-align: right;
-            padding-right: 30px;
-        }
-    }
-    %__list {
-        height: 200px;
-        width: 50%;
-        display: flex;
-        flex: column;
-        position:absolute;
-    }
-    &__list {
-        @extend %__list;
-        bottom: 0;
-        right: 50px;
-        &--even {
-            @extend %__list;
-            bottom: 0;
-            left: 0;
-        }
-    }
-    %__item {
-        height: 200px;
-        width: 30%;
-        font-size: 20px;
-        color: white;
-        padding-top: 75px;
-        text-align: center;
-        list-style: none;
-        border-radius: 100px;
-    }
-    &__item {
-        @extend %__item;
-        background-color: #6BB8FF;
-        &--even {
-            @extend %__item;
-            background-color: #4eb7d9;
-        }
-    }
-    &__item:nth-child(2) {
-        margin: 0 5%;
-    }
-    &__item--even:nth-child(2) {
-        margin: 0 5%;
-    }
-}
-.APage__guidance {
-    
-    &__content {
-        height: 300px;
-        font-size: 30px;
-        background-color: #125F80;
-        text-align: center;
-        padding-top: 100px;
-    }
-    &__text {
-        color: #fff;
-    }
-    &__link {
-        height: 80px;
-        background-color: #fff;
-        line-height: 80px;
-        border-radius: 50%;
-        text-decoration: none;
-    }
+.animation {
+  &__slideRight {
+    opacity: 0;
+  }
+  &__slideLeft {
+    opacity: 0;
+  }
 }
 
-
-.obs {
-    &__slideRight{
-        opacity: 0;
-    }
-    &__slideLeft {
-        opacity: 0;
-    }
-    &__popup{
-        opacity: 0;
-    }
+.animationSlideRight3 {
+  opacity: 1;
+  animation-name: feadInRight;
+  animation-duration: 2s;
+}
+.animationSlideRight2 {
+  opacity: 1;
+  animation-name: feadInRight;
+  animation-duration: 3s;
+}
+.animationSlideRight1 {
+  opacity: 1;
+  animation-name: feadInRight;
+  animation-duration: 4s;
 }
 
-
-.appearR3 {
-    opacity: 1;
-    animation-name: slideRight;
-    animation-duration: 2s;
+.animationSlideLeft1 {
+  opacity: 1;
+  animation-name: feadInLeft;
+  animation-duration: 2s;
 }
-.appearR2 {
-    opacity: 1;
-    animation-name: slideRight;
-    animation-duration: 3s;
+.animationSlideLeft2 {
+  opacity: 1;
+  animation-name: feadInLeft;
+  animation-duration: 3s;
 }
-.appearR1 {
-    opacity: 1;
-    animation-name: slideRight;
-    animation-duration: 4s;
-}
-.appearL3 {
-    opacity: 1;
-    animation-name: slideLeft;
-    animation-duration: 2s;
-}
-.appearL2 {
-    opacity: 1;
-    animation-name: slideLeft;
-    animation-duration: 3s;
-}
-.appearL1 {
-    opacity: 1;
-    animation-name: slideLeft;
-    animation-duration: 4s;
-}
-.popup{
-    opacity: 1;
-    animation-name: popup;
-    animation-duration: 1s;
+.animationSlideLeft3 {
+  opacity: 1;
+  animation-name: feadInLeft;
+  animation-duration: 4s;
 }
 
-@keyframes slideRight {
-    0%{
-        transform: translateX(-700px);
-    }
-    65% {
-        transform: translateX(43px);
-    }
-    70%{
-        transform-origin: right;
-        transform: scale(.5, 1);
-    }
-    75% {
-        transform: scale(.8, .9);
-    }
-    80% {
-        transform: scale(1, 1.2);
-    }
-    90% {
-        transform: scale(1, .5);
-    }
-    100% {
-        transform: scale(1, 1);
-    }
+@keyframes feadInRight {
+  0% {
+    transform: translateX(-600px);
+  }
+  65% {
+    transform: translateX(50px);
+  }
+  70% {
+    transform-origin: right;
+    transform: scale(0.5, 1);
+  }
+  75% {
+    transform: scale(0.8, 0.9);
+  }
+  80% {
+    transform: scale(1, 1.2);
+  }
+  90% {
+    transform: scale(1, 0.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
 
-
-@keyframes slideLeft {
-    0%{
-        transform: translateX(700px);
-    }
-    65% {
-        transform: translateX(-43px);
-    }
-    70%{
-        transform-origin: left;
-        transform: scale(.5, 1);
-    }
-    75% {
-        transform: scale(.8, .9);
-    }
-    80% {
-        transform: scale(1, 1.2);
-    }
-    90% {
-        transform: scale(1, .5);
-    }
-    100% {
-        transform: scale(1, 1);
-    }
+@keyframes feadInLeft {
+  0% {
+    transform: translateX(600px);
+  }
+  65% {
+    transform: translateX(-50px);
+  }
+  70% {
+    transform-origin: left;
+    transform: scale(0.5, 1);
+  }
+  75% {
+    transform: scale(0.8, 0.9);
+  }
+  80% {
+    transform: scale(1, 1.2);
+  }
+  90% {
+    transform: scale(1, 0.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
-
-@keyframes popup {
-    0%{
-        transform: translateY(300px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-

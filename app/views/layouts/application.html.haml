@@ -55,35 +55,29 @@
           .header__contents
           
             .header__logo
-              %h1
-                = link_to books_path, class: "header__logo__text" do
+              = link_to books_path, class: "header__logoLink" do
+                %h1.header__logo__tex
                   ＼EE／.Books
                   
             .header__nav
-              .nav
-                %ul.nav__bar
-                  %li.nav__item
-                    = link_to about_path, class: "nav__link" do
-                      %i.fab.fa-readme>
-                      　About
-                  %li.nav__item
-                    = link_to books_path, class: "nav__link" do
-                      %i.fas.fa-file-signature
-                      Booksランキング
-                  %li.nav__item
-                    = link_to reviews_path, class: "nav__link" do
-                      %i.fas.fa-cheese
-                      タイムライン
-                  %li.nav__item
-                    = link_to user_path(current_user.id), class: "nav__link" do
-                      %i.fas.fa-cheese
-                      マイページ
-                  %li.nav__item
-                    = link_to destroy_user_session_path, method: :delete, class: "nav__link" do
-                      %i.fas.fa-sign-out-alt
-                      ログアウト
+              %ul.header__navList
+                %li.header__navItem
+                  = link_to about_path, class: "header__navLink" do
+                    About
+                %li.header__navItem
+                  = link_to books_path, class: "header__navLink" do
+                    ランキング
+                %li.header__navItem
+                  = link_to reviews_path, class: "header__navLink" do
+                    タイムライン
+                %li.header__navItem
+                  = link_to user_path(current_user.id), class: "header__navLink" do
+                    マイページ
+                %li.header__navItem
+                  = link_to destroy_user_session_path, method: :delete, class: "header__navLink" do
+                    ログアウト
                       
-            .search
+            .header__search
               = form_with url: books_search_path, method: :get, local: true do |f|
                 = f.text_field :keyword, value: @keyword
                 = f.submit "検索"
@@ -92,51 +86,23 @@
     - else
       .header
         .header__container
-          .header__contents
-            .header__logo
-              %h1
-                = link_to root_path, class: "header__logo__text" do
-                  ＼EE／.Books
-            .header__nav
-              .nav
-                %ul.nav__bar
-                  %li.nav__item
-                    = link_to about_path, class: "nav__link" do
-                      %i.fab.fa-readme>
-                      　About
-                  %li#sign_up.nav__item
-                    %i.fas.fa-file-signature
-                    会員登録
-                  %li#sign_in.nav__item
-                    %i.fas.fa-sign-in-alt
-                    %a ログイン
-                  :javascript
-                    $(function() {
-                      $('#sign_in, #signUp__announce').click(function() {
-                        $('.signIn').fadeIn();
-                        $('.signUp').fadeOut();
-                      });
-                      $('#sign_up, #signIn__announce').click(function() {
-                        $('.signUp').fadeIn();
-                        $('.signIn').fadeOut();
-                      });
-                      $('.signIn__closeModal, .signUp__closeModal').click(function() {
-                        $('.signIn, .signUp').fadeOut();
-                      });
-                    });
-    
-    .signIn
-      .signIn__closeModal
-        %i.far.fa-2x.fa-times-circle
-      .signIn__contents
-        =render 'layouts/sign_in_form', {user: @user}
-        
-    .signUp
-      .signUp__closeModal
-        %i.far.fa-2x.fa-times-circle
-      .signUp__contents 
-        =render 'layouts/sign_up_form', {user: @user}   
-       
+
+          .header__logo
+            = link_to root_path, class: "header__logoLink" do
+              %h1.header__logo__text
+                ＼EE／.Books
+                  
+          .header__nav
+            %ul.header__navList
+              %li.header__navItem
+                = link_to about_path, class: "header__navLink" do
+                  About
+              %li#sign_up.header__navItem
+                = link_to new_user_registration_path, class: "header__navLink" do
+                  会員登録
+              %li#sign_in.header__navItem
+                = link_to new_user_session_path, class: "header__navLink" do
+                  ログイン
         
     = yield
         

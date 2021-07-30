@@ -1,56 +1,70 @@
-.APage
-  .APage__container
-  
-    %section.APage__heading
-      .APage__heading__content
-      
-        .APage__heading__image
-        
-          %h1.APage__heading__title
-            ABOUT　＼EE／.Books
-        .APage__heading__text
-          %p.APage__heading__sentence
-            ＼EE／.Booksはあなたにぴったりな１冊を見つけるお手伝いをさせていただくサイトです。
-            好きな本に出会うきっかけになればと思います。
-            
-            
-    %section.APage__topic
-      .APage__topic__content
-      
-        .APage__topic__image--search
-          %p.APage__topic__title.obs__popup 見つける
-          %ul.APage__topic__list
-            %li.APage__topic__item.obs__slideRight 検索から
-            %li.APage__topic__item.obs__slideRight 新着おすすめから
-            %li.APage__topic__item.obs__slideRight レビュー評価から
-      
-      
-      .APage__topic__content--even
-        .APage__topic__image--read
-          %p.APage__topic__title--even.obs__popup 読む
-          %ul.APage__topic__list--even
-            %li.APage__topic__item--even.obs__slideLeft 見つけた本を読む
-            %li.APage__topic__item--even.obs__slideLeft おもしろかった感想を書く
-            %li.APage__topic__item--even.obs__slideLeft 評価をつける
-            
-            
-      .APage__topic__content
-        .APage__topic__image--use
-        
-        
-          %p.APage__topic__title.obs__popup 使う
-          %ul.APage__topic__list
-            %li.APage__topic__item.obs__slideRight 好きな本をお気に入り登録する
-            %li.APage__topic__item.obs__slideRight 似ているユーザーを登録する
-            %li.APage__topic__item.obs__slideRight レビューを読む
-            
-            
-    %section.APage__guidance
-      .APage__guidance__content
-        %p.APage__guidance__text
-          さっそく使ってみる
-          \#{link_to ">>", new_user_registration_path, class: "APage__guidance__link"}
-          
+.about
+  .about__container
+
+    .about__heading
+      .about__heading__image
+        %h2.about__heading__title
+          About || \EE.Books/
+        %p.about__heading__text
+          ＼EE／.Booksはあなたにぴったりな１冊を見つけるお手伝いをさせていただくサイトです。
+          %br
+          好きな本に出会うきっかけになればと思います。
+
+    .about__topic
+      .about__topic__contents
+
+        .about__topic__section
+          .about__topic__searchImage
+            %h1.about__topic__title
+              見つける
+            %ul.about__topic__list
+              %li.about__topic__listItem.animation__slideRight
+                検索から
+              %li.about__topic__listItem.animation__slideRight
+                新着
+                %br
+                おすすめから
+              %li.about__topic__listItem.animation__slideRight
+                レビュー
+                %br
+                評価から
+
+        .about__topic__section
+          .about__topic__readImage
+            %h1.about__topic__title
+              読む
+            %ul.about__topic__list
+              %li.about__topic__listItem.animation__slideLeft
+                探して
+                %br
+                読んでみる
+              %li.about__topic__listItem.animation__slideLeft
+                レビューを
+                %br
+                書く
+              %li.about__topic__listItem.animation__slideLeft
+                評価を
+                %br
+                つける
+
+        .about__topic__section
+          .about__topic__useImage
+            %h1.about__topic__title
+              使う
+            %ul.about__topic__list
+              %li.about__topic__listItem.animation__slideRight
+                読んだ本を
+                %br
+                登録する
+              %li.about__topic__listItem.animation__slideRight
+                気に入った人を
+                %br
+                フォローする
+              %li.about__topic__listItem.animation__slideRight
+                本について
+                %br
+                コメントし合う
+
 = javascript_include_tag "about"
 
 

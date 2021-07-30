@@ -1,21 +1,14 @@
-.TPage
-  .TPage__container
-    %section.TPage__MainVisual
-      .MainVisual
-        .MainVisual__left
-        .MainVisual__right
-        .MainVisual__image
-          .MainVisual__content
-            %h3.MainVisual__content__title ようこそ＼EE／.Booksへ
-            %p.MainVisual__content__text
+.top
+  .top__container
+    .top__mainVisual
+      .top__mainVisual__contents
+        .top__mainVisual__image
+          .top__mainVisual__imageItems
+            %h1.top__mainVisual__title
+              ようこそ\EE.Books/へ
+            %p.top__mainVisual__text
               レビューや評価を参考に
-              あなたにぴったりな１冊を
-              みつけるお手伝いをするサイトです
-    %section.TPage__guidance
-      .guidance
-        %p.guidance__link
-          さっそく使ってみる＞
-          \#{link_to "新規登録", new_user_session_path, class: "guidance__btn"}
-        %p.guidance__link
-          登録済みのかたは＞
-          \#{link_to "ログイン", new_user_registration_path, class: "guidance__btn"}
+              あなたにぴったりの一冊を
+              %br
+              見つけるお手伝いをするサイトです
+              
