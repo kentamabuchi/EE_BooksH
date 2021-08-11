@@ -50,7 +50,7 @@ class Public::BooksController < ApplicationController
     if @book.reviews.blank?
       @average_rate = 0
     else
-      @average_rate = @book.reviews.average(:rate).round(1)
+      @average_rate = @reviews.average(:rate).round(1)
     end
   end
   
@@ -60,8 +60,8 @@ class Public::BooksController < ApplicationController
   end
   
   def change
-    @review_violation = Review.find(params[:id])
-    @review_violation.update(is_active: "false")
+    @review = Review.find(params[:id])
+    @review.update(is_active: "false")
   end
     
 
@@ -125,10 +125,6 @@ class Public::BooksController < ApplicationController
     @classification_rankings = []
     @all_ranks = Book.includes(:favorite_books).sort {|a,b| b.favorite_books.size <=> a.favorite_books.size}
     @classification_ranks = @all_ranks.select{ |book| book.classification_id == @classification.id }
-    @classification_ranks.first(5).map do |book|
-      @classification_rankings.push(book.id)
-    end
-    
   end
   
 end

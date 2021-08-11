@@ -1,0 +1,50 @@
+.contentsRanking
+  .contentsRanking__heading
+    %h2.contentsRanking__headerText
+      = headingText
+    %p.contentsRanking__heading__attention ※同率を含む
+    
+    
+  .contentsRanking__contents
+  
+    - 1.times do |n|
+      - if rankings[n].present?
+        - book = Book.find(rankings[n].id)
+        = link_to book_path(book), class:"contentsRanking__bookLink" do
+          .contentsRanking__book
+            .contentsRanking__bookItems
+              = attachment_image_tag book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: "300x300", class:"contentsRanking__ranking__image"
+              .contentsRanking__bookData
+                %p.contentsRanking__itemText
+                  %i.fas.fa-crown
+                  #{n+1}位
+                %p.contentsRanking__itemText= book.name
+                - if book.reviews.blank?
+                  - ranks_rate = 0
+                - else
+                  - ranks_rate = book.reviews.average(:rate).round(1)
+                = render 'public/books/rate_average', {book: book, rate: ranks_rate}
+                %i.fas.fa-glasses.contentsRanking__itemIcon
+                = book.favorite_books.count
+                    
+                    
+    .contentsRanking__books
+      - 9.times do |n|
+        - if rankings[n+1].present?
+          - book = Book.find(rankings[n+1].id)
+          = link_to book_path(book), class:"contentsRanking__bookLink--other" do
+            .contentsRanking__book--other
+              .contentsRanking__bookItems--other
+                = attachment_image_tag book, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: "100x100", class:"contentsRanking__bookImage"
+                .contentsRanking__bookData
+                  %p.contentsRanking__itemText--other
+                    #{n+2}位
+                  %p.contentsRanking__itemText--other= book.name
+                  - if book.reviews.blank?
+                    - ranks_rate = 0
+                  - else
+                    - ranks_rate = book.reviews.average(:rate).round(1)
+                  = render 'public/books/rate_average', {book: book, rate: ranks_rate}
+                  .contentsRanking__itemIcon
+                    %i.fas.fa-glasses
+                    = book.favorite_books.count

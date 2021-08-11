@@ -1,116 +1,117 @@
-.MainPage
-  .MainPage__container
-    %section.BShow
-      .BShow__action__return
-        = link_to "<<ランキングに戻る", books_path, class: "BShow__btn__return"
-      .BShow__heading
-        %h2 書籍詳細
-      .BShow__contents
-        .BShow__book
-          .BShow__BookImage
-            = attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: "300x300"
-            .BShow__status
-              %div{:class => "BShow__goods-#{@book.id}"}
-                = render 'public/good_books/good', {book: @book}
-              %div{:class => "BShow__favorite-#{@book.id}"}
-                = render 'public/favorite_books/favorite', {book: @book}
-              .BShow__violation__book
-                = render 'public/books/violation_report', {book: @book}
-          .BShow__BookData
-            %table.BShow__item
+.book
+  .book__container
+    .book__actionReturn
+      = link_to "<<ランキングに戻る", books_path, class: "book__btnReturn"
+    .book__heading
+      %h2.book__headingText 書籍詳細
+    .book__contents
+      .book__items
+        .book__image
+          = attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: "300x300"
+          .book__status
+            .book__goods
+              = render 'public/good_books/good', {book: @book}
+            .book__favoriteIcon
+              = render 'public/favorite_books/favorite', {book: @book}
+            .book__violationIcon
+              = render 'public/books/violation_report', {book: @book}
+        .book__datas
+          %table.book__item
+            %tr
+              %th.book__thread
+                %span.book__tag 書籍名：
+              %td.book__thread.text-break= @book.name
+            %tr
+              %th.book__thread
+                %span.book__tag 作者：
+              %td.book__thread.text-break= @book.writer
+            %tr
+              %th.book__thread
+                %span.book__tag 分類：
+              %td.book__thread.text-break
+                = @book.classification.name
+            %tr
+              %th.book__thread
+                %span.book__tag ジャンル：
+              %td.book__thread.text-break
+                = @book.genre.name
+            %tr
+              %th.book__thread
+                %span.book__tag 評価：
+              %td.book__average__rate
+                = @average_rate
+                点
+                :javascript
+                  $('.book__average__rate').empty(); 
+                  $('.book__average__rate').raty({
+                      starOff:  '#{asset_path('star-off.png')}',
+                      starOn : '#{asset_path('star-on.png')}',
+                      starHalf: '#{asset_path('star-half.png')}',
+                      half: true,
+                      readOnly: true,
+                      score: #{@average_rate}
+                  });
+        
+      .book__introduction
+        %p.book__introductionTag作品紹介
+        %p.book__introductionText.text-break
+          = @book.introduction
+        
+        
+      .book__reviews
+        .book__reviewForm
+          = form_with(model:[@book, @review], local: true) do |f|
+            %table
               %tr
-                %th.BShow__thread
-                  %span.BShow__tag 書籍名：
-                %td.BShow__thread.text-break= @book.name
+                %th.book__tread
+                  %span.book__tag レビュー
+              %tr.book__reviewRate
+              :javascript
+                $('.book__reviewRate').empty(); 
+                $('.book__reviewRate').raty({
+                    starOn: "#{asset_path('star-on.png')}",
+                    starOff: "#{asset_path('star-off.png')}",
+                    starHalf: "#{asset_path('star-half.png')}",
+                    scoreName: 'review[rate]',
+                    half: true,
+                });
               %tr
-                %th.BShow__thread
-                  %span.BShow__tag 作者：
-                %td.BShow__thread.text-break= @book.writer
+                %td= f.text_area :comment, placeholder: "本の感想", class: "book__form__text"
               %tr
-                %th.BShow__thread
-                  %span.BShow__tag 分類：
-                %td.BShow__thread.text-break
-                  = @book.classification.name
-              %tr
-                %th.BShow__thread
-                  %span.BShow__tag ジャンル：
-                %td.BShow__thread.text-break
-                  = @book.genre.name
-              %tr
-                %th.BShow__thread
-                  %span.BShow__tag 評価：
-                %td.BShow__average__rate
-                  = @average_rate
-                  点
+                %td
+                  = f.submit "コメントする"
+        .book__reviewComments
+          - @reviews.each do |review|
+            .book__reviewComment
+              .book__commentUserInfo
+                .book__commentUserData
+                  = link_to user_path(review.user) do
+                    = attachment_image_tag review.user, :image, :fill, 100, 100, fallback: "no_image_book.jpeg",size: "50x50", class:"book__commentUserImage"
+                  %span.book__tag= review.user.nick_name
+                .book__commentUserRate
+                  %span{:class => "book__rate__show-#{review.id}"}
                   :javascript
-                    $('.BShow__average__rate').empty(); 
-                    $('.BShow__average__rate').raty({
+                    $('.book__rate__show-#{review.id}').empty(); 
+                    $('.book__rate__show-#{review.id}').raty({
                         starOff:  '#{asset_path('star-off.png')}',
                         starOn : '#{asset_path('star-on.png')}',
                         starHalf: '#{asset_path('star-half.png')}',
                         half: true,
                         readOnly: true,
-                        score: #{@average_rate}
+                        score: #{review.rate}
                     });
-              %tr
-                %th.BShow__thread
-                  %span.BShow__tag 作品紹介
-            .BShow__introduce.text-break
-              = @book.introduction
-        .BShow__reviews
-          .BShow__reviews__form
-            = form_with(model:[@book, @review], local: true) do |f|
-              %table
-                %tr
-                  %th.BShow__tread
-                    %span.BShow__tag レビュー
-                %tr.BShow__review__rate
-                :javascript
-                  $('.BShow__review__rate').empty(); 
-                  $('.BShow__review__rate').raty({
-                      starOn: "#{asset_path('star-on.png')}",
-                      starOff: "#{asset_path('star-off.png')}",
-                      starHalf: "#{asset_path('star-half.png')}",
-                      scoreName: 'review[rate]',
-                      half: true,
-                  });
-                %tr
-                  %td= f.text_area :comment, placeholder: "本の評価", class: "BShow__form__text"
-                %tr
-                  %td
-                    = f.submit "コメントする"
-          .BShow__reviews__comments
-            %table
-              - @reviews.each do |review|
-                %tr
-                  %td
-                    = link_to user_path(review.user) do
-                      = attachment_image_tag review.user, :image, :fill, 100, 100, fallback: "no_image_book.jpeg",size: "50x50"
-                    %span.BShow__tag= review.user.nick_name
-                    = review.rate
-                    点
-                    %span{:class => "BShow__rate__show-#{review.id}"}
-                    :javascript
-                      $('.BShow__rate__show-#{review.id}').empty(); 
-                      $('.BShow__rate__show-#{review.id}').raty({
-                          starOff:  '#{asset_path('star-off.png')}',
-                          starOn : '#{asset_path('star-on.png')}',
-                          starHalf: '#{asset_path('star-half.png')}',
-                          half: true,
-                          readOnly: true,
-                          score: #{review.rate}
-                      });
-                %tr
-                  %td
-                    .BShow__comments.text-break= review.comment
-                %tr
-                  %td
-                    .BShow__review__action
-                      %div
-                        - if review.user_id == current_user.id
-                          = link_to "削除", book_review_path(review.book, review), method: :delete, class: "BShow__btn__delete"
-                      %div{:class => "BShow__violation__review-#{review.id}"}
-                        = render 'public/books/violation_review', {review: review}
-          .BShow__paginate
-            = paginate @reviews
-            
+              .book__comment.text-break
+                = review.comment
+              .book__commentDating
+                = "投稿日：#{review.created_at.strftime('%Y/%m/%d')}"
+              .book__reviewAction
+                - if review.user_id == current_user.id
+                  %div 
+                    = link_to "削除", book_review_path(review.book, review), method: :delete, class: "book__btnDelete"
+                - if review.user_id != current_user.id      
+                  %div{:class => "book__violationReviewIcon-#{review.id}"}
+                    = render 'public/books/violation_review', {review: review}
+                  
+        .book__paginate
+          = paginate @reviews
+          

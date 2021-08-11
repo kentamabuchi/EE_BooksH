@@ -1,1 +1,1 @@
-$(".BShow__goods-#{@book.id}").html("#{j(render partial: 'public/good_books/good', locals: { book: @book })}");
+$(".book__goods").html("#{j(render partial: 'public/good_books/good', locals: { book: @book })}");
