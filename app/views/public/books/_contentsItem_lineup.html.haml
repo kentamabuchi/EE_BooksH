@@ -1,0 +1,11 @@
+.contentsLineup
+    .contentsLineup__heading
+        %h2.books__headerText
+            = headingText
+    .contentsLineup__contents
+        - books.each do |book|
+            .contentsLineup__bookItem
+                .contentsLineup__data
+                    = link_to book_path(book) do
+                        = attachment_image_tag book, :image, :fill, 150, 150, fallback: "no_image_book.jpeg", size: '150x150'
+                        %p.contentsLineup__bookItemText.text-truncate= book.name

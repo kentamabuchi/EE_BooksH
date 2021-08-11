@@ -1,4 +1,4 @@
 - if book.is_active == true
-  = link_to "不備・違反を報告", book_path(book), method: :patch, remote: true, class: "BShow__violation"
+  = link_to "不備・違反を報告", book_path(book), method: :patch, remote: true, class: "book__violation"
 - else
-  %p.BShow__violation--none 報告確認中
+  %p.book__violation--none 報告確認中
