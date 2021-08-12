@@ -193,14 +193,17 @@ textarea {
     }
     &__list {
         @extend %row;
+        flex-wrap: wrap;
+        width: 100%;
         height: 500px;
-        padding: 100px 0;
+        padding: 20px 0;
         list-style: none;
-        
     }
     &__book {
-        width: 500px;
-        height: 300px;
+        display: inline-block;
+        width: 40%;
+        height: 150px;
+        margin: 30px auto;
     }
     &__bookLink {
         text-decoration: none !important;
