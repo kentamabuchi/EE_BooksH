@@ -37,8 +37,13 @@
         = link_to new_book_path, class:"books__createBtn" do
           こちら
     .books__contents
-      .books__recommendContents
-        = render 'public/books/contentsItem_slider', { headingText: "あなたにおすすめ", follow_books: @follow_books}
+    
+      - if @follow_books.present?
+        .books__recommendContents
+          = render 'public/books/contentsItem_slider', { headingText: "あなたにおすすめ", follow_books: @follow_books}
+       
+                
+                
       .books__rankingContents
         = render 'public/books/contentsItem_ranking', {headingText: "読まれている本総合ランキング", rankings: @all_ranks}
       .books__newLineupContents
