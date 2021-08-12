@@ -76,7 +76,7 @@ textarea {
     &__createContents {
         width: 80%;
         @extend %row;
-        margin: 100px auto 0;
+        margin: 100px auto 50px;
     }
     &__createText {
         display: inline-block;
@@ -93,11 +93,7 @@ textarea {
     &__contents {
         @extend %backgroundMain;
         padding: 50px 0;
-        margin: 50px auto;
-    }
-    &__contentsHeader {
-        @extend %headerMain;
-        margin: 50px auto;
+        margin: 0 auto;
     }
     &__recommend {
         @extend %center;
@@ -128,11 +124,9 @@ textarea {
         right: 0;
     }
     &__recommendBook {
-        display: none;
-        background-image: image-url("top_mainVisual.jpeg");
-        background-size: cover;
         width: 500px;
         height: 300px;
+        list-style: none;
     }
     &__recommendBookLink {
         text-decoration: none !important;
@@ -140,6 +134,8 @@ textarea {
     }
     &__recommendBookItems {
         @extend %row;
+        background-color: $main_color;
+        padding: 20px;
     }
     &__recommendBookData {
         text-decoration: none !important;
@@ -151,27 +147,25 @@ textarea {
     transform: scale(1.25);
     opacity: 1;
   }
+  &--item {
+      display: block;
+  }
 }
 .contents {
   &__leftOver {
-    display: block;
     order: 1;
   }
   &__left {
-    display: block;
     order: 2;
   }
   &__center {
-    display: block;
     z-index: 10;
     order: 3;
   }
   &__right {
-    display: block;
     order: 4;
   }
   &__rightOver {
-    display: block;
     order: 5;
   }
 }
@@ -185,12 +179,38 @@ textarea {
   transition-duration: 0.1s;
 }
 
-.contentsSlider {
+.contentsRecommend {
     padding: 50px 0;
     &__heading {
         @extend %headerMain;
         width: 90%;
         margin: 0 auto 50px;
+    }
+    &__contents {
+        @extend %center;
+        width: 90%;
+        background-color: white;
+    }
+    &__list {
+        @extend %row;
+        height: 500px;
+        padding: 100px 0;
+        list-style: none;
+        
+    }
+    &__book {
+        width: 500px;
+        height: 300px;
+    }
+    &__bookLink {
+        text-decoration: none !important;
+        color: $textColor_main;
+    }
+    &__bookItems {
+        @extend %row;
+        text-decoration: none;
+        background-color: $main_color;
+        padding: 20px;
     }
 }
 
@@ -212,7 +232,7 @@ textarea {
     &__books {
         @extend %row;
         flex-wrap: wrap;
-        width: 90%;
+        width: 100%;
         padding: 50px 0;
         margin: 0 auto;
     }
@@ -250,17 +270,23 @@ textarea {
     &__itemText {
         background-color: $main_color;
         color: $white;
+        width: 200px;
         border-radius: 15px;
         text-align: center;
         padding: 0 20px;
+        white-space: nowrap;
         overflow: hidden;
+        text-overflow: ellipsis;
         &--other {
             background-color: $main_color;
             color: $white;
+            width: 150px;
             border-radius: 15px;
             text-align: center;
             padding: 0 20px;
+            white-space: nowrap;
             overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 }
