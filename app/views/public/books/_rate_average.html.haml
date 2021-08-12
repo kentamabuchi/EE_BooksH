@@ -1,7 +1,7 @@
-%div{:class => "BIndex__average__rate-#{book.id}"}
+%div{:class => "book__averageRate-#{book.id}"}
   :javascript
-    $('.BIndex__average__rate-#{book.id}').empty();
-    $('.BIndex__average__rate-#{book.id}').raty({
+    $('.book__averageRate-#{book.id}').empty();
+    $('.book__averageRate-#{book.id}').raty({
         starOff:  '#{asset_path('star-off.png')}',
         starOn : '#{asset_path('star-on.png')}',
         starHalf: '#{asset_path('star-half.png')}',
