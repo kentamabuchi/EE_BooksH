@@ -111,7 +111,7 @@ textarea {
     }
     &__recommendSliderItems {
         @extend %row;
-        width: 2500px;
+        min-width: 1000px;
         height: 500px;
         padding: 100px 0;
         margin: 0 auto;
@@ -127,6 +127,7 @@ textarea {
         width: 500px;
         height: 300px;
         list-style: none;
+        display: none;
     }
     &__recommendBookLink {
         text-decoration: none !important;
@@ -141,32 +142,41 @@ textarea {
         text-decoration: none !important;
     }
 }
-.display {
-  opacity: 0.5;
-  &--center {
-    transform: scale(1.25);
-    opacity: 1;
-  }
-  &--item {
-      display: block;
-  }
-}
+// .display {
+//   opacity: 0.5;
+//   &--center {
+//     transform: scale(1.25);
+//     opacity: 1;
+//   }
+//   &--item {
+//       display: block;
+//   }
+// }
 .contents {
   &__leftOver {
     order: 1;
+    opacity: 0.5;
   }
   &__left {
     order: 2;
+    opacity: 0.5;
+    display: block;
   }
   &__center {
     z-index: 10;
     order: 3;
+    transform: scale(1.25);
+    opacity: 1;
+    display: block;
   }
   &__right {
     order: 4;
+    opacity: 0.5;
+    display: block;
   }
   &__rightOver {
     order: 5;
+    opacity: 0.5;
   }
 }
 
