@@ -3,8 +3,8 @@
         %h2.contentsRecommend__headerText
             = headingText
     
-    .books__recommend
-        - if follow_books.length > 4
+    -if follow_books > 2
+        .books__recommend
             %ul.books__recommendSlider
             
                 %i.fas.fa-2x.fa-chevron-circle-left.books__recommend__prevBtn#prevBtn
@@ -93,23 +93,5 @@
         
             = javascript_include_tag "slide"
         
-        - elsif 1 <= @follow_books.length && @follow_books.length <= 4
-            .contentsRecommend__contents
-                %ul.contentsRecommend__list
-                    
-                    - 4.times do |n|
-                        -if @follow_books[n].present?
-                            %li.contentsRecommend__book
-                                = link_to book_path(@follow_books[n]), class:"contentsRecommend__bookLink" do
-                                    .contentsRecommend__bookItems
-                                        = attachment_image_tag @follow_books[n], :image, fallback: "no_image_book.jpeg", size: "150x150", class: "contentsRecommend__bookImage" 
-                                        .contentsRecommend__datas
-                                            .contentsRecommend__bookData
-                                                = @follow_books[n].name
-                                            .contentsRecommend__bookData
-                                                = @follow_books[n].writer
-                                            .contentsRecommend__bookData
-                                                = @follow_books[n].classification.name
-                                            .contentsRecommend__bookData
-                                                = @follow_books[n].genre.name
+       
     

@@ -2,167 +2,288 @@
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
   let slideItems = document.querySelectorAll(".slideItem");
+  
 
-  let contentsLeftOver = document.querySelector(".contents__leftOver");
-  let contentsLeft = document.querySelector(".contents__left");
-  let contentsCenter = document.querySelector(".contents__center");
-  let contentsRight = document.querySelector(".contents__right");
-  let contentsRightOver = document.querySelector(".contents__rightOver");
-
-  let leftOverIndex = [].slice.call( slideItems ).indexOf(contentsLeftOver);
-  let leftIndex = [].slice.call( slideItems ).indexOf(contentsLeft);
-  let centerIndex = [].slice.call( slideItems ).indexOf(contentsCenter);
-  let rightIndex = [].slice.call( slideItems ).indexOf(contentsRight);
-  let rightOverIndex = [].slice.call( slideItems ).indexOf(contentsRightOver);
+  let slideIndex5 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__leftOver"));
+  let slideIndex1 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__left"));
+  let slideIndex2 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__center"));
+  let slideIndex3 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__right"));
+  let slideIndex4 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__rightOver"));
+  
+  let indexLength = slideItems.length
 
 
   prevBtn.addEventListener("click", function() {
+    
+    
+    
+    slideItems[slideIndex1].classList.add("leftSlide");
+    slideItems[slideIndex2].classList.add("leftSlide");
+    slideItems[slideIndex3].classList.add("leftSlide");
+    
+    
+    switch (indexLength) {
+      case 5:
+        slideItems[slideIndex5].classList.add("leftSlide");
+        
+        
+        slideIndex5 -= 1;
+        if(slideIndex5 < 0) {
+          slideIndex5 = 4;
+        }
+    
+    
+        slideIndex1 -= 1;
+        if(slideIndex1 < 0) {
+          slideIndex1 = 4;
+        }
+    
+        slideIndex2 -= 1;
+        if(slideIndex2 < 0) {
+          slideIndex2 = 4;
+        }
+    
+        slideIndex3 -= 1;
+        if (slideIndex3 < 0) {
+          slideIndex3 = 4;
+        }
+        
+        slideIndex4 -= 1;
+        if (slideIndex4 < 0) {
+          slideIndex4 = 4;
+        }
 
+        slideItems[slideIndex2].addEventListener("transitionend", function(){
+          
+          slideItems[slideIndex5].classList.remove("contents__rightOver");
+          slideItems[slideIndex5].classList.add("contents__leftOver");
+          
+          slideItems[slideIndex1].classList.remove("leftSlide", "contents__leftOver");
+          slideItems[slideIndex1].classList.add("contents__left");
+          
+          slideItems[slideIndex2].classList.remove("leftSlide", "contents__left");
+          slideItems[slideIndex2].classList.add("contents__center");
+          
+          slideItems[slideIndex3].classList.remove("leftSlide", "contents__center");
+          slideItems[slideIndex3].classList.add("contents__right");
+          
+          slideItems[slideIndex4].classList.remove("leftSlide", "contents__right");
+          slideItems[slideIndex4].classList.add("contents__rightOver");
+          
+        });
+        break;
+        
+      case 4:
+        console.log(slideIndex4)
+        slideItems[slideIndex4].classList.remove("contents__rightOver");
+        slideItems[slideIndex4].classList.add("contents__leftOver", "leftSlide");
 
-    // let centerPosition = slideItems[centerIndex].getBoundingClientRect();
-    // let centerPositionX = window.pageXOffset + centerPosition.left;
-    // console.log(centerPositionX);
+    
+        slideIndex1 -= 1;
+        if(slideIndex1 < 0) {
+          slideIndex1 = 3;
+        }
+    
+        slideIndex2 -= 1;
+        if(slideIndex2 < 0) {
+          slideIndex2 = 3;
+        }
+    
+        slideIndex3 -= 1;
+        if (slideIndex3 < 0) {
+          slideIndex3 = 3;
+        }
+        
+        slideIndex4 -= 1;
+        if (slideIndex4 < 0) {
+          slideIndex4 = 3;
+        }
 
-    // let rightPosition = slideItems[rightIndex].getBoundingClientRect();
-    // let rightPositionX = window.pageXOffset + rightPosition.left;
-    // console.log(rightPositionX);
+        slideItems[slideIndex2].addEventListener("transitionend", function(){
+          
+          slideItems[slideIndex1].classList.remove("leftSlide", "contents__leftOver");
+          slideItems[slideIndex1].classList.add("contents__left");
+          
+          slideItems[slideIndex2].classList.remove("leftSlide", "contents__left");
+          slideItems[slideIndex2].classList.add("contents__center");
+          
+          slideItems[slideIndex3].classList.remove("leftSlide","contents__center");
+          slideItems[slideIndex3].classList.add("contents__right");
+          
+          slideItems[slideIndex4].classList.remove("leftSlide", "contents__right");
+          slideItems[slideIndex4].classList.add("contents__rightOver");
+          
+        });
+        break;
+        
+      case 3:
+        slideItems[slideIndex3].classList.remove("contents__right");
+        slideItems[slideIndex3].classList.add("contents__leftOver");
 
-    slideItems[leftOverIndex].classList.add("leftSlide");
-    slideItems[leftIndex].classList.add("leftSlide");
-    slideItems[centerIndex].classList.add("leftSlide");
-    slideItems[rightIndex].classList.add("leftSlide");
+    
+        slideIndex1 -= 1;
+        if(slideIndex1 < 0) {
+          slideIndex1 = 2;
+        }
+    
+        slideIndex2 -= 1;
+        if(slideIndex2 < 0) {
+          slideIndex2 = 2;
+        }
+    
+        slideIndex3 -= 1;
+        if (slideIndex3 < 0) {
+          slideIndex3 = 2;
+        }
+        
 
-    leftOverIndex -= 1;
-    if(leftOverIndex < 0) {
-      leftOverIndex = 4;
+        slideItems[slideIndex2].addEventListener("transitionend", function(){
+          
+          slideItems[slideIndex1].classList.remove("leftSlide", "contents__leftOver");
+          slideItems[slideIndex1].classList.add("contents__left");
+          
+          slideItems[slideIndex2].classList.remove("leftSlide", "contents__left");
+          slideItems[slideIndex2].classList.add("contents__center");
+          
+          slideItems[slideIndex3].classList.remove("leftSlide", "contents__center");
+          slideItems[slideIndex3].classList.add("contents__right");
+          
+        });
     }
-
-    leftIndex -= 1;
-    if(leftIndex < 0) {
-      leftIndex = 4;
-    }
-
-    centerIndex -= 1;
-    if(centerIndex < 0) {
-      centerIndex = 4;
-    }
-
-    rightIndex -= 1;
-    if (rightIndex < 0) {
-      rightIndex = 4;
-    }
-
-    rightOverIndex -= 1;
-    if (rightOverIndex < 0) {
-      rightOverIndex = 4;
-    }
-
-    slideItems[centerIndex].addEventListener("transitionrun", function(){
-      slideItems[centerIndex].classList.remove("display");
-      slideItems[centerIndex].classList.add("display--center");
-      slideItems[rightIndex].classList.remove("display--center");
-      slideItems[rightOverIndex].classList.remove("display");
-      slideItems[rightIndex].classList.add("display");
-      slideItems[leftIndex].classList.add("display");
-    });
-
-    slideItems[rightOverIndex].addEventListener("transitionend", function(){
-      slideItems[rightOverIndex].classList.remove("leftSlide");
-      slideItems[rightOverIndex].classList.remove("contents__right");
-      slideItems[rightOverIndex].classList.add("contents__rightOver");
-    });
-
-    slideItems[leftIndex].addEventListener("transitionend", function(){
-      slideItems[leftIndex].classList.remove("leftSlide");
-      slideItems[leftIndex].classList.remove("contents__leftOver");
-      slideItems[leftIndex].classList.add("contents__left");
-      slideItems[leftOverIndex].classList.remove("contents__rightOver");
-      slideItems[leftOverIndex].classList.add("contents__leftOver");
-    });
-
-    slideItems[centerIndex].addEventListener("transitionend", function(){
-      slideItems[centerIndex].classList.remove("leftSlide");
-      slideItems[centerIndex].classList.remove("contents__left");
-      slideItems[centerIndex].classList.add("contents__center");
-    });
-
-    slideItems[rightIndex].addEventListener("transitionend", function(){
-      slideItems[rightIndex].classList.remove("leftSlide");
-      slideItems[rightIndex].classList.remove("contents__center");
-      slideItems[rightIndex].classList.add("contents__right");
-    });
-
-
-
+    
 
   });
 
   nextBtn.addEventListener("click", function() {
 
-    slideItems[rightOverIndex].classList.add("rightSlide");
-    slideItems[rightIndex].classList.add("rightSlide");
-    slideItems[centerIndex].classList.add("rightSlide");
-    slideItems[leftIndex].classList.add("rightSlide");
+    slideItems[slideIndex3].classList.add("rightSlide");
+    slideItems[slideIndex2].classList.add("rightSlide");
+    slideItems[slideIndex1].classList.add("rightSlide");
+    
+    
+    switch (indexLength) {
+      case 5:
+        
+        slideItems[slideIndex4].classList.add("rightSlide");
+        
+        slideIndex5 += 1;
+        if(slideIndex5 > 4) {
+          slideIndex5 = 0;
+        }
+    
+        slideIndex1 += 1;
+        if(slideIndex1 > 4) {
+          slideIndex1 = 0;
+        }
+    
+        slideIndex2 += 1;
+        if(slideIndex2 > 4) {
+          slideIndex2 = 0;
+        }
+    
+        slideIndex3 += 1;
+        if (slideIndex3 > 4) {
+          slideIndex3 = 0;
+        }
+    
+        slideIndex4 += 1;
+        if (slideIndex4 > 4) {
+          slideIndex4 = 0;
+        }
 
-    leftOverIndex += 1;
-    if(leftOverIndex > 4) {
-      leftOverIndex = 0;
+
+        slideItems[slideIndex2].addEventListener("transitionend", function(){
+          
+          slideItems[slideIndex4].classList.remove("contents__leftOver");
+          slideItems[slideIndex4].classList.add("contents__rightOver");
+          
+          slideItems[slideIndex3].classList.remove("rightSlide", "contents__rightOver");
+          slideItems[slideIndex3].classList.add("contents__right");
+          
+          slideItems[slideIndex2].classList.remove("rightSlide", "contents__right");
+          slideItems[slideIndex2].classList.add("contents__center");
+          
+          slideItems[slideIndex1].classList.remove("rightSlide", "contents__center");
+          slideItems[slideIndex1].classList.add("contents__left");
+          
+          slideItems[slideIndex5].classList.remove("rightSlide", "contents__left");
+          slideItems[slideIndex5].classList.add("contents__leftOver");
+        });
+        break;
+      
+      case 4:
+        slideItems[slideIndex4].classList.add("rightSlide");
+        
+        slideIndex1 += 1;
+        if(slideIndex1 > 3) {
+          slideIndex1 = 0;
+        }
+    
+        slideIndex2 += 1;
+        if(slideIndex2 > 3) {
+          slideIndex2 = 0;
+        }
+    
+        slideIndex3 += 1;
+        if (slideIndex3 > 3) {
+          slideIndex3 = 0;
+        }
+    
+        slideIndex4 += 1;
+        if (slideIndex4 > 3) {
+          slideIndex4 = 0;
+        }
+
+
+        slideItems[slideIndex2].addEventListener("transitionend", function(){
+          
+          slideItems[slideIndex4].classList.remove("rightSlide", "contents__left");
+          slideItems[slideIndex4].classList.add("contents__rightOver");
+          
+          slideItems[slideIndex3].classList.remove("rightSlide", "contents__rightOver");
+          slideItems[slideIndex3].classList.add("contents__right");
+          
+          slideItems[slideIndex2].classList.remove("rightSlide", "contents__right");
+          slideItems[slideIndex2].classList.add("contents__center");
+          
+          slideItems[slideIndex1].classList.remove("rightSlide", "contents__center");
+          slideItems[slideIndex1].classList.add("contents__left");
+        });
+        break;
+      
+      case 3:
+        slideIndex1 += 1;
+        if(slideIndex1 > 2) {
+          slideIndex1 = 0;
+        }
+    
+        slideIndex2 += 1;
+        if(slideIndex2 > 2) {
+          slideIndex2 = 0;
+        }
+    
+        slideIndex3 += 1;
+        if (slideIndex3 > 2) {
+          slideIndex3 = 0;
+        }
+    
+
+        slideItems[slideIndex2].addEventListener("transitionend", function(){
+          
+          slideItems[slideIndex3].classList.remove("rightSlide", "contents__left");
+          slideItems[slideIndex3].classList.add("contents__right");
+          
+          slideItems[slideIndex2].classList.remove("rightSlide", "contents__right");
+          slideItems[slideIndex2].classList.add("contents__center");
+          
+          slideItems[slideIndex1].classList.remove("rightSlide", "contents__center");
+          slideItems[slideIndex1].classList.add("contents__left");
+        });
+        break;
+
     }
 
-    leftIndex += 1;
-    if(leftIndex > 4) {
-      leftIndex = 0;
-    }
-
-    centerIndex += 1;
-    if(centerIndex > 4) {
-      centerIndex = 0;
-    }
-
-    rightIndex += 1;
-    if (rightIndex > 4) {
-      rightIndex = 0;
-    }
-
-    rightOverIndex += 1;
-    if (rightOverIndex > 4) {
-      rightOverIndex = 0;
-    }
-
-    slideItems[centerIndex].addEventListener("transitionrun", function(){
-      slideItems[rightIndex].classList.add("display");
-      slideItems[centerIndex].classList.remove("display");
-      slideItems[centerIndex].classList.add("display--center");
-      slideItems[leftIndex].classList.remove("display--center");
-      slideItems[leftIndex].classList.add("display");
-      slideItems[leftOverIndex].classList.remove("display");
-    });
-
-    slideItems[rightIndex].addEventListener("transitionend", function(){
-      slideItems[rightIndex].classList.remove("rightSlide");
-      slideItems[rightIndex].classList.remove("contents__rightOver");
-      slideItems[rightIndex].classList.add("contents__right");
-      slideItems[rightOverIndex].classList.remove("contents__leftOver");
-      slideItems[rightOverIndex].classList.add("contents__rightOver");
-    });
-
-    slideItems[centerIndex].addEventListener("transitionend", function(){
-      slideItems[centerIndex].classList.remove("rightSlide");
-      slideItems[centerIndex].classList.remove("contents__right");
-      slideItems[centerIndex].classList.add("contents__center");
-    });
-
-    slideItems[leftIndex].addEventListener("transitionend", function(){
-      slideItems[leftIndex].classList.remove("rightSlide");
-      slideItems[leftIndex].classList.remove("contents__center");
-      slideItems[leftIndex].classList.add("contents__left");
-    });
-
-    slideItems[leftOverIndex].addEventListener("transitionend", function(){
-      slideItems[leftOverIndex].classList.remove("rightSlide");
-      slideItems[leftOverIndex].classList.remove("contents__left");
-      slideItems[leftOverIndex].classList.add("contents__leftOver");
-    });
+    
 
   });
 
