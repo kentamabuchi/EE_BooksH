@@ -3,7 +3,7 @@
         %h2.contentsRecommend__headerText
             = headingText
     
-    -if follow_books > 2
+    -if follow_books.length > 2
         .books__recommend
             %ul.books__recommendSlider
             
@@ -90,6 +90,11 @@
                                                 
                      
                 %i.fas.fa-2x.fa-chevron-circle-right.books__recommend__nextBtn#nextBtn
+                
+        .contentsRecommend__indexBar
+            %ul.contentsRecommend__indexIcons
+                -5.times do
+                    %li.contentsRecommend__indexBtn
         
             = javascript_include_tag "slide"
         

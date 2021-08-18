@@ -2,6 +2,7 @@
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
   let slideItems = document.querySelectorAll(".slideItem");
+  let indexBtn = document.querySelectorAll(".contentsRecommend__indexBtn");
   
 
   let slideIndex5 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__leftOver"));
@@ -286,5 +287,28 @@
     
 
   });
+  
+  for( let i = 0; i < indexBtn.length; i++ ) {
+    indexBtn[i].addEventListener("click", function() {
+      
+      switch (indexLength) {
+        console.log(i);
+        case 5:
+          // slideItems[slideIndex5].classList.remove("contents__leftOver");
+          // slideItems[slideIndex1].classList.remove("contents__left");
+          // slideItems[slideIndex2].classList.remove("contents__center");
+          // slideItems[slideIndex3].classList.remove("contents__right");
+          // slideItems[slideIndex4].classList.remove("contents__rightOver");
+          
+          // slideItems[i].classList.add("contents__center")
+          // slideItems[i].classList.add("contents__center")
+          
+          break;
+        
+        default:
+          // code
+      }
+    });
+  }
 
 }
