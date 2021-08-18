@@ -225,6 +225,26 @@ textarea {
         background-color: $main_color;
         padding: 20px;
     }
+    &__indexBar {
+        @extend %center;
+        width: 90%;
+        height: 40px;
+        background-color: $main_color;
+        margin: 0 auto;
+    }
+    &__indexIcons {
+        @extend %row;
+    }
+    &__indexBtn {
+        margin: 0 40px;
+        color: $white;
+        font-size: 30px;
+        line-height: 40px;
+        cursor: pointer;
+        &:hover {
+            color: rgba($white, 0.8);
+        }
+    }
 }
 
 .contentsRanking {
