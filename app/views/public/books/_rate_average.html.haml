@@ -1,11 +1,12 @@
 %div{:class => "book__averageRate-#{book.id}"}
-  :javascript
-    $('.book__averageRate-#{book.id}').empty();
-    $('.book__averageRate-#{book.id}').raty({
-        starOff:  '#{asset_path('star-off.png')}',
-        starOn : '#{asset_path('star-on.png')}',
-        starHalf: '#{asset_path('star-half.png')}',
-        half: true,
-        readOnly: true,
-        score: #{rate}
-    });
+
+:javascript
+  $('.book__averageRate-#{book.id}').empty();
+  $('.book__averageRate-#{book.id}').raty({
+      starOff:  '#{asset_path('star-off.png')}',
+      starOn : '#{asset_path('star-on.png')}',
+      starHalf: '#{asset_path('star-half.png')}',
+      half: true,
+      readOnly: true,
+      score: #{rate}
+  });
