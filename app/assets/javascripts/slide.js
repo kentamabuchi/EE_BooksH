@@ -292,8 +292,8 @@
     indexBtn[i].addEventListener("click", function() {
       
       switch (indexLength) {
-        console.log(i);
         case 5:
+          console.log(i);
           // slideItems[slideIndex5].classList.remove("contents__leftOver");
           // slideItems[slideIndex1].classList.remove("contents__left");
           // slideItems[slideIndex2].classList.remove("contents__center");
