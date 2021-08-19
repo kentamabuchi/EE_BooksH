@@ -91,6 +91,7 @@
                 .book__commentUserRate
                   %span{:class => "book__rate__show-#{review.id}"}
                   :javascript
+                    $(document).on 'turbolinks:load', ->
                     $('.book__rate__show-#{review.id}').empty(); 
                     $('.book__rate__show-#{review.id}').raty({
                         starOff:  '#{asset_path('star-off.png')}',
@@ -99,6 +100,7 @@
                         half: true,
                         readOnly: true,
                         score: #{review.rate}
+                        Holder.run()
                     });
               .book__comment.text-break
                 = review.comment
