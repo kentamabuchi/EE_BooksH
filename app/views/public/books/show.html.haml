@@ -91,18 +91,14 @@
                 .book__commentUserRate
                   %span{:class => "book__rate__show-#{review.id}"}
                   :javascript
-                    $(document).on('turbolinks:load', function() { 
-                      $('.book__rate__show-#{review.id}').empty(); 
-                      $('.book__rate__show-#{review.id}').raty({
-                          starOff:  '#{asset_path('star-off.png')}',
-                          starOn : '#{asset_path('star-on.png')}',
-                          starHalf: '#{asset_path('star-half.png')}',
-                          half: true,
-                          readOnly: true,
-                          score: #{review.rate}
-                      });
-
-                      Holder.run()
+                    $('.book__rate__show-#{review.id}').empty(); 
+                    $('.book__rate__show-#{review.id}').raty({
+                        starOff:  '#{asset_path('star-off.png')}',
+                        starOn : '#{asset_path('star-on.png')}',
+                        starHalf: '#{asset_path('star-half.png')}',
+                        half: true,
+                        readOnly: true,
+                        score: #{review.rate}
                     });
               .book__comment.text-break
                 = review.comment
