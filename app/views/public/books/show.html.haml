@@ -44,12 +44,12 @@
                 :javascript
                   $('.book__average__rate').empty(); 
                   $('.book__average__rate').raty({
-                      starOff:  '#{asset_path('star-off.png')}',
-                      starOn : '#{asset_path('star-on.png')}',
-                      starHalf: '#{asset_path('star-half.png')}',
-                      half: true,
-                      readOnly: true,
-                      score: #{@average_rate}
+                    starOff:  '#{asset_path('star-off.png')}',
+                    starOn : '#{asset_path('star-on.png')}',
+                    starHalf: '#{asset_path('star-half.png')}',
+                    half: true,
+                    readOnly: true,
+                    score: #{@average_rate}
                   });
         
       .book__introduction
@@ -69,11 +69,11 @@
               :javascript
                 $('.book__reviewRate').empty(); 
                 $('.book__reviewRate').raty({
-                    starOn: "#{asset_path('star-on.png')}",
-                    starOff: "#{asset_path('star-off.png')}",
-                    starHalf: "#{asset_path('star-half.png')}",
-                    scoreName: 'review[rate]',
-                    half: true,
+                  starOn: "#{asset_path('star-on.png')}",
+                  starOff: "#{asset_path('star-off.png')}",
+                  starHalf: "#{asset_path('star-half.png')}",
+                  scoreName: 'review[rate]',
+                  half: true,
                 });
               %tr
                 %td= f.text_area :comment, placeholder: "本の感想", class: "book__form__text"
@@ -93,12 +93,12 @@
                   :javascript
                     $('.book__rate__show-#{review.id}').empty(); 
                     $('.book__rate__show-#{review.id}').raty({
-                        starOff:  '#{asset_path('star-off.png')}',
-                        starOn : '#{asset_path('star-on.png')}',
-                        starHalf: '#{asset_path('star-half.png')}',
-                        half: true,
-                        readOnly: true,
-                        score: #{review.rate}
+                      starOff:  "#{asset_path('star-off.png')}",
+                      starOn : "#{asset_path('star-on.png')}",
+                      starHalf: "#{asset_path('star-half.png')}",
+                      half: true,
+                      readOnly: true,
+                      score: #{review.rate}
                     });
               .book__comment.text-break
                 = review.comment
