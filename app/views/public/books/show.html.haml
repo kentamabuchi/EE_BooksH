@@ -91,11 +91,11 @@
                 .book__commentUserRate
                   %span{:class => "book__rate__show-#{review.id}"}
                   :javascript
-                    $('.book__rate__show-#{review.id}').empty(); 
-                    $('.book__rate__show-#{review.id}').raty({
-                      starOff:  "#{image_tag asset_path('star-off.png')}",
-                      starOn : "#{image_tag asset_path('star-on.png')}",
-                      starHalf: "#{image_tag asset_path('star-half.png')}",
+                    $(".book__rate__show-#{review.id}").empty(); 
+                    $(".book__rate__show-#{review.id}").raty({
+                      starOff:  "#{asset_path('star-off.png')}",
+                      starOn : "#{asset_path('star-on.png')}",
+                      starHalf: "#{asset_path('star-half.png')}",
                       half: true,
                       readOnly: true,
                       score: #{review.rate}
