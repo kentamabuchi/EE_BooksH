@@ -21,5 +21,5 @@
 //= require_tree .
 
 // = require jquery.min.js
-// = require app/assets/javascripts/jquery.raty.js
+// = require jquery.raty.js
 
