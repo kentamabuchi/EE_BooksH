@@ -23,4 +23,3 @@
 // = require jquery.min.js
 // = require jquery.raty.js
 
-//=javascript_include_tag "jquery.raty"
