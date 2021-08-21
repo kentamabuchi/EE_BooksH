@@ -64,11 +64,6 @@ class Public::BooksController < ApplicationController
     @review.update(is_active: "false")
   end
   
-  def test
-    @reviews = Review.all
-  end
-    
-
 
   private
 
