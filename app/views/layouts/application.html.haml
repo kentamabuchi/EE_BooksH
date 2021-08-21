@@ -8,6 +8,7 @@
     %script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/6b92dd2514.js"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    =javascript_include_tag "jquery.raty"
   %body
     %header
     - if admin_signed_in?
