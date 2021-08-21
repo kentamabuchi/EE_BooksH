@@ -15,7 +15,6 @@
 //= require popper
 //= require bootstrap-sprockets
 
-//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
@@ -24,4 +23,4 @@
 // = require jquery.min.js
 // = require jquery.raty.js
 
-// =javascript_include_tag "jquery.raty"
+//=javascript_include_tag "jquery.raty"
