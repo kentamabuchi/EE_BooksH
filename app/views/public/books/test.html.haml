@@ -2,7 +2,6 @@
     = review.id
     %p{id:"rateShow-#{review.id}"}
     %br
-    = javascript_include_tag "jquery.raty"
     :javascript
         $("#rateShow-#{review.id}").raty({
             starOff:  "#{asset_path('star-off.png')}",
