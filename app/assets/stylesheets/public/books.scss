@@ -138,8 +138,13 @@ textarea {
         background-color: $main_color;
         padding: 20px;
     }
-    &__recommendBookData {
+    &__recomendBookData {
         text-decoration: none !important;
+        width: 150px;
+        padding: 0 20px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
     }
 }
 // .display {
