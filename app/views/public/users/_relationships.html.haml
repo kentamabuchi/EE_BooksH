@@ -1,25 +1,23 @@
-.UShow__relationships
-  .UShow__page__heading
-    %h2 フォロー
-  - if relationships.blank?
-    .UShow__page__contents--other
-      %h2 フォローしていません
-  - else
-    .UShow__page__contents
-      - relationships.each do |relationship|
-        .UShow__favorite-book
-          .UShow__book-image
-            %div
-              = link_to user_path(relationship), class: "UShow__BookLink" do
-                = attachment_image_tag relationship, :image, :fill, 200, 200, fallback: "no_image.jpg",size: '150x150'
-          .UShow__book-data
-            %table.UShow__book-info
-              %tr
-                %th.UShow__thread--book
-                  %span.UShow__tag--book ニックネーム
-                %td.UShow__date--book= relationship.nick_name
-                
-  -if relationships.length >= 5
-    .UShow__link
-      = link_to user_followers_index_path(user), class:"UShow__link__item" do
-        もっと見る
+.follower
+  .follower__container
+    .follower__heading
+      %h2.follower__heading__text フォロー
+    - if relationships.blank?
+      .follower__pageText
+        %h2 フォローしていません
+    - else
+      .follower__contents
+        - relationships.each do |relationship|
+          .follower__user
+            .follower__userIcon
+              = link_to user_path(relationship), class: "follower__userIcon__link" do
+                = attachment_image_tag relationship, :image, :fill, 100, 100, fallback: "no_image.jpg",size: '100x100', class:"follower__userIcon__image"
+            .follower__userData  
+              %p.follower__userData__name= relationship.nick_name
+              .follower__userData__introduce
+              
+                  
+    -if relationships.length >= 5
+      .follower__action
+        = link_to user_followers_index_path(user), class:"follower__linkMore" do
+          もっと見る
