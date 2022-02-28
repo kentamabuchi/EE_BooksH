@@ -96,6 +96,9 @@
           .header__nav
             %ul.header__navList
               %li.header__navItem
+                = link_to root_path(anchor: 'about__top'), class: "header__navLink" do
+                  About
+              %li.header__navItem
                 = link_to about_path, class: "header__navLink" do
                   About
               %li#sign_up.header__navItem
