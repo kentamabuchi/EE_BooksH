@@ -7,7 +7,8 @@
     = csp_meta_tag
     %script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/6b92dd2514.js"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "jquery.raty"
   %body
     %header
     - if admin_signed_in?
@@ -71,7 +72,7 @@
                   = link_to reviews_path, class: "header__navLink" do
                     タイムライン
                 %li.header__navItem
-                  = link_to user_path(current_user.id), class: "header__navLink" do
+                  = link_to mypage_path, class: "header__navLink" do
                     マイページ
                 %li.header__navItem
                   = link_to destroy_user_session_path, method: :delete, class: "header__navLink" do
@@ -94,6 +95,9 @@
                   
           .header__nav
             %ul.header__navList
+              %li.header__navItem
+                = link_to root_path(anchor: 'about__top'), class: "header__navLink" do
+                  About
               %li.header__navItem
                 = link_to about_path, class: "header__navLink" do
                   About

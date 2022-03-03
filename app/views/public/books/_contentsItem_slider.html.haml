@@ -14,7 +14,7 @@
                     - 5.times do |n|
                     
                         -if n == 0 && follow_books[n].present?
-                            %li.books__recommendBook.slideItem.contents__left.display
+                            %li.books__recommendBook.slideItem.contents__left
                                 = link_to book_path(follow_books[n]), class:"books__recommendBookLink" do
                                     .books__recommendBookItems
                                         = attachment_image_tag follow_books[n], :image, fallback: "no_image_book.jpeg", size: "300x300", class: "books__recommendBookImage" 
@@ -29,7 +29,7 @@
                                                 = follow_books[n].genre.name
                                                 
                         - elsif n == 1 && follow_books[n].present?
-                            %li.books__recommendBook.slideItem.contents__center.display--center
+                            %li.books__recommendBook.slideItem.contents__center
                                 = link_to book_path(follow_books[n]), class:"books__recommendBookLink" do
                                     .books__recommendBookItems
                                         = attachment_image_tag follow_books[n], :image, fallback: "no_image_book.jpeg", size: "300x300", class: "books__recommendBookImage" 
@@ -44,7 +44,7 @@
                                                 = follow_books[n].genre.name
                                                 
                         - elsif n == 2 && follow_books[n].present?
-                            %li.books__recommendBook.slideItem.contents__right.display
+                            %li.books__recommendBook.slideItem.contents__right
                                 = link_to book_path(follow_books[n]), class:"books__recommendBookLink" do
                                     .books__recommendBookItems
                                         = attachment_image_tag follow_books[n], :image, fallback: "no_image_book.jpeg", size: "300x300", class: "books__recommendBookImage" 
@@ -93,7 +93,7 @@
                 
         .contentsRecommend__indexBar
             %ul.contentsRecommend__indexIcons
-                -5.times do
+                -follow_books.length.times do
                     %li.contentsRecommend__indexBtn
         
             = javascript_include_tag "slide"

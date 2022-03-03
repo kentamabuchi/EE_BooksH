@@ -11,19 +11,26 @@
   let slideIndex3 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__right"));
   let slideIndex4 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__rightOver"));
   
-  let indexLength = slideItems.length
+  let itemsLength = slideItems.length
 
 
   prevBtn.addEventListener("click", function() {
     
-    
+    console.log(slideIndex5);
+    console.log(slideIndex1);
+    console.log(slideIndex2);
+    console.log(slideIndex3);
+    console.log(slideIndex4);
+    console.log("");
+    console.log(slideItems.length);
+    console.log("");
     
     slideItems[slideIndex1].classList.add("leftSlide");
     slideItems[slideIndex2].classList.add("leftSlide");
     slideItems[slideIndex3].classList.add("leftSlide");
     
     
-    switch (indexLength) {
+    switch (itemsLength) {
       case 5:
         slideItems[slideIndex5].classList.add("leftSlide");
         
@@ -53,6 +60,17 @@
         if (slideIndex4 < 0) {
           slideIndex4 = 4;
         }
+        
+        console.log(slideIndex5);
+        console.log(slideIndex1);
+        console.log(slideIndex2);
+        console.log(slideIndex3);
+        console.log(slideIndex4);
+        console.log("");
+        console.log(slideItems.length);
+        console.log("");
+        
+        
 
         slideItems[slideIndex2].addEventListener("transitionend", function(){
           
@@ -140,6 +158,7 @@
 
         slideItems[slideIndex2].addEventListener("transitionend", function(){
           
+          
           slideItems[slideIndex1].classList.remove("leftSlide", "contents__leftOver");
           slideItems[slideIndex1].classList.add("contents__left");
           
@@ -150,6 +169,7 @@
           slideItems[slideIndex3].classList.add("contents__right");
           
         });
+        break;
     }
     
 
@@ -162,7 +182,7 @@
     slideItems[slideIndex1].classList.add("rightSlide");
     
     
-    switch (indexLength) {
+    switch (itemsLength) {
       case 5:
         
         slideItems[slideIndex4].classList.add("rightSlide");
@@ -253,6 +273,7 @@
         break;
       
       case 3:
+        
         slideIndex1 += 1;
         if(slideIndex1 > 2) {
           slideIndex1 = 0;
@@ -284,25 +305,103 @@
 
     }
 
-    
-
   });
   
-  for( let i = 0; i < indexBtn.length; i++ ) {
+  
+  for( let i = 0; i < itemsLength; i++ ) {
     indexBtn[i].addEventListener("click", function() {
+
+       slideIndex5 = i - 2;
+       slideIndex1 = i - 1;
+       slideIndex2 = i;
+       slideIndex3 = i + 1;
+       slideIndex4 = i + 2;
       
-      switch (indexLength) {
+      let index5 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__leftOver"));
+      let index1 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__left"));
+      let index2 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__center"));
+      let index3 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__right"));
+      let index4 = [].slice.call( slideItems ).indexOf(document.querySelector(".contents__rightOver"));
+      
+      switch (itemsLength) {
         case 5:
-          console.log(i);
-          // slideItems[slideIndex5].classList.remove("contents__leftOver");
-          // slideItems[slideIndex1].classList.remove("contents__left");
-          // slideItems[slideIndex2].classList.remove("contents__center");
-          // slideItems[slideIndex3].classList.remove("contents__right");
-          // slideItems[slideIndex4].classList.remove("contents__rightOver");
+
+          if (slideIndex5 === -1) {
+            slideIndex5 = 4;
+          }else if (slideIndex5 === -2) {
+            slideIndex5 = 3;
+          }  
           
-          // slideItems[i].classList.add("contents__center")
-          // slideItems[i].classList.add("contents__center")
           
+          if (slideIndex1 < 0) {
+            slideIndex1 = 4;
+          }
+          
+          if (slideIndex3 > 4) {
+            slideIndex3 = 0;
+          }
+          
+          if (slideIndex4 === 5) {
+            slideIndex4 = 0;
+          }else if (slideIndex4 === 6) {
+            slideIndex4 = 1;
+          } 
+          
+          slideItems[index5].classList.remove("contents__leftOver");
+          slideItems[index1].classList.remove("contents__left");
+          slideItems[index2].classList.remove("contents__center");
+          slideItems[index3].classList.remove("contents__right");
+          slideItems[index4].classList.remove("contents__rightOver");
+          slideItems[slideIndex5].classList.add("contents__leftOver");
+          slideItems[slideIndex1].classList.add("contents__left");
+          slideItems[slideIndex2].classList.add("contents__center");
+          slideItems[slideIndex3].classList.add("contents__right");
+          slideItems[slideIndex4].classList.add("contents__rightOver");
+
+          break;
+        case 4:
+          
+          if (slideIndex1 < 0) {
+            slideIndex1 = 3;
+          }
+          
+          if (slideIndex3 > 3) {
+            slideIndex3 = 0;
+          }
+          
+          if (slideIndex4 === 4) {
+            slideIndex4 = 0;
+          }else if (slideIndex4 === 5) {
+            slideIndex4 = 1;
+          }
+          
+          slideItems[index1].classList.remove("contents__left");
+          slideItems[index2].classList.remove("contents__center");
+          slideItems[index3].classList.remove("contents__right");
+          slideItems[index4].classList.remove("contents__rightOver");
+          slideItems[slideIndex1].classList.add("contents__left");
+          slideItems[i].classList.add("contents__center");
+          slideItems[slideIndex3].classList.add("contents__right");
+          slideItems[slideIndex4].classList.add("contents__rightOver");
+          
+          break;
+        case 3:
+          
+          if (slideIndex1 < 0) {
+            slideIndex1 = 2;
+          }
+          
+          if (slideIndex3 > 2) {
+            slideIndex3 = 0;
+          }
+
+          slideItems[index1].classList.remove("contents__left");
+          slideItems[index2].classList.remove("contents__center");
+          slideItems[index3].classList.remove("contents__right");
+          slideItems[slideIndex1].classList.add("contents__left");
+          slideItems[i].classList.add("contents__center");
+          slideItems[slideIndex3].classList.add("contents__right");
+
           break;
         
         default:

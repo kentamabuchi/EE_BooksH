@@ -1,0 +1,45 @@
+.user
+    .user__container
+        .user__actionReturn
+            = link_to "<　ランキングへ戻る", books_path, class: "user__btnReturn"
+        .user__heading
+            %h2会員情報
+        .user__contents
+            .user__infomation
+                .user__profile
+                    .user__image
+                        = attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300'
+                        - if @user != current_user
+                            .user__relationship
+                                = render 'public/relationships/favorite', {user: @user}
+                    .user__data
+                        %table
+                            %tr
+                                %th.user__thread
+                                    %span.user__dataTag 登録日
+                                %td.user__dataText= @user.created_at.strftime('%y年%m月%d日')
+                            %tr
+                                %th.user__thread
+                                    %span.user__dataTag ニックネーム
+                                %td.user__dataText= @user.nick_name
+                            - if @user == current_user    
+                                %tr
+                                    %th.user__thread
+                                        %span.user__dataTag メールアドレス
+                                    %td.user__dataText= @user.email
+                            %tr
+                                %th.user__thread
+                                    %span.user__dataTag 自己紹介
+                        .user__introduce
+                            = @user.introduce
+                        -if @user == current_user
+                            .user__action
+                                = link_to "編集", mypage_edit_path(@user.id), class:"user__btnEdit"
+                                = link_to "退会", user_status_path, class:"user__btnStatus"
+            
+                .UShow__PageTabs
+                    = link_to "Books", user_favorite_books_path(@user), remote: true, class: "user__tab"
+                    = link_to "Follows", user_relationships_path(@user), remote: true, class: "user__tab--other"
+                .UShow__index
+                    = render 'public/users/book_favorites', favorite_books: @favorite_books, user: @user
+        

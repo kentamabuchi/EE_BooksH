@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   scope module: 'public' do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
-    get '/mypage' => 'users#mypage'
+    get '/mypage' => 'users#mypage', as: 'mypage'
     get '/mypage/edit' => 'users#edit'
     patch '/mypage/edit' => 'users#update'
     get '/user/status' => 'users#status'
