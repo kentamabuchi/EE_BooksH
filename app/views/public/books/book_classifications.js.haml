@@ -1,0 +1,3 @@
+$(".books__rankingContents").html("#{j(render partial: 'public/books/contentsItem_ranking', locals: { headingText: "読まれている本ランキング", rankings: @classification_ranks })}");
+$(".books__newLineupContents").html("#{j(render partial: 'public/books/contentsItem_lineup', locals: { headingText: "新しく本", books: @new_classification_books })}");
+

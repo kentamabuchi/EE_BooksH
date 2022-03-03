@@ -1,0 +1,26 @@
+.reviewShow
+    .reviewShow__container
+        .reviewShow__action
+            =link_to "戻る", reviews_path, class:"reviewShow__returnBtn"
+        .reviewShow__items
+            .reviewShow__review
+                .reviewShow__reviewUserImage
+                    = attachment_image_tag @review.user, :image, :fill, 75, 75, fallback: "no_image.jpg", size: "75x75", class: "reviewShow__image"
+                    = @review.user.nick_name
+                .reviewShow__comment
+                    = @review.comment
+                .reviewShow__icon
+                    %dl
+                        %div
+                            %dt.reviewShow__commentFormIcon コメントする
+                            %dd.reviewShow__commentForm
+                                = form_with model: @return_comment, url: review_return_comments_path(@review), local: true do |f|
+                                    = f.text_area :comment, class: "reviewShow__formArea"
+                                    = f.submit"書き込む"
+            #reviewShow__return.reviewShow__returnItems
+                = render "public/reviews/return_comments", {return_comments: @return_comments}
+                = link_to_next_page @return_comments, "もっと見る", remote: true, id: "view_more", class: "reviewShow__more"
+                        
+                        
+= javascript_include_tag "review_comment"
+    

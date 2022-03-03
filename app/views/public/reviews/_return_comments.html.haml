@@ -1,0 +1,11 @@
+- return_comments.map do |return_comment|      
+    .reviewShow__return
+        .reviewShow__returnCommentUserImage
+            = attachment_image_tag return_comment.user, :image, :fill, 75, 75, fallback: "no_image.jpg", size: "75x75", class: "reviewShow__image"
+            = return_comment.user.nick_name
+        .reviewShow__comment--return
+            = return_comment.comment
+        - if User == current_user
+            .reviewShow__Icon
+                =link_to review_return_comment_path(review_id: return_comment.review_id, id: return_comment.id), method: :delete,class:"reviewShow__deleteBtn" do
+                    %i.fas.fa-comment-slash

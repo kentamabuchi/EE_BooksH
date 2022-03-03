@@ -1,0 +1,4 @@
+- if review.is_active == true
+  = link_to "違反報告", reviews_violation_path(review.id), method: :patch, class:"book__violationReview", remote: true 
+- else
+  %p.book__violationReview--none 報告確認中

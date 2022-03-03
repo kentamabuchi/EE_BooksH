@@ -15,12 +15,11 @@
 //= require popper
 //= require bootstrap-sprockets
 
-
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
-//= require jquery.min.js
-//= require jquery.raty.js
+// = require jquery.min.js
+// = require jquery.raty.js
 

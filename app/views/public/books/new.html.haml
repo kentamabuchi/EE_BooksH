@@ -1,0 +1,53 @@
+.bookNew
+  .bookNew__container
+    .bookNew__heading
+      %h2 書籍追加
+    .bookNew__contents
+      .bookNew__form
+        = form_with model: @book, url: books_path, method: :post, id:"form", local: true do |f|
+          %table.bookNew__formItems
+            %tr
+              %th.bookNew__thread
+                %span.bookNew__tag 書籍画像：
+              %td.bookNew__thread= f.attachment_field :image
+            %tr
+              %th.bookNew__thread
+                %span.bookNew__tag 書籍名：
+              %td.bookNew__thread
+                = f.text_field :name, class:"formText"
+                %P.error
+            %tr
+              %td
+              %td
+                %span.bookNew__message 必須
+            %tr
+              %th.bookNew__thread
+                %span.bookNew__tag 作者：
+              %td.bookNew__thread
+                = f.text_field :writer, class:"formText"
+                %p.error
+            %tr
+              %td
+              %td
+                %span.bookNew__message 必須
+            %tr
+              %th.bookNew__thread
+                %span.bookNew__tag 分類：
+              %td.bookNew__thread
+                = f.collection_select(:classification_id, @classifications, :id, :name)
+            %tr
+              %th.bookNew__thread
+                %span.bookNew__tag ジャンル：
+              %td.bookNew__thread
+                = f.collection_select(:genre_id, @genres, :id, :name)
+            %tr
+              %th.bookNew__thread
+                %span.bookNew__tag 紹介文：
+          .bookNew__introductionForm
+            = f.text_area :introduction
+          .bookNew__formAction
+            = f.submit "追加", class: "bookNew__formBtn", id:"submitBtn"
+        
+        =javascript_include_tag "createBook"
+                
+

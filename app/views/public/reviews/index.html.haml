@@ -1,0 +1,42 @@
+.reviewIndex
+    .reviewIndex__contents
+        .reviewindex__timeline
+            - @reviews.each do |review|
+                -if review.user_id == current_user.id
+                    .reviewIndex__timelineItem
+                        .reviewIndex__userComment
+                            .reviewIndex__commentText
+                                %P
+                                    = review.comment
+                            .reviewIndex__commentIcons
+                                .reviewIndex__iconItem.reviewCommentForm
+                                    =link_to review_path(review), class:"reviewIndex__btn" do
+                                        %i.far.fa-comments
+                                        - if review.return_comments.size > 0
+                                            %span
+                                                = review.return_comments.size 
+                                .reviewIndex__iconItem
+                                    = link_to book_review_path(review.book_id, review, link: "2"), method: :delete, class:"reviewIndex__btn--delete" do
+                                        %i.fas.fa-comment-slash
+                - else
+                    .reviewIndex__timelineItem--follower
+                        = link_to user_path(review.user) do 
+                            = attachment_image_tag review.user, :image, :fill, 75, 75, fallback: "no_image.jpg", size: "75x75",class:"reviewIndex__userImage"
+                        = review.user.nick_name
+                        .reviewIndex__userComment--follower
+                            .reviewIndex__commentText
+                                %P
+                                    = review.comment
+                            .reviewIndex__commentIcons
+                                .reviewIndex__iconItem.reviewCommentFrom
+                                    =link_to review_path(review), class:"reviewIndex__btn" do
+                                        %i.far.fa-comments
+                                        - if review.return_comments.size > 0 
+                                            %span
+                                                = review.return_comments.size 
+        .reviewIndex__paginate
+            = paginate @reviews
+
+= javascript_include_tag "review_comment"
+                        
+                        

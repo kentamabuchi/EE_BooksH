@@ -7,6 +7,225 @@
 @import '_flex.scss';
 @import '_template.scss';
 
+
+.user {
+    &__container {
+        @extend %column;
+    }
+    &__actionReturn {
+        width: 90%;
+        margin: 50px auto 0;
+    }
+    &__btnReturn {
+        @extend %submitBtn;
+        width: 200px;
+    }
+    &__heading {
+        @extend %headerMain;
+        margin: 50px auto;
+    }
+    &__contents {
+        @extend %backgroundMain;
+        width: 90%;
+        padding: 50px;
+        margin: 0 auto 50px;
+    }
+    &__infomation {
+        background-color: $wt;
+        padding: 50px;
+    }
+    &__profile {
+        @extend %row;
+        justify-content: center;
+    }
+    &__data {
+        margin-left: 50px;
+    }
+    &__dataTag {
+        @extend %tag;
+    }
+    &__introduce {
+        min-height: 200px;
+        width: 500px;
+        border: 1px solid $bk;
+        margin-top: 10px;
+    }
+    &__action {
+        @extend %center;
+        margin: 30px auto 0;
+    }
+    &__btnEdit {
+        @extend %editBtn;
+        margin-right: 10px;
+    }
+    &__btnStatus {
+        @extend %deleteBtn;
+    }
+    &__tab {
+        width: 150px;
+        text-decoration:none !important;
+        color: $color-white;
+        background-color: $color-navy-blue;
+        padding: 20px;
+        display: inline-block;
+        border-radius: 15px 15px 0 0;
+        text-align: center;
+        &--other {
+            width: 150px;
+            text-decoration:none !important;
+            color: $color-white;
+            background-color: $color-dark-blue;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+        }
+    }
+}
+
+.userBook {
+    width: 100%;
+    min-height: 600px;
+    background-color: $navy_blue;
+    margin: 0 auto;
+    @extend %column;
+    &__heading {
+        @include heading;
+        text-align: left;
+        margin: 50px auto;
+        &__text {
+            height: 50px;
+            line-height: 50px;
+            padding-left: 30px;
+        }
+    }
+    &__pageText {
+        color: $textColor_main;
+        width: 90%;
+        height: 300px;
+        line-height: 300px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    &__items {
+        @extend %row;
+        justify-content: center;
+        background-color: $main_color;
+        width: 90%;
+        padding: 30px;
+        margin: 20px auto;
+    }
+    &__dataTable {
+        width: 50%;
+        margin-left: 30px;
+        background-color: $navy_blue;
+        padding: 20px;
+    }
+    &__data {
+        @extend %row;
+    }
+    &__tag {
+        color: $textColor_main;
+        background-color: $main_color;
+        width: 100px;
+        height: 20px;
+        text-align: center;
+    }
+    &__text {
+        color: $textColor_main;
+        width: 300px;
+        height: 20px;
+        line-height: 20px;
+        margin-left: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    &__action {
+        margin: 50px 0;
+        @extend %center;
+    }
+    &__linkMore {
+        display: inline-block;
+        text-decoration: none !important;
+        background-color: $wt;
+        color: $bk;
+        width: 300px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 15px;
+    }
+}
+
+
+
+
+
+
+
+
+
+.follower {
+    background-color: $dark_blue;
+    width: 100%;
+    margin: 0 auto;
+    &__heading {
+        @include heading;
+        text-align: left;
+        margin: 50px auto;
+        line-height: 50px;
+        &__text {
+            height: 50px;
+            line-height: 50px;
+            padding-left: 30px;
+        }
+    }
+    &__pageText {
+        color: $textColor_main;
+        width: 90%;
+        height: 300px;
+        line-height: 300px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    &__contents {
+        margin-bottom: 50px;
+    }
+    &__user {
+        @extend %row;
+        width: 90%;
+        background-color: $navy_blue;
+        margin: 0 auto 30px;
+        padding: 30px;
+    }
+    &__userIcon {
+        margin-left: auto;
+        padding: 20px;
+        &__link{
+            display: inline-block;
+            margin: 0 auto 10px;
+        }
+        &__image {
+            border-radius: 50%;
+        }
+    }
+    &__userData {
+        width: 70%;
+        margin-right: auto;
+        background-color: $main_color;
+        padding: 20px;
+        &__name {
+            color: $textColor_main;
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+        &__introduce {
+            height: 150px;
+            background-color: $wt;
+        }
+    }
+}
+
 .UserPage {
     @extend %page;
     &__container{
@@ -128,44 +347,79 @@
         background-color: $color-navy-blue;
         width: 90%;
         margin: 0 auto 50px auto;
-    }
-    &__relationships {
-        background-color: $color-dark-blue;
-        width: 90%;
-        margin: 0 auto 50px auto;
-    }
-    &__page__heading {
-        color: $color-white;
-        background-color: $color-blue;
-        padding-left: 50px;
-        margin: 50px 100px;
-    }
-    &__page__contents {
-        @extend %column;
-        &--other {
-            @extend %center;
-            color: $color-white;
-            margin: 100px 0;
+        padding: 50px 0;
+        &--index {
+            background-color: $color-navy-blue;
+            width: 90%;
+            margin: 50px auto 50px auto;
+            padding: 50px 0;
         }
     }
-    &__favorite-book {
-        @extend %row;
-        margin: 0 auto;
-        width: 80%;
-        background-color: $color-pastel-blue;
-        margin-bottom: 50px;
-    }
-    &__book-image {
-        margin: 20px;
-    }
-    &__book-data {
-        width: 400px;
-        margin-top: 20px;
-    }
-    &__paginate {
-        @extend %center;
-        margin-top: 50px;
-    }
+    // &__relationships {
+    //     background-color: $color-dark-blue;
+    //     width: 90%;
+    //     margin: 0 auto 50px auto;
+    //     padding: 50px 0;
+    //     &--index {
+    //         background-color: $color-dark-blue;
+    //         width: 90%;
+    //         margin: 50px auto 50px auto;
+    //         padding: 50px 0;
+    //     }
+    // }
+    // &__page__heading {
+    //     width: 80%;
+    //     color: $color-white;
+    //     background-color: $color-blue;
+    //     padding-left: 50px;
+    //     margin: 0 auto 50px auto;
+    //     &--index {
+    //         color: $color-white;
+    //         background-color: $color-blue;
+    //         padding-left: 50px;
+    //         margin: 50px 100px;
+    //     }
+    // }
+    // &__page__contents {
+    //     @extend %column;
+    //     &--other {
+    //         @extend %center;
+    //         color: $color-white;
+    //         margin: 100px 0;
+    //     }
+    // }
+    // &__favorite-book {
+    //     @extend %row;
+    //     margin: 0 auto;
+    //     width: 80%;
+    //     background-color: $color-pastel-blue;
+    //     margin-bottom: 50px;
+    // }
+    // &__book-image {
+    //     margin: 20px;
+    // }
+    // &__book-data {
+    //     width: 400px;
+    //     margin-top: 20px;
+    // }
+    // &__paginate {
+    //     @extend %center;
+    //     margin-top: 50px;
+    // }
+    // &__link {
+    //     @extend %center;
+    //     margin-bottom: 50px;
+    // }
+    // &__link__item {
+    //     height: 40px;
+    //     width: 200px;
+    //     color: black;
+    //     background-color: $color-white;
+    //     text-align: center;
+    //     line-height: 40px;
+    //     border-radius: 15px;
+    //     text-decoration: none !important;
+    // }
 }
 
 .UEdit {

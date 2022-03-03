@@ -1,0 +1,26 @@
+.BookPage
+  .BookPage__container
+    %section.BSearch
+      .BSearch__heading
+        %h2 書籍一覧
+      .BSearch__contents
+        %table.BSearch__table
+          %tr
+            %th.BSearch__thread タイトル
+            %th.BSearch__thread 作者
+            %th.BSearch__thread--category 分類
+            %th.BSearch__thread--category ジャンル
+            %th
+          - @books.each do |book|
+            %tr
+              %td.BSearch__date--name
+                %p.BSearch__text--name.text-truncate= book.name
+              %td.BSearch__date--name
+                %p.BSearch__text--name.text-truncate= book.writer
+              %td.BSearch__date
+                %p.BSearch__text.text-truncate= book.classification.name
+              %td.BSearch__date
+                %p.BSearch__text.text-truncate= book.genre.name
+              %td.BSearch__date= link_to "詳細", book_path(book), class: "BSearch__btn--show"
+        .BSearch__paginate
+          = paginate @books

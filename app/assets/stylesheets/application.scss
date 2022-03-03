@@ -19,6 +19,7 @@
 
 @import '_color.scss';
 @import '_flex.scss';
+@import '_template.scss';
 
 
 .pagination>li>a {          
@@ -42,7 +43,7 @@
     color: $color-white;
     background-color: $color-dark-green;
     &__container {
-        height: 150px;
+        height: 300px;
         background-color: $color-black-green;
         border-radius: 0 0 50% 50%;
         position: relative;
@@ -67,7 +68,6 @@
 
 .header {
     color: $color-white;
-    background-color: $color-pastel-blue;
     &__container {
         height: 150px;
         background-color: blue;
@@ -127,88 +127,56 @@
         }
     }
 }
-.search {
-    display:inline-block;
-    position: absolute;
-    bottom: 50px;
-    right: 100px;
-}
 
-.URPage {
-    background-color: $color-pastel-blue;
+
+.header {
     &__container {
-        @extend %center;
+        width: 100%;
+        height: 300px;
+        background-color: $main_color;
+        border-radius: 0 0 50% 50%;
+        position: relative;
     }
-    &__content{
-        height: 600px;
-        width: 60%;
-        background-color: $color-white;
-        margin: 50px 0;
-        padding-top: 100px;
+    &__logo {
+        position: absolute;
+        top: 50px;
+        left: 50px;
     }
-    &__heading {
-        color: $color-white;
-        background-color: $color-blue;
-        margin: 0 50px;
-        padding-left: 50px;
+    &__logoLink {
+        color: $textColor_main;
+        text-decoration: none !important;
     }
-    &__form {
-        margin-top: 50px;
-        @extend %center;
+    &__nav {
+        position: absolute;
+        top: 20px;
+        right: 50px;
     }
-    &__form__name {
-        height: 25px;
-        width: 120px;
-        color: $color-white;
-        background-color: $color-pastel-blue;
+    &__navList {
+        list-style: none;
+        @extend %row;
+    }
+    &__navItem {
+        background-color: $pastel_blue;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-left: 20px;
+    }
+    &__navLink {
+        color: $textColor_main;
+        text-decoration: none !important;
+        display: inline-block;
+        width: 100px;
+        line-height: 100px;
         text-align: center;
-        border-radius: 15px;
     }
-    &__form__TextBox {
-        padding-bottom: 10px;
-    
-        &--input {
-            padding-bottom: 5px;
-        }
+    &__search {
+        display:inline-block;
+        position: absolute;
+        right: 100px;
+        bottom: 100px;
     }
 }
-
-.USPage {
-    background-color: $color-pastel-blue;
-    &__container {
-        @extend %center;
-    }
-    &__content{
-        height: 600px;
-        width: 60%;
-        background-color: $color-white;
-        margin: 50px 0;
-        padding-top: 100px;
-    }
-    &__heading {
-        color: $color-white;
-        background-color: $color-blue;
-        margin: 0 50px;
-        padding-left: 50px;
-    }
-    &__form {
-        margin-top: 50px;
-        @extend %center;
-    }
-    &__form__name {
-        height: 25px;
-        width: 120px;
-        color: $color-white;
-        background-color: $color-pastel-blue;
-        text-align: center;
-        border-radius: 15px;
-    }
-    &__form__TextBox {
-        padding-bottom: 10px;
-    
-    }
-}
-
 
 .ARPage {
     background-color: $color-pastel-blue;
@@ -304,4 +272,62 @@
             line-height: 100px;
         }
     }
+}
+
+.sign {
+  @extend %backgroundMain;
+  @extend %center;
+  min-height: 500px;
+  margin: 50px, 0;
+  &__container {
+    @extend %column;
+    width: 80%;
+    padding: 50px 0;
+  }
+  &__header {
+    width: 100%;
+    margin: 0 auto;
+  }
+  &__headerText {
+    @extend %headerMain;
+    width: 60%;
+    margin: 0 auto;
+  }
+  &__form {
+    @extend %center;
+    background-color: $white;
+    width: 60%;
+    margin: 50px auto;
+    padding: 50px 100px;
+  }
+  &__formItem:nth-child(even) {
+    margin: 20px 0;
+  }
+  &__formTag {
+    @extend %tagMain;
+  }
+  &__formAnnounce {
+    display: block;
+    font-size: 10px;
+  }
+  &__forgetPassword {
+    text-decoration: none !important;
+    display: block;
+  }
+  &__formBtn {
+    @extend %submitBtn;
+    margin-top: 20px;
+  }
+}
+
+.formError {
+  border: 2px solid red;
+}
+
+.error {
+  display: inline-block;
+  color: red;
+  height: 20px;
+  line-height: 20px;
+  font-size: 10px;
 }

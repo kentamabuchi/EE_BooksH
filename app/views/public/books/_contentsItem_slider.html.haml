@@ -1,0 +1,102 @@
+.contentsRecommend 
+    .contentsRecommend__heading
+        %h2.contentsRecommend__headerText
+            = headingText
+    
+    -if follow_books.length > 2
+        .books__recommend
+            %ul.books__recommendSlider
+            
+                %i.fas.fa-2x.fa-chevron-circle-left.books__recommend__prevBtn#prevBtn
+                
+                
+                .books__recommendSliderItems
+                    - 5.times do |n|
+                    
+                        -if n == 0 && follow_books[n].present?
+                            %li.books__recommendBook.slideItem.contents__left
+                                = link_to book_path(follow_books[n]), class:"books__recommendBookLink" do
+                                    .books__recommendBookItems
+                                        = attachment_image_tag follow_books[n], :image, fallback: "no_image_book.jpeg", size: "300x300", class: "books__recommendBookImage" 
+                                        .books__recommendBookDataItems
+                                            .books__recomendBookData
+                                                = follow_books[n].name
+                                            .books__recomendBookData
+                                                = follow_books[n].writer
+                                            .books__recomendBookData
+                                                = follow_books[n].classification.name
+                                            .books__recomendBookData
+                                                = follow_books[n].genre.name
+                                                
+                        - elsif n == 1 && follow_books[n].present?
+                            %li.books__recommendBook.slideItem.contents__center
+                                = link_to book_path(follow_books[n]), class:"books__recommendBookLink" do
+                                    .books__recommendBookItems
+                                        = attachment_image_tag follow_books[n], :image, fallback: "no_image_book.jpeg", size: "300x300", class: "books__recommendBookImage" 
+                                        .books__recommendBookDataItems
+                                            .books__recomendBookData
+                                                = follow_books[n].name
+                                            .books__recomendBookData
+                                                = follow_books[n].writer
+                                            .books__recomendBookData
+                                                = follow_books[n].classification.name
+                                            .books__recomendBookData
+                                                = follow_books[n].genre.name
+                                                
+                        - elsif n == 2 && follow_books[n].present?
+                            %li.books__recommendBook.slideItem.contents__right
+                                = link_to book_path(follow_books[n]), class:"books__recommendBookLink" do
+                                    .books__recommendBookItems
+                                        = attachment_image_tag follow_books[n], :image, fallback: "no_image_book.jpeg", size: "300x300", class: "books__recommendBookImage" 
+                                        .books__recommendBookDataItems
+                                            .books__recomendBookData
+                                                = follow_books[n].name
+                                            .books__recomendBookData
+                                                = follow_books[n].writer
+                                            .books__recomendBookData
+                                                = follow_books[n].classification.name
+                                            .books__recomendBookData
+                                                = follow_books[n].genre.name
+                                                
+                        - elsif n == 3 && follow_books[n].present?
+                            %li.books__recommendBook.slideItem.contents__rightOver
+                                = link_to book_path(follow_books[n]), class:"books__recommendBookLink" do
+                                    .books__recommendBookItems
+                                        = attachment_image_tag follow_books[n], :image, fallback: "no_image_book.jpeg", size: "300x300", class: "books__recommendBookImage" 
+                                        .books__recommendBookDataItems
+                                            .books__recomendBookData
+                                                = follow_books[n].name
+                                            .books__recomendBookData
+                                                = follow_books[n].writer
+                                            .books__recomendBookData
+                                                = follow_books[n].classification.name
+                                            .books__recomendBookData
+                                                = follow_books[n].genre.name
+                                                
+                        - elsif n == 4 && follow_books[n].present?
+                            %li.books__recommendBook.slideItem.contents__leftOver
+                                = link_to book_path(follow_books[n]), class:"books__recommendBookLink" do
+                                    .books__recommendBookItems
+                                        = attachment_image_tag follow_books[n], :image, fallback: "no_image_book.jpeg", size: "300x300", class: "books__recommendBookImage" 
+                                        .books__recommendBookDataItems
+                                            .books__recomendBookData
+                                                = follow_books[n].name
+                                            .books__recomendBookData
+                                                = follow_books[n].writer
+                                            .books__recomendBookData
+                                                = follow_books[n].classification.name
+                                            .books__recomendBookData
+                                                = follow_books[n].genre.name
+                                                
+                     
+                %i.fas.fa-2x.fa-chevron-circle-right.books__recommend__nextBtn#nextBtn
+                
+        .contentsRecommend__indexBar
+            %ul.contentsRecommend__indexIcons
+                -follow_books.length.times do
+                    %li.contentsRecommend__indexBtn
+        
+            = javascript_include_tag "slide"
+        
+       
+    

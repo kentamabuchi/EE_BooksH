@@ -1,0 +1,121 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title EEBooks
+    = csrf_meta_tags
+    = csp_meta_tag
+    %script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/6b92dd2514.js"}
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "jquery.raty"
+  %body
+    %header
+    - if admin_signed_in?
+      .AHeader
+        .AHeader__container
+          .AHeader__contents
+          
+            .AHeader__logo
+              %h1
+                = link_to root_path, class: "AHeader__logo__text" do
+                  ＼EE／.Books
+                  
+            .header__nav
+              .nav--admin
+                %ul.nav__bar--admin
+                  %li.nav__item--admin
+                    = link_to admin_top_path, class: "nav__link--admin" do
+                      %i.fas.fa-bullhorn>
+                      　通報一覧
+                  %li.nav__item--admin
+                    = link_to admin_users_path, class: "nav__link--admin" do
+                      %i.fas.fa-user>
+                      　会員一覧
+                  %li.nav__item--admin
+                    = link_to admin_books_path, class: "nav__link--admin" do
+                      %i.fas.fa-book-open
+                      書籍一覧
+                  %li.nav__item--admin
+                    = link_to admin_classifications_path, class: "nav__link--admin" do
+                      %i.fas.fa-file-signature
+                      分類一覧
+                  %li.nav__item--admin
+                    = link_to admin_genres_path, class: "nav__link--admin" do
+                      %i.fas.fa-file-signature
+                      ジャンル一覧
+                  %li.nav__item--admin
+                    = link_to destroy_admin_session_path, method: :delete, class: "nav__link--admin" do
+                      %i.fas.fa-sign-out-alt
+                      ログアウト
+                      
+                      
+    - elsif user_signed_in?
+      .header
+        .header__container
+          .header__contents
+          
+            .header__logo
+              = link_to books_path, class: "header__logoLink" do
+                %h1.header__logo__tex
+                  ＼EE／.Books
+                  
+            .header__nav
+              %ul.header__navList
+                %li.header__navItem
+                  = link_to about_path, class: "header__navLink" do
+                    About
+                %li.header__navItem
+                  = link_to books_path, class: "header__navLink" do
+                    ランキング
+                %li.header__navItem
+                  = link_to reviews_path, class: "header__navLink" do
+                    タイムライン
+                %li.header__navItem
+                  = link_to mypage_path, class: "header__navLink" do
+                    マイページ
+                %li.header__navItem
+                  = link_to destroy_user_session_path, method: :delete, class: "header__navLink" do
+                    ログアウト
+                      
+            .header__search
+              = form_with url: books_search_path, method: :get, local: true do |f|
+                = f.text_field :keyword, value: @keyword
+                = f.submit "検索"
+                    
+            
+    - else
+      .header
+        .header__container
+
+          .header__logo
+            = link_to root_path, class: "header__logoLink" do
+              %h1.header__logo__text
+                ＼EE／.Books
+                  
+          .header__nav
+            %ul.header__navList
+              %li.header__navItem
+                = link_to root_path(anchor: 'about__top'), class: "header__navLink" do
+                  About
+              %li.header__navItem
+                = link_to about_path, class: "header__navLink" do
+                  About
+              %li#sign_up.header__navItem
+                = link_to new_user_registration_path, class: "header__navLink" do
+                  会員登録
+              %li#sign_in.header__navItem
+                = link_to new_user_session_path, class: "header__navLink" do
+                  ログイン
+        
+    = yield
+        
+        
+    %footer
+      - if admin_signed_in?
+        .footer__contents--admin
+          %h3.footer__text--admin ©︎copy-right
+      - else
+        .footer__contents
+          %h3.footer__text ©︎copy-right
+

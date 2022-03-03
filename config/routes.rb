@@ -18,13 +18,15 @@ Rails.application.routes.draw do
   scope module: 'public' do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
-    get '/mypage' => 'users#mypage'
+    get '/mypage' => 'users#mypage', as: 'mypage'
     get '/mypage/edit' => 'users#edit'
     patch '/mypage/edit' => 'users#update'
     get '/user/status' => 'users#status'
     patch '/user/change' => 'users#change'
     get '/user/:id/favorite_books/' => 'users#favorites', as: 'user_favorite_books'
     get '/users/:id/relationships/' => 'users#relationships', as: 'user_relationships'
+    get '/favorites/user/:id/' => 'users#favorite_books', as: 'user_favorite_books_index'
+    get '/user/:id/followers/' => 'users#followers', as: 'user_followers_index'
     resources :users, only: [:show] do
       resource :relationships, only: [:create, :destroy]
     end
@@ -34,6 +36,9 @@ Rails.application.routes.draw do
       resources :reviews, only: [:create, :destroy]
       resource :good_books, only: [:create, :destroy]
       resource :favorite_books, only: [:create, :destroy]
+    end
+    resources :reviews, only: [:index, :show] do
+      resources :return_comments, only: [:create, :destroy]
     end
     get '/book/classifications/:id' => 'books#book_classifications', as: 'book_classifications'
    

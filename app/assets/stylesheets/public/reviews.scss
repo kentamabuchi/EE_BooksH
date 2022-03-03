@@ -1,3 +1,165 @@
 // Place all the styles related to the public/reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import '_flex.scss';
+@import '_color.scss';
+@import '_template.scss';
+
+
+
+.reviewIndex {
+    @extend %center;
+    padding: 50px 0;
+    &__contents{
+        width: 80%;
+        background: linear-gradient(-45deg, $color-navy-blue, blue);
+        padding: 50px 0;
+    }
+    &__timelineItem {
+        width: 60%;
+        margin: 25px 50px 25px auto;
+        padding: 10px;
+        background-color: lighten($color-pastel-blue, 80%);
+        border-radius: 15px;
+        &--follower {
+            width: 60%;
+            margin: 25px auto 25px 50px;
+            background-color: $color-pastel-blue;
+            padding: 10px;
+            border-radius: 15px;
+        }
+    }
+    &__userImage {
+        border-radius: 50%;
+    }
+    &__userComment{
+        background-color: white;
+        padding: 10px;
+        &--follower {
+            padding: 10px;
+            margin-top: 10px;
+        }
+    }
+    &__commentText {
+        width: 80%;
+        padding: 10px;
+        margin: 10px auto;
+        background-color: $white;
+        word-break: break-word;
+        min-height: 100px;
+    }
+    &__commentIcons {
+        @extend %row;
+    }
+    &__iconItem:nth-child(odd) {
+        padding: 0 10px;
+    }
+    &__btn {
+        @extend %row;
+        @extend %btn;
+        width: 150px;
+        background-color: blue;
+        padding: 0;
+        text-align: center;
+        span {
+            margin-left: 10px;
+            opacity: 0.8;
+        }
+        &--delete {
+            @extend %delete-btn;
+            text-align: center;
+        }
+    }
+    &__paginate {
+        @extend %center;
+    }
+}
+
+
+.reviewShow {
+    width: 100%;
+    &__container {
+        width: 80%;
+        margin: 50px auto;
+        @extend %column;
+        background: linear-gradient(-45deg, $color-navy-blue, blue);
+    }
+    &__action {
+        margin: 50px;
+    }
+    &__returnBtn {
+        @extend %btn;
+        background-color: $pastel-blue;
+        text-align: center;
+    }
+    &__items {
+        margin: 50px 0;
+    }
+    &__review {
+        width: 50%;
+        background-color: $color-pastel-blue;
+        margin: 0 auto;
+        padding: 30px;
+        border-radius: 15px;
+    }
+    &__image {
+        border-radius: 50%;
+    }
+    &__comment {
+        min-height: 200px;
+        margin: 10px 0;
+        padding: 10px;
+        background-color: $white;
+        &--return {
+            min-height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: $white;
+        }
+    }
+    &__commentFormIcon {
+        @extend %btn;
+        width: 150px;
+        background-color: blue;
+        color: $white;
+        text-align: center;
+        margin: 10px 0 20px;
+    }
+    &__commentFormIcon:hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+    &__commentForm {
+        display: none;
+    }
+    &__apper {
+        display: block;
+    }
+    &__returnItems {
+        width: 100%;
+    }
+    &__return {
+        width: 50%;
+        background-color: $color-pastel-blue;
+        margin: 25px auto 0;
+        padding: 30px;
+        border-radius: 15px;
+    }
+    &__deleteBtn {
+        @extend %delete-btn;
+        text-align: center;
+    }
+    &__returnMore {
+        @extend %center;
+    }
+    &__more {
+        display: block;
+        width: 200px;
+        background-color: $color-pastel-blue;
+        color: $white;
+        text-align: center;
+        padding: 10px;
+        margin: 50px auto;
+    }
+}

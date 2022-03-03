@@ -1,0 +1,52 @@
+.readBooks__container
+  .readBooks__heading
+    %h2 読んだ本一覧
+  - if @favorite_books.blank?
+    .readBooks__pageText
+      %h2 読んだ本は登録されていません
+  - else
+    .readBooks__content
+      - @favorite_books.each do |favorite_book|
+        .readBooks__bookItems
+          .readBooks__image
+            = link_to book_path(favorite_book.book_id), class: "readBooks__bookLink" do
+              = attachment_image_tag favorite_book.book, :image, :fill, 200, 200, fallback: "no_image.jpg",size: '150x150'
+            %div{:class => "readBooks__average-rate-#{favorite_book.id}"}
+              - if favorite_book.book.reviews.blank?
+                - @average_rate = 0
+              - else
+                - @average_rate = favorite_book.book.reviews.average(:rate).round(1)
+              :javascript
+                $('.readBooks__average-rate-#{favorite_book.id}').empty();
+                $('.readBooks__average-rate-#{favorite_book.id}').raty({
+                    starOff:  '#{asset_path('star-off.png')}',
+                    starOn : '#{asset_path('star-on.png')}',
+                    starHalf: '#{asset_path('star-half.png')}',
+                    half: true,
+                    readOnly: true,
+                    score: #{@average_rate}
+                });
+          .readBooks__list
+            %table.readBooks__book-info
+              %tr
+                %th.readBooks__thread--book
+                  %span.readBooks__tag タイトル
+                %td.readBooks__date= favorite_book.book.name
+              %tr
+                %th.readBooks__thread--book
+                  %span.readBooks__tag--book 作者
+                %td.readBooks__date--book= favorite_book.book.writer
+              %tr
+                %th.readBooks__thread--book
+                  %span.readBooks__tag--book 分類
+                %td.readBooks__date--book= favorite_book.book.classification.name
+              %tr
+                %th.readBooks__thread--book
+                  %span.readBooks__tag--book ジャンル
+                %td.readBooks__date--book= favorite_book.book.genre.name
+          
+          .readBooks__reviews
+            .readBooks__reviews__rate
+            - if favorite_book.book.reviews.present?
+              .readBooks__reviews__comment
+                = favorite_book.book.reviews.first.comment

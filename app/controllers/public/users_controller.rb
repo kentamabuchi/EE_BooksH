@@ -1,13 +1,17 @@
 class Public::UsersController < ApplicationController
   
+  before_action :set_current_user, only: [:mypage, :edit, :update, :change]
+  before_action :set_user, only: [:show, :favorites, :relationships, :favorite_books, :followers]
+  
+  
   def mypage
-    @user = User.find(current_user.id)
-    @favorite_books = current_user.favorite_books.all
-    @relationships = current_user.followings.all
+    # @user = User.find(current_user.id)
+    @favorite_books = current_user.favorite_books.limit(5).reverse_order
+    @relationships = current_user.followings.limit(5).reverse_order
   end
   
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @favorite_books = @user.favorite_books.all
     @relationships = @user.followings.all
     if @user == current_user
@@ -16,11 +20,11 @@ class Public::UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(current_user.id)
+    # @user = User.find(current_user.id)
   end
   
   def update
-    @user = User.find(current_user.id)
+    # @user = User.find(current_user.id)
     @user.update(user_params)
     redirect_to mypage_path
   end
@@ -29,20 +33,30 @@ class Public::UsersController < ApplicationController
   end
   
   def change
-    @user = User.find(current_user.id)
+    # @user = User.find(current_user.id)
     @user.update(is_active: "false")
     reset_session
     redirect_to root_path
   end
   
   def favorites
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @favorite_books = @user.favorite_books.all
   end
   
   def relationships
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @relationships = @user.followings.all
+  end
+  
+  def favorite_books
+    # @user = User.find(params[:id])
+    @favorite_books = @user.favorite_books.page(params[:page]).per(10).reverse_order
+  end
+  
+  def followers
+    # @user = User.find(params[:id])
+    @relationships = @user.followings.page(params[:page]).per(10).reverse_order
   end
   
   
@@ -58,4 +72,13 @@ class Public::UsersController < ApplicationController
                                  :updated_at)
   end
   
+  def set_current_user
+    @user = User.find(current_user.id)
+  end
+  
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
 end
+

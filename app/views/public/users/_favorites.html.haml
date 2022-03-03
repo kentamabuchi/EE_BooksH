@@ -1,0 +1,46 @@
+.UShow__index
+  .UShow__favorites__heading
+    %h2 お気に入りBook
+  .UShow__favorites__contents
+    - favorite_books.each do |favorite_book|
+      .UShow__favorite-book
+        .UShow__book-image
+          %div
+            = link_to book_path(favorite_book.book_id), class: "UShow__BookLink" do
+              = attachment_image_tag favorite_book.book, :image, :fill, 200, 200, fallback: "no_image.jpg",size: '150x150'
+          %div{:class => "UShow__average-rate-#{favorite_book.id}"}
+            - if favorite_book.book.reviews.blank?
+              - average_rate = 0
+            - else
+              - average_rate = favorite_book.book.reviews.average(:rate).round(1)
+            :javascript
+              $('.UShow__average-rate-#{favorite_book.id}').empty();
+              $('.UShow__average-rate-#{favorite_book.id}').raty({
+                  starOff:  '#{asset_path('star-off.png')}',
+                  starOn : '#{asset_path('star-on.png')}',
+                  starHalf: '#{asset_path('star-half.png')}',
+                  half: true,
+                  readOnly: true,
+                  score: #{average_rate}
+              });
+        .UShow__book-data
+          %table.UShow__book-info
+            %tr
+              %th.UShow__thread--book
+                %span.UShow__tag--book タイトル
+              %td.UShow__date--book= favorite_book.book.name
+            %tr
+              %th.UShow__thread--book
+                %span.UShow__tag--book 作者
+              %td.UShow__date--book= favorite_book.book.writer
+            %tr
+              %th.UShow__thread--book
+                %span.UShow__tag--book 分類
+              %td.UShow__date--book= favorite_book.book.classification.name
+            %tr
+              %th.UShow__thread--book
+                %span.UShow__tag--book ジャンル
+              %td.UShow__date--book= favorite_book.book.genre.name
+    .UShow__link
+      = link_to user_favorite_books_index(user) do
+        もっと見る

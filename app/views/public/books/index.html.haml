@@ -1,0 +1,57 @@
+.books
+  
+  .books__menuBar
+    .books__menuBar__container
+      .books__menuBar__contents
+      
+        %P.books__menuBar__heading
+          カテゴリ別ランキング
+          
+        .books__menuBar__items
+          .books__menuBar__item
+            = link_to books_path, class:'books__menuBar__link' do
+              %p.books__menuBar__itemText.text-truncate
+                ランキングトップページ
+          - @classifications.each do |classification|
+            .books__menuBar__item
+              = link_to book_classifications_path(classification.id), class:'books__menuBar__link', remote: true do
+                %p.books__menuBar__itemText.text-truncate
+                  = classification.name
+
+
+    .books__menuBar__btn.books__menuBar__active#open
+      %i.fas.fa-caret-right.books__menuBar__icon Menu
+      
+    .books__menuBar__btn#close
+      %i.fas.fa-caret-left.books__menuBar__icon Menu
+    
+    = javascript_include_tag "menuBar"
+  
+    
+
+  .books__container
+    - if user_signed_in?
+      .books__createContents
+        %p.books__createText
+          探している本がない場合は
+        = link_to new_book_path, class:"books__createBtn" do
+          こちら
+    .books__contents
+    
+      - if @follow_books.present?
+        .books__recommendContents
+          = render 'public/books/contentsItem_slider', { headingText: "あなたにおすすめ", follow_books: @follow_books}
+       
+                
+                
+      .books__rankingContents
+        = render 'public/books/contentsItem_ranking', {headingText: "読まれている本総合ランキング", rankings: @all_ranks}
+      .books__newLineupContents
+        = render 'public/books/contentsItem_lineup', {headingText: "新しく登録された本", books: @new_books}
+
+                 
+  
+      
+    
+      
+  
