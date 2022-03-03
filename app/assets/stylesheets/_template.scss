@@ -31,18 +31,6 @@
     text-align: center;
 }
 
-%tag {
-    height: 30px;
-    width: 150px;
-    color: $color-white;
-    background-color: $color-blue;
-    display: inline-block;
-    margin-right: 20px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 15px;
-}
-
 %btn {
     height: 30px;
     width: 100px;
@@ -85,39 +73,103 @@
 
 %backgroundMain {
   min-height: 1000px;
-  margin: 50px;
   background-color: $backgroundColor_main;
+  width: 90%;
+}
+
+@mixin heading($bColor: $main_color, $tColor: $wt) {
+    width: 90%;
+    background-color: $bColor;
+    color: $tColor;
+    text-align: center;
 }
 
 %headerMain {
-  width: 80%;
+  width: 90%;
   background-color: $main_color;
-  color: $white;
+  color: $wt;
   text-align: center;
 }
 
 %tagMain {
-  display: inline-block;
-  background-color: $tagColor_main;
-  color: $textColor_main;
-  width: 150px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  border-radius: 15px;
+    display: inline-block;
+    background-color: $tagColor_main;
+    color: $textColor_main;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+%tag {
+    height: 30px;
+    width: 150px;
+    color: $color-white;
+    background-color: $color-blue;
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+}
+
+@mixin btn($bColor: $pastel_blue, $tColor: $textColor_main) {
+    text-decoration: none !important;
+    border: none;
+    outline: none;
+    background: transparent;
+    display: inline-block;
+    background-color: $bColor;
+    color: $tColor;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
 }
 
 %submitBtn {
-  text-decoration: none !important;
-  border: none;
-  outline: none;
-  background: transparent;
-  display: inline-block;
-  background-color: $pastel_blue;
-  color: $textColor_main;
-  width: 100px;
-  height: 30px;
-  text-align: center;
-  line-height: 30px;
-  border-radius: 10px;
+    text-decoration: none !important;
+    border: none;
+    outline: none;
+    background: transparent;
+    display: inline-block;
+    background-color: $pastel_blue;
+    color: $textColor_main;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+}
+
+%editBtn {
+    text-decoration: none !important;
+    border: none;
+    outline: none;
+    background: transparent;
+    display: inline-block;
+    background-color: $pastel_orange;
+    color: $textColor_main;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+}
+
+%deleteBtn {
+    text-decoration: none !important;
+    border: none;
+    outline: none;
+    background: transparent;
+    display: inline-block;
+    background-color: $pastel_red;
+    color: $textColor_main;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
 }

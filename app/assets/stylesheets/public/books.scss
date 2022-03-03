@@ -17,6 +17,607 @@ textarea {
         height: 300px;
 }
 
+
+
+.books {
+    width: 100%;
+    @extend %center;
+    &__menuBar {
+        @extend %row;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 30;
+        margin-left: -340px;
+        &__container {
+            background-color: $pastel_blue;
+            padding: 20px;
+            min-height: 2000px;
+        }
+        &__contents {
+            background-color: $white;
+            height: 90vh;
+            overflow-y: auto;
+        }
+        &__heading {
+            width: 100%;
+            background-color: $main_color;
+            color: $white;
+            text-align: center;
+        }
+        &__items {
+          width: 300px;
+          padding-left: 40px;
+        }
+        &__item {
+            margin: 5px 0;
+        }
+        &__link {
+            text-decoration: none !important;
+        }
+        &__btn {
+            display: none;
+        }
+        &__active {
+            display: block;
+        }
+        &__icon {
+            writing-mode: vertical-rl;
+            background-color: $pastel_blue;
+            color: $white;
+            padding: 10px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 50px;
+        }
+    }
+    &__container {
+        width: 100%;
+    }
+    &__createContents {
+        width: 80%;
+        @extend %row;
+        margin: 100px auto 50px;
+    }
+    &__createText {
+        display: inline-block;
+        margin: 0 0 0 auto;
+        width: 200px;
+        height: 30px;
+        line-height: 30px;
+    }
+    &__createBtn {
+        display: inline-block;
+        @extend %submitBtn;
+        background-color: $main_color;
+    }
+    &__contents {
+        @extend %backgroundMain;
+        padding: 50px 0;
+        margin: 0 auto;
+    }
+    &__recommend {
+        @extend %center;
+        width: 90%;
+        background-color: white;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+    }
+    &__recommend__prevBtn {
+        z-index: 10;
+        position: absolute;
+        top: 250px;
+        left: 0;
+    }
+    &__recommendSliderItems {
+        @extend %row;
+        min-width: 1000px;
+        height: 500px;
+        padding: 100px 0;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    &__recommend__nextBtn {
+        z-index: 10;
+        position: absolute;
+        top: 250px;
+        right: 0;
+    }
+    &__recommendBook {
+        width: 500px;
+        height: 300px;
+        list-style: none;
+        display: none;
+    }
+    &__recommendBookLink {
+        text-decoration: none !important;
+        color: $textColor_main;
+    }
+    &__recommendBookItems {
+        @extend %row;
+        background-color: $main_color;
+        padding: 20px;
+    }
+    &__recomendBookData {
+        text-decoration: none !important;
+        width: 150px;
+        padding: 0 20px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+    }
+}
+// .display {
+//   opacity: 0.5;
+//   &--center {
+//     transform: scale(1.25);
+//     opacity: 1;
+//   }
+//   &--item {
+//       display: block;
+//   }
+// }
+.contents {
+  &__leftOver {
+    order: 1;
+    opacity: 0.5;
+  }
+  &__left {
+    order: 2;
+    opacity: 0.5;
+    display: block;
+  }
+  &__center {
+    z-index: 10;
+    order: 3;
+    transform: scale(1.25);
+    opacity: 1;
+    display: block;
+  }
+  &__right {
+    order: 4;
+    opacity: 0.5;
+    display: block;
+  }
+  &__rightOver {
+    order: 5;
+    opacity: 0.5;
+  }
+}
+
+.leftSlide {
+  transform: translateX(500px);
+  transition-duration: 0.1s;
+}
+.rightSlide {
+  transform: translateX(-500px);
+  transition-duration: 0.1s;
+}
+
+.contentsRecommend {
+    padding: 50px 0;
+    &__heading {
+        @extend %headerMain;
+        width: 90%;
+        margin: 0 auto 50px;
+    }
+    &__contents {
+        @extend %center;
+        width: 90%;
+        background-color: white;
+    }
+    &__list {
+        @extend %row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 500px;
+        padding: 20px 0;
+        list-style: none;
+    }
+    &__book {
+        display: inline-block;
+        width: 40%;
+        height: 150px;
+        margin: 30px auto;
+    }
+    &__bookLink {
+        text-decoration: none !important;
+        color: $textColor_main;
+    }
+    &__bookItems {
+        @extend %row;
+        text-decoration: none;
+        background-color: $main_color;
+        padding: 20px;
+    }
+    &__indexBar {
+        @extend %center;
+        width: 90%;
+        height: 40px;
+        background-color: $main_color;
+        margin: 0 auto;
+    }
+    &__indexIcons {
+        @extend %row;
+    }
+    &__indexBtn {
+        margin: 0 40px;
+        color: $white;
+        font-size: 30px;
+        line-height: 40px;
+        cursor: pointer;
+        &:hover {
+            color: rgba($white, 0.8);
+        }
+    }
+}
+
+.contentsRanking {
+    padding: 50px 0;
+    &__heading {
+        @extend %headerMain;
+        width: 90%;
+        margin: 0 auto 50px;
+    }
+    &__contents {
+        @extend %column;
+        width: 90%;
+        min-height: 500px;
+        background-color: $white;
+        padding: 50px 0;
+        margin: 0 auto;
+    }
+    &__books {
+        @extend %row;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 50px 0;
+        margin: 0 auto;
+    }
+     &__bookLink {
+        text-decoration: none !important;
+        display: inline-block;
+        width: 90%;
+        margin: 0 auto;
+        &--other {
+            text-decoration: none !important;
+            display: inline-block;
+            width: 30%;
+            margin: 20px auto;
+        }
+    }
+    &__book {
+        @extend %center;
+        padding: 50px 0;
+        border: 5px solid blue;
+        &--other {
+            padding: 20px;
+            border: 5px solid blue;
+        }
+    }
+    &__bookItems {
+        @extend %row;
+        margin: 0 auto;
+        &--other {
+            @extend %row;
+        }
+    }
+    &__bookData {
+        margin-left: 30px;
+    }
+    &__itemText {
+        background-color: $main_color;
+        color: $white;
+        width: 200px;
+        border-radius: 15px;
+        text-align: center;
+        padding: 0 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &--other {
+            background-color: $main_color;
+            color: $white;
+            width: 150px;
+            border-radius: 15px;
+            text-align: center;
+            padding: 0 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.contentsLineup {
+    padding: 50px 0;
+    &__heading {
+        @extend %headerMain;
+        width: 90%;
+        margin: 0 auto 50px;
+    }
+    &__contents {
+        @extend %row;
+        justify-content: center;
+        width: 90%;
+        height: 250px;
+        margin: 0 auto;
+        background-color: $white;
+    }
+    &__bookItem {
+        margin: auto;
+        text-align: center;
+    }
+    &__bookItemText{
+        width: 150px;
+        height: 30px;
+        background-color: $main_color;
+        color: $white;
+        border-radius: 15px;
+        line-height: 30px;
+        text-align: center;
+        margin-top:10px;
+        padding: 0 20px;
+        overflow: hidden;
+    }
+}
+
+
+.book {
+    &__container {
+        width: 100%;
+    }
+    &__btnReturn {
+        @extend %submitBtn;
+        width: 200px;
+        margin: 50px 100px;
+    }
+    &__heading {
+       @extend %headerMain;
+        margin: 0 auto;
+    }
+    &__headingText {
+        margin-left: 50px;
+    }
+    &__contents {
+        @extend %backgroundMain;
+        width: 90%;
+        margin: 0 auto 50px;
+        padding: 50px;
+    }
+    &__items {
+        @extend %row;
+        justify-content: center;
+        background-color: $white;
+        padding: 50px 0 20px;
+        margin: 0 auto;
+    }
+    &__image {
+        padding: 0 50px;
+    }
+    &__status {
+        @extend %row;
+        padding: 20px 5px;
+    }
+    &__bookGood {
+        text-decoration: none !important;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        color: $pastel_red;
+        &--none {
+            display: inline-block;
+            text-decoration: none !important;
+            height: 30px;
+            line-height: 30px;
+        }
+    }
+    &__favoriteIcon {
+        margin: 0 auto;
+    }
+    &__favorite {
+        text-decoration: none !important;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        background-color: $main_color;
+        color: $textColor_main;
+        padding: 0 10px;
+        border-radius: 10px;
+        &--none {
+            text-decoration: none !important;
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            border-radius: 10px;
+            color: $bk;
+        }
+    }
+    &__violation {
+            background-color: $pastel_red;
+            color: $white;
+            text-decoration: none !important;
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            border-radius: 10px;
+        &--none {
+            background-color: $pastel_yellow;
+            text-decoration: none !important;
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    }
+    &__introduction {
+        @extend %column;
+        min-height: 300px;
+        background-color: $white;
+        padding-bottom: 50px;
+    }
+    &__introductionTag {
+        background-color: $main_color;
+        color: $white;
+        width: 80%;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        margin: 0 auto;
+    }
+     &__introductionText {
+        width: 80%;
+        min-height: 200px;
+        margin: 20px auto 0;
+        border: 1px solid rgba($bk, 0.5);
+    }
+    &__reviews {
+        @extend %column;
+        background-color: $white;
+        padding: 50px;
+    }
+    &__reviewForm {
+        @extend %center;
+    }
+    &__reviewComments {
+        @extend %center;
+        flex-direction: column;
+        width: 100%;
+    }
+    &__reviewComment {
+        border-bottom: 1px solid $bk;
+        width: 60%;
+        margin: 0 auto;
+        padding: 50px;
+    }
+    &__commentUserInfo {
+        @extend %row;
+    }
+    &__commentUserData {
+        height: 60px;
+        line-height: 60px;
+    }
+    &__commentUserImage {
+        border-radius: 50%;
+    }
+    &__commentUserRate {
+         height: 60px;
+        line-height: 60px;
+        margin-left: 20px;
+    }
+    &__comment {
+       min-height: 200px;
+       margin-top: 10px;
+    }
+    &__commentDating {
+        text-align: right;
+    }
+    &__reviewAction {
+        @extend %row;
+    }
+    &__btnDelete {
+        @extend %deleteBtn;
+    }
+    &__violationReview {
+         background-color: $pastel_red;
+            color: $white;
+            text-decoration: none !important;
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-left: 10px;
+            &--none {
+                background-color: $pastel_yellow;
+                text-decoration: none !important;
+                display: inline-block;
+                width: 100px;
+                height: 30px;
+                line-height: 30px;
+                padding: 0 10px;
+                border-radius: 10px;
+                text-align: center;
+                margin-left: 10px;
+            }
+    }
+}
+
+
+.bookNew {
+    &__container {
+        margin: 50px 0;
+    }
+    &__heading {
+        @extend %headerMain;
+        margin: 0 auto;
+    }
+    &__contents {
+        @extend %backgroundMain;
+        min-height: 600px;
+        margin: 20px auto 0;
+        padding: 50px;
+    }
+    &__form {
+        background-color: $white;
+        padding: 50px 0;
+    }
+    &__formItems {
+        margin: 0 auto;
+    }
+    &__thread {
+        height: 40px;
+    }
+    &__tag {
+        height: 30px;
+        width: 150px;
+        color: $white;
+        background-color: $main_color;
+        display: inline-block;
+        margin-right: 20px;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 10px;
+    }
+    ＆__form__TextBox {
+        display: block;
+        height: 30px;
+        width: 200px;
+        maragin-bottom: 10px;
+    }
+    &__introductionForm {
+        text-align: center;
+        padding-top: 20px;
+    }
+    
+    &__formAction {
+       text-align: center; 
+       padding-top: 50px;
+    }
+   &__formBtn {
+      @extend %submitBtn;
+
+    }
+    &__message {
+        width: 100px;
+        font-size: 5px;
+        color: $color-white;
+        background-color: $color-pastel-red;
+        padding: 5px;
+        text-align: center; 
+        
+    }
+}
+
+
 .MainPage {
     @extend %page;
     &__container {
@@ -29,295 +630,7 @@ textarea {
     }
 }
 
-.BIndex {
-    @extend %row;
-    position: relative;
-    &__sidebar{
-        @extend %row;
-        position: absolute;
-        top: 0px;
-        bottom: 0;
-        margin-left: -380px;
-        z-index: 20;
-    }
-    &__sidebarMenu {
-        width: 300px;
-        background-color: $white;
-        border: 5px solid $color-pastel-blue;
-    }
-    &__sidebarOpen:hover, &__sidebarClose:hover {
-        cursor: pointer;
-        color: black;
-    }
-    &__category {
 
-    }
-    &__sidebarTitle {
-        width: 290px;
-        background-color: blue;
-        color: $white;
-        text-align: center;
-        font-size: 20px;
-        
-    }
-    &__sidebarItem {
-        width: 200px;
-        margin: 0 auto;
-    }
-    &__sidebarLink {
-        text-decoration: none !important;
-    }
-    &__sidebarText {
-        width: 200px;
-        padding: 10 0;
-    }
-    &__thread {
-        height: 40px;
-        &--sidebar {
-            height: 40px;
-            width: 150px;
-        }
-    }
-    &__tag {
-        @extend %tag;
-    }
-    &__sidebarOpen, &__sidebarClose {
-        display: none;
-    }
-    &__iconActive {
-        display: block;
-        height: 200px;
-        color:white;
-        background-color: $color-pastel-blue;
-        padding: 0 20px;
-        border-radius: 0 15px 15px 0;
-    }
-    &__menuIcon {
-        writing-mode: vertical-rl;
-    }
-    &__contents {
-        width: 80%;
-        margin: 50px auto;
-    }
-    &__action__new {
-        margin-right: 100px;
-    }
-    &__action__announce {
-        @extend %tag;
-        width: 500px;
-    }
-    &__heading {
-        @extend %row;
-        height: 50px;
-        color: $color-white;
-        background-color: $color-navy-blue;
-        margin: 0 50px;
-        padding-left: 50px;
-        margin-top: 100px;
-        &--h2 {
-            color: $color-white;
-            line-height: 50px;
-        }
-        &--p {
-            color: $color-white;
-            line-height: 50px;
-        }
-    }
-    &__recomendItem {
-        display: none;
-    }
-    &__activeLeft {
-        display: block;
-        order: 1;
-        width: 20%;
-    }
-    &__active {
-        display: block;
-        order: 2;
-        width: 60%;
-    }
-    &__activeRight{
-        display: block;
-        order: 3;
-        width: 20%;
-    }
-    &__recomendBookItem {
-        margin-top: 100px;
-        &--row {
-            @extend %row;
-        }
-    }
-    &__recomendData {
-        &--main {
-            margin-left: 20px;
-        }
-    }
-    &__ranking {
-        width: 80%;
-        @extend %row;
-        margin: 20px auto 0 auto;
-        background-color: blue;
-    }
-    &__ranking__contents {
-        height: 500px;
-        width: 50%;
-    }
-     &__ranking__contents__other {
-        height: 500px;
-        width: 50%;
-        display: flex;
-        flex-wrap: wrap;
-        background-color: blue;
-     }
-    &__ranking__item {
-        height: 500px;
-        padding: 50px 0;
-        @extend %column;
-        text-align: center;
-    }
-    &__ranking__item__other {
-        height: 250px;
-        width: 50%;
-        padding: 20px 0;
-        @extend %column;
-        text-align: center;
-    }
-    &__text {
-        text-align: center;
-    }
-    &__new-lineup {
-        @extend %row;
-        justify-content: center;
-        height: 250px;
-        width: 80%;
-        background-color: blue;
-        margin-top: 20px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    &__BookItem {
-        @extend %column;
-        margin: 50px auto;
-    }
-    &__NewBook__iamge {}
-    &__NewBook__text {
-        color: $color-white;
-        text-align: center;
-    }
-    &__recomend {
-        @extend %row;
-        height: 250px;
-        width: 80%;
-        background-color: blue;
-        margin-top: 20px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    &__data {
-        width: 50%;
-        color: $color-white;
-        text-align: center;
-        &--GoodBook {
-        color: $color-pastel-red;
-        text-align: center;
-        overflow: hidden;
-        white-space: nowrap;
-        }
-        &--rank {
-            color: $color-white;
-            text-align: center;
-        }
-        &--another {
-            color: $color-white;
-            text-align: center;
-        }
-    }
-    &__text {
-        width: 300px;
-        margin: 0 auto;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        &--another {
-            width: 100px;
-            margin: 0 auto;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-        }
-        &--lineup {
-            width: 150px;
-            text-align: center;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-        }
-    }
-}
-
-.BRecomend {
-    width: 100%;
-    margin: 0 auto;
-    padding: 50px 0;
-    &__heading {
-        @extend %heading;
-    }
-    &__contents {
-        margin: 20px auto;
-    }
-    &__slides {
-        @extend %row;
-        height: 300px;
-        position: relative;
-    }
-    &__item {
-        display: none;
-        position: relative;
-    }
-    &__book {
-        @extend %row;
-    }
-    &__left {
-        display: block;
-        width: 50%;
-        background-color: black;
-        margin-top: 50px;
-        position: absolute;
-        left: -10%;
-        opacity: 0.5;
-    }
-    &__main {
-        display: block;
-        width: 60%;
-        background-color: blue;
-        position: absolute;
-        left: 20%;
-        z-index: 10;
-        
-    }
-    &__right {
-        display: block;
-        width: 50%;
-        background-color: black;
-        margin-top: 50px;
-        position: absolute;
-        right: -10%;
-        opacity: 0.5;
-    }
-    
-    &__bookData {
-    }
-    &__leftIcon {
-        position: absolute;
-        top: 100px;
-        left: -10%;
-    }
-    &__rightIcon {
-        position: absolute;
-        top: 100px;
-        right: -10%;
-    }
-}
 
 .BSearch {
     &__heading {
@@ -383,52 +696,7 @@ textarea {
     }
 }
 
-.BNew {
-    &__heading {
-        @extend %heading;
-    }
-    &__form__item {
-        margin: 0 auto;
-    }
-    &__thread {
-        height: 40px;
-    }
-    &__tag {
-        height: 30px;
-        width: 200px;
-        color: $color-white;
-        background-color: $color-green;
-        display: inline-block;
-        margin-right: 20px;
-        text-align: center;
-        line-height: 30px;
-        border-radius: 15px;
-    }
-    ＆__form__TextBox {
-        display: block;
-        height: 30px;
-        width: 200px;
-        maragin-bottom: 10px;
-    }
-   &__form__btn {
-       height: 30px;
-       width: 100px;
-       color: $color-white;
-       background-color: $color-pastel-blue;
-       margin-top: 30px;
-       border: none;
-       border-radius: 15px;
-    }
-    &__message {
-        width: 100px;
-        font-size: 5px;
-        color: $color-white;
-        background-color: $color-pastel-red;
-        padding: 5px;
-        text-align: center; 
-        
-    }
-}
+
 div.field_with_errors > input{
     border: 3px solid red;
 }
@@ -464,7 +732,6 @@ div.field_with_errors > input{
     &__BookGood {
         height: 35px;
         color: $color-pastel-red;
-        padding: 5px;
         text-decoration: none !important;
    }
     &__favorite {

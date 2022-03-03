@@ -9,6 +9,12 @@
       = form_with model: @user, url: user_registration_path, id:'new_user', class:'new_user', local: true do |f|
 
         .sign__formItems
+          
+          .sign__formItem
+            = f.label :ニックネーム, class:"sign__formTag"
+            %br/
+            = f.email_field :nick_name, autofocus: true, autocomplete: "nick_namel", class:"sign__formTextBox formText"
+            %p.error
 
           .sign__formItem
             = f.label :メールアドレス, class:"sign__formTag"

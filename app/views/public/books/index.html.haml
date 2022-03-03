@@ -1,62 +1,57 @@
-.MainPage
-  .MainPage__container
-    %section.BIndex
-                 
-      .BIndex__contents
-        .BIndex__action__new
-          = link_to new_book_path, class: "d-flex flex-row-reverse pb-3" do
-            %p.BIndex__action__announce
-              お気に入りの本がない場合はこちらから登録して下さい
-              
-        .BIndex__BRecomend
-          = render 'public/books/recomend_books', {rankings: @recomened_books}
-                
-        .BIndex__books
-          = render 'public/books/ranking', {rankings: @all_ranks, new_books: @new_books}
-        .BIndex__heading
-          %h2.BIndex__heading--h2 あなたにおすすめ
-        .BIndex__recomend
-          - @follow_books.each do |follow_book|
-            .BIndex__BookItem
-              .BIndex__data
-                = link_to book_path(follow_book) do
-                  = attachment_image_tag follow_book, :image, :fill, 150, 150, fallback: "no_image_book.jpeg", size: '150x150'
-              .BIndex__data
-                %p.BIndex__text--lineup.text-truncate= follow_book.name
-    .BIndex__sidebar
-      .BIndex__sidebarMenu
-        .BIndex__category
-          %P.BIndex__sidebarTitle
-            カテゴリ別ランキング
-          .BIndex__sidebarItem
-            = link_to books_path, class:'BIndex__sidebarLink' do
-              %p.BIndex__sidebarText.text-truncate
-                ランキングTop
-          - @classifications.each do |classification|
-            .BIndex__sidebarItem
-              = link_to book_classifications_path(classification.id), class:'BIndex__sidebarLink', remote: true do
-                %p.BIndex__sidebarText.text-truncate
-                  = classification.name
-      .BIndex__sidebarOpen.BIndex__iconActive
-        %i.fas.fa-2x.fa-caret-right.BIndex__menuIcon Menu
-        
-      .BIndex__sidebarClose
-        %i.fas.fa-2x.fa-caret-left.BIndex__menuIcon Menu
-        
-      :javascript
-        $(function() {
-        
-          $('.BIndex__sidebarOpen').click(function() {
-            $('.BIndex__sidebarOpen').removeClass('BIndex__iconActive');
-            $('.BIndex__sidebar').animate({'marginLeft': '0px'});
-            $('.BIndex__sidebarClose').addClass('BIndex__iconActive');
-          });
+.books
+  
+  .books__menuBar
+    .books__menuBar__container
+      .books__menuBar__contents
+      
+        %P.books__menuBar__heading
+          カテゴリ別ランキング
           
-          $('.BIndex__sidebarClose').click(function() {
-            $('.BIndex__sidebarClose').removeClass('BIndex__iconActive');
-            $('.BIndex__sidebar').animate({'marginLeft': '-380px'});
-            $('.BIndex__sidebarOpen').addClass('BIndex__iconActive');
-          });
-        });
-        
+        .books__menuBar__items
+          .books__menuBar__item
+            = link_to books_path, class:'books__menuBar__link' do
+              %p.books__menuBar__itemText.text-truncate
+                ランキングトップページ
+          - @classifications.each do |classification|
+            .books__menuBar__item
+              = link_to book_classifications_path(classification.id), class:'books__menuBar__link', remote: true do
+                %p.books__menuBar__itemText.text-truncate
+                  = classification.name
 
+
+    .books__menuBar__btn.books__menuBar__active#open
+      %i.fas.fa-caret-right.books__menuBar__icon Menu
+      
+    .books__menuBar__btn#close
+      %i.fas.fa-caret-left.books__menuBar__icon Menu
+    
+    = javascript_include_tag "menuBar"
+  
+    
+
+  .books__container
+    - if user_signed_in?
+      .books__createContents
+        %p.books__createText
+          探している本がない場合は
+        = link_to new_book_path, class:"books__createBtn" do
+          こちら
+    .books__contents
+    
+      - if @follow_books.present?
+        .books__recommendContents
+          = render 'public/books/contentsItem_slider', { headingText: "あなたにおすすめ", follow_books: @follow_books}
+       
+                
+                
+      .books__rankingContents
+        = render 'public/books/contentsItem_ranking', {headingText: "読まれている本総合ランキング", rankings: @all_ranks}
+      .books__newLineupContents
+        = render 'public/books/contentsItem_lineup', {headingText: "新しく登録された本", books: @new_books}
+
+                 
+  
+      
+    
+      
+  

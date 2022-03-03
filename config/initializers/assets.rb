@@ -17,5 +17,8 @@ Rails.application.config.assets.precompile += %w( review_comment.js )
 Rails.application.config.assets.precompile += %w( signUpForm.js )
 Rails.application.config.assets.precompile += %w( signInForm.js )
 Rails.application.config.assets.precompile += %w( about.js )
-
+Rails.application.config.assets.precompile += %w( slide.js )
+Rails.application.config.assets.precompile += %w( menuBar.js )
+Rails.application.config.assets.precompile += %w( createBook.js )
+Rails.application.config.assets.precompile += %w( jquery.raty.js )
 
