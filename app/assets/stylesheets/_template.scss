@@ -72,9 +72,8 @@
 
 
 %backgroundMain {
-  min-height: 1000px;
   background-color: $backgroundColor_main;
-  width: 90%;
+  width: 80%;
 }
 
 @mixin heading($bColor: $main_color, $tColor: $wt) {

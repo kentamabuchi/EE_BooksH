@@ -33,19 +33,8 @@
 body {
     background-image: image-url("library.jpeg");
     background-attachment: fixed;
-    position: relative;
-    z-index: 1;
-}
-body::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-    z-index: 1;
-    
+    background-color: rgba(255,255,255,0.7);
+    background-blend-mode: soft-light;
 }
 
 .pagination>li>a {          
@@ -378,7 +367,6 @@ body::after {
 }
 
 .btm{
-    position: relative;
     &__contents {
         height: 100px;
         color: $color-white;
@@ -400,49 +388,49 @@ body::after {
 }
 
 .sign {
-  @extend %backgroundMain;
-  @extend %center;
-  min-height: 500px;
-  margin: 50px, 0;
-  &__container {
-    @extend %column;
-    width: 80%;
-    padding: 50px 0;
-  }
-  &__header {
-    width: 100%;
-    margin: 0 auto;
-  }
-  &__headerText {
-    @extend %headerMain;
-    width: 60%;
-    margin: 0 auto;
-  }
-  &__form {
-    @extend %center;
-    background-color: $white;
-    width: 60%;
-    margin: 50px auto;
-    padding: 50px 100px;
-  }
-  &__formItem:nth-child(even) {
-    margin: 20px 0;
-  }
-  &__formTag {
-    @extend %tagMain;
-  }
-  &__formAnnounce {
-    display: block;
-    font-size: 10px;
-  }
-  &__forgetPassword {
-    text-decoration: none !important;
-    display: block;
-  }
-  &__formBtn {
-    @extend %submitBtn;
-    margin-top: 20px;
-  }
+    &__container {
+        @extend %backgroundMain;
+        padding: 50px 0;
+        margin: 50px auto;
+    }
+    &__contents{
+        @extend %column;
+        margin: 50px auto;
+    }
+    &__header {
+        width: 100%;
+        margin: 0 auto;
+    }
+    &__headerText {
+        @extend %headerMain;
+        width: 60%;
+        margin: 0 auto;
+    }
+    &__form {
+        @extend %center;
+        background-color: $white;
+        width: 60%;
+        margin: 50px auto;
+        padding: 50px 100px;
+    }
+    &__formItem:nth-child(even) {
+        margin: 20px 0;
+    }
+    &__formTag {
+        @extend %tagMain;
+    }
+    &__formAnnounce {
+        display: block;
+        font-size: 10px;
+    }
+    &__forgetPassword {
+        text-decoration: none !important;
+        display: block;
+    }
+    &__formBtn {
+        @extend %submitBtn;
+        margin-top: 20px;
+    }
 }
 
 .formError {
