@@ -41,6 +41,10 @@
     &__data {
         margin-left: 50px;
     }
+    &__thread {
+        @extend %row;
+        padding-bottom: 10px;
+    }
     &__dataTag {
         @extend %tag;
     }
