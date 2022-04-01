@@ -1,18 +1,96 @@
-.top
-  .top__container
-    .top__mainVisual
-      .top__mainVisual__contents
-        .top__mainVisual__image
-          .top__mainVisual__imageItems
-            %h1.top__mainVisual__title
-              ようこそ\EE.Books/へ
-            %p.top__mainVisual__text
-              レビューや評価を参考に
-              あなたにぴったりの一冊を
-              %br
-              見つけるお手伝いをするサイトです
-              
-  .top__about#about__top
-    %p"ABOUT　EE_BOOKS"
+.home
+  -if user_signed_in? == false
+    .home__topPart
+      .home__topPart__container
+        .home__topPart__contents
+          %h1.home__topPart__title
+            ようこそ\EE/.Books<i class="fas fa-book-open"></i>へ
+          %p.home__topPart__text
+            　\EE/.Booksはあなたにぴったりの一冊を見つけるためのサイトです。
+            %br
+            評価やレビューを参考に好きな本に出会うきっかけになればと思います。
+          
+          .home__topPart__induction
+            .home__topPart__induction__items
+              .home__topPart__induction__text
+                会員登録される方はこちらから
+              .home__topPart__induction__linkIcon
+                = link_to new_user_registration_path, class: ".home__topPart__induction__link" do
+                  登録
+            .home__topPart__induction__items
+              .home__topPart__induction__text
+                すでに登録されている方はこちら
+              .home__topPart__induction__linkIcon
+                = link_to new_user_session_path, class: ".home__topPart__induction__link" do
+                  ログイン
+    
+
+
+  .home__aboutPart
+    .home__aboutPart__container
+      .home__aboutPart__contents
+  
+        .home__aboutPart__heading#aboutPart
+          .home__aboutPart__heading__image
+            %h2.home__aboutPart__heading__title
+              About || ＼EE／.Books
+
+        .home__aboutPart__topic
+          .home__aboutPart__topic__contents
+    
+            .home__aboutPart__topic__section
+              .home__aboutPart__topic__searchImage
+                %h1.home__aboutPart__topic__title
+                  見つける
+                %ul.home__aboutPart__topic__list
+                  %li.home__aboutPart__topic__listItem.animation__slideRight
+                    検索から
+                  %li.home__aboutPart__topic__listItem.animation__slideRight
+                    新着
+                    %br
+                    おすすめから
+                  %li.home__aboutPart__topic__listItem.animation__slideRight
+                    レビュー
+                    %br
+                    評価から
+    
+            .home__aboutPart__topic__section
+              .home__aboutPart__topic__readImage
+                %h1.home__aboutPart__topic__title
+                  読む
+                %ul.home__aboutPart__topic__list
+                  %li.home__aboutPart__topic__listItem.animation__slideLeft
+                    探して
+                    %br
+                    読んでみる
+                  %li.home__aboutPart__topic__listItem.animation__slideLeft
+                    レビューを
+                    %br
+                    書く
+                  %li.home__aboutPart__topic__listItem.animation__slideLeft
+                    評価を
+                    %br
+                    つける
+    
+            .home__aboutPart__topic__section
+              .home__aboutPart__topic__useImage
+                %h1.home__aboutPart__topic__title
+                  使う
+                %ul.home__aboutPart__topic__list
+                  %li.home__aboutPart__topic__listItem.animation__slideRight
+                    読んだ本を
+                    %br
+                    登録する
+                  %li.home__aboutPart__topic__listItem.animation__slideRight
+                    気に入った人を
+                    %br
+                    フォローする
+                  %li.home__aboutPart__topic__listItem.animation__slideRight
+                    本について
+                    %br
+                    コメントし合う
+  
+  = javascript_include_tag "about"
+
     
               

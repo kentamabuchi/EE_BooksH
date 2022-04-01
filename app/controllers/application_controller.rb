@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base
     
     before_action :configure_permitted_parameters, if: :devise_controller?
-    before_action :search_data
+    before_action :search_data, :get_path
     
-   
 
-    
     protected
     
     def configure_permitted_parameters
@@ -50,6 +48,10 @@ class ApplicationController < ActionController::Base
         @q = Book.ransack(params[:q])
         @search_books = @q.result(distinct: true)
         @user = User.new
+    end
+    
+    def get_path
+        @path = request.fullpath
     end
     
 end

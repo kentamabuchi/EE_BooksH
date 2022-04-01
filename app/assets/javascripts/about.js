@@ -1,6 +1,6 @@
 'use strict'; {
 
-  const slideItems = document.querySelectorAll('.about__topic__listItem');
+  const slideItems = document.querySelectorAll('.home__aboutPart__topic__listItem');
 
   const slide = function( entries, observer ) {
     let num = 1;
