@@ -6,209 +6,183 @@
 @import '_color.scss';
 @import '_flex.scss';
 
-.top {
-  &__container {
-    @extend %backgroundMain;
-    @extend %column;
-  }
-  &__mainVisual {
-    width: 90%;
-    height: 700px;
-    margin: 100px auto 0;
-    background: linear-gradient(to right, $main_color 70%, $pastel_blue 30%);
-  }
-  &__mainVisual__contents {
-    @extend %center;
-  }
-  &__mainVisual__image {
-    width: 80%;
-    height: 500px;
-    margin: 100px 0;
-    background-image: image-url("top_mainVisual.jpeg");
-    background-size: cover;
-  }
-  &__mainVisual__imageItems {
-    background-color: rgba(#000, 0.5);
-    width: 100%;
-    height: 500px;
-    position: relative;
-  }
-  &__mainVisual__title {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    color: $textColor_main;
-  }
-  &__mainVisual__text {
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    color: $textColor_main;
-  }
-}
 
-.guidance {
-    @extend %column;
-    height: 400px;
-    width: 90%;
-    margin: 100px auto;
-    padding-top: 50px;
-    text-align: center;
-    background-color: #265EFF;
-    &__link {
-        display: inline-block;
-        height: 30px;
-        width: 40%;
-        color: $color-white;
-        display: inline-block;
-        margin: 20px auto 0 auto;
+.home{
+  &__topPart {
+    &__container {
+      @extend %column;
+    }
+    &__contents {
+      width: 80%;
+      background-color: $wt;
+      margin: 0 auto;
+      padding: 100px;
+    }
+    &__title {
+      @extend %row;
+      width: 50%;
+      margin: 50px auto;
+    }
+    &__text {
+      width: 70%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    &__induction {
+      width: 50%;
+      margin: 100px auto;
+      &__items {
+        @extend %row;
+      }
+      &__items {
+        margin-top: 20px;
+      }
+      &__text {
+        width: 250px;
+        text-align: right;
+      }
+      &__linkIcon {
+        width: 150px;
+        background-color: $pastel_blue;
+        color: $textColor_main;
         text-align: center;
-        line-height: 30px;
-        
-    }
-    &__btn {
-        @extend %tag;
+        margin-left: 50px;
+      }
+      &__link {
         text-decoration: none !important;
+      }
     }
-}
-
-
-
-.about {
-  &__container {
-    width: 100%;
   }
-  &__heading {
-    height: 600px;
-    margin: 50px 0;
-    padding: 50px 0;
-    background-color: $pastel_blue;
-  }
-  &__heading__image {
-    height: 500px;
-    background-image: image-url("about_heading.jpeg");
-    background-size: cover;
-    background-position: top -300px left 0;
-    position: relative;
-  }
-  &__heading__title {
-    position: absolute;
-    top: 300px;
-    left: 50px;
-    background-color: $smoke_green;
-    color: $textColor_main;
-    padding: 5px 50px;
-    border-radius: 15px;
-  }
-  &__heading__text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background-color: $smoke_green;
-    color: $textColor_main;
-    padding: 20px 50px;
-  }
-  &__topic__contents {
-    @extend %backgroundMain;
-    width: 90%;
-    padding: 100px 0;
-  }
-  %topicSection {
-    width: 90%;
-    height: 700px;
-    margin: 0 auto;
-    @extend %center;
-  }
-  &__topic__section {
-    @extend %topicSection;
-    background-color: $light_green;
-  }
-  &__topic__section:nth-child(even) {
-    @extend %topicSection;
-    background-color: $light_yellow;
-  }
-  %topicImage {
-    display: inline-block;
-    width: 90%;
-    height: 600px;
-    margin: 50px;
-    position: relative;
-  }
-  &__topic__searchImage {
-    background-image: image-url("about_topicSearch.jpeg");
-    background-size: cover;
-    background-position: left 0 top -100px;
-    @extend %topicImage;
-  }
-  &__topic__readImage {
-    background-image: image-url("about_topicRead.jpeg");
-    background-size: cover;
-    background-position: left 0 top -100px;
-    @extend %topicImage;
-  }
-  &__topic__useImage {
-    background-image: image-url("about_topicUse.jpeg");
-    background-size: cover;
-    background-position: right 0 bottom -100px;
-    @extend %topicImage;
-  }
-  %topicTitle {
-    display: block;
-    height: 600px;
-    width: 100%;
-    color: $textColor_main;
-    background-color: rgba(#000, 0.5);
-    padding: 50px;
-  }
-  &__topic__title {
-    @extend %topicTitle;
-    text-align: left;
-  }
-  &__topic__section:nth-child(even) .about__topic__title {
-    @extend %topicTitle;
-    text-align: right;
-  }
-  %topicList {
-    list-style: none;
-    position: absolute;
-    display: table;
-    @extend %row;
-  }
-  &__topic__list {
-    @extend %topicList;
-    top: 200px;
-    right: 50px;
-  }
-  &__topic__section:nth-child(even) &__topic__list {
-    @extend %topicList;
-    top: 200px;
-    left: 50px;
-  }
-  %listItem {
-    width: 150px;
-    height: 150px;
-    color: $textColor_main;
-    border-radius: 50%;
-    text-align: center;
-    display: inline-block;
-    padding: 50px 0;
-    vertical-align: top;
-  }
-  &__topic__listItem {
-    @extend %listItem;
-    background-color: $pastel_blue;
-  }
-  &__topic__section:nth-child(even) &__topic__listItem {
-    @extend %listItem;
-    background-color: $light_green;
-  }
-  &__topic__listItem:nth-child(even) {
-    margin: 0 20px;
-  }
-  &__topic__section:nth-child(even) &__topic__listItem:nth-child(even) {
-    margin: 0 20px;
+  &__aboutPart {
+    width: 80%;
+    background-color: white;
+    padding: 100px;
+    margin: 0 auto 50px;
+    &__container {
+    }
+    &__contents {
+    }
+     &__heading {
+      height: 600px;
+      padding: 50px 0;
+      background-color: $pastel_blue;
+    }
+    &__heading__image {
+      height: 500px;
+      background-image: image-url("about_heading.jpeg");
+      background-size: cover;
+      position: relative;
+      border: 30px solid $smoke_green;
+    }
+    &__heading__title {
+      position: absolute;
+      top: 300px;
+      left: 50px;
+      background-color: $smoke_green;
+      color: $textColor_main;
+      padding: 5px 50px;
+      border-radius: 15px;
+    }
+    &__topic__contents {
+      @extend %backgroundMain;
+      width: 100%;
+      padding: 100px 0;
+    }
+    %topicSection {
+      width: 100%;
+      height: 500px;
+      margin: 0 auto;
+      @extend %center;
+    }
+    &__topic__section {
+      @extend %topicSection;
+      background-color: $light_green;
+    }
+    &__topic__section:nth-child(even) {
+      @extend %topicSection;
+      background-color: $light_yellow;
+    }
+    %topicImage {
+      display: inline-block;
+      width: 100%;
+      height: 400px;
+      margin: 50px;
+      position: relative;
+    }
+    &__topic__searchImage {
+      background-image: image-url("about_topicSearch.jpeg");
+      background-size: cover;
+      background-position: left 0 top -100px;
+      @extend %topicImage;
+    }
+    &__topic__readImage {
+      background-image: image-url("about_topicRead.jpeg");
+      background-size: cover;
+      background-position: left 0 top -100px;
+      @extend %topicImage;
+    }
+    &__topic__useImage {
+      background-image: image-url("about_topicUse.jpeg");
+      background-size: cover;
+      background-position: right 0 bottom -100px;
+      @extend %topicImage;
+    }
+    %topicTitle {
+      display: block;
+      height: 400px;
+      width: 100%;
+      color: $textColor_main;
+      background-color: rgba(#000, 0.5);
+      padding: 50px;
+    }
+    &__topic__title {
+      @extend %topicTitle;
+      text-align: left;
+    }
+    &__topic__section:nth-child(even) .about__topic__title {
+      @extend %topicTitle;
+      text-align: right;
+    }
+    %topicList {
+      list-style: none;
+      position: absolute;
+      display: table;
+      @extend %row;
+    }
+    &__topic__list {
+      @extend %topicList;
+      top: 200px;
+      right: 50px;
+    }
+    &__topic__section:nth-child(even) &__topic__list {
+      @extend %topicList;
+      top: 200px;
+      left: 50px;
+    }
+    %listItem {
+      width: 150px;
+      height: 150px;
+      color: $textColor_main;
+      border-radius: 50%;
+      text-align: center;
+      display: inline-block;
+      padding: 50px 0;
+      vertical-align: top;
+    }
+    &__topic__listItem {
+      @extend %listItem;
+      background-color: $pastel_blue;
+    }
+    &__topic__section:nth-child(even) &__topic__listItem {
+      @extend %listItem;
+      background-color: $light_green;
+    }
+    &__topic__listItem:nth-child(even) {
+      margin: 0 20px;
+    }
+    &__topic__section:nth-child(even) &__topic__listItem:nth-child(even) {
+      margin: 0 20px;
+    }
   }
 }
 

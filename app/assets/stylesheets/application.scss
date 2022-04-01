@@ -22,6 +22,32 @@
 @import '_template.scss';
 
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Toppan Bunkyu Midashi Gothic","凸版文久見出しゴシック";
+    z-index: 50;
+}
+
+body {
+    background-image: image-url("library.jpeg");
+    background-attachment: fixed;
+    position: relative;
+    z-index: 1;
+}
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+    
+}
+
 .pagination>li>a {          
   border: none;
   color: #696969;
@@ -69,7 +95,7 @@
 .header {
     color: $color-white;
     &__container {
-        height: 150px;
+        height: 1000px;
         background-color: blue;
         border-radius: 0 0 50% 50%;
         position: relative;
@@ -178,6 +204,104 @@
     }
 }
 
+
+
+
+.header {
+    margin-bottom: 50px;
+    &__mainVisual {
+        position: absolute;
+        left: 50px;
+        bottom: 100px;
+        width: 90%;
+        height: 700px;
+        margin: 100px auto 0;
+        background: linear-gradient(to right, $main_color 70%, $pastel_blue 30%);
+    }
+    &__mainVisual__contents {
+        position: absolute;
+        left: 50px;
+        bottom: 100px;
+    }
+    &__mainVisual__image {
+        width: 80%;
+        height: 500px;
+        margin: 100px 0;
+        background-image: image-url("top_mainVisual.jpeg");
+        background-size: cover;
+    }
+    &__mainVisual__imageItems {
+        background-color: rgba(#000, 0.5);
+        width: 100%;
+        height: 500px;
+        position: relative;
+    }
+    &__mainVisual__title {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        color: $textColor_main;
+    }
+    &__mainVisual__text {
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        color: $textColor_main;
+    }
+}
+
+
+
+.headerTop{
+    padding-top: 50px;
+    &__contents {
+        height: 700px;
+        width: 80%;
+        background: linear-gradient(to left, $main_color 70%, $pastel_blue 30%);
+        margin: 0 auto;
+        border: 25px solid $main_color;
+        position: relative;
+    }
+    &__image {
+        height: 500px;
+        width: 80%;
+        background-image: image-url("top_mainVisual.jpeg");
+        background-size: cover;
+        position: absolute;
+        top: 75px;
+        left: 20%;
+    }
+    &__nav {
+        position: absolute;
+        top: 100px;
+        left: 50px;
+    }
+    &__navItem {
+        background-color: $main_color;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+    &__navlink {
+        color: $textColor_main;
+        text-decoration: none !important;
+        display: inline-block;
+        width: 100px;
+        line-height: 100px;
+        text-align: center;
+    }
+    &__scrollIcon {
+        color: $textColor_main;
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+    }
+}
+
+
+
+
 .ARPage {
     background-color: $color-pastel-blue;
     &__container {
@@ -253,7 +377,8 @@
     }
 }
 
-.footer{
+.btm{
+    position: relative;
     &__contents {
         height: 100px;
         color: $color-white;
