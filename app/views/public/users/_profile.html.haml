@@ -9,7 +9,7 @@
                 .user__profile
                     .user__image
                         = attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300'
-                        - if @user != current_user
+                        - if user_signed_in? && @user != current_user
                             .user__relationship
                                 = render 'public/relationships/favorite', {user: @user}
                     .user__data

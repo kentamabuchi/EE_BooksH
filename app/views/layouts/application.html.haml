@@ -102,6 +102,11 @@
                   .headerTop__navItem
                     = link_to root_path(anchor: "aboutPart"), class: "headerTop__navlink" do
                       ABOUT
+                      
+                .headerTop__navlist
+                  .headerTop__navItem
+                    = link_to books_path, class: "headerTop__navlink" do
+                      ランキング
                 
                 .headerTop__navlist
                   .headerTop__navItem
@@ -115,7 +120,7 @@
             
               %i.fas.fa-angle-double-down.fa-2x.headerTop__scrollIcon
   
-      -elsif @path.include?("sign")        
+      - else
         .header
           .header__container
   
@@ -131,8 +136,12 @@
                     HOME
                     
                 %li.header__navItem
-                  = link_to root_path(anchor: 'about__top'), class: "header__navLink" do
+                  = link_to root_path(anchor: 'aboutPart'), class: "header__navLink" do
                     ABOUT
+                    
+                %li.header__navItem
+                  = link_to books_path, class: "header__navLink" do
+                    ランキング
                     
                 %li#sign_up.header__navItem
                   = link_to new_user_registration_path, class: "header__navLink" do
