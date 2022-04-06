@@ -2,7 +2,7 @@ class Public::BooksController < ApplicationController
   
   before_action :set_book_ranking, only: [:index]
   before_action :set_classification_ranking, only: [:book_classifications]
-  before_action :set_follow_book_ranking, only: [:index]
+  before_action :set_follow_book_ranking, only: [:index], if: :user_signed_in?
 
   def index
     @classifications = Classification.all

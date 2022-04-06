@@ -9,12 +9,13 @@
         .book__image
           = attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: "300x300"
           .book__status
-            .book__goods
-              = render 'public/good_books/good', {book: @book}
-            .book__favoriteIcon
-              = render 'public/favorite_books/favorite', {book: @book}
-            .book__violationIcon
-              = render 'public/books/violation_report', {book: @book}
+            - if user_signed_in?
+              .book__goods
+                = render 'public/good_books/good', {book: @book}
+              .book__favoriteIcon
+                = render 'public/favorite_books/favorite', {book: @book}
+              .book__violationIcon
+                = render 'public/books/violation_report', {book: @book}
         .book__datas
           %table.book__item
             %tr
@@ -57,29 +58,30 @@
         %p.book__introductionText.text-break
           = @book.introduction
         
-        
-      .book__reviews
-        .book__reviewForm
-          = form_with(model:[@book, @review], local: true) do |f|
-            %table
-              %tr
-                %th.book__tread
-                  %span.book__tag レビュー
-              %tr.book__reviewRate
-              :javascript
-                $('.book__reviewRate').empty(); 
-                $('.book__reviewRate').raty({
-                  starOn: "#{asset_path('star-on.png')}",
-                  starOff: "#{asset_path('star-off.png')}",
-                  starHalf: "#{asset_path('star-half.png')}",
-                  scoreName: 'review[rate]',
-                  half: true,
-                });
-              %tr
-                %td= f.text_area :comment, placeholder: "本の感想", class: "book__form__text"
-              %tr
-                %td
-                  = f.submit "コメントする"
+       
+        - if user_signed_in? 
+          .book__reviews
+            .book__reviewForm
+              = form_with(model:[@book, @review], local: true) do |f|
+                %table
+                  %tr
+                    %th.book__tread
+                      %span.book__tag レビュー
+                  %tr.book__reviewRate
+                  :javascript
+                    $('.book__reviewRate').empty(); 
+                    $('.book__reviewRate').raty({
+                      starOn: "#{asset_path('star-on.png')}",
+                      starOff: "#{asset_path('star-off.png')}",
+                      starHalf: "#{asset_path('star-half.png')}",
+                      scoreName: 'review[rate]',
+                      half: true,
+                    });
+                  %tr
+                    %td= f.text_area :comment, placeholder: "本の感想", class: "book__form__text"
+                  %tr
+                    %td
+                      = f.submit "コメントする"
         .book__reviewComments
           - @reviews.each do |review|
             .book__reviewComment
@@ -105,10 +107,10 @@
               .book__commentDating
                 = "投稿日：#{review.created_at.strftime('%Y/%m/%d')}"
               .book__reviewAction
-                - if review.user_id == current_user.id
+                - if user_signed_in? && review.user_id == current_user.id
                   %div 
                     = link_to "削除", book_review_path(review.book, review), method: :delete, class: "book__btnDelete"
-                - if review.user_id != current_user.id      
+                - if user_signed_in? && review.user_id != current_user.id      
                   %div{:class => "book__violationReviewIcon-#{review.id}"}
                     = render 'public/books/violation_review', {review: review}
                   

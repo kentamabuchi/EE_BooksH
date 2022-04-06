@@ -38,7 +38,7 @@
           こちら
     .books__contents
     
-      - if @follow_books.present?
+      - if user_signed_in? && @follow_books.present?
         .books__recommendContents
           = render 'public/books/contentsItem_slider', { headingText: "あなたにおすすめ", follow_books: @follow_books}
        
