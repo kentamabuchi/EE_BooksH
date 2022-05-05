@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   
+  before_action :authenticate_user!, except: [:show, :favorites, :relationships] 
   before_action :set_current_user, only: [:mypage, :edit, :update, :change]
   before_action :set_user, only: [:show, :favorites, :relationships, :favorite_books, :followers]
   
@@ -14,7 +15,7 @@ class Public::UsersController < ApplicationController
     # @user = User.find(params[:id])
     @favorite_books = @user.favorite_books.all
     @relationships = @user.followings.all
-    if @user == current_user
+    if user_signed_in? && @user == current_user
       redirect_to mypage_path
     end
   end

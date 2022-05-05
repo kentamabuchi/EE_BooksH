@@ -27,13 +27,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Toppan Bunkyu Midashi Gothic","凸版文久見出しゴシック";
-    z-index: 50;
 }
 
 body {
     background-image: image-url("library.jpeg");
     background-attachment: fixed;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba($wt,0.7);
     background-blend-mode: soft-light;
 }
 
@@ -56,7 +55,6 @@ body {
 
 .AHeader {
     color: $color-white;
-    background-color: $color-dark-green;
     &__container {
         height: 300px;
         background-color: $color-black-green;
@@ -71,13 +69,8 @@ body {
     }
      &__logo__text {
         color: $color-white;
-        background-color: green;
         padding: 30px;
-        border-radius: 50%;
         text-decoration: none !important;
-    }
-    &__text {
-        
     }
 }
 
@@ -126,19 +119,22 @@ body {
         display: inline;
         margin-left: 10px;
         &--admin {
-            color: $color-white;
-            display: inline;
-            margin-left: 10px;
+            background-color: green;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-left: 20px;
         }
     }
     &__link {
         color: $color-white;
         &--admin {
-            color: $color-white;
-            background-color: green;
-            padding: 10px;
-            border-radius: 30px;
+            color: $textColor_main;
             text-decoration: none !important;
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+            padding: 35px 0;
         }
     }
 }
@@ -242,10 +238,84 @@ body {
 }
 
 
+.headerFixed {
+    @mixin scrollHeader($bColor) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        width: 100%;
+        height: 100px;
+        background-color: $bColor;
+        padding: 25px;
+        @extend %row;
+    }
+    &__admin {
+        &__container{
+            @include scrollHeader(green);
+        }
+        &__nav {
+            margin: 0 auto;
+        }
+        &__navList {
+            list-style: none;
+            @extend %row;
+        }
+    }
+    &__user {
+        &__container {
+            @include scrollHeader(rgba($main_color, 0.9));
+        }
+        &__logo {
+            margin-left: 50px;
+            &--link {
+                text-decoration: none !important;
+            }
+            &--text {
+                color: $textColor_main;
+            }
+        }
+        &__nav {
+            margin: 0 auto;
+        }
+        &__navList {
+            list-style: none;
+            @extend %row;
+            &__item {
+                height: 50px;
+                width: 100px;
+                margin-right: 20px;
+                background-color: $pastel_blue;
+                text-align: center;
+                padding: 15px 0;
+                &--link {
+                    display: inline-block;
+                    color: $textColor_main;
+                    text-decoration: none !important;
+                }
+            }
+        }
+        &__search__form {
+            margin: 10px 0;
+            &--btn {
+                padding: 0 10px;
+            }
+        }
+
+    }
+}
+
+.hiddenHeader {
+    display: none;
+}
+
+
 
 
 .ARPage {
-    background-color: $color-pastel-blue;
+    width: 80%;
+    background-color: rgba($dark_green, 0.8);
+    margin: 50px auto;
     &__container {
         @extend %center;
     }
@@ -284,7 +354,9 @@ body {
 }
 
 .ASPage {
-    background-color: $color-pastel-blue;
+    width: 80%;
+    background-color: rgba($dark_green, 0.8);
+    margin: 50px auto;
     &__container {
         @extend %center;
     }
@@ -397,3 +469,4 @@ body {
   line-height: 20px;
   font-size: 10px;
 }
+
