@@ -250,9 +250,26 @@ body {
         padding: 25px;
         @extend %row;
     }
+    @mixin navItem($bColor) {
+        height: 50px;
+        width: 100px;
+        margin-right: 20px;
+        background-color: $bColor;
+        text-align: center;
+        padding: 15px 0;
+    }
     &__admin {
         &__container{
             @include scrollHeader(green);
+        }
+        &__logo {
+            margin-left: 50px;
+            &--link {
+                text-decoration: none !important;
+            }
+            &--text {
+                color: $textColor_main;
+            }
         }
         &__nav {
             margin: 0 auto;
@@ -260,6 +277,14 @@ body {
         &__navList {
             list-style: none;
             @extend %row;
+            &__item {
+                @include navItem($dark_green);
+                &--link {
+                    display: inline-block;
+                    color: $textColor_main;
+                    text-decoration: none !important;
+                }
+            }
         }
     }
     &__user {
