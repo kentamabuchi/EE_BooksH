@@ -20,8 +20,9 @@ textarea {
 
 
 .books {
-    width: 100%;
     @extend %center;
+    width: 100%;
+    margin: 50px 0;
     &__menuBar {
         @extend %row;
         position: fixed;
@@ -129,6 +130,10 @@ textarea {
         list-style: none;
         display: none;
     }
+    &__recommendBooks {
+        list-style: none;
+        margin-top: 20px;
+    }
     &__recommendBookLink {
         text-decoration: none !important;
         color: $textColor_main;
@@ -147,16 +152,8 @@ textarea {
         text-overflow: ellipsis;
     }
 }
-// .display {
-//   opacity: 0.5;
-//   &--center {
-//     transform: scale(1.25);
-//     opacity: 1;
-//   }
-//   &--item {
-//       display: block;
-//   }
-// }
+
+
 .contents {
   &__leftOver {
     order: 1;

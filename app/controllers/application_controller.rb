@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
     
     before_action :configure_permitted_parameters, if: :devise_controller?
-    before_action :search_data, :get_path, :check_action
-    before_action :authenticate_user!,except: [:top, :index, :show]
-    
+    before_action :search_data, :get_path
+
 
     protected
     
@@ -43,13 +42,6 @@ class ApplicationController < ActionController::Base
             root_path
         end
     end
-    
-    def check_action
-        unless controller_name == 'books' && action_name == 'index' || action_name == 'show'
-            true
-        end
-    end
-    
     
     def search_data
         @q = Book.ransack(params[:q])

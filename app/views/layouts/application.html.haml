@@ -12,8 +12,29 @@
     
     
   %body
-    %header
-      - if admin_signed_in?
+    %header#header
+      - if @path.include?("/admins/sign")
+        .AHeader
+          .AHeader__container
+            .AHeader__contents
+
+              .AHeader__logo
+                %h1
+                  = link_to root_path, class: "AHeader__logo__text" do
+                    ＼EE／.Books
+                    
+              .header__nav
+                .nav--admin
+                  %ul.nav__bar--admin
+                    %li.nav__item--admin
+                      = link_to root_path, class: "nav__link--admin" do
+                        Home
+                    %li.nav__item--admin
+                      = link_to root_path(anchor: 'aboutPart'), class: "nav__link--admin" do
+                        About
+
+                        
+      - elsif admin_signed_in?
         .AHeader
           .AHeader__container
             .AHeader__contents
@@ -85,7 +106,7 @@
                   = f.text_field :keyword, value: @keyword
                   = f.submit "検索"
   
-      - elsif @path == "/"
+      - elsif controller.action_name == 'top'
         .headerTop
           .headerTop__container
             .headerTop__contents
@@ -138,25 +159,135 @@
                 %li.header__navItem
                   = link_to root_path(anchor: 'aboutPart'), class: "header__navLink" do
                     ABOUT
-                    
+
                 %li.header__navItem
                   = link_to books_path, class: "header__navLink" do
                     ランキング
                     
-                %li#sign_up.header__navItem
+                %li.header__navItem
                   = link_to new_user_registration_path, class: "header__navLink" do
                     会員登録
                     
-                %li#sign_in.header__navItem
+                %li.header__navItem
                   = link_to new_user_session_path, class: "header__navLink" do
                     ログイン
+    
+    
+    .headerFixed.hiddenHeader#scrollHeader
+    
+      - if admin_signed_in?
+        .headerFixed__admin__container
+          .headerFixed__admin__logo
+            = link_to root_path, class: "headerFixed__admin__logo--link" do
+              %h1.headerFixed__admin__logo--text
+                ＼EE／.Books
+          
+          .headerFixed__admin__nav
+            %ul.headerFixed__admin__navList
+            
+              %li.headerFixed__admin__navList__item
+                = link_to admin_top_path, class: "headerFixed__admin__navList__item--link" do
+                  通報一覧
+              
+              %li.headerFixed__admin__navList__item
+                = link_to admin_books_path, class: "headerFixed__admin__navList__item--link" do
+                  書籍一覧
+                  
+              %li.headerFixed__admin__navList__item
+                = link_to admin_users_path, class: "headerFixed__admin__navList__item--link" do
+                  会員一覧
+                  
+              %li.headerFixed__admin__navList__item
+                = link_to admin_classifications_path, class: "headerFixed__admin__navList__item--link" do
+                  分類一覧
+              
+              %li.headerFixed__admin__navList__item
+                = link_to admin_genres_path, class: "headerFixed__admin__navList__item--link" do
+                  ジャンル一覧
+              
+              %li.headerFixed__admin__navList__item
+                = link_to destroy_admin_session_path, method: :delete, class: "headerFixed__admin__navList__item--link" do
+                  ログアウト
+        
+      - elsif user_signed_in?
+        .headerFixed__user
+          .headerFixed__user__container
+          
+            .headerFixed__user__logo
+              = link_to root_path, class: "headerFixed__user__logo--link" do
+                %h1.headerFixed__user__logo--text
+                  ＼EE／.Books
+                
+            .headerFixed__user__nav
+              %ul.headerFixed__user__navList
+              
+                %li.headerFixed__user__navList__item
+                  = link_to root_path(anchor: 'aboutPart'), class: "headerFixed__user__navList__item--link" do
+                    ABOUT
+                
+                %li.headerFixed__user__navList__item
+                  = link_to books_path, class: "headerFixed__user__navList__item--link" do
+                    ランキング
+                    
+                %li.headerFixed__user__navList__item
+                  = link_to reviews_path, class: "headerFixed__user__navList__item--link" do
+                    タイムライン
+                
+                %li.headerFixed__user__navList__item
+                  = link_to mypage_path, class: "headerFixed__user__navList__item--link" do
+                    マイページ
+                
+                %li.headerFixed__user__navList__item
+                  = link_to destroy_user_session_path, method: :delete, class: "headerFixed__user__navList__item--link" do
+                    ログアウト
+                    
+            .headerFixed__user__search
+              = form_with url: books_search_path, class: "headerFixed__user__search__form", method: :get, local: true do |f|
+                = f.text_field :keyword, value: @keyword
+                = f.submit "検索", class: "headerFixed__user__search__form--btn"
+        
+      -elsif @path.exclude?("admin") and @path.exclude?("sign")
+        .headerFixed__user
+          .headerFixed__user__container
+          
+            .headerFixed__user__logo
+              = link_to root_path, class: "headerFixed__user__logo--link" do
+                %h1.headerFixed__user__logo--text
+                  ＼EE／.Books
+                
+            .headerFixed__user__nav
+              %ul.headerFixed__user__navList
+              
+                %li.headerFixed__user__navList__item
+                  = link_to root_path(anchor: 'aboutPart'), class: "headerFixed__user__navList__item--link" do
+                    ABOUT
+                
+                %li.headerFixed__user__navList__item
+                  = link_to books_path, class: "headerFixed__user__navList__item--link" do
+                    ランキング
+                
+                %li.headerFixed__user__navList__item
+                  = link_to new_user_registration_path, class: "headerFixed__user__navList__item--link" do
+                    会員登録
+                
+                %li.headerFixed__user__navList__item
+                  = link_to new_user_session_path, class: "headerFixed__user__navList__item--link" do
+                    ログイン
+                    
+            .headerFixed__user__search
+              = form_with url: books_search_path, class: "headerFixed__user__search__form", method: :get, local: true do |f|
+                = f.text_field :keyword, value: @keyword
+                = f.submit "検索", class: "headerFixed__user__search__form--b"
+        
+        
+    = javascript_include_tag "header_menu"
 
     = yield
         
         
     %footer
       .btm
-        - if admin_signed_in?
+        - if admin_signed_in? || @path.include?("/admins/sign")
           .btm__contents--admin
             %h3.btm__text--admin ©︎copy-right
         - else
