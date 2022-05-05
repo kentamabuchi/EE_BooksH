@@ -22,6 +22,20 @@
 @import '_template.scss';
 
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Toppan Bunkyu Midashi Gothic","凸版文久見出しゴシック";
+}
+
+body {
+    background-image: image-url("library.jpeg");
+    background-attachment: fixed;
+    background-color: rgba($wt,0.7);
+    background-blend-mode: soft-light;
+}
+
 .pagination>li>a {          
   border: none;
   color: #696969;
@@ -41,7 +55,6 @@
 
 .AHeader {
     color: $color-white;
-    background-color: $color-dark-green;
     &__container {
         height: 300px;
         background-color: $color-black-green;
@@ -56,20 +69,15 @@
     }
      &__logo__text {
         color: $color-white;
-        background-color: green;
         padding: 30px;
-        border-radius: 50%;
         text-decoration: none !important;
-    }
-    &__text {
-        
     }
 }
 
 .header {
     color: $color-white;
     &__container {
-        height: 150px;
+        height: 1000px;
         background-color: blue;
         border-radius: 0 0 50% 50%;
         position: relative;
@@ -111,19 +119,22 @@
         display: inline;
         margin-left: 10px;
         &--admin {
-            color: $color-white;
-            display: inline;
-            margin-left: 10px;
+            background-color: green;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-left: 20px;
         }
     }
     &__link {
         color: $color-white;
         &--admin {
-            color: $color-white;
-            background-color: green;
-            padding: 10px;
-            border-radius: 30px;
+            color: $textColor_main;
             text-decoration: none !important;
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+            padding: 35px 0;
         }
     }
 }
@@ -178,8 +189,158 @@
     }
 }
 
+
+.headerTop{
+    padding-top: 50px;
+    &__contents {
+        height: 700px;
+        width: 80%;
+        background: linear-gradient(to left, $main_color 70%, $pastel_blue 30%);
+        margin: 0 auto;
+        border: 25px solid $main_color;
+        position: relative;
+    }
+    &__image {
+        height: 500px;
+        width: 80%;
+        background-image: image-url("top_mainVisual.jpeg");
+        background-size: cover;
+        position: absolute;
+        top: 75px;
+        left: 20%;
+    }
+    &__nav {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+    &__navItem {
+        background-color: $main_color;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+    &__navlink {
+        color: $textColor_main;
+        text-decoration: none !important;
+        display: inline-block;
+        width: 100px;
+        line-height: 100px;
+        text-align: center;
+    }
+    &__scrollIcon {
+        color: $textColor_main;
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+    }
+}
+
+
+.headerFixed {
+    @mixin scrollHeader($bColor) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        width: 100%;
+        height: 100px;
+        background-color: $bColor;
+        padding: 25px;
+        @extend %row;
+    }
+    @mixin navItem($bColor) {
+        height: 50px;
+        width: 100px;
+        margin-right: 20px;
+        background-color: $bColor;
+        text-align: center;
+        padding: 15px 0;
+    }
+    &__admin {
+        &__container{
+            @include scrollHeader(green);
+        }
+        &__logo {
+            margin-left: 50px;
+            &--link {
+                text-decoration: none !important;
+            }
+            &--text {
+                color: $textColor_main;
+            }
+        }
+        &__nav {
+            margin: 0 auto;
+        }
+        &__navList {
+            list-style: none;
+            @extend %row;
+            &__item {
+                @include navItem($dark_green);
+                &--link {
+                    display: inline-block;
+                    color: $textColor_main;
+                    text-decoration: none !important;
+                }
+            }
+        }
+    }
+    &__user {
+        &__container {
+            @include scrollHeader(rgba($main_color, 0.9));
+        }
+        &__logo {
+            margin-left: 50px;
+            &--link {
+                text-decoration: none !important;
+            }
+            &--text {
+                color: $textColor_main;
+            }
+        }
+        &__nav {
+            margin: 0 auto;
+        }
+        &__navList {
+            list-style: none;
+            @extend %row;
+            &__item {
+                height: 50px;
+                width: 100px;
+                margin-right: 20px;
+                background-color: $pastel_blue;
+                text-align: center;
+                padding: 15px 0;
+                &--link {
+                    display: inline-block;
+                    color: $textColor_main;
+                    text-decoration: none !important;
+                }
+            }
+        }
+        &__search__form {
+            margin: 10px 0;
+            &--btn {
+                padding: 0 10px;
+            }
+        }
+
+    }
+}
+
+.hiddenHeader {
+    display: none;
+}
+
+
+
+
 .ARPage {
-    background-color: $color-pastel-blue;
+    width: 80%;
+    background-color: rgba($dark_green, 0.8);
+    margin: 50px auto;
     &__container {
         @extend %center;
     }
@@ -218,7 +379,9 @@
 }
 
 .ASPage {
-    background-color: $color-pastel-blue;
+    width: 80%;
+    background-color: rgba($dark_green, 0.8);
+    margin: 50px auto;
     &__container {
         @extend %center;
     }
@@ -253,7 +416,7 @@
     }
 }
 
-.footer{
+.btm{
     &__contents {
         height: 100px;
         color: $color-white;
@@ -275,49 +438,49 @@
 }
 
 .sign {
-  @extend %backgroundMain;
-  @extend %center;
-  min-height: 500px;
-  margin: 50px, 0;
-  &__container {
-    @extend %column;
-    width: 80%;
-    padding: 50px 0;
-  }
-  &__header {
-    width: 100%;
-    margin: 0 auto;
-  }
-  &__headerText {
-    @extend %headerMain;
-    width: 60%;
-    margin: 0 auto;
-  }
-  &__form {
-    @extend %center;
-    background-color: $white;
-    width: 60%;
-    margin: 50px auto;
-    padding: 50px 100px;
-  }
-  &__formItem:nth-child(even) {
-    margin: 20px 0;
-  }
-  &__formTag {
-    @extend %tagMain;
-  }
-  &__formAnnounce {
-    display: block;
-    font-size: 10px;
-  }
-  &__forgetPassword {
-    text-decoration: none !important;
-    display: block;
-  }
-  &__formBtn {
-    @extend %submitBtn;
-    margin-top: 20px;
-  }
+    &__container {
+        @extend %backgroundMain;
+        padding: 50px 0;
+        margin: 50px auto;
+    }
+    &__contents{
+        @extend %column;
+        margin: 50px auto;
+    }
+    &__header {
+        width: 100%;
+        margin: 0 auto;
+    }
+    &__headerText {
+        @extend %headerMain;
+        width: 60%;
+        margin: 0 auto;
+    }
+    &__form {
+        @extend %center;
+        background-color: $white;
+        width: 60%;
+        margin: 50px auto;
+        padding: 50px 100px;
+    }
+    &__formItem:nth-child(even) {
+        margin: 20px 0;
+    }
+    &__formTag {
+        @extend %tagMain;
+    }
+    &__formAnnounce {
+        display: block;
+        font-size: 10px;
+    }
+    &__forgetPassword {
+        text-decoration: none !important;
+        display: block;
+    }
+    &__formBtn {
+        @extend %submitBtn;
+        margin-top: 20px;
+    }
 }
 
 .formError {
@@ -331,3 +494,4 @@
   line-height: 20px;
   font-size: 10px;
 }
+

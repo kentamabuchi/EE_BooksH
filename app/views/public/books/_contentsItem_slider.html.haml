@@ -97,6 +97,42 @@
                     %li.contentsRecommend__indexBtn
         
             = javascript_include_tag "slide"
+    
+    - else
+        .books__recommend
+            .books__recommendContents
+            
+                %ul.books__recommendItems
+                    - 2.times do |n|
+                        -if n == 0 && follow_books[n].present?
+                            %li.books__recommendBooks
+                                = link_to book_path(follow_books[n]), class:"books__recommendBookLink" do
+                                    .books__recommendBookItems
+                                        = attachment_image_tag follow_books[n], :image, fallback: "no_image_book.jpeg", size: "300x300", class: "books__recommendBookImage" 
+                                        .books__recommendBookDataItems
+                                            .books__recomendBookData
+                                                = follow_books[n].name
+                                            .books__recomendBookData
+                                                = follow_books[n].writer
+                                            .books__recomendBookData
+                                                = follow_books[n].classification.name
+                                            .books__recomendBookData
+                                                = follow_books[n].genre.name
+                                                
+                        -if n == 1 && follow_books[n].present?
+                            %li.books__recommendBooks
+                                = link_to book_path(follow_books[n]), class:"books__recommendBookLink" do
+                                    .books__recommendBookItems
+                                        = attachment_image_tag follow_books[n], :image, fallback: "no_image_book.jpeg", size: "300x300", class: "books__recommendBookImage" 
+                                        .books__recommendBookDataItems
+                                            .books__recomendBookData
+                                                = follow_books[n].name
+                                            .books__recomendBookData
+                                                = follow_books[n].writer
+                                            .books__recomendBookData
+                                                = follow_books[n].classification.name
+                                            .books__recomendBookData
+                                                = follow_books[n].genre.name
         
        
     

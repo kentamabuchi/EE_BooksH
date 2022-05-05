@@ -89,6 +89,7 @@
           slideItems[slideIndex4].classList.remove("leftSlide", "contents__right");
           slideItems[slideIndex4].classList.add("contents__rightOver");
           
+
         });
         break;
         

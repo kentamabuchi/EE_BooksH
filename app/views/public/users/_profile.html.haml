@@ -9,27 +9,22 @@
                 .user__profile
                     .user__image
                         = attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300'
-                        - if @user != current_user
+                        - if user_signed_in? && @user != current_user
                             .user__relationship
                                 = render 'public/relationships/favorite', {user: @user}
                     .user__data
-                        %table
-                            %tr
-                                %th.user__thread
-                                    %span.user__dataTag 登録日
-                                %td.user__dataText= @user.created_at.strftime('%y年%m月%d日')
-                            %tr
-                                %th.user__thread
-                                    %span.user__dataTag ニックネーム
-                                %td.user__dataText= @user.nick_name
-                            - if @user == current_user    
-                                %tr
-                                    %th.user__thread
-                                        %span.user__dataTag メールアドレス
-                                    %td.user__dataText= @user.email
-                            %tr
-                                %th.user__thread
-                                    %span.user__dataTag 自己紹介
+                        .user__thread
+                            .user__dataTag 登録日
+                            .user__dataText= @user.created_at.strftime('%y年%m月%d日')
+                        .user__thread
+                            .user__dataTag ニックネーム
+                            .user__dataText= @user.nick_name
+                        - if @user == current_user    
+                            .user__thread
+                                .user__dataTag メールアドレス
+                                .user__dataText= @user.email
+                            .user__thread
+                                .user__dataTag 自己紹介
                         .user__introduce
                             = @user.introduce
                         -if @user == current_user
