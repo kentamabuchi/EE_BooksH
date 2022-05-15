@@ -2,7 +2,10 @@
   .ABookPage__container--free
     %section.ABShow
       .ABShow__action__return
-        = link_to "<<一覧へ戻る", admin_books_path, class: "ABShow__btn__return"
+        - if request.referer.include?('top')
+          = link_to "<<戻る", admin_top_path, class: "ABShow__btn__return"
+        - else
+          = link_to "<<一覧へ戻る", admin_books_path, class: "ABShow__btn__return"
       .ABShow__heading
         %h2 書籍詳細
       .ABShow__contents
