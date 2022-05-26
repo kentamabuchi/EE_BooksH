@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  namespace :public do
+    get 'violations/create'
+    get 'violations/destroy'
+  end
+  get 'violations/create'
+  get 'violations/destroy'
   namespace :admin do
     get 'genres/index'
   end
@@ -36,6 +42,7 @@ Rails.application.routes.draw do
       resources :reviews, only: [:create, :destroy]
       resource :good_books, only: [:create, :destroy]
       resource :favorite_books, only: [:create, :destroy]
+      resource :violations, only: [:create, :destroy]
     end
     resources :reviews, only: [:index, :show] do
       resources :return_comments, only: [:create, :destroy]
