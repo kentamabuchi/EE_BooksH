@@ -14,5 +14,6 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_relationships, source: :user
   has_many :favorite_books, dependent: :destroy
   has_many :return_comments, dependent: :destroy
+  has_many :violations, dependent: :destroy
   
 end

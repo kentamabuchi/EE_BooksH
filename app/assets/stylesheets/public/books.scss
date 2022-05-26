@@ -441,6 +441,7 @@ textarea {
             line-height: 30px;
             padding: 0 10px;
             border-radius: 10px;
+            cursor: pointer;
         &--none {
             background-color: $pastel_yellow;
             text-decoration: none !important;
@@ -451,6 +452,45 @@ textarea {
             padding: 0 10px;
             border-radius: 10px;
             text-align: center;
+        }
+    }
+    &__violationForm {
+        position: fixed;
+        inset: 0;
+        top: 200px;
+        background-color: rgba($bk, 0.8);
+        width: 50%;
+        height: 500px;
+        margin: 0 auto;
+        &__container {
+            position: relative;
+            @extend %center;
+            padding: 50px;
+        }
+        &__closeIcon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: $wt;
+            z-index: 99;
+            cursor: pointer;
+        }
+        &__items {
+            width: 90%;
+            margin: 0 auto;
+        }
+        &__tag {
+            width: 200px;
+            color:$textColor_main;
+            background-color: $pastel_blue;
+            padding: 10px;
+            text-align: left;
+        }
+        &__btn {
+            text-align: left;
+        }
+        &__formBtn {
+            @extend %form-btn;
         }
     }
     &__introduction {
@@ -546,6 +586,9 @@ textarea {
                 margin-left: 10px;
             }
     }
+}
+#violationForm {
+    display: none;
 }
 
 

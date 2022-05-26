@@ -2,21 +2,37 @@
   .book__container
     .book__actionReturn
       = link_to "<<ランキングに戻る", books_path, class: "book__btnReturn"
-    .book__heading
-      %h2.book__headingText 書籍詳細
     .book__contents
       .book__items
         .book__image
-          = attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: "300x300"
+          = attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpg", size: "300x300"
           .book__status
             - if user_signed_in?
               .book__goods
                 = render 'public/good_books/good', {book: @book}
+
               .book__favoriteIcon
                 = render 'public/favorite_books/favorite', {book: @book}
+
               .book__violationIcon
                 = render 'public/books/violation_report', {book: @book}
-        .book__datas
+
+              .book__violationForm#violationForm
+                    
+                .book__violationForm__container
+                  = form_with model: @violation, url: book_violations_path(@book), method: :post, local: true do |f|
+                    .book__violationForm__items
+                      .book__violationForm__thread
+                        %p.book__violationForm__tag
+                          違反理由・違反内容など
+                        = f.text_area :comment
+                      .book__violationForm__btn
+                        = f.submit "報告する", class: "book__violationForm__formBtn"
+                  
+                  .book__violationForm__closeIcon#closeForm
+                    %i.fas.fa-times.fa-2x
+
+        .book__dates
           %table.book__item
             %tr
               %th.book__thread
@@ -43,7 +59,7 @@
                 = @average_rate
                 点
                 :javascript
-                  $('.book__average__rate').empty(); 
+                  $('.book__average__rate').empty();
                   $('.book__average__rate').raty({
                     starOff:  '#{asset_path('star-off.png')}',
                     starOn : '#{asset_path('star-on.png')}',
@@ -59,7 +75,7 @@
           = @book.introduction
         
        
-        - if user_signed_in? 
+        - if user_signed_in?
           .book__reviews
             .book__reviewForm
               = form_with(model:[@book, @review], local: true) do |f|
@@ -69,7 +85,7 @@
                       %span.book__tag レビュー
                   %tr.book__reviewRate
                   :javascript
-                    $('.book__reviewRate').empty(); 
+                    $('.book__reviewRate').empty();
                     $('.book__reviewRate').raty({
                       starOn: "#{asset_path('star-on.png')}",
                       starOff: "#{asset_path('star-off.png')}",
@@ -88,12 +104,12 @@
               .book__commentUserInfo
                 .book__commentUserData
                   = link_to user_path(review.user) do
-                    = attachment_image_tag review.user, :image, :fill, 100, 100, fallback: "no_image_book.jpeg",size: "50x50", class:"book__commentUserImage"
+                    = attachment_image_tag review.user, :image, :fill, 100, 100, fallback: "no_image_book.jpg",size: "50x50", class:"book__commentUserImage"
                   %span.book__tag= review.user.nick_name
                 .book__commentUserRate
                   %span{:class => "book__rate__show-#{review.id}"}
                   :javascript
-                    $(".book__rate__show-#{review.id}").empty(); 
+                    $(".book__rate__show-#{review.id}").empty();
                     $(".book__rate__show-#{review.id}").raty({
                       starOff:  "#{asset_path('star-off.png')}",
                       starOn : "#{asset_path('star-on.png')}",
@@ -108,12 +124,13 @@
                 = "投稿日：#{review.created_at.strftime('%Y/%m/%d')}"
               .book__reviewAction
                 - if user_signed_in? && review.user_id == current_user.id
-                  %div 
+                  %div
                     = link_to "削除", book_review_path(review.book, review), method: :delete, class: "book__btnDelete"
-                - if user_signed_in? && review.user_id != current_user.id      
+                - if user_signed_in? && review.user_id != current_user.id
                   %div{:class => "book__violationReviewIcon-#{review.id}"}
                     = render 'public/books/violation_review', {review: review}
                   
         .book__paginate
           = paginate @reviews
           
+=javascript_include_tag "books_violation"

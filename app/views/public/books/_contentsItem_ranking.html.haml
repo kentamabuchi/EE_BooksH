@@ -13,7 +13,7 @@
         = link_to book_path(book), class:"contentsRanking__bookLink" do
           .contentsRanking__book
             .contentsRanking__bookItems
-              = attachment_image_tag book, :image, :fill, 300, 300, fallback: "no_image_book.jpeg", size: "300x300", class:"contentsRanking__ranking__image"
+              = attachment_image_tag book, :image, :fill, 300, 300, fallback: "no_image_book.jpg", size: "300x300", class:"contentsRanking__ranking__image"
               .contentsRanking__bookData
                 %p.contentsRanking__itemText
                   %i.fas.fa-crown
@@ -35,7 +35,7 @@
           = link_to book_path(book), class:"contentsRanking__bookLink--other" do
             .contentsRanking__book--other
               .contentsRanking__bookItems--other
-                = attachment_image_tag book, :image, :fill, 100, 100, fallback: "no_image_book.jpeg", size: "100x100", class:"contentsRanking__bookImage"
+                = attachment_image_tag book, :image, :fill, 100, 100, fallback: "no_image_book.jpg", size: "100x100", class:"contentsRanking__bookImage"
                 .contentsRanking__bookData
                   %p.contentsRanking__itemText--other
                     #{n+2}位
