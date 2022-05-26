@@ -441,6 +441,7 @@ textarea {
             line-height: 30px;
             padding: 0 10px;
             border-radius: 10px;
+            cursor: pointer;
         &--none {
             background-color: $pastel_yellow;
             text-decoration: none !important;
@@ -472,6 +473,7 @@ textarea {
             right: 20px;
             color: $wt;
             z-index: 99;
+            cursor: pointer;
         }
         &__items {
             width: 90%;
