@@ -44,6 +44,7 @@ class Public::BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @violation = @book.violations.new
     @good_books = GoodBook.where(book_id: @book.id)
     @favorite_books = FavoriteBook.where(book_id: @book.id)
     @review = Review.new
@@ -69,7 +70,7 @@ class Public::BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:name, 
+    params.require(:book).permit(:name,
                                  :writer,
                                  :image,
                                  :introduction,
@@ -87,7 +88,18 @@ class Public::BooksController < ApplicationController
                                    :rate,
                                    :is_active,
                                    :user_id,
-                                   :book_id)
+                                   :book_id,
+                                   :created_at,
+                                   :updated_at)
+  end
+
+  def violation_params
+    params.require(:violation).permit(:comment,
+                                      :is_active,
+                                      :user_id,
+                                      :book_id,
+                                      :created_at,
+                                      :updated_at)
   end
   
   def search_params
