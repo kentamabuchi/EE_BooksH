@@ -2,16 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import '_color.scss';
-@import '_flex.scss';
-@import '_admin_template.scss';
+@import 'color';
+@import 'flex';
+@import 'admin_template';
 
 .AHomesPage {
     @extend %page;
     &__container {
-        width: 80%;
+        width: 90%;
         background-color: $color-white;
-        margin: 50px 0;
+        margin: 50px auto;
         padding: 50px;
     }
 }
@@ -24,7 +24,7 @@
         margin-left: 100px;
     }
     &__tab {
-        text-decoration:none !important;
+        text-decoration: none !important;
         color: $color-white;
         background-color: $color-smog-green;
         padding: 20px;
@@ -39,17 +39,15 @@
             border-radius: 15px 15px 0 0;
         }
     }
-    &__none {}
     &__contents {
-        width: 90%;
+        width: 100%;
         color: $color-white;
         background-color: $color-smog-green;
         padding: 100px 0;
         margin: 0 auto;
         text-align: center;
-        
         &--other {
-        width: 90%;
+        width: 100%;
         color: $color-white;
         background-color: $color-dark-green;
         padding: 100px 0;
@@ -85,7 +83,6 @@
             @extend %btn;
             background-color: $color-pastel-green;
             text-decoration: none;
-            
         }
         &--delete {
             @extend %btn;

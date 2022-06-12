@@ -2,7 +2,7 @@
   .ABookPage__container--free
     %section.ABShow
       .ABShow__action__return
-        - if request.referer.include?('top')
+        - if @link == "1"
           = link_to "<<戻る", admin_top_path, class: "ABShow__btn__return"
         - else
           = link_to "<<一覧へ戻る", admin_books_path, class: "ABShow__btn__return"
@@ -43,7 +43,7 @@
               %th.ABShow__thread
                 %span.ABShow__tag 書籍ステータス：
               %td.ABShow__thread
-                - if @book.edit_status == true
+                - if @book.is_active == true
                   正常
                 - else
                   報告あり

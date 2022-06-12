@@ -1,5 +1,6 @@
 class Admin::BooksController < ApplicationController
   
+
   def index
     @books = Book.page(params[:page]).per(10).reverse_order
   end
@@ -17,6 +18,7 @@ class Admin::BooksController < ApplicationController
   end
 
   def show
+    @link = session[:link]
     @book = Book.find(params[:id])
   end
 
@@ -24,11 +26,11 @@ class Admin::BooksController < ApplicationController
     @book = Book.find(params[:id])
     @classifications = Classification.all
     @genres = Genre.all
+    session[:link] = request.referer
   end
   
   def update
     @book = Book.find(params[:id])
-    
     update_params = book_params
 
     if params[:book][:edit_option] == "0"
@@ -44,8 +46,13 @@ class Admin::BooksController < ApplicationController
     end
 
     @book.update(update_params)
-    
-    redirect_to admin_book_path(@book)
+    if session[:link].present? and session[:link].include?('top')
+      session[:link] = "1"
+      redirect_to admin_book_path(@book)
+    else
+      session[:link] = "2"
+      redirect_to admin_book_path(@book)
+    end
   end
     
   
@@ -72,5 +79,5 @@ class Admin::BooksController < ApplicationController
                                  :created_at,
                                  :updated_at)
   end
-  
+
 end

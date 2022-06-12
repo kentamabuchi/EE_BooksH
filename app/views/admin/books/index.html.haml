@@ -25,7 +25,10 @@
               %td.ABIndex__date
                 %p.ABIndex__text.text-truncate= book.genre.name
               %td.ABIndex__date
-                %p.ABIndex__text.text-truncate= book.edit_status
+                - if book.edit_status == "true"
+                  %p.ABIndex__text.text-truncate 編集済み
+                - else
+                  %p.ABIndex__text.text-truncate 未編集
               %td.ABIndex__date= link_to "詳細", admin_book_path(book), class: "ABIndex__btn--show"
               %td.ABIndex__date= link_to "削除", admin_book_path(book), method: :delete, class: "ABIndex__btn--delete"
         .ABIndex__paginate
