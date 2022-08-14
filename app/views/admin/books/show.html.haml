@@ -1,13 +1,14 @@
 .ABookPage
+  .ABShow__action__return
+    - if @return.present? && @return == "1"
+      = link_to "<<戻る", admin_top_path, class: "ABShow__btn__return"
+    - else
+      .ABShow__btn__return__decoration
+      = link_to "<<一覧へ戻る", admin_books_path, class: "ABShow__btn__return"
   .ABookPage__container--free
+    
     %section.ABShow
-      .ABShow__action__return
-        - if request.referer.include?('top')
-          = link_to "<<戻る", admin_top_path, class: "ABShow__btn__return"
-        - else
-          = link_to "<<一覧へ戻る", admin_books_path, class: "ABShow__btn__return"
-      .ABShow__heading
-        %h2 書籍詳細
+      
       .ABShow__contents
         .ABShow__BookImage
           = attachment_image_tag @book, :image, :fill, 300, 300, fallback: "no_image_book.jpg",size: "300x300"
@@ -38,12 +39,12 @@
                 - if @book.edit_status == true
                   未編集
                 - else
-                  編集済み
+                  = "編集済み (#{@book.how_long_passed})"
             %tr
               %th.ABShow__thread
                 %span.ABShow__tag 書籍ステータス：
               %td.ABShow__thread
-                - if @book.edit_status == true
+                - if @book.is_active == true
                   正常
                 - else
                   報告あり

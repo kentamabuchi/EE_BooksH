@@ -48,7 +48,7 @@
                 .nav--admin
                   %ul.nav__bar--admin
                     %li.nav__item--admin
-                      = link_to admin_top_path, class: "nav__link--admin" do
+                      = link_to admin_violation_books_path, class: "nav__link--admin" do
                         %i.fas.fa-bullhorn>
                         　通報一覧
                     %li.nav__item--admin
@@ -190,12 +190,12 @@
                   通報一覧
               
               %li.headerFixed__admin__navList__item
-                = link_to admin_books_path, class: "headerFixed__admin__navList__item--link" do
-                  書籍一覧
-                  
-              %li.headerFixed__admin__navList__item
                 = link_to admin_users_path, class: "headerFixed__admin__navList__item--link" do
                   会員一覧
+                  
+              %li.headerFixed__admin__navList__item
+                = link_to admin_books_path, class: "headerFixed__admin__navList__item--link" do
+                  書籍一覧
                   
               %li.headerFixed__admin__navList__item
                 = link_to admin_classifications_path, class: "headerFixed__admin__navList__item--link" do

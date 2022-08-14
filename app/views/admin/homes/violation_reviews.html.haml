@@ -1,0 +1,26 @@
+.AHomesPage
+  .AHomesPage__container
+    %section.AHTop
+      .AHTop__heading
+        %h2 通報一覧
+      .AHTop__PageTabs
+        = link_to "books", admin_violation_books_path, local: true, class: "AHTop__tab"
+        = link_to "reviews", admin_violation_reviews_path, local: true, class: "AHTop__tab--other"
+      .AHTop__index
+        .AHTop__contents--other
+          - if @reviews.blank?
+            %div
+              .AHTop__non--other
+                %h2 違反報告はありません
+          - else
+            %table.AHTop__table
+              %tr
+                %th.AHTop__thread コメント
+                %th.AHTop__thread
+                %th.AHTop__thread
+              - @reviews.each do |review|
+                %tr
+                  %td.AHTop__date
+                    %p.AHTop__text--name.text-truncate= review.comment
+                  %td.AHTop__date= link_to "詳細", admin_review_path(review), class: "AHTop__btn--show"
+                  %td.AHTop__date= link_to "削除", admin_review_path(review), method: :delete, class: "AHTop__btn--delete"

@@ -1,7 +1,9 @@
 class Admin::BooksController < ApplicationController
-  
+
+
   def index
-    @books = Book.page(params[:page]).per(10).reverse_order
+    @books = Book.page(params[:page]).per(12).order(edit_status: :DESC)
+    session[:return] = "0"
   end
 
   def new
@@ -9,7 +11,7 @@ class Admin::BooksController < ApplicationController
     @classifications = Classification.all
     @genres = Genre.all
   end
-  
+
   def create
     @book = Book.new(book_params)
     @book.save
@@ -18,17 +20,19 @@ class Admin::BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    session[:link] = request.referer
+    @return = session[:return]
   end
 
   def edit
     @book = Book.find(params[:id])
     @classifications = Classification.all
     @genres = Genre.all
+    session[:link] = session[:link]
   end
-  
+
   def update
     @book = Book.find(params[:id])
-    
     update_params = book_params
 
     if params[:book][:edit_option] == "0"
@@ -44,23 +48,28 @@ class Admin::BooksController < ApplicationController
     end
 
     @book.update(update_params)
-    
-    redirect_to admin_book_path(@book)
+    if session[:link].present? and session[:link].include?('violation')
+      session[:return] = "1"
+      redirect_to admin_book_path(@book)
+    else
+      session[:return] = "0"
+      redirect_to admin_book_path(@book)
+    end
   end
-    
-  
+
+
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
     redirect_to admin_books_path
   end
-  
-  
-  
+
+
+
   private
-  
+
   def book_params
-    params.require(:book).permit(:name, 
+    params.require(:book).permit(:name,
                                  :writer,
                                  :image,
                                  :edit_status,
@@ -72,5 +81,5 @@ class Admin::BooksController < ApplicationController
                                  :created_at,
                                  :updated_at)
   end
-  
+
 end

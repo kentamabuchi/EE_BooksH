@@ -3,15 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-@import '_color.scss';
-@import '_flex.scss';
-@import '_admin_template.scss';
+@import 'color';
+@import 'flex';
+@import 'admin_template';
 
 .AUserPage {
     @extend %page;
     &__container{
         @extend %container;
-        margin: 50px 0;
+        margin: 50px auto;
     }
 }
 

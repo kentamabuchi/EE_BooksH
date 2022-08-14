@@ -14,6 +14,8 @@ class Public::ViolationsController < ApplicationController
   def destroy
   end
 
+  private
+
   def violation_params
     params.require(:violation).permit(:comment,
                                       :is_active,
