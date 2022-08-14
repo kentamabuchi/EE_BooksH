@@ -22,17 +22,17 @@ textarea {
         @extend %container;
         margin: 50px auto;
         &--another {
-            height: 1000px;
-            width: 80%;
+            min-height: 1000px;
+            width: 90%;
             background-color: $color-white;
-            padding-top: 50px;
+            padding: 50px 0;
             margin: 0 auto;
         }
         &--free {
-            width: 80%;
+            width: 90%;
             background-color: $color-white;
             padding-top: 50px;
-            margin: 50px 0;
+            margin: 0 auto;
         }
     }
 }
@@ -41,52 +41,111 @@ textarea {
         @extend %heading;
     }
     &__action__new {
+        @extend %row;
+        width: 150px;
         text-align: right;
-        text-decoration: none;
-        margin: 0 100px 20px 0
+        margin-left: auto;
+        &__text {
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        &__btn {
+            text-decoration: none !important;
+        }
+        &__btn:hover {
+            color: $color-pastel-green;
+        }
     }
-    &__contents {
-    }
-    &__table {
+    &__bookItems {
+        @extend %row;
+        flex-wrap: wrap;
         margin: 0 auto;
     }
-    &__thread {
-        @extend %thread;
-        width: 200px;
-        &--category {
-            @extend %thread;
-            width: 150px;
+    &__book {
+        @extend %row;
+        width: 31%;
+        margin: 10px 1%;
+        border: 3px double $bk;
+        &__link {
+            text-decoration: none !important;
         }
-        &--status {
-            @extend %thread;
-            width: 150px;
+        &__image {
+            margin: 10px;
+        }
+        &__dataTable{
+            padding: 5px
+        }
+        &__data {
+            width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        &__deleteBtn {
+            @include btn($pastel-red);
+            cursor: pointer;
+            text-decoration: none !important;
         }
     }
-    &__date {
-        text-align: center;
-        &--name {
-            width: 200px;
-        }
-        
+    &__formHidden {
+        display: none;
     }
-    &__text {
-        text-align: center;
-        &--name {
-            width: 200px;
+    &__deleteForm {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background-color: rgba($bk, 0.9);
+        &__container {
+            width: 60%;
+            height: 300px;
+            background-color: $wt;
+            margin: 200px auto;
+            padding: 100px 0;
+            border: 10px double green;
+        }
+        &__text {
+            height: 50px;
+            font-size: 40px;
+            // margin: 0 auto;
+            line-height: 50px;
             text-align: center;
+            &__bookName {
+                display: inline-block;
+                font-size: 40px;
+                height: 50px;
+                line-height: 50px;
+                 &--over{
+                    display: inline-block;
+                    font-size: 40px;
+                    height: 50px;
+                    width: 40%;
+                    line-height: 50px;
+                    text-align: right;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
         }
-    }
-    &__btn {
-        &--show {
-            @extend %btn;
-            background-color: $color-pastel-green;
-            text-decoration: none;
-            
+        &__action {
+            width: 20%;
+            margin: 20px auto 0;
         }
-        &--delete {
+        &__deleteBtn {
             @extend %btn;
-            background-color: $color-pastel-red;
-            text-decoration: none;
+            background-color: $pastel-red;
+            text-decoration: none !important;
+        }
+        &__cancelBtn {
+            @extend %btn;
+            background-color: $pastel_blue;
+            margin-left: 10px;
+            text-decoration: none !important;
         }
     }
     &__paginate {
@@ -138,6 +197,7 @@ textarea {
 
 .ABShow {
     &__action__return {
+        @extend %row;
         text-align: left;
         margin-left: 50px;
         margin-bottom: 20px;
@@ -148,6 +208,14 @@ textarea {
         background-color: $color-pastel-green;
         text-decoration: none !important;
         text-align: center;
+        border-radius: 0;
+        padding-left:0;
+        &__decoration {
+            width: 30px;
+            height: 30px;
+            clip-path: polygon(50% 50%, 100% 0%, 100% 100%);
+            background-color: $color-pastel-green;
+        }
     }
     &__heading {
         @extend %heading;
@@ -237,7 +305,6 @@ textarea {
         margin-left: 30px;
     }
     &__item {
-        
     }
     &__thread {
         height: 40px;

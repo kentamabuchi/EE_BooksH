@@ -68,6 +68,16 @@
     display: inline-block;
 }
 
+@mixin btn($bColor: $pastel-blue, $height: 30px, $color: $wt) {
+    height: $height;
+    color: $color;
+    background-color: $bColor;
+    padding: 0 10px;
+    line-height: $height;
+    border-radius: 10px;
+    display: inline-block;
+}
+
 %form-btn {
     height: 30px;
     width: 100px;
