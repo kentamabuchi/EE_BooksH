@@ -2,34 +2,44 @@
   .ABookPage__container--another
     %section.ABIndex
       .ABIndex__heading
-        %h2 書籍一覧
+        %h2 Books
       .ABIndex__action__new
-        = link_to new_admin_book_path, class: "d-flex flex-row-reverse pb-3" do
+        %p.ABIndex__action__new__text 新規登録
+        = link_to new_admin_book_path, class: "d-flex flex-row-reverse pb-3 ABIndex__action__new__btn" do
           %i.far.fa-plus-square.fa-2x
       .ABIndex__contents
-        %table.ABIndex__table
-          %tr
-            %th.ABIndex__thread タイトル
-            %th.ABIndex__thread 作者
-            %th.ABIndex__thread--category 分類
-            %th.ABIndex__thread--category ジャンル
-            %th.ABIndex__thread--status 編集ステータス
-          - @books.each do |book|
-            %tr
-              %td.ABIndex__date--name
-                %p.ABIndex__text--name.text-truncate= book.name
-              %td.ABIndex__date
-                %p.ABIndex__text--name.text-truncate= book.writer
-              %td.ABIndex__date
-                %p.ABIndex__text.text-truncate= book.classification.name
-              %td.ABIndex__date
-                %p.ABIndex__text.text-truncate= book.genre.name
-              %td.ABIndex__date
-                - if book.edit_status == "true"
-                  %p.ABIndex__text.text-truncate 編集済み
-                - else
-                  %p.ABIndex__text.text-truncate 未編集
-              %td.ABIndex__date= link_to "詳細", admin_book_path(book), class: "ABIndex__btn--show"
-              %td.ABIndex__date= link_to "削除", admin_book_path(book), method: :delete, class: "ABIndex__btn--delete"
+
+        .ABIndex__bookItems
+          - @books.length.times do |n|
+            .ABIndex__book
+              .ABIndex__book__image
+                = link_to admin_book_path(@books[n]), class: "ABIndex__book__link" do
+                  = attachment_image_tag @books[n], :image, :fill, 100, 100, fallback: "no_image_book.jpg", size: "100x100",class: "ABIndex__book__image"
+              .ABIndex__book__dataTable
+                %p.ABIndex__book__data= @books[n].name
+                %P.ABIndex__book__data= @books[n].writer
+                %P.ABIndex__book__data= @books[n].classification.name
+                - if @books[n].is_active = true
+                  %P.ABIndex__book__data 未編集
+                -else
+                  %P.ABIndex__book__data 編集済
+                %a.ABIndex__book__deleteBtn.deleteBtn 削除
+            
+            .ABIndex__deleteForm.ABIndex__formHidden
+              .ABIndex__deleteForm__container
+                %h1.ABIndex__deleteForm__text
+                  - if (@books[n].name).to_s.size >= 14
+                    %span.ABIndex__deleteForm__text__bookName--over>=@books[n].name
+                  - else
+                    #{@books[n].name}
+                  を削除しますか？
+                .ABIndex__deleteForm__action
+                  =link_to "はい", admin_book_path(@books[n]), method: :delete, class: "ABIndex__deleteForm__deleteBtn"
+                  %a.ABIndex__deleteForm__cancelBtn いいえ
+
         .ABIndex__paginate
           = paginate @books
+= javascript_include_tag "confirmation"
+
+
+
