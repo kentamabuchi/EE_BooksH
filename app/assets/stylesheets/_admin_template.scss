@@ -76,6 +76,8 @@
     line-height: $height;
     border-radius: 10px;
     display: inline-block;
+    border: none !important;
+    text-decoration: none !important;
 }
 
 %form-btn {

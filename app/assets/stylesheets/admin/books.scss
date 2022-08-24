@@ -169,7 +169,7 @@ textarea {
     }
     &__tag {
         height: 30px;
-        width: 200px;
+        width: 150px;
         color: $color-white;
         background-color: $color-green;
         display: inline-block;
@@ -178,20 +178,15 @@ textarea {
         line-height: 30px;
         border-radius: 15px;
     }
-    ＆__form__TextBox {
-        display: block;
-        height: 30px;
-        width: 200px;
-        maragin-bottom: 10px;
+    &__form__action {
+        text-align: center;
+        margin: 20px auto;
     }
-   &__form__btn {
-       height: 30px;
-       width: 100px;
-       color: $color-white;
-       background-color: $color-pastel-blue;
-       margin-top: 30px;
-       border: none !important;
-       border-radius: 15px;
+    &__form__btn {
+    @include btn;
+    &--continue {
+        @include btn($color-pastel-orange);
+    }
     }
 }
 
@@ -240,14 +235,14 @@ textarea {
         display: block;
         height: 30px;
         width: 200px;
-        maragin-bottom: 10px;
+        margin-bottom: 10px;
     }
-   &__action {
+    &__action {
         height: 40px;
         margin-top: 30px;
         text-align: center;
-   }
-   &__introduce {
+    }
+    &__introduce {
         min-height: 300px;
         width: 600px;
         margin-top: 10px;
