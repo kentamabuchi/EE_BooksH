@@ -15,7 +15,11 @@ class Admin::BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.save
-    redirect_to admin_books_path
+    if params[:commit] == "0"
+      redirect_to admin_books_path
+    else
+      redirect_to new_admin_book_path
+    end
   end
 
   def show

@@ -8,6 +8,10 @@
 @import '_template.scss';
 
 
+.hidden {
+    display: none;
+}
+
 .user {
     &__container {
         @extend %column;

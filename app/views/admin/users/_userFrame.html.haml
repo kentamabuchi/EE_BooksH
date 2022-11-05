@@ -1,0 +1,9 @@
+.adminUserFrame__announce
+  =link_to "ホーム", admin_violation_books_path, class: "adminUserFrame__announce__link"
+  %p.adminUserFrame__announce__separate /
+  =link_to "会員一覧", admin_users_path, class: "adminUserFrame__announce__link"
+  -if user.present? and @path.include?("#{user.id}")
+    %p.adminUserFrame__announce__separate /
+    =link_to "会員詳細", admin_user_path, class: "adminUserFrame__announce__link"
+    %p.adminUserFrame__announce__separate /
+    %p.adminUserFrame__announce__link 会員情報編集

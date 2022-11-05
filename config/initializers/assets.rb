@@ -26,5 +26,5 @@ Rails.application.config.assets.precompile += %w( createBook.js )
 Rails.application.config.assets.precompile += %w( books_violation.js )
 Rails.application.config.assets.precompile += %w( jquery.raty.js )
 Rails.application.config.assets.precompile += %w( confirmation.js )
-
+Rails.application.config.assets.precompile += %w( change_icon.js )
 

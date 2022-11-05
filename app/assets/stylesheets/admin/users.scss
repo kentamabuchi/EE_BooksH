@@ -12,10 +12,39 @@
     &__container{
         @extend %container;
         margin: 50px auto;
+        border: 10px solid $color-dark-green;
+    }
+}
+.adminUserFrame {
+    @extend %page;
+    &__announce {
+        @extend %row;
+        width: 90%;
+        height: 40px;
+        background-color: $color-dark-green;
+        text-align: left;
+        margin: 0 auto 20px;
+        &__link {
+            @include btn(none, 40px);
+            text-decoration: none !important;
+            text-align: center;
+            padding: 0 30px;
+        }
+        &__separate {
+            font-size: 15px;
+            height: 40px;
+            color: $wt;
+            line-height: 40px;
+        }
     }
 }
 
-.AUIndex {
+.adminUsers{
+    &__container{
+        @extend %container;
+        margin: 50px auto;
+        border: 10px solid $color-dark-green;
+    }
     &__heading {
         @extend %heading;
     }
@@ -26,13 +55,14 @@
         @extend %thread;
         width: 200px;
     }
-    &__date {
-        text-align: center;
+    &__tag {
+        height: 30px;
+        line-height: 30px;
     }
-    &__text {
-        &--wide {
-            width: 200px;
-        }
+    &__date {
+        width: 30px;
+        line-height: 30px;
+        text-align: center;
     }
     &__btn {
         &--show {
@@ -51,25 +81,30 @@
     }
 }
 
-.AUShow {
-    &__action__return {
-        text-align: left;
-        margin-left: 50px;
-        margin-bottom: 20px;
+
+.adminUser {
+    &__container {
+        @extend %container;
+        margin: 50px auto;
+        border: 10px solid $color-dark-green;
     }
-    &__btn__return {
-        @extend %btn;
-        width: 150px;
-        background-color: $color-pastel-green;
-        text-decoration: none !important;
-        text-align: center;
+    &__action {
+        text-align: right;
+        margin-right: 100px;
     }
-    &__heading {
-        @extend %heading;
+    &__btn {
+        @include btn($pastel-orange, 30px);
+        padding: 0 30px;
+        margin-top: 20px;
+        margin-left: 170px;
     }
     &__contents {
         @extend %row;
         justify-content: center;
+        background-color: rgba($dark-green, 0.5);
+        width: 90%;
+        padding: 50px 0;
+        margin: 10px auto;
     }
     &__table {
         margin-top: 20px;
@@ -78,43 +113,37 @@
     &__tag {
         @extend %tag;
         width: 150px;
+        height: 30px;
+        line-height: 30px;
+        margin: 5px;
     }
     &__date {
         width: 200px;
+        height: 30px;
+        line-height: 30px;
         text-align: center;
-    }
-    &__action {
-        text-align: center;
-    }
-    &__btn {
-        @extend %btn;
-        background-color: $color-pastel-orange;
-        margin-top: 20px;
-        margin-left: 170px;
     }
 }
 
 
-
 .AUEdit {
-    &__action__return {
-        text-align: left;
-        margin-left: 50px;
-        margin-bottom: 20px;
-    }
-    &__btn__return {
-        @extend %btn;
-        width: 150px;
-        background-color: $color-pastel-green;
-        text-decoration: none !important;
-        text-align: center;
-    }
-    &__heading {
-        @extend %heading;
-    }
-    &__contents {
+    &__container {
         @extend %row;
         justify-content: center;
+        @extend %container;
+        margin: 50px auto;
+        border: 10px solid $color-dark-green;
+    }
+    &__image{
+        width: 30%;
+    }
+    &__imageTag {
+        width: 100%;
+    }
+    &__imageTag p {
+        @extend %tag;
+        display: block;
+        margin: 10px auto 0;
     }
     &__table {
         margin-top: 20px;
@@ -123,6 +152,7 @@
     &__tag {
         @extend %tag;
         width: 150px;
+        margin: 5px;
     }
     &__date {
         width: 200px;

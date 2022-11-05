@@ -1,38 +1,37 @@
-.AUserPage
-  .AUserPage__container
-    %section.AUShow
-      .AUShow__action__return
-        = link_to "<< 一覧へ戻る", admin_users_path, class:"AUShow__btn__return"
-      .AUShow__heading
-        %h2 会員詳細
-      .AUShow__contents
-        .AUShow__UserImage
+.adminUserFrame
+  .adminUserFrame__announce
+    =link_to "ホーム", admin_violation_books_path, class: "adminUserFrame__announce__link"
+    %p.adminUserFrame__announce__separate /
+    =link_to "会員一覧", admin_users_path, class: "adminUserFrame__announce__link"
+    %p.adminUserFrame__announce__separate /
+    %p.adminUserFrame__announce__link 会員詳細
+
+  .adminUser
+    .adminUser__container
+      .adminUser__action
+        = link_to "編集", edit_admin_user_path(@user), class: "adminUser__btn"
+      .adminUser__contents
+        .adminUser__UserImage
           = attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.jpg",size: '300x300'
-        .AUShow__table
+        .adminUser__table
           %table
             %tr
-              %th.AUShow__thread
-                %span.AUShow__tag 登録日：
-              %td.AUShow__date= @user.created_at.strftime('%y年%m月%d日')
+              %th.adminUser__thread
+                %span.adminUser__tag 登録日
+              %td.adminUser__date= @user.created_at.strftime('%Y年%m月%d日')
             %tr
-              %th.AUShow__thread
-                %span.AUShow__tag ニックネーム：
-              %td.AUShow__date= @user.nick_name
+              %th.adminUser__thread
+                %span.adminUser__tag ニックネーム
+              %td.adminUser__date= @user.nick_name
             %tr
-              %th.AUShow__thread
-                %span.AUShow__tag メールアドレス：
-              %td.AUShow__date= @user.email
+              %th.adminUser__thread
+                %span.adminUser__tag メールアドレス
+              %td.adminUser__date= @user.email
             %tr
-              %th.AUShow__thread
-                %span.AUShow__tag 会員ステータス：
-              %td.AUShow__date
+              %th.adminUser__thread
+                %span.adminUser__tag ステータス
+              %td.adminUser__date
                 - if @user.is_active == true
                   有効
-                - else @user.is_active == false
+                - else
                   退会
-            %tr
-              %th.AUShow__thread
-                %span.AUShow__tag
-              %td.AUShow__date
-          .AUShow__action
-            = link_to "編集", edit_admin_user_path(@user), class: "AUShow__btn"

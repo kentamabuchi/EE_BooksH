@@ -1,33 +1,37 @@
-.AUserPage
-  .AUserPage__container
-    %section.AUIndex
-      .AUIndex__heading
-        %h2 会員一覧
-      .AUIndex__contents
-        %table.AUIndex__table
+.adminUserFrame
+  = render 'admin/users/userFrame', {user: nil}
+
+  .adminUsers
+    .adminUser__container
+      .adminUsers__heading
+        %h2 Members
+      .adminUsers__contents
+        %table.adminUsers__table
           %tr
-            %th.AUIndex__thread
-              %span.AUIndex__tag 登録日
-            %th.AUIndex__thread
-              %span.AUIndex__tag 名前
-            %th.AUIndex__thread
-              %span.AUIndex__tag メールアドレス
-            %th.AUIndex__thread
-              %span.AUIndex__tag 会員ステータス
+            %th.adminUsers__thread
+              %span.adminUsers__tag 登録日
+            %th.adminUsers__thread
+              %span.adminUsers__tag ニックネーム
+            %th.adminUsers__thread
+              %span.adminUsers__tag メールアドレス
+            %th.adminUsers__thread
+              %span.adminUsers__tag ステータス
+            %th.adminUsers__thread
           - @users.each do |user|
             %tr
-              %th.AUIndex__date
-                %p.AUIndex__text.text-truncate= user.created_at.strftime('%y年%m月%d日')
-              %th.AUIndex__date
-                %p.AUIndex__text--wide.text-truncate= user.nick_name
-              %th.AUIndex__date
-                %p.AUIndex__text--wide.text-truncate= user.email
-              %th.AUIndex__date
+              %th.adminUsers__date
+                %p.adminUsers__text.text-truncate= user.created_at.strftime('%Y年%m月%d日')
+              %th.adminUsers__date
+                %p.adminUsers__text.text-truncate= user.nick_name
+              %th.adminUsers__date
+                %p.adminUsers__text.text-truncate= user.email
+              %th.adminUsers__date
                 - if user.is_active == true
                   有効
                 - else user.is_active == false
                   退会
-              %td.AUIndex__date= link_to "詳細", admin_user_path(user), class: "AUIndex__btn--show"
-              %td.AUIndex__date= link_to "削除", admin_user_path(user), method: :delete, class: "AUIndex__btn--delete"
-      .AUIndex__paginate
+              %td.adminUsers__date
+                = link_to "詳細", admin_user_path(user), class: "adminUsers__btn--show"
+                = link_to "退会処理", admin_user_path(user), method: :delete, class: "adminUsers__btn--delete"
+      .adminUsers__paginate
         = paginate @users
