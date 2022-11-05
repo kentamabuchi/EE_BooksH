@@ -134,9 +134,14 @@
                     = link_to new_user_registration_path, class: "headerTop__navlink" do
                       会員登録
                 
-                .headerTop__navlist
-                  .headerTop__navItem
-                    = link_to new_user_session_path, class: "headerTop__navlink" do
+                .headerTop__navlist#userSign
+                  .headerTop__navItem#item
+                    = link_to new_user_session_path, id: "loginLink", class: "headerTop__navlink" do
+                      ログイン
+                
+                .headerTop__navlist.hidden#adminSign
+                  .headerTop__navItem--admin
+                    = link_to new_admin_session_path, class: "headerTop__navlink" do
                       ログイン
             
               %i.fas.fa-angle-double-down.fa-2x.headerTop__scrollIcon
@@ -281,6 +286,7 @@
         
         
     = javascript_include_tag "header_menu"
+    = javascript_include_tag "change_icon"
 
     = yield
         
